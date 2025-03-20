@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -35,7 +36,7 @@ const Hero = () => {
             "opacity-0 transform translate-y-4 transition-all duration-1000",
             isVisible && "opacity-100 transform-none"
           )}>
-            <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mt-24 sm:mt-0">
+            <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mt-24 md:mt-0">
               <p className="text-white/90 text-sm font-medium">
                 Digital Solutions for Modern Business
               </p>

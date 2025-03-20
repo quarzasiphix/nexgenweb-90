@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Database, LineChart, Shield, Users } from 'lucide-react';
+import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Hero = () => {
@@ -46,6 +46,25 @@ const Hero = () => {
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Harness the power of AI to streamline operations, boost productivity, and drive growth across every department of your business.
             </p>
+            
+            {/* New banner highlighting web services */}
+            <div className="mb-8 p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+              <p className="text-white font-medium mb-2">
+                <span className="text-brand-400">NEW:</span> AI-Powered Web Development & Managed Hosting
+              </p>
+              <p className="text-white/80 text-sm mb-3">
+                Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure
+              </p>
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="bg-white/5 text-white border-white/20 hover:bg-white/20"
+                onClick={() => scrollToSection('services')}
+              >
+                Learn More About Our Web Services
+              </Button>
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button 
                 className="btn-primary group" 
@@ -67,7 +86,7 @@ const Hero = () => {
           </div>
 
           <div className={cn(
-            "grid grid-cols-2 md:grid-cols-5 gap-6 opacity-0 transition-all duration-1000 delay-300",
+            "grid grid-cols-2 md:grid-cols-7 gap-6 opacity-0 transition-all duration-1000 delay-300",
             isVisible && "opacity-100"
           )}>
             {[
@@ -75,7 +94,9 @@ const Hero = () => {
               { icon: Users, label: "CRM Automation" },
               { icon: LineChart, label: "Analytics" },
               { icon: Shield, label: "Security" },
-              { icon: Database, label: "Big Data" }
+              { icon: Database, label: "Big Data" },
+              { icon: Globe, label: "Web Development" },
+              { icon: Server, label: "Cloud Hosting" }
             ].map((item, index) => (
               <div 
                 key={index} 

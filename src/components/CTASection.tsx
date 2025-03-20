@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -17,6 +17,14 @@ const CTASection = () => {
     "Data-driven insights and analytics",
     "Customized solutions for your specific needs",
     "Seamless integration with existing systems"
+  ];
+
+  const hostingBenefits = [
+    "Custom-built websites with AI-driven features",
+    "High-performance cloud hosting with 99.9% uptime",
+    "Managed security and automatic updates",
+    "Scalable infrastructure that grows with your business",
+    "24/7 technical support and monitoring"
   ];
 
   return (
@@ -135,6 +143,103 @@ const CTASection = () => {
                 className="w-full mt-6 bg-white text-brand-700 hover:bg-gray-100"
               >
                 Compare All Plans
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Web Development & Hosting CTA Section */}
+        <div className={cn(
+          "mt-20 pt-16 border-t border-white/20 opacity-0 transform translate-y-4 transition-all duration-700 delay-600",
+          inView && "opacity-100 transform-none"
+        )}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <Globe className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <Server className="h-6 w-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold">Web & Hosting Packages</h4>
+                </div>
+                
+                <div className="space-y-4">
+                  {[
+                    {
+                      name: "Business Starter",
+                      price: "$899",
+                      features: [
+                        "5-page responsive website",
+                        "AI-powered chatbot",
+                        "Standard hosting package",
+                        "Basic SEO optimization",
+                        "1 year of maintenance"
+                      ]
+                    },
+                    {
+                      name: "Business Pro",
+                      price: "$1,999",
+                      features: [
+                        "10-page responsive website",
+                        "Custom AI features",
+                        "High-performance hosting",
+                        "Advanced SEO & analytics",
+                        "2 years of maintenance",
+                        "Monthly performance reports"
+                      ]
+                    }
+                  ].map((pkg, idx) => (
+                    <div key={idx} className="p-4 rounded-lg bg-white/5 border border-white/10">
+                      <div className="flex justify-between items-center mb-2">
+                        <h5 className="font-semibold">{pkg.name}</h5>
+                        <span className="font-bold">{pkg.price}</span>
+                      </div>
+                      <ul className="text-sm space-y-1 mt-3">
+                        {pkg.features.map((feature, i) => (
+                          <li key={i} className="flex items-center">
+                            <CheckCircle className="h-3.5 w-3.5 text-brand-300 flex-shrink-0 mr-2" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                
+                <Button className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100">
+                  Get a Custom Quote
+                </Button>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-6">
+                All-in-One Web Development & Hosting Solutions
+              </h3>
+              <p className="text-lg text-white/90 mb-8">
+                Get a professional, AI-enhanced website built by experts and hosted on our 
+                secure, high-performance infrastructure — all in one package.
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                {hostingBenefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-brand-300 flex-shrink-0 mt-0.5 mr-3" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Button 
+                variant="outline" 
+                className="bg-transparent border border-white text-white hover:bg-white/10"
+                size="lg"
+              >
+                <span>Learn About Our Web Services</span>
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>

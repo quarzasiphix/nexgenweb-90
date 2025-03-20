@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Globe, Server, Code, Database, Shield } from 'lucide-react';
+import { Globe, Server, Code, Database, Shield, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
@@ -77,7 +77,7 @@ const WebServices = () => {
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-lg bg-brand-500/20 mr-3">
+                    <div className="p-3 rounded-full bg-brand-500/20 mr-3">
                       <service.icon className="h-6 w-6 text-brand-400" />
                     </div>
                     <h2 className="text-xl font-semibold text-white">{service.title}</h2>

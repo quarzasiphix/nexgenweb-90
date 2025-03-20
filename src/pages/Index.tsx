@@ -1,12 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Solutions from '@/components/Solutions';
+import Services from '@/components/Services';
+import HowItWorks from '@/components/HowItWorks';
+import CaseStudies from '@/components/CaseStudies';
+import Testimonials from '@/components/Testimonials';
+import CTASection from '@/components/CTASection';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
+import useAnimationObserver from '@/hooks/useAnimationObserver';
 
 const Index = () => {
+  useAnimationObserver();
+
+  useEffect(() => {
+    // Set page title
+    document.title = "SmartBizAI - AI-Powered Business Automation Solutions";
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <Header />
+      <Hero />
+      <Solutions />
+      <Services />
+      <HowItWorks />
+      <CaseStudies />
+      <Testimonials />
+      <CTASection />
+      <Contact />
+      <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };

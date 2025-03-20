@@ -26,42 +26,78 @@ const Services = () => {
     {
       id: "custom-ai-integration",
       title: "Custom AI Integration",
-      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines. Our expert team designs bespoke AI solutions that connect directly with your current infrastructure, minimizing disruption while maximizing efficiency. We handle everything from data preparation and model training to deployment and ongoing maintenance, ensuring a smooth transition to AI-enhanced operations.",
+      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
+      bulletPoints: [
+        "Bespoke AI solutions that connect directly with your current infrastructure",
+        "Minimize disruption while maximizing efficiency",
+        "Complete handling from data preparation to deployment",
+        "Ongoing maintenance and optimization"
+      ],
       icon: Bot,
       color: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
       id: "ai-powered-web-development",
       title: "AI-Powered Web Development",
-      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities. Our websites adapt to user behavior in real-time, delivering customized experiences that boost engagement and conversion rates. From intelligent search functionality to personalized product recommendations, we build websites that learn from interactions to continuously improve performance and user satisfaction.",
+      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
+      bulletPoints: [
+        "Real-time adaptation to user behavior",
+        "Customized experiences that boost engagement",
+        "Intelligent search functionality",
+        "Personalized product recommendations"
+      ],
       icon: Laptop,
       color: "bg-gradient-to-br from-purple-500 to-purple-600"
     },
     {
       id: "marketing-automation",
       title: "Marketing Automation",
-      description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions. Our marketing automation solutions analyze user behavior patterns to deliver perfectly timed, highly relevant content across multiple channels. By leveraging predictive analytics and machine learning, we help you anticipate customer needs, optimize ad spend, and create dynamic campaigns that evolve based on performance data.",
+      description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions.",
+      bulletPoints: [
+        "Analysis of user behavior patterns",
+        "Perfectly timed, highly relevant content delivery",
+        "Predictive analytics for customer needs",
+        "Optimized ad spend and dynamic campaigns"
+      ],
       icon: Mail,
       color: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
       id: "business-intelligence",
       title: "Business Intelligence",
-      description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards. Our business intelligence solutions consolidate data from multiple sources into intuitive visualizations that highlight trends, anomalies, and opportunities. We implement predictive models that forecast market changes, customer behavior, and operational challenges, empowering you to make proactive, data-driven decisions.",
+      description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards.",
+      bulletPoints: [
+        "Data consolidation from multiple sources",
+        "Intuitive visualizations highlighting trends",
+        "Predictive models for market forecasting",
+        "Data-driven decision making support"
+      ],
       icon: LineChart,
       color: "bg-gradient-to-br from-orange-500 to-orange-600"
     },
     {
       id: "enterprise-ai-solutions",
       title: "Enterprise AI Solutions",
-      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements. Our enterprise solutions address the unique challenges of scale, security, and compliance faced by large businesses. We implement organization-wide AI governance frameworks, custom knowledge management systems, and secure multi-department automation workflows that maintain data integrity while breaking down information silos.",
+      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
+      bulletPoints: [
+        "Organization-wide AI governance frameworks",
+        "Scale, security, and compliance solutions",
+        "Custom knowledge management systems",
+        "Multi-department automation workflows"
+      ],
       icon: Building2,
       color: "bg-gradient-to-br from-red-500 to-red-600"
     },
     {
       id: "cloud-hosting-solutions",
       title: "Cloud Hosting Solutions",
-      description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications. Our cloud hosting platform is specifically architected to handle the demanding computational requirements of machine learning models. With automatic resource allocation, redundant systems, and continuous monitoring, we ensure your AI applications maintain peak performance even during usage spikes while keeping your data protected with enterprise-grade security.",
+      description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications.",
+      bulletPoints: [
+        "Architecture for demanding computational requirements",
+        "Automatic resource allocation",
+        "Redundant systems with continuous monitoring",
+        "Enterprise-grade security protection"
+      ],
       icon: Server,
       color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
     }
@@ -135,9 +171,18 @@ const Services = () => {
                 <service.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-neutral-800">{service.title}</h3>
-              <p className="text-neutral-600 mb-4 flex-grow">{service.description}</p>
+              <p className="text-neutral-600 mb-4">{service.description}</p>
               
-              <div className="mt-auto pt-4">
+              <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
+                {service.bulletPoints.map((point, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <span className="text-sm mr-2 mt-1">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="mt-auto">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
                     className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}

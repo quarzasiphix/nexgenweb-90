@@ -1,12 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -74,7 +75,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('solutions')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -91,7 +92,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('solutions')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -108,7 +109,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('solutions')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -125,7 +126,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('solutions')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -142,7 +143,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('services')}
+                        onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -154,7 +155,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('services')}
+                        onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -166,7 +167,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('services')}
+                        onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -178,7 +179,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-brand-400 p-0 hover:text-brand-300"
-                        onClick={() => scrollToSection('services')}
+                        onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -192,16 +193,16 @@ const Hero = () => {
               <Button 
                 className="bg-brand-500 hover:bg-brand-600 text-white group" 
                 size="lg"
-                onClick={() => scrollToSection('contact')}
+                onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
               >
-                <span>Get Started</span>
+                <span>Contact Us</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button 
                 variant="outline" 
                 className="bg-white/10 text-white border-white/20 hover:bg-white/20"
                 size="lg"
-                onClick={() => scrollToSection('solutions')}
+                onClick={() => navigate('/services/ai')}
               >
                 Explore Solutions
               </Button>

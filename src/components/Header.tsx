@@ -1,13 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,17 +20,21 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Services', href: '#services' },
+    { name: 'AI Solutions', href: '/services/ai' },
+    { name: 'Web Services', href: '/services/web' },
     { name: 'Case Studies', href: '#case-studies' },
     { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      const element = document.getElementById(href.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        if (mobileMenuOpen) setMobileMenuOpen(false);
+      }
+    } else {
+      navigate(href);
       if (mobileMenuOpen) setMobileMenuOpen(false);
     }
   };
@@ -60,12 +64,11 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => scrollToSection(link.href)}
+              onClick={() => handleNavigation(link.href)}
               className={cn(
                 "text-sm font-medium transition-colors duration-300 hover:text-brand-500",
                 isScrolled ? "text-neutral-300" : "text-white"
@@ -76,13 +79,12 @@ const Header = () => {
           ))}
           <Button 
             className="bg-brand-600 hover:bg-brand-700 text-white"
-            onClick={() => scrollToSection('#contact')}
+            onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
           >
-            Get Started
+            Contact Us
           </Button>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -95,14 +97,13 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900 border-b border-neutral-800 shadow-lg animate-fade-in">
           <div className="py-4 px-6 space-y-4">
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => handleNavigation(link.href)}
                 className="block py-2 text-neutral-300 hover:text-brand-500 w-full text-left"
               >
                 {link.name}
@@ -110,9 +111,9 @@ const Header = () => {
             ))}
             <Button 
               className="bg-brand-600 hover:bg-brand-700 text-white w-full"
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
         </div>

@@ -223,7 +223,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
         </Tabs>
         
         <Link to={`/solutions/${solutionId}`} className="mt-auto w-full">
-          <Button className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white font-medium py-2 px-4 rounded-lg">
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${solution.color}`}>
             Learn More
           </Button>
         </Link>

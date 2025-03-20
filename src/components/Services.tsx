@@ -140,7 +140,7 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-lg",
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-lg flex flex-col",
                 inView && "opacity-100 translate-y-0"
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -162,7 +162,7 @@ const Services = () => {
                 </ul>
               )}
               
-              <div className="mt-auto">
+              <div className="mt-auto pt-4">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
                     className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
@@ -199,15 +199,15 @@ const Services = () => {
                 )}
                 style={{ transitionDelay: `${400 + (index * 100)}ms` }}
               >
-                <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4">
+                <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
                   <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div className="flex flex-col w-full">
+                  <div className="flex flex-col w-full h-full">
                     <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
-                    <div className="mt-auto">
+                    <div className="mt-auto pt-2">
                       <Link to={`/services/${service.id}`} className="block">
                         <Button 
                           className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}

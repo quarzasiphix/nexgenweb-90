@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server } from 'lucide-react';
+import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server, DollarSign, Truck, Scale } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Hero = () => {
@@ -47,22 +47,41 @@ const Hero = () => {
               Harness the power of AI to streamline operations, boost productivity, and drive growth across every department of your business.
             </p>
             
-            {/* New banner highlighting web services */}
-            <div className="mb-8 p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-              <p className="text-white font-medium mb-2">
-                <span className="text-brand-400">NEW:</span> AI-Powered Web Development & Managed Hosting
-              </p>
-              <p className="text-white/80 text-sm mb-3">
-                Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure
-              </p>
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="bg-white/5 text-white border-white/20 hover:bg-white/20"
-                onClick={() => scrollToSection('services')}
-              >
-                Learn More About Our Web Services
-              </Button>
+            {/* New banner highlighting services */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                <p className="text-white font-medium mb-2">
+                  <span className="text-brand-400">FINANCE & ACCOUNTING:</span> AI-Powered Automation
+                </p>
+                <p className="text-white/80 text-sm mb-3">
+                  From invoice processing to cash flow forecasting, our AI solutions streamline your financial operations
+                </p>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="bg-white/5 text-white border-white/20 hover:bg-white/20"
+                  onClick={() => scrollToSection('solutions')}
+                >
+                  Explore Finance Solutions
+                </Button>
+              </div>
+              
+              <div className="p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                <p className="text-white font-medium mb-2">
+                  <span className="text-brand-400">WEB DEVELOPMENT:</span> AI-Enhanced Websites
+                </p>
+                <p className="text-white/80 text-sm mb-3">
+                  Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure
+                </p>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="bg-white/5 text-white border-white/20 hover:bg-white/20"
+                  onClick={() => scrollToSection('services')}
+                >
+                  Learn More About Web Services
+                </Button>
+              </div>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -86,27 +105,28 @@ const Hero = () => {
           </div>
 
           <div className={cn(
-            "grid grid-cols-2 md:grid-cols-7 gap-6 opacity-0 transition-all duration-1000 delay-300",
+            "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 opacity-0 transition-all duration-1000 delay-300",
             isVisible && "opacity-100"
           )}>
             {[
+              { icon: DollarSign, label: "Finance" },
+              { icon: Users, label: "HR & Support" },
               { icon: Bot, label: "AI Chatbots" },
-              { icon: Users, label: "CRM Automation" },
               { icon: LineChart, label: "Analytics" },
+              { icon: Truck, label: "Logistics" },
               { icon: Shield, label: "Security" },
-              { icon: Database, label: "Big Data" },
-              { icon: Globe, label: "Web Development" },
+              { icon: Globe, label: "Web Dev" },
               { icon: Server, label: "Cloud Hosting" }
             ].map((item, index) => (
               <div 
                 key={index} 
-                className="glass-morphism rounded-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:bg-white/20"
+                className="glass-morphism rounded-xl p-3 flex flex-col items-center text-center transition-all duration-300 hover:bg-white/20"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="mb-3 p-2 rounded-full bg-brand-500/10">
-                  <item.icon className="h-6 w-6 text-brand-500" />
+                <div className="mb-2 p-2 rounded-full bg-brand-500/10">
+                  <item.icon className="h-5 w-5 text-brand-500" />
                 </div>
-                <p className="text-white text-sm font-medium">{item.label}</p>
+                <p className="text-white text-xs font-medium">{item.label}</p>
               </div>
             ))}
           </div>

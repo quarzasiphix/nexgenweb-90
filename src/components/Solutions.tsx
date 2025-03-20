@@ -1,19 +1,19 @@
-
 import React, { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link } from 'react-router-dom';
 
-const solutionCategories = [
+export const solutionCategories = [
   {
     title: "Finance & Accounting",
     icon: DollarSign,
     description: "Automate financial processes and gain actionable insights with AI-powered analysis.",
     features: [
       "Invoice Processing",
-      "Expense Management",
+      "Expense Management", 
       "Tax Compliance",
       "Cash Flow Forecasting",
       "Automated Payroll"
@@ -175,6 +175,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
     threshold: 0.1,
   });
 
+  const solutionId = solution.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
   return (
     <div 
       ref={ref}
@@ -220,9 +222,11 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           </TabsContent>
         </Tabs>
         
-        <Button className="mt-auto w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${solution.color}">
-          Learn More
-        </Button>
+        <Link to={`/solutions/${solutionId}`} className="mt-auto w-full">
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${solution.color}`}>
+            Learn More
+          </Button>
+        </Link>
       </div>
     </div>
   );

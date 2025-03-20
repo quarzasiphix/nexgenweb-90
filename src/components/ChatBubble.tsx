@@ -39,7 +39,7 @@ type ChatBubbleProps = {
 
 const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'agent' as const, content: 'Hi there! I\'m your BizWiz AI assistant. I\'d love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?' },
+    { type: 'agent' as const, content: "Hi there! I'm your ToverNet AI assistant. I'd love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?" },
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [userInfo, setUserInfo] = useState<UserInfo>({
@@ -122,7 +122,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
       <button 
         onClick={onClose} 
         className="fixed bottom-6 right-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white p-4 rounded-full shadow-lg z-50 transition-all duration-300 hover:scale-110"
-        aria-label="Chat with BizWiz AI"
+        aria-label="Chat with ToverNet AI"
       >
         <MessageSquare className="h-6 w-6" />
       </button>
@@ -134,7 +134,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
       <div className="flex items-center justify-between bg-[#9b87f5] p-4 text-white">
         <div className="flex items-center">
           <Bot className="h-5 w-5 mr-2" />
-          <h3 className="font-medium">BizWiz AI Assistant</h3>
+          <h3 className="font-medium">ToverNet AI Assistant</h3>
         </div>
         <button 
           onClick={onClose}

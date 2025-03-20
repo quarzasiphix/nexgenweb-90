@@ -16,7 +16,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [showAIAgent, setShowAIAgent] = useState(false);
   const [messages, setMessages] = useState<{type: 'user' | 'agent', content: string}[]>([
-    { type: 'agent', content: 'Hi there! I\'m your BizWiz AI assistant. I\'d love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?' },
+    { type: 'agent' as const, content: "Hi there! I'm your ToverNet AI assistant. I'd love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?" },
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [userInfo, setUserInfo] = useState({
@@ -125,7 +125,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">bizwiz.work@services.com</p>
+              <p className="text-brand-400">tovernet.work@services.com</p>
             </div>
           </div>
         </div>
@@ -153,7 +153,7 @@ const Contact = () => {
           )}>
             <div className="flex items-center mb-4">
               <Bot className="h-6 w-6 text-[#9b87f5] mr-2" />
-              <h3 className="text-xl font-semibold text-white">BizWiz AI Assistant</h3>
+              <h3 className="text-xl font-semibold text-white">ToverNet AI Assistant</h3>
             </div>
             
             <div className="h-80 overflow-y-auto mb-4 pr-2 space-y-4 custom-scrollbar">

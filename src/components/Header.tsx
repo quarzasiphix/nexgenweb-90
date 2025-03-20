@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -69,7 +70,7 @@ const Header = () => {
               "font-semibold text-xl transition-colors duration-300",
               isScrolled ? "text-white" : "text-white"
             )}>
-              BizWiz
+              ToverNet
             </span>
           </Link>
         </div>

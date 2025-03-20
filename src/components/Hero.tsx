@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server, DollarSign, Truck, Scale } from 'lucide-react';
+import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,53 +42,56 @@ const Hero = () => {
                 Transforming Businesses with AI-Powered Automation
               </p>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
               Scale Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Intelligent Automation</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
               Harness the power of AI to streamline operations, boost productivity, and drive growth across every department of your business.
             </p>
             
-            {/* New banner highlighting services */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              <div className="p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                <p className="text-white font-medium mb-2">
-                  <span className="text-brand-400">FINANCE & ACCOUNTING:</span> AI-Powered Automation
-                </p>
-                <p className="text-white/80 text-sm mb-3">
-                  From invoice processing to cash flow forecasting, our AI solutions streamline your financial operations
-                </p>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="bg-white/5 text-white border-white/20 hover:bg-white/20"
-                  onClick={() => scrollToSection('solutions')}
-                >
-                  Explore Finance Solutions
-                </Button>
-              </div>
-              
-              <div className="p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                <p className="text-white font-medium mb-2">
-                  <span className="text-brand-400">WEB DEVELOPMENT:</span> AI-Enhanced Websites
-                </p>
-                <p className="text-white/80 text-sm mb-3">
-                  Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure
-                </p>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="bg-white/5 text-white border-white/20 hover:bg-white/20"
-                  onClick={() => scrollToSection('services')}
-                >
-                  Learn More About Web Services
-                </Button>
-              </div>
+            {/* Tabs for service highlights */}
+            <div className="mb-10">
+              <Tabs defaultValue="automation" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-4">
+                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-brand-500/20">
+                    AI Automation
+                  </TabsTrigger>
+                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
+                    Web Development
+                  </TabsTrigger>
+                </TabsList>
+                <TabsContent value="automation" className="mt-2">
+                  <Card className="bg-white/5 backdrop-blur-sm border border-white/10 text-white p-6">
+                    <h3 className="text-xl font-medium mb-3 text-brand-400">FINANCE & ACCOUNTING AUTOMATION</h3>
+                    <p className="mb-4">From invoice processing to cash flow forecasting, our AI solutions streamline your financial operations</p>
+                    <Button 
+                      variant="outline" 
+                      className="bg-white/5 text-white border-white/20 hover:bg-white/20"
+                      onClick={() => scrollToSection('solutions')}
+                    >
+                      Explore Finance Solutions
+                    </Button>
+                  </Card>
+                </TabsContent>
+                <TabsContent value="web" className="mt-2">
+                  <Card className="bg-white/5 backdrop-blur-sm border border-white/10 text-white p-6">
+                    <h3 className="text-xl font-medium mb-3 text-brand-400">WEB DEVELOPMENT & HOSTING</h3>
+                    <p className="mb-4">Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure</p>
+                    <Button 
+                      variant="outline" 
+                      className="bg-white/5 text-white border-white/20 hover:bg-white/20"
+                      onClick={() => scrollToSection('services')}
+                    >
+                      Learn More About Web Services
+                    </Button>
+                  </Card>
+                </TabsContent>
+              </Tabs>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Button 
-                className="btn-primary group" 
+                className="bg-brand-500 hover:bg-brand-600 text-white group" 
                 size="lg"
                 onClick={() => scrollToSection('contact')}
               >
@@ -105,16 +110,12 @@ const Hero = () => {
           </div>
 
           <div className={cn(
-            "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 opacity-0 transition-all duration-1000 delay-300",
+            "grid grid-cols-4 gap-3 opacity-0 transition-all duration-1000 delay-300",
             isVisible && "opacity-100"
           )}>
             {[
-              { icon: DollarSign, label: "Finance" },
-              { icon: Users, label: "HR & Support" },
               { icon: Bot, label: "AI Chatbots" },
               { icon: LineChart, label: "Analytics" },
-              { icon: Truck, label: "Logistics" },
-              { icon: Shield, label: "Security" },
               { icon: Globe, label: "Web Dev" },
               { icon: Server, label: "Cloud Hosting" }
             ].map((item, index) => (

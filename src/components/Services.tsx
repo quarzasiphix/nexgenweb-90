@@ -26,58 +26,44 @@ const Services = () => {
     {
       id: "custom-ai-integration",
       title: "Custom AI Integration",
-      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
+      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines. Our expert team designs bespoke AI solutions that connect directly with your current infrastructure, minimizing disruption while maximizing efficiency. We handle everything from data preparation and model training to deployment and ongoing maintenance, ensuring a smooth transition to AI-enhanced operations.",
       icon: Bot,
       color: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
       id: "ai-powered-web-development",
       title: "AI-Powered Web Development",
-      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
+      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities. Our websites adapt to user behavior in real-time, delivering customized experiences that boost engagement and conversion rates. From intelligent search functionality to personalized product recommendations, we build websites that learn from interactions to continuously improve performance and user satisfaction.",
       icon: Laptop,
-      color: "bg-gradient-to-br from-purple-500 to-purple-600",
-      expanded: true,
-      details: [
-        "Custom business websites with AI-optimized UX",
-        "E-commerce platforms with AI product recommendations",
-        "Web applications with AI-driven dashboards",
-        "Progressive Web Apps (PWAs) with offline capabilities"
-      ]
+      color: "bg-gradient-to-br from-purple-500 to-purple-600"
     },
     {
       id: "marketing-automation",
       title: "Marketing Automation",
-      description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions.",
+      description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions. Our marketing automation solutions analyze user behavior patterns to deliver perfectly timed, highly relevant content across multiple channels. By leveraging predictive analytics and machine learning, we help you anticipate customer needs, optimize ad spend, and create dynamic campaigns that evolve based on performance data.",
       icon: Mail,
       color: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
       id: "business-intelligence",
       title: "Business Intelligence",
-      description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards.",
+      description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards. Our business intelligence solutions consolidate data from multiple sources into intuitive visualizations that highlight trends, anomalies, and opportunities. We implement predictive models that forecast market changes, customer behavior, and operational challenges, empowering you to make proactive, data-driven decisions.",
       icon: LineChart,
       color: "bg-gradient-to-br from-orange-500 to-orange-600"
     },
     {
       id: "enterprise-ai-solutions",
       title: "Enterprise AI Solutions",
-      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
+      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements. Our enterprise solutions address the unique challenges of scale, security, and compliance faced by large businesses. We implement organization-wide AI governance frameworks, custom knowledge management systems, and secure multi-department automation workflows that maintain data integrity while breaking down information silos.",
       icon: Building2,
       color: "bg-gradient-to-br from-red-500 to-red-600"
     },
     {
       id: "cloud-hosting-solutions",
       title: "Cloud Hosting Solutions",
-      description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications.",
+      description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications. Our cloud hosting platform is specifically architected to handle the demanding computational requirements of machine learning models. With automatic resource allocation, redundant systems, and continuous monitoring, we ensure your AI applications maintain peak performance even during usage spikes while keeping your data protected with enterprise-grade security.",
       icon: Server,
-      color: "bg-gradient-to-br from-indigo-500 to-indigo-600",
-      expanded: true,
-      details: [
-        "High-performance dedicated servers for AI workloads",
-        "Managed cloud hosting with automatic scaling",
-        "99.9% uptime SLA with 24/7 monitoring",
-        "Integrated CDN for global content delivery"
-      ]
+      color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
     }
   ];
 
@@ -88,28 +74,28 @@ const Services = () => {
       {
         id: "full-stack-development",
         title: "Full-Stack Development",
-        description: "End-to-end web application development using modern frameworks and AI-assisted coding practices.",
+        description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
         icon: Code,
         color: "bg-gradient-to-br from-teal-500 to-teal-600",
       },
       {
         id: "e-commerce-solutions",
         title: "E-Commerce Solutions",
-        description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences.",
+        description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
         icon: Globe,
         color: "bg-gradient-to-br from-pink-500 to-pink-600",
       },
       {
         id: "managed-cloud-hosting",
         title: "Managed Cloud Hosting",
-        description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization.",
+        description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization. Our managed cloud services include 24/7 monitoring, proactive issue resolution, and regular security audits to ensure your applications remain available and protected.",
         icon: Server,
         color: "bg-gradient-to-br from-blue-600 to-blue-700",
       },
       {
         id: "database-management",
         title: "Database Management",
-        description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability.",
+        description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
         icon: Database,
         color: "bg-gradient-to-br from-violet-500 to-violet-600",
       }
@@ -140,7 +126,7 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-lg flex flex-col",
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -149,18 +135,7 @@ const Services = () => {
                 <service.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-neutral-800">{service.title}</h3>
-              <p className="text-neutral-600 mb-4">{service.description}</p>
-              
-              {service.expanded && service.details && (
-                <ul className="mb-4 pl-4 space-y-2">
-                  {service.details.map((detail, i) => (
-                    <li key={i} className="text-neutral-600 text-sm flex items-start">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-1.5 mr-2 flex-shrink-0"></span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <p className="text-neutral-600 mb-4 flex-grow">{service.description}</p>
               
               <div className="mt-auto pt-4">
                 <Link to={`/services/${service.id}`} className="block">

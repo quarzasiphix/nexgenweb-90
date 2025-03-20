@@ -63,8 +63,8 @@ const Header = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-brand-600 rounded-md animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-brand-500 rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
+              <div className="absolute inset-0 bg-[#9b87f5] rounded-md animate-pulse-slow"></div>
+              <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
             </div>
             <span className={cn(
               "font-semibold text-xl transition-colors duration-300",
@@ -81,7 +81,7 @@ const Header = () => {
               key={link.name}
               onClick={() => handleNavigation(link.href)}
               className={cn(
-                "text-sm font-medium transition-colors duration-300 hover:text-brand-500",
+                "text-sm font-medium transition-colors duration-300 hover:text-[#D6BCFA]",
                 isScrolled ? "text-neutral-300" : "text-white"
               )}
             >
@@ -89,7 +89,7 @@ const Header = () => {
             </button>
           ))}
           <Button 
-            className="bg-brand-600 hover:bg-brand-700 text-white"
+            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
             onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
           >
             Contact Us
@@ -115,13 +115,13 @@ const Header = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavigation(link.href)}
-                className="block py-2 text-neutral-300 hover:text-brand-500 w-full text-left"
+                className="block py-2 text-neutral-300 hover:text-[#D6BCFA] w-full text-left"
               >
                 {link.name}
               </button>
             ))}
             <Button 
-              className="bg-brand-600 hover:bg-brand-700 text-white w-full"
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white w-full"
               onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
             >
               Contact Us

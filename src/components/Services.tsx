@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -161,16 +162,14 @@ const Services = () => {
                 </ul>
               )}
               
-              <Button
-                variant="link"
-                className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0"
-                onClick={() => navigate(`/services/${service.id}`)}
-              >
-                <span className="inline-flex items-center group">
-                  Learn more
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Button>
+              {/* Updated Learn More button to match the Solutions style */}
+              <Link to={`/services/${service.id}`} className="w-full">
+                <Button 
+                  className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                >
+                  Learn More
+                </Button>
+              </Link>
             </div>
           ))}
         </div>
@@ -203,19 +202,18 @@ const Services = () => {
                   <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div>
+                  <div className="w-full">
                     <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
-                    <p className="text-neutral-600">{service.description}</p>
-                    <Button
-                      variant="link"
-                      className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0 mt-2"
-                      onClick={() => navigate(`/services/${service.id}`)}
-                    >
-                      <span className="inline-flex items-center group">
-                        Learn more
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </Button>
+                    <p className="text-neutral-600 mb-4">{service.description}</p>
+                    
+                    {/* Updated Learn More button to match the Solutions style */}
+                    <Link to={`/services/${service.id}`} className="w-full">
+                      <Button 
+                        className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                      >
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

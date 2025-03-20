@@ -38,14 +38,14 @@ const Hero = () => {
           )}>
             <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
               <p className="text-white/90 text-sm font-medium">
-                Transforming Businesses with AI
+                Digital Solutions for Modern Business
               </p>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Scale Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Intelligent Automation</span>
+              Empower Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">tovernet.nl</span>
             </h1>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
-              Harness the power of AI to streamline operations, boost productivity, and drive growth.
+              Advanced solutions for business automation, web development, and digital transformation.
             </p>
             
             {/* Simplified Tabs */}
@@ -214,7 +214,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full">
           <path 
-            fill="#ffffff" 
+            fill="#171717" 
             fillOpacity="1" 
             d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
           ></path>

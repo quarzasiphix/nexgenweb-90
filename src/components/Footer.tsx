@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 text-white pt-16 pb-8">
+    <footer className="bg-neutral-900 text-white pt-16 pb-8 border-t border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
@@ -15,11 +15,11 @@ const Footer = () => {
                 <div className="absolute inset-0 bg-brand-500 rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
               </div>
               <span className="font-semibold text-xl">
-                SmartBiz<span className="text-brand-500">AI</span>
+                tovernet<span className="text-brand-500">.nl</span>
               </span>
             </div>
             <p className="text-neutral-400 mb-6">
-              Leading provider of AI-powered business automation solutions. Helping companies streamline operations and boost productivity.
+              Leading provider of digital business solutions. Helping companies streamline operations and boost productivity.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-neutral-400 hover:text-brand-500 transition-colors">
@@ -40,24 +40,24 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Solutions</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">IT & Security</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">IT & Security</a></li>
+              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Case Studies</a></li>
+              <li><a href="#about" className="text-neutral-400 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#case-studies" className="text-neutral-400 hover:text-white transition-colors">Case Studies</a></li>
               <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Blog</a></li>
               <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Careers</a></li>
               <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Press & Media</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#contact" className="text-neutral-400 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
           
@@ -76,7 +76,7 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-neutral-800 text-sm text-neutral-500">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} SmartBizAI. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} tovernet.nl. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-neutral-300 transition-colors">Terms of Service</a>
               <a href="#" className="hover:text-neutral-300 transition-colors">Privacy Policy</a>

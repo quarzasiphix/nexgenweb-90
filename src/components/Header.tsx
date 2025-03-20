@@ -32,7 +32,7 @@ const Header = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6',
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-sm' 
+          ? 'bg-neutral-900/90 backdrop-blur-md shadow-sm' 
           : 'bg-transparent'
       )}
     >
@@ -45,9 +45,9 @@ const Header = () => {
             </div>
             <span className={cn(
               "font-semibold text-xl transition-colors duration-300",
-              isScrolled ? "text-neutral-900" : "text-white"
+              isScrolled ? "text-white" : "text-white"
             )}>
-              SmartBiz<span className="text-brand-500">AI</span>
+              tovernet<span className="text-brand-500">.nl</span>
             </span>
           </Link>
         </div>
@@ -60,14 +60,15 @@ const Header = () => {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors duration-300 hover:text-brand-500",
-                isScrolled ? "text-neutral-700" : "text-white"
+                isScrolled ? "text-neutral-300" : "text-white"
               )}
             >
               {link.name}
             </a>
           ))}
           <Button 
-            className="btn-primary"
+            className="bg-brand-600 hover:bg-brand-700 text-white"
+            onClick={() => window.location.href = '#contact'}
           >
             Get Started
           </Button>
@@ -75,7 +76,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-neutral-700 dark:text-neutral-200"
+          className="md:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -88,20 +89,21 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 shadow-lg animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900 border-b border-neutral-800 shadow-lg animate-fade-in">
           <div className="py-4 px-6 space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-brand-500 dark:hover:text-brand-400"
+                className="block py-2 text-neutral-300 hover:text-brand-500"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
             <Button 
-              className="btn-primary w-full"
+              className="bg-brand-600 hover:bg-brand-700 text-white w-full"
+              onClick={() => window.location.href = '#contact'}
             >
               Get Started
             </Button>

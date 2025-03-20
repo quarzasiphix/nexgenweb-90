@@ -18,11 +18,11 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "SmartBizAI - AI-Powered Business Automation Solutions";
+    document.title = "tovernet.nl - Digital Business Solutions";
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
       <Solutions />

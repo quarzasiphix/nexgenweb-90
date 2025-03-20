@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server } from 'lucide-react';
@@ -37,7 +38,7 @@ const Hero = () => {
             "opacity-0 transform translate-y-4 transition-all duration-1000",
             isVisible && "opacity-100 transform-none"
           )}>
-            <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mt-20 sm:mt-0">
+            <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mt-24 sm:mt-0">
               <p className="text-white/90 text-sm font-medium">
                 Digital Solutions for Modern Business
               </p>
@@ -136,9 +137,14 @@ const Hero = () => {
                 
                 <TabsContent value="web" className="mt-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    {/* Web Services - simplified cards */}
+                    {/* Web Services - updated cards with icons */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <h3 className="text-xl font-medium mb-3 text-white">Web Development</h3>
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Code className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Web Development</h3>
+                      </div>
                       <p className="text-white/80 text-sm mb-4">Custom business websites, e-commerce solutions, web applications, and progressive web apps.</p>
                       <Button 
                         variant="link" 
@@ -150,7 +156,12 @@ const Hero = () => {
                     </div>
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <h3 className="text-xl font-medium mb-3 text-white">Cloud Hosting</h3>
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Server className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Cloud Hosting</h3>
+                      </div>
                       <p className="text-white/80 text-sm mb-4">High-performance servers, managed cloud infrastructure, 99.9% uptime guarantee, and CDN integration.</p>
                       <Button 
                         variant="link" 
@@ -162,7 +173,12 @@ const Hero = () => {
                     </div>
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <h3 className="text-xl font-medium mb-3 text-white">Technical Services</h3>
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Database className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Technical Services</h3>
+                      </div>
                       <p className="text-white/80 text-sm mb-4">Database management, API development, system integrations, and performance optimization.</p>
                       <Button 
                         variant="link" 
@@ -174,7 +190,12 @@ const Hero = () => {
                     </div>
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <h3 className="text-xl font-medium mb-3 text-white">Web Security</h3>
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Shield className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Web Security</h3>
+                      </div>
                       <p className="text-white/80 text-sm mb-4">SSL implementation, security audits, DDoS protection, and regular security updates.</p>
                       <Button 
                         variant="link" 

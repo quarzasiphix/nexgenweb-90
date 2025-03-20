@@ -4,12 +4,15 @@ import { useInView } from 'react-intersection-observer';
 import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const CTASection = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const navigate = useNavigate();
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -250,7 +253,7 @@ const CTASection = () => {
                 variant="outline" 
                 className="bg-transparent border border-white text-white hover:bg-white/10"
                 size="lg"
-                onClick={() => scrollToContact()}
+                onClick={() => navigate('/services/web')}
               >
                 <span>Learn About Our Web Services</span>
                 <ArrowRight className="ml-2 h-4 w-4" />

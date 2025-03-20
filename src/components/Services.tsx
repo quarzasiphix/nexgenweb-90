@@ -5,12 +5,15 @@ import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const navigate = useNavigate();
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -152,7 +155,7 @@ const Services = () => {
               <Button
                 variant="link"
                 className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0"
-                onClick={() => scrollToContact()}
+                onClick={() => service.title.toLowerCase().includes('web') ? navigate('/services/web') : navigate('/services/ai')}
               >
                 <span className="inline-flex items-center group">
                   Learn more
@@ -226,7 +229,7 @@ const Services = () => {
         )}>
           <Button 
             className="btn-primary"
-            onClick={() => scrollToContact()}
+            onClick={() => navigate('/services')}
           >
             View All Services
           </Button>

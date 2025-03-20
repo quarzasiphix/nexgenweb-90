@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const caseStudies = [
   {
@@ -46,30 +46,24 @@ const CaseStudies = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  
+  const navigate = useNavigate();
 
   return (
-    <section id="case-studies" className="py-20 bg-neutral-50">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="case-studies" className="py-20 bg-neutral-900 relative overflow-hidden">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-700",
+            "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-700",
             inView && "opacity-100 transform-none"
           )}>
             Success <span className="text-gradient">Stories</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            "max-w-2xl mx-auto text-lg text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
             inView && "opacity-100 transform-none"
           )}>
-            Discover how businesses across industries have achieved remarkable results 
-            with our AI-powered automation solutions.
+            See how businesses like yours have achieved remarkable results with our solutions.
           </p>
         </div>
 
@@ -113,7 +107,7 @@ const CaseStudies = () => {
                 <Button 
                   variant="outline" 
                   className="w-full group"
-                  onClick={() => scrollToContact()}
+                  onClick={() => navigate('/case-studies')}
                 >
                   <span>View Case Study</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -128,10 +122,11 @@ const CaseStudies = () => {
           inView && "opacity-100 transform-none"
         )}>
           <Button 
-            className="btn-primary"
-            onClick={() => scrollToContact()}
+            className="bg-white text-brand-700 hover:bg-gray-100 font-medium"
+            onClick={() => navigate('/case-studies')}
           >
-            Browse All Case Studies
+            <span>Browse All Case Studies</span>
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>

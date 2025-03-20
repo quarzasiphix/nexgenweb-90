@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server } from 'lucide-react';
@@ -202,7 +203,7 @@ const Hero = () => {
                 variant="outline" 
                 className="bg-white/10 text-white border-white/20 hover:bg-white/20"
                 size="lg"
-                onClick={() => navigate('/services/ai')}
+                onClick={() => navigate('/services')}
               >
                 Explore Solutions
               </Button>

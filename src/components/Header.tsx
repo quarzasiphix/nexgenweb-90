@@ -1,14 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
+import { useChat } from '@/context/ChatContext';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { openChat } = useChat();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,6 @@ const Header = () => {
 
   const handleNavigation = (href: string) => {
     if (href.startsWith('#')) {
-      // Only use this for the home page
       if (window.location.pathname === '/') {
         const element = document.getElementById(href.replace('#', ''));
         if (element) {
@@ -38,7 +38,6 @@ const Header = () => {
           return;
         }
       }
-      // If we're not on the home page or element doesn't exist, navigate to home first
       navigate('/');
       setTimeout(() => {
         const element = document.getElementById(href.replace('#', ''));
@@ -90,7 +89,7 @@ const Header = () => {
           ))}
           <Button 
             className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
+            onClick={openChat}
           >
             Contact Us
           </Button>
@@ -122,7 +121,7 @@ const Header = () => {
             ))}
             <Button 
               className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white w-full"
-              onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
+              onClick={openChat}
             >
               Contact Us
             </Button>

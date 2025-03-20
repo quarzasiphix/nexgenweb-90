@@ -13,27 +13,39 @@ import CaseStudiesPage from "./pages/CaseStudiesPage";
 import AboutPage from "./pages/AboutPage";
 import SolutionDetails from "./components/SolutionDetails";
 import ServiceDetails from "./components/ServiceDetails";
+import { ChatProvider } from "./context/ChatContext";
+import ChatBubble from "./components/ChatBubble";
+import { useChat } from "./context/ChatContext";
 
 const queryClient = new QueryClient();
+
+// Chat bubble wrapper that uses the chat context
+const ChatBubbleWrapper = () => {
+  const { isChatOpen, toggleChat } = useChat();
+  return <ChatBubble isOpen={isChatOpen} onClose={toggleChat} />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/services/ai" element={<AIServices />} />
-          <Route path="/services/web" element={<WebServices />} />
-          <Route path="/services" element={<AllServices />} />
-          <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
-          <Route path="/services/:serviceId" element={<ServiceDetails />} />
-          <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <ChatProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/services/ai" element={<AIServices />} />
+            <Route path="/services/web" element={<WebServices />} />
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+            <Route path="/services/:serviceId" element={<ServiceDetails />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ChatBubbleWrapper />
+        </BrowserRouter>
+      </ChatProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

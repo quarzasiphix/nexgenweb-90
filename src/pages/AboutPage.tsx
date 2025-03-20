@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Blocks, Award, Globe, LightbulbIcon, Rocket, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
@@ -9,7 +8,7 @@ const AboutPage = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    document.title = "About Us - bizwiz";
+    document.title = "About Us - BizWiz";
   }, []);
 
   const coreServices = [
@@ -47,7 +46,7 @@ const AboutPage = () => {
         <section className="relative py-16 bg-neutral-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-white mb-4">About bizwiz</h1>
+              <h1 className="text-4xl font-bold text-white mb-4">About BizWiz</h1>
               <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
                 We transform businesses through cutting-edge AI solutions and web services.
               </p>
@@ -63,7 +62,7 @@ const AboutPage = () => {
                 <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
                 <div className="space-y-4 text-neutral-300">
                   <p>
-                    At bizwiz, our mission is to empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage in the digital landscape.
+                    At BizWiz, our mission is to empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage in the digital landscape.
                   </p>
                   <p>
                     We believe in the transformative power of technology when it's properly aligned with business objectives. That's why we focus on creating custom solutions that address your specific challenges and opportunities.
@@ -126,7 +125,7 @@ const AboutPage = () => {
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Why Choose bizwiz</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Why Choose BizWiz</h2>
               <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
                 What sets us apart from other technology service providers.
               </p>

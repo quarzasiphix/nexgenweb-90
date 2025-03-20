@@ -18,7 +18,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "bizwiz - Digital Business Solutions";
+    document.title = "BizWiz - Digital Business Solutions";
   }, []);
 
   return (

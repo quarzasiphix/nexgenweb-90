@@ -12,6 +12,13 @@ const Services = () => {
     threshold: 0.1,
   });
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
       title: "Custom AI Integration",
@@ -142,10 +149,16 @@ const Services = () => {
                 </ul>
               )}
               
-              <a href="#contact" className="inline-flex items-center text-brand-600 font-medium hover:text-brand-700 transition-colors group">
-                Learn more
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              <Button
+                variant="link"
+                className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0"
+                onClick={() => scrollToContact()}
+              >
+                <span className="inline-flex items-center group">
+                  Learn more
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Button>
             </div>
           ))}
         </div>
@@ -197,7 +210,10 @@ const Services = () => {
                   Our experts build and host AI-optimized websites that drive business growth.
                 </p>
               </div>
-              <Button className="btn-primary whitespace-nowrap">
+              <Button 
+                className="btn-primary whitespace-nowrap"
+                onClick={() => scrollToContact()}
+              >
                 Get a Free Consultation
               </Button>
             </div>
@@ -208,7 +224,10 @@ const Services = () => {
           "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
           inView && "opacity-100 transform-none"
         )}>
-          <Button className="btn-primary">
+          <Button 
+            className="btn-primary"
+            onClick={() => scrollToContact()}
+          >
             View All Services
           </Button>
         </div>

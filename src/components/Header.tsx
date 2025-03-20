@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -26,6 +26,14 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId.replace('#', ''));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      if (mobileMenuOpen) setMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header 
@@ -55,20 +63,20 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
+              onClick={() => scrollToSection(link.href)}
               className={cn(
                 "text-sm font-medium transition-colors duration-300 hover:text-brand-500",
                 isScrolled ? "text-neutral-300" : "text-white"
               )}
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <Button 
             className="bg-brand-600 hover:bg-brand-700 text-white"
-            onClick={() => window.location.href = '#contact'}
+            onClick={() => scrollToSection('#contact')}
           >
             Get Started
           </Button>
@@ -92,18 +100,17 @@ const Header = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900 border-b border-neutral-800 shadow-lg animate-fade-in">
           <div className="py-4 px-6 space-y-4">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                className="block py-2 text-neutral-300 hover:text-brand-500"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => scrollToSection(link.href)}
+                className="block py-2 text-neutral-300 hover:text-brand-500 w-full text-left"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
             <Button 
               className="bg-brand-600 hover:bg-brand-700 text-white w-full"
-              onClick={() => window.location.href = '#contact'}
+              onClick={() => scrollToSection('#contact')}
             >
               Get Started
             </Button>

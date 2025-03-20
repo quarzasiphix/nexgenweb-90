@@ -11,6 +11,13 @@ const CTASection = () => {
     threshold: 0.1,
   });
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const benefits = [
     "AI-powered business process automation",
     "24/7 customer support with intelligent chatbots",
@@ -73,6 +80,7 @@ const CTASection = () => {
               <Button 
                 className="bg-white text-brand-700 hover:bg-gray-100 font-medium btn-primary"
                 size="lg"
+                onClick={() => scrollToContact()}
               >
                 <span>Start Free Trial</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -81,6 +89,7 @@ const CTASection = () => {
                 variant="outline" 
                 className="bg-transparent border border-white text-white hover:bg-white/10"
                 size="lg"
+                onClick={() => scrollToContact()}
               >
                 Schedule Demo
               </Button>
@@ -141,6 +150,7 @@ const CTASection = () => {
               
               <Button 
                 className="w-full mt-6 bg-white text-brand-700 hover:bg-gray-100"
+                onClick={() => scrollToContact()}
               >
                 Compare All Plans
               </Button>
@@ -209,7 +219,10 @@ const CTASection = () => {
                   ))}
                 </div>
                 
-                <Button className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100">
+                <Button 
+                  className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100"
+                  onClick={() => scrollToContact()}
+                >
                   Get a Custom Quote
                 </Button>
               </div>
@@ -237,6 +250,7 @@ const CTASection = () => {
                 variant="outline" 
                 className="bg-transparent border border-white text-white hover:bg-white/10"
                 size="lg"
+                onClick={() => scrollToContact()}
               >
                 <span>Learn About Our Web Services</span>
                 <ArrowRight className="ml-2 h-4 w-4" />

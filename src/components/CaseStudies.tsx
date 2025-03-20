@@ -47,6 +47,13 @@ const CaseStudies = () => {
     threshold: 0.1,
   });
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="case-studies" className="py-20 bg-neutral-50">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,7 +110,11 @@ const CaseStudies = () => {
                   ))}
                 </div>
                 
-                <Button variant="outline" className="w-full group">
+                <Button 
+                  variant="outline" 
+                  className="w-full group"
+                  onClick={() => scrollToContact()}
+                >
                   <span>View Case Study</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -116,7 +127,10 @@ const CaseStudies = () => {
           "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
           inView && "opacity-100 transform-none"
         )}>
-          <Button className="btn-primary">
+          <Button 
+            className="btn-primary"
+            onClick={() => scrollToContact()}
+          >
             Browse All Case Studies
           </Button>
         </div>

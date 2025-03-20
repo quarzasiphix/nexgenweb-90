@@ -5,10 +5,12 @@ import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'luci
 import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setIsVisible(true);
@@ -36,7 +38,10 @@ const Hero = () => {
             "opacity-0 transform translate-y-4 transition-all duration-1000",
             isVisible && "opacity-100 transform-none"
           )}>
-            <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mt-24 md:mt-0">
+            <div className={cn(
+              "inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20",
+              isMobile ? "mt-16" : "mt-0"
+            )}>
               <p className="text-white/90 text-sm font-medium">
                 Digital Solutions for Modern Business
               </p>

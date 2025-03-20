@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 
 const AIServices = () => {
   useEffect(() => {
-    document.title = "AI Services - tovernet.nl";
+    document.title = "AI Services - BizWiz";
   }, []);
 
   const services = [
@@ -76,11 +76,11 @@ const AIServices = () => {
             {services.map((service, index) => (
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-lg bg-brand-500/20 mr-3">
-                      <service.icon className="h-6 w-6 text-brand-400" />
+                  <div className="flex items-center mb-6">
+                    <div className="w-14 h-14 rounded-full bg-blue-900/40 flex items-center justify-center mr-4">
+                      <service.icon className="h-7 w-7 text-blue-400" />
                     </div>
-                    <h2 className="text-xl font-semibold text-white">{service.title}</h2>
+                    <h2 className="text-2xl font-semibold text-white">{service.title}</h2>
                   </div>
                   <p className="text-neutral-300 mb-4">{service.description}</p>
                   <ul className="space-y-2">
@@ -93,7 +93,7 @@ const AIServices = () => {
                   </ul>
                   <Button 
                     className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
-                    onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+                    onClick={() => window.location.href = 'mailto:BizWiz@services.com'}
                   >
                     Get Started
                   </Button>

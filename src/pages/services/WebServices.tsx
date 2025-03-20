@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
-import { Globe, Server, Code, Database, Shield, ArrowRight } from 'lucide-react';
+import { Globe, Server, Code, Database, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 
 const WebServices = () => {
   useEffect(() => {
-    document.title = "Web Services - BizWiz";
+    document.title = "Web Services - tovernet.nl";
   }, []);
 
   const services = [
@@ -76,14 +76,14 @@ const WebServices = () => {
             {services.map((service, index) => (
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
-                  <div className="flex items-center mb-6">
-                    <div className="w-14 h-14 rounded-full bg-blue-900/40 flex items-center justify-center mr-4">
-                      <service.icon className="h-7 w-7 text-blue-400" />
+                  <div className="flex items-center mb-4">
+                    <div className="p-2 rounded-lg bg-brand-500/20 mr-3">
+                      <service.icon className="h-6 w-6 text-brand-400" />
                     </div>
-                    <h2 className="text-2xl font-semibold text-white">{service.title}</h2>
+                    <h2 className="text-xl font-semibold text-white">{service.title}</h2>
                   </div>
                   <p className="text-neutral-300 mb-4">{service.description}</p>
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-neutral-400">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
@@ -91,16 +91,9 @@ const WebServices = () => {
                       </li>
                     ))}
                   </ul>
-                  
-                  <div className="flex justify-between items-center mb-6">
-                    <a href="#" className="text-blue-400 flex items-center hover:text-blue-300 transition-colors">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
-                  </div>
-                  
                   <Button 
-                    className="w-full mt-2 bg-brand-500 hover:bg-brand-600 text-white"
-                    onClick={() => window.location.href = 'mailto:BizWiz@services.com'}
+                    className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
+                    onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
                   >
                     Get Started
                   </Button>

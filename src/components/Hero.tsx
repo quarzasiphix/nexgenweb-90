@@ -1,9 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Database, LineChart, Shield, Users, Globe, Server, Code, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Bot, LineChart, Shield, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Hero = () => {
@@ -20,84 +19,6 @@ const Hero = () => {
     }
   };
 
-  const aiSolutions = [
-    {
-      title: "Finance & Accounting",
-      features: [
-        "Automated Invoice Processing",
-        "Cash Flow Forecasting",
-        "Expense Management",
-        "Tax Calculations & Compliance"
-      ]
-    },
-    {
-      title: "Sales & Marketing",
-      features: [
-        "AI-Powered Lead Generation",
-        "Personalized Marketing",
-        "Smart CRM Systems",
-        "Ad Campaign Optimization"
-      ]
-    },
-    {
-      title: "HR & Recruitment",
-      features: [
-        "Automated Candidate Screening",
-        "Performance Monitoring",
-        "Interview Scheduling",
-        "Training Program Automation"
-      ]
-    },
-    {
-      title: "Customer Support",
-      features: [
-        "AI Chatbots & Virtual Assistants",
-        "Automated Email Responses",
-        "Speech-to-Text Analysis",
-        "Customer Sentiment Analysis"
-      ]
-    }
-  ];
-
-  const webSolutions = [
-    {
-      title: "Web Development",
-      features: [
-        "Custom Business Websites",
-        "E-commerce Solutions",
-        "Web Applications",
-        "Progressive Web Apps"
-      ]
-    },
-    {
-      title: "Cloud Hosting",
-      features: [
-        "High-Performance Servers",
-        "Managed Cloud Infrastructure",
-        "99.9% Uptime Guarantee",
-        "CDN Integration"
-      ]
-    },
-    {
-      title: "Technical Services",
-      features: [
-        "Database Management",
-        "API Development",
-        "System Integrations",
-        "Performance Optimization"
-      ]
-    },
-    {
-      title: "Web Security",
-      features: [
-        "SSL Implementation",
-        "Security Audits",
-        "DDoS Protection",
-        "Regular Security Updates"
-      ]
-    }
-  ];
-
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800">
       {/* Background texture */}
@@ -110,100 +31,164 @@ const Hero = () => {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
 
       <div className="container px-4 sm:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <div className={cn(
             "opacity-0 transform translate-y-4 transition-all duration-1000",
             isVisible && "opacity-100 transform-none"
           )}>
             <div className="inline-block mb-6 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
               <p className="text-white/90 text-sm font-medium">
-                Transforming Businesses with AI-Powered Automation
+                Transforming Businesses with AI
               </p>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               Scale Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Intelligent Automation</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-              Harness the power of AI to streamline operations, boost productivity, and drive growth across every department of your business.
+            <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
+              Harness the power of AI to streamline operations, boost productivity, and drive growth.
             </p>
             
-            {/* Tabs for service highlights */}
-            <div className="mb-10">
+            {/* Simplified Tabs */}
+            <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
-                <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+                <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
                   <TabsTrigger value="automation" className="text-white data-[state=active]:bg-brand-500/20">
-                    AI Automation
+                    AI Solutions
                   </TabsTrigger>
                   <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
-                    Web Development
+                    Web Services
                   </TabsTrigger>
                 </TabsList>
                 
-                <TabsContent value="automation" className="mt-2 space-y-6">
-                  <Card className="bg-white/5 backdrop-blur-sm border border-white/10 text-white p-6">
-                    <h3 className="text-xl font-medium mb-4 text-brand-400">AI AUTOMATION SOLUTIONS</h3>
-                    <p className="mb-5">Comprehensive AI solutions to automate and optimize every department in your business</p>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                      {aiSolutions.map((solution, idx) => (
-                        <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                          <h4 className="font-medium text-brand-300 mb-3">{solution.title}</h4>
-                          <ul className="space-y-2">
-                            {solution.features.map((feature, fidx) => (
-                              <li key={fidx} className="flex items-start text-sm">
-                                <CheckCircle2 className="h-4 w-4 text-brand-400 mr-2 mt-0.5 flex-shrink-0" />
-                                <span className="text-white/90">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
+                <TabsContent value="automation" className="mt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {/* AI Solutions - simplified cards */}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Bot className="h-5 w-5 text-brand-400" />
                         </div>
-                      ))}
+                        <h3 className="text-xl font-medium text-white">Finance & HR</h3>
+                      </div>
+                      <p className="text-white/80 text-sm mb-4">Automate invoicing, payroll, expense tracking, recruitment, and employee management.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('solutions')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
                     </div>
-                    
-                    <Button 
-                      variant="outline" 
-                      className="bg-white/5 text-white border-white/20 hover:bg-white/20"
-                      onClick={() => scrollToSection('solutions')}
-                    >
-                      Explore AI Solutions
-                    </Button>
-                  </Card>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <LineChart className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Sales & Marketing</h3>
+                      </div>
+                      <p className="text-white/80 text-sm mb-4">Boost lead generation, personalize campaigns, optimize ads, and enhance CRM systems.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('solutions')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Shield className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">IT & Security</h3>
+                      </div>
+                      <p className="text-white/80 text-sm mb-4">Protect with threat detection, automated support, and system monitoring.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('solutions')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
+                          <Server className="h-5 w-5 text-brand-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white">Customer Support</h3>
+                      </div>
+                      <p className="text-white/80 text-sm mb-4">Deploy chatbots, automate emails, analyze customer sentiment, and transcribe calls.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('solutions')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </TabsContent>
                 
-                <TabsContent value="web" className="mt-2 space-y-6">
-                  <Card className="bg-white/5 backdrop-blur-sm border border-white/10 text-white p-6">
-                    <h3 className="text-xl font-medium mb-4 text-brand-400">WEB DEVELOPMENT & HOSTING</h3>
-                    <p className="mb-5">Custom-built websites with intelligent features, delivered on our high-performance hosting infrastructure</p>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                      {webSolutions.map((solution, idx) => (
-                        <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                          <h4 className="font-medium text-brand-300 mb-3">{solution.title}</h4>
-                          <ul className="space-y-2">
-                            {solution.features.map((feature, fidx) => (
-                              <li key={fidx} className="flex items-start text-sm">
-                                <CheckCircle2 className="h-4 w-4 text-brand-400 mr-2 mt-0.5 flex-shrink-0" />
-                                <span className="text-white/90">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+                <TabsContent value="web" className="mt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {/* Web Services - simplified cards */}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <h3 className="text-xl font-medium mb-3 text-white">Web Development</h3>
+                      <p className="text-white/80 text-sm mb-4">Custom business websites, e-commerce solutions, web applications, and progressive web apps.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('services')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
                     </div>
-                    
-                    <Button 
-                      variant="outline" 
-                      className="bg-white/5 text-white border-white/20 hover:bg-white/20"
-                      onClick={() => scrollToSection('services')}
-                    >
-                      Learn More About Web Services
-                    </Button>
-                  </Card>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <h3 className="text-xl font-medium mb-3 text-white">Cloud Hosting</h3>
+                      <p className="text-white/80 text-sm mb-4">High-performance servers, managed cloud infrastructure, 99.9% uptime guarantee, and CDN integration.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('services')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <h3 className="text-xl font-medium mb-3 text-white">Technical Services</h3>
+                      <p className="text-white/80 text-sm mb-4">Database management, API development, system integrations, and performance optimization.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('services')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                      <h3 className="text-xl font-medium mb-3 text-white">Web Security</h3>
+                      <p className="text-white/80 text-sm mb-4">SSL implementation, security audits, DDoS protection, and regular security updates.</p>
+                      <Button 
+                        variant="link" 
+                        className="text-brand-400 p-0 hover:text-brand-300"
+                        onClick={() => scrollToSection('services')}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </TabsContent>
               </Tabs>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Button 
                 className="bg-brand-500 hover:bg-brand-600 text-white group" 
                 size="lg"
@@ -221,29 +206,6 @@ const Hero = () => {
                 Explore Solutions
               </Button>
             </div>
-          </div>
-
-          <div className={cn(
-            "grid grid-cols-2 sm:grid-cols-4 gap-3 opacity-0 transition-all duration-1000 delay-300",
-            isVisible && "opacity-100"
-          )}>
-            {[
-              { icon: Bot, label: "AI Chatbots" },
-              { icon: LineChart, label: "Analytics" },
-              { icon: Globe, label: "Web Dev" },
-              { icon: Server, label: "Cloud Hosting" }
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                className="glass-morphism rounded-xl p-3 flex flex-col items-center text-center transition-all duration-300 hover:bg-white/20"
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className="mb-2 p-2 rounded-full bg-brand-500/10">
-                  <item.icon className="h-5 w-5 text-brand-500" />
-                </div>
-                <p className="text-white text-xs font-medium">{item.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

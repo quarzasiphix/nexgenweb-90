@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -22,17 +23,27 @@ const Header = () => {
   const navLinks = [
     { name: 'AI Solutions', href: '/services/ai' },
     { name: 'Web Services', href: '/services/web' },
-    { name: 'Case Studies', href: '#case-studies' },
-    { name: 'About', href: '#about' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'About', href: '/about' },
   ];
 
   const handleNavigation = (href: string) => {
     if (href.startsWith('#')) {
-      const element = document.getElementById(href.replace('#', ''));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        if (mobileMenuOpen) setMobileMenuOpen(false);
+      // Only use this for the home page
+      if (window.location.pathname === '/') {
+        const element = document.getElementById(href.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          if (mobileMenuOpen) setMobileMenuOpen(false);
+          return;
+        }
       }
+      // If we're not on the home page or element doesn't exist, navigate to home first
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(href.replace('#', ''));
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     } else {
       navigate(href);
       if (mobileMenuOpen) setMobileMenuOpen(false);

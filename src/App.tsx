@@ -10,6 +10,7 @@ import AIServices from "./pages/services/AIServices";
 import WebServices from "./pages/services/WebServices";
 import AllServices from "./pages/AllServices";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
+import AboutPage from "./pages/AboutPage";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/services/web" element={<WebServices />} />
           <Route path="/services" element={<AllServices />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

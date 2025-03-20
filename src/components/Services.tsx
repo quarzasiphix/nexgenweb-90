@@ -162,14 +162,15 @@ const Services = () => {
                 </ul>
               )}
               
-              {/* Updated Learn More button to match the Solutions style */}
-              <Link to={`/services/${service.id}`} className="w-full">
-                <Button 
-                  className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
-                >
-                  Learn More
-                </Button>
-              </Link>
+              <div className="mt-auto">
+                <Link to={`/services/${service.id}`} className="block">
+                  <Button 
+                    className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                  >
+                    Learn More
+                  </Button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -202,18 +203,19 @@ const Services = () => {
                   <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div className="w-full">
+                  <div className="flex flex-col w-full">
                     <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
-                    {/* Updated Learn More button to match the Solutions style */}
-                    <Link to={`/services/${service.id}`} className="w-full">
-                      <Button 
-                        className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
-                      >
-                        Learn More
-                      </Button>
-                    </Link>
+                    <div className="mt-auto">
+                      <Link to={`/services/${service.id}`} className="block">
+                        <Button 
+                          className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                        >
+                          Learn More
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

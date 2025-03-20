@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -43,7 +42,7 @@ const Contact = () => {
     if (!inputMessage.trim()) return;
     
     // Add user message
-    const newMessages = [...messages, { type: 'user', content: inputMessage }];
+    const newMessages = [...messages, { type: 'user' as const, content: inputMessage }];
     setMessages(newMessages);
     setInputMessage('');
     
@@ -93,7 +92,7 @@ const Contact = () => {
         }
       }
       
-      setMessages([...newMessages, { type: 'agent', content: aiResponse }]);
+      setMessages([...newMessages, { type: 'agent' as const, content: aiResponse }]);
     }, 1000);
   };
 

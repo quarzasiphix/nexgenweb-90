@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -24,12 +23,14 @@ const Services = () => {
 
   const services = [
     {
+      id: "custom-ai-integration",
       title: "Custom AI Integration",
       description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
       icon: Bot,
       color: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
+      id: "ai-powered-web-development",
       title: "AI-Powered Web Development",
       description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
       icon: Laptop,
@@ -43,24 +44,28 @@ const Services = () => {
       ]
     },
     {
+      id: "marketing-automation",
       title: "Marketing Automation",
       description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions.",
       icon: Mail,
       color: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
+      id: "business-intelligence",
       title: "Business Intelligence",
       description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards.",
       icon: LineChart,
       color: "bg-gradient-to-br from-orange-500 to-orange-600"
     },
     {
+      id: "enterprise-ai-solutions",
       title: "Enterprise AI Solutions",
       description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
       icon: Building2,
       color: "bg-gradient-to-br from-red-500 to-red-600"
     },
     {
+      id: "cloud-hosting-solutions",
       title: "Cloud Hosting Solutions",
       description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications.",
       icon: Server,
@@ -80,24 +85,28 @@ const Services = () => {
     description: "Our comprehensive web solutions combine cutting-edge development with reliable hosting services, all enhanced by AI technologies.",
     services: [
       {
+        id: "full-stack-development",
         title: "Full-Stack Development",
         description: "End-to-end web application development using modern frameworks and AI-assisted coding practices.",
         icon: Code,
         color: "bg-gradient-to-br from-teal-500 to-teal-600",
       },
       {
+        id: "e-commerce-solutions",
         title: "E-Commerce Solutions",
         description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences.",
         icon: Globe,
         color: "bg-gradient-to-br from-pink-500 to-pink-600",
       },
       {
+        id: "managed-cloud-hosting",
         title: "Managed Cloud Hosting",
         description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization.",
         icon: Server,
         color: "bg-gradient-to-br from-blue-600 to-blue-700",
       },
       {
+        id: "database-management",
         title: "Database Management",
         description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability.",
         icon: Database,
@@ -155,7 +164,7 @@ const Services = () => {
               <Button
                 variant="link"
                 className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0"
-                onClick={() => service.title.toLowerCase().includes('web') ? navigate('/services/web') : navigate('/services/ai')}
+                onClick={() => navigate(`/services/${service.id}`)}
               >
                 <span className="inline-flex items-center group">
                   Learn more
@@ -197,6 +206,16 @@ const Services = () => {
                   <div>
                     <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
                     <p className="text-neutral-600">{service.description}</p>
+                    <Button
+                      variant="link"
+                      className="text-brand-600 font-medium hover:text-brand-700 transition-colors p-0 mt-2"
+                      onClick={() => navigate(`/services/${service.id}`)}
+                    >
+                      <span className="inline-flex items-center group">
+                        Learn more
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

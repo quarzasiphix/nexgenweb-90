@@ -70,7 +70,7 @@ const Header = () => {
               "font-semibold text-xl transition-colors duration-300",
               isScrolled ? "text-white" : "text-white"
             )}>
-              tovernet<span className="text-brand-500">.nl</span>
+              bizwiz
             </span>
           </Link>
         </div>
@@ -90,7 +90,7 @@ const Header = () => {
           ))}
           <Button 
             className="bg-brand-600 hover:bg-brand-700 text-white"
-            onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+            onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
           >
             Contact Us
           </Button>
@@ -122,7 +122,7 @@ const Header = () => {
             ))}
             <Button 
               className="bg-brand-600 hover:bg-brand-700 text-white w-full"
-              onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+              onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
             >
               Contact Us
             </Button>

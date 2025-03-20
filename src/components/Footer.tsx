@@ -15,7 +15,7 @@ const Footer = () => {
                 <div className="absolute inset-0 bg-brand-500 rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
               </div>
               <span className="font-semibold text-xl">
-                tovernet<span className="text-brand-500">.nl</span>
+                bizwiz
               </span>
             </div>
             <p className="text-neutral-400 mb-6">
@@ -76,7 +76,7 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-neutral-800 text-sm text-neutral-500">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} tovernet.nl. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} bizwiz. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-neutral-300 transition-colors">Terms of Service</a>
               <a href="#" className="hover:text-neutral-300 transition-colors">Privacy Policy</a>

@@ -44,7 +44,7 @@ const Hero = () => {
               </p>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Empower Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">tovernet.nl</span>
+              Empower Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">bizwiz</span>
             </h1>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
               Advanced solutions for business automation, web development, and digital transformation.
@@ -194,7 +194,7 @@ const Hero = () => {
               <Button 
                 className="bg-brand-500 hover:bg-brand-600 text-white group" 
                 size="lg"
-                onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+                onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
               >
                 <span>Contact Us</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

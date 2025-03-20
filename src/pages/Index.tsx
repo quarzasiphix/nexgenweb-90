@@ -18,7 +18,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "tovernet.nl - Digital Business Solutions";
+    document.title = "bizwiz - Digital Business Solutions";
   }, []);
 
   return (

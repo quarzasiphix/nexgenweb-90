@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -184,9 +185,10 @@ const Services = () => {
               <div className="mt-auto">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
-                    className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                    variant="link" 
+                    className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
                   >
-                    Learn More
+                    Learn more <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </Link>
               </div>
@@ -229,9 +231,10 @@ const Services = () => {
                     <div className="mt-auto pt-2">
                       <Link to={`/services/${service.id}`} className="block">
                         <Button 
-                          className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg ${service.color}`}
+                          variant="link" 
+                          className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
                         >
-                          Learn More
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
                         </Button>
                       </Link>
                     </div>

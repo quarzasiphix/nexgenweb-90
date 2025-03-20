@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -146,7 +145,7 @@ const Services = () => {
             "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-700",
             inView && "opacity-100 transform-none"
           )}>
-            Our Premium <span className="text-gradient">Services</span>
+            Our Premium <span className="text-gradient">AI Services</span>
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
@@ -195,7 +194,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Web Development & Hosting Spotlight Section */}
         <div className={cn(
           "mt-20 opacity-0 transform translate-y-4 transition-all duration-700 delay-300",
           inView && "opacity-100 transform-none"

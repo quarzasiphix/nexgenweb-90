@@ -77,7 +77,7 @@ const WebServices = () => {
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-lg bg-brand-500/20 mr-3">
+                    <div className="p-2 rounded-full bg-brand-500/20 mr-3">
                       <service.icon className="h-6 w-6 text-brand-400" />
                     </div>
                     <h2 className="text-xl font-semibold text-white">{service.title}</h2>

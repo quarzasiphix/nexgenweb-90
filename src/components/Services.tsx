@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -34,7 +33,7 @@ const Services = () => {
         "Ongoing maintenance and optimization"
       ],
       icon: Bot,
-      color: "bg-gradient-to-br from-blue-500 to-blue-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "ai-powered-web-development",
@@ -47,7 +46,7 @@ const Services = () => {
         "Personalized product recommendations"
       ],
       icon: Laptop,
-      color: "bg-gradient-to-br from-purple-500 to-purple-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "marketing-automation",
@@ -60,7 +59,7 @@ const Services = () => {
         "Optimized ad spend and dynamic campaigns"
       ],
       icon: Mail,
-      color: "bg-gradient-to-br from-green-500 to-green-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "business-intelligence",
@@ -73,7 +72,7 @@ const Services = () => {
         "Data-driven decision making support"
       ],
       icon: LineChart,
-      color: "bg-gradient-to-br from-orange-500 to-orange-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "enterprise-ai-solutions",
@@ -86,7 +85,7 @@ const Services = () => {
         "Multi-department automation workflows"
       ],
       icon: Building2,
-      color: "bg-gradient-to-br from-red-500 to-red-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "cloud-hosting-solutions",
@@ -99,7 +98,7 @@ const Services = () => {
         "Enterprise-grade security protection"
       ],
       icon: Server,
-      color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
+      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
     }
   ];
 
@@ -112,28 +111,28 @@ const Services = () => {
         title: "Full-Stack Development",
         description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
         icon: Code,
-        color: "bg-gradient-to-br from-teal-500 to-teal-600",
+        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "e-commerce-solutions",
         title: "E-Commerce Solutions",
         description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
         icon: Globe,
-        color: "bg-gradient-to-br from-pink-500 to-pink-600",
+        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "managed-cloud-hosting",
         title: "Managed Cloud Hosting",
         description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization. Our managed cloud services include 24/7 monitoring, proactive issue resolution, and regular security audits to ensure your applications remain available and protected.",
         icon: Server,
-        color: "bg-gradient-to-br from-blue-600 to-blue-700",
+        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "database-management",
         title: "Database Management",
         description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
         icon: Database,
-        color: "bg-gradient-to-br from-violet-500 to-violet-600",
+        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       }
     ]
   };
@@ -253,7 +252,7 @@ const Services = () => {
                 </p>
               </div>
               <Button 
-                className="btn-primary whitespace-nowrap"
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
                 onClick={() => scrollToContact()}
               >
                 Get a Free Consultation
@@ -267,7 +266,7 @@ const Services = () => {
           inView && "opacity-100 transform-none"
         )}>
           <Button 
-            className="btn-primary"
+            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
             onClick={() => navigate('/services')}
           >
             View All Services

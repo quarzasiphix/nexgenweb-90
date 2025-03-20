@@ -43,7 +43,7 @@ const Hero = () => {
               </p>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Empower Your Business with <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">BizWiz</span>
+              Empower Your Business with <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">BizWiz</span>
             </h1>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
               Advanced solutions for business automation, web development, and digital transformation.
@@ -52,10 +52,10 @@ const Hero = () => {
             <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
                 <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-brand-500/20">
+                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#9b87f5]/20">
                     AI Solutions
                   </TabsTrigger>
-                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
+                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#9b87f5]/20">
                     Web Services
                   </TabsTrigger>
                 </TabsList>
@@ -64,15 +64,15 @@ const Hero = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Bot className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Bot className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Finance & HR</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Automate invoicing, payroll, expense tracking, recruitment, and employee management.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -81,15 +81,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <LineChart className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <LineChart className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Sales & Marketing</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Boost lead generation, personalize campaigns, optimize ads, and enhance CRM systems.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -98,15 +98,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Shield className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Shield className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">IT & Security</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Protect with threat detection, automated support, and system monitoring.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -115,15 +115,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Server className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Server className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Customer Support</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Deploy chatbots, automate emails, analyze customer sentiment, and transcribe calls.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -136,15 +136,15 @@ const Hero = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Code className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Code className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Web Development</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Custom business websites, e-commerce solutions, web applications, and progressive web apps.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -153,15 +153,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Server className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Server className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Cloud Hosting</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">High-performance servers, managed cloud infrastructure, 99.9% uptime guarantee, and CDN integration.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -170,15 +170,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Database className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Database className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Technical Services</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">Database management, API development, system integrations, and performance optimization.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -187,15 +187,15 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-brand-500/20 mr-3">
-                          <Shield className="h-5 w-5 text-brand-400" />
+                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                          <Shield className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Web Security</h3>
                       </div>
                       <p className="text-white/80 text-sm mb-4">SSL implementation, security audits, DDoS protection, and regular security updates.</p>
                       <Button 
                         variant="link" 
-                        className="text-brand-400 p-0 hover:text-brand-300"
+                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
                         onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -208,7 +208,7 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Button 
-                className="bg-brand-500 hover:bg-brand-600 text-white group" 
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white group" 
                 size="lg"
                 onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
               >

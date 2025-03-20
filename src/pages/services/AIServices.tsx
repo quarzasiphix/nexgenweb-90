@@ -77,8 +77,8 @@ const AIServices = () => {
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-lg bg-brand-500/20 mr-3">
-                      <service.icon className="h-6 w-6 text-brand-400" />
+                    <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
+                      <service.icon className="h-6 w-6 text-[#D6BCFA]" />
                     </div>
                     <h2 className="text-xl font-semibold text-white">{service.title}</h2>
                   </div>
@@ -86,13 +86,13 @@ const AIServices = () => {
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-neutral-400">
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9b87f5] mt-2 mr-2 flex-shrink-0"></span>
                         {feature}
                       </li>
                     ))}
                   </ul>
                   <Button 
-                    className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
+                    className="w-full mt-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
                     onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
                   >
                     Get Started

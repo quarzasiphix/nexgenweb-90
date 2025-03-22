@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Blocks, Award, Globe, LightbulbIcon, Rocket, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
@@ -183,7 +184,7 @@ const AboutPage = () => {
               <Button
                 className="bg-brand-500 hover:bg-brand-600 text-white" 
                 size="lg"
-                onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
+                onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com'}
               >
                 Get in Touch
               </Button>

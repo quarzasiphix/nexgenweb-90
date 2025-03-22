@@ -149,7 +149,7 @@ const CaseStudiesPage = () => {
                       
                       <Button
                         className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz@services.com?subject=Case Study: ' + caseStudy.title}
+                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
                       >
                         Request Full Case Study
                       </Button>
@@ -186,7 +186,7 @@ const CaseStudiesPage = () => {
                       
                       <Button
                         className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz@services.com?subject=Case Study: ' + caseStudy.title}
+                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
                       >
                         Request Full Case Study
                       </Button>
@@ -223,7 +223,7 @@ const CaseStudiesPage = () => {
                       
                       <Button
                         className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz@services.com?subject=Case Study: ' + caseStudy.title}
+                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
                       >
                         Request Full Case Study
                       </Button>
@@ -246,7 +246,7 @@ const CaseStudiesPage = () => {
               </div>
               <Button 
                 className="bg-brand-500 hover:bg-brand-600 text-white whitespace-nowrap"
-                onClick={() => window.location.href = 'mailto:bizwiz@services.com?subject=Custom Solution Inquiry'}
+                onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Custom Solution Inquiry'}
               >
                 Get a Free Consultation
               </Button>

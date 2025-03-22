@@ -90,7 +90,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       setMessages([
         ...newMessages,
-        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at bizwiz@services.com." }
+        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at bizwiz.work@gmail.com." }
       ]);
     } finally {
       setIsLoading(false);
@@ -126,7 +126,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">bizwiz@services.com</p>
+              <p className="text-brand-400">bizwiz.work@gmail.com</p>
             </div>
           </div>
         </div>

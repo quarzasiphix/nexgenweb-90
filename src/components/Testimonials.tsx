@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
@@ -6,7 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "BizWiz AI Integrations transformed our customer service operations with their AI chatbot solution. We've seen a 75% reduction in response time and significant cost savings.",
+    quote: "SmartBizAI transformed our customer service operations with their AI chatbot solution. We've seen a 75% reduction in response time and significant cost savings.",
     author: "Sarah Johnson",
     title: "CTO, Global Finance Group",
     rating: 5,
@@ -20,14 +19,14 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
   },
   {
-    quote: "Implementing BizWiz AI Integrations' sales automation toolkit increased our conversion rates by 42% in just three months. The ROI has been incredible.",
+    quote: "Implementing SmartBizAI's sales automation toolkit increased our conversion rates by 42% in just three months. The ROI has been incredible.",
     author: "Emily Rodriguez",
     title: "Sales Director, RetailPlus",
     rating: 5,
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
   },
   {
-    quote: "Our HR department was overwhelmed until we deployed BizWiz AI Integrations' recruitment automation. Now we identify top talent faster with less manual screening.",
+    quote: "Our HR department was overwhelmed until we deployed SmartBizAI's recruitment automation. Now we identify top talent faster with less manual screening.",
     author: "David Thompson",
     title: "HR Director, Enterprise Solutions",
     rating: 5,

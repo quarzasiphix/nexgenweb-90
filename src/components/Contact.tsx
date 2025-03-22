@@ -17,7 +17,10 @@ const Contact = () => {
   const { toast } = useToast();
   const [showAIAgent, setShowAIAgent] = useState(false);
   const [messages, setMessages] = useState<{type: 'user' | 'agent', content: string}[]>([
-    { type: 'agent' as const, content: "Hi there! I'm your ToverNet AI assistant. I'd love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?" },
+    { 
+      type: 'agent' as const, 
+      content: "Hi there! 👋\n\nI'm the ToverNet AI Assistant.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
+    },
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -156,7 +159,7 @@ const Contact = () => {
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div className={cn(
-                    "max-w-[80%] p-3 rounded-lg",
+                    "max-w-[80%] p-3 rounded-lg whitespace-pre-wrap",
                     message.type === 'user' 
                       ? "bg-[#9b87f5]/20 text-white" 
                       : "bg-white/10 text-neutral-100"

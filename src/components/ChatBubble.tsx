@@ -4,6 +4,7 @@ import { Bot, X, Send, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useChat } from '@/context/ChatContext';
 
 type Message = {
   type: 'user' | 'agent';
@@ -38,6 +39,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { openChat } = useChat();
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -98,7 +100,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   if (!isOpen) {
     return (
       <button 
-        onClick={onClose} 
+        onClick={openChat} 
         className="fixed bottom-6 right-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white p-4 rounded-full shadow-lg z-50 transition-all duration-300 hover:scale-110"
         aria-label="Chat with ToverNet AI"
       >
@@ -137,7 +139,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
           >
             {message.type === 'agent' && (
               <div className="flex-shrink-0 mr-2 mt-1">
-                <div className="relative w-6 h-6 animate-rotate-slow">
+                <div className="relative w-6 h-6">
                   <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                   <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
                 </div>
@@ -159,7 +161,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
         {isLoading && (
           <div className="flex justify-start">
             <div className="flex-shrink-0 mr-2 mt-1">
-              <div className="relative w-6 h-6 animate-rotate-slow">
+              <div className="relative w-6 h-6">
                 <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                 <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
               </div>

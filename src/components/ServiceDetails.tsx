@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -9,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
+import ChatBubble from '@/components/ChatBubble';
 
 const allServices = [
   {
@@ -236,7 +236,7 @@ const allServices = [
 const ServiceDetails = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
-  const { openChat } = useChat();
+  const { openChat, isChatOpen, closeChat } = useChat();
   
   const service = allServices.find(s => s.id === serviceId);
 
@@ -364,6 +364,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </main>
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

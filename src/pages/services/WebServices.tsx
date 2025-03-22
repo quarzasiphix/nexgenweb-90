@@ -1,10 +1,10 @@
-
 import React, { useEffect } from 'react';
-import { Globe, Server, Code, Database, Shield, ArrowRight } from 'lucide-react';
+import { Globe, Database, Code, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
+import ChatBubble from '@/components/ChatBubble';
 
 const WebServices = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const WebServices = () => {
     document.title = "Web Services - tovernet.nl";
   }, []);
 
-  const { openChat } = useChat();
+  const { openChat, isChatOpen, closeChat } = useChat();
 
   const services = [
     {
@@ -72,10 +72,10 @@ const WebServices = () => {
       <Header />
       <main className="pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-6">Web Services</h1>
+          <h1 className="text-4xl font-bold text-white mb-6">Web Development Services</h1>
           <p className="text-lg text-neutral-300 mb-12 max-w-3xl">
-            Professional web development and hosting solutions designed to give your business 
-            a powerful online presence with top-tier performance and security.
+            Our professional web development team creates dynamic, responsive, and secure 
+            websites and applications tailored to your business needs.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -83,7 +83,7 @@ const WebServices = () => {
               <Card key={index} className="bg-neutral-800 border-neutral-700">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="p-3 rounded-full bg-[#9b87f5]/20 mr-3">
+                    <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
                       <service.icon className="h-6 w-6 text-[#D6BCFA]" />
                     </div>
                     <h2 className="text-xl font-semibold text-white">{service.title}</h2>
@@ -109,6 +109,7 @@ const WebServices = () => {
           </div>
         </div>
       </main>
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

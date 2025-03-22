@@ -1,10 +1,10 @@
-
 import React, { useEffect } from 'react';
 import { Bot, Brain, Shield, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
+import ChatBubble from '@/components/ChatBubble';
 
 const AIServices = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const AIServices = () => {
     document.title = "AI Services - tovernet.nl";
   }, []);
 
-  const { openChat } = useChat();
+  const { openChat, isChatOpen, closeChat } = useChat();
 
   const services = [
     {
@@ -109,6 +109,7 @@ const AIServices = () => {
           </div>
         </div>
       </main>
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

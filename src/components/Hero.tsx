@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -54,7 +55,7 @@ const Hero = () => {
             <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
                 <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#9b87f5]/20">
+                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#8B5CF6]/30">
                     AI Solutions
                   </TabsTrigger>
                   <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#9b87f5]/20">
@@ -66,7 +67,7 @@ const Hero = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                        <div className="p-2 rounded-full bg-[#8B5CF6]/30 mr-3">
                           <Bot className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Finance & HR</h3>
@@ -74,7 +75,7 @@ const Hero = () => {
                       <p className="text-white/80 text-sm mb-4">Automate invoicing, payroll, expense tracking, recruitment, and employee management.</p>
                       <Button 
                         variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                        className="text-[#8B5CF6] p-0 hover:text-[#D6BCFA]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -83,7 +84,7 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                        <div className="p-2 rounded-full bg-[#8B5CF6]/30 mr-3">
                           <LineChart className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Sales & Marketing</h3>
@@ -91,7 +92,7 @@ const Hero = () => {
                       <p className="text-white/80 text-sm mb-4">Boost lead generation, personalize campaigns, optimize ads, and enhance CRM systems.</p>
                       <Button 
                         variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                        className="text-[#8B5CF6] p-0 hover:text-[#D6BCFA]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -100,7 +101,7 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                        <div className="p-2 rounded-full bg-[#8B5CF6]/30 mr-3">
                           <Shield className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">IT & Security</h3>
@@ -108,7 +109,7 @@ const Hero = () => {
                       <p className="text-white/80 text-sm mb-4">Protect with threat detection, automated support, and system monitoring.</p>
                       <Button 
                         variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                        className="text-[#8B5CF6] p-0 hover:text-[#D6BCFA]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -117,7 +118,7 @@ const Hero = () => {
 
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
                       <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                        <div className="p-2 rounded-full bg-[#8B5CF6]/30 mr-3">
                           <Server className="h-5 w-5 text-[#D6BCFA]" />
                         </div>
                         <h3 className="text-xl font-medium text-white">Customer Support</h3>
@@ -125,7 +126,7 @@ const Hero = () => {
                       <p className="text-white/80 text-sm mb-4">Deploy chatbots, automate emails, analyze customer sentiment, and transcribe calls.</p>
                       <Button 
                         variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                        className="text-[#8B5CF6] p-0 hover:text-[#D6BCFA]"
                         onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -210,7 +211,7 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Button 
-                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white group" 
+                className="bg-[#8B5CF6] hover:bg-[#7E69AB] text-white group" 
                 size="lg"
                 onClick={openChat}
               >

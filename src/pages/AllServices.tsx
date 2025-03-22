@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from 'lucide-react';
@@ -172,13 +171,22 @@ const AllServices = () => {
 
           <Tabs defaultValue="all" className="mb-12">
             <TabsList className="max-w-md mx-auto bg-neutral-800 border-neutral-700 mb-8">
-              <TabsTrigger value="all" className="text-white data-[state=active]:bg-brand-500/20">
+              <TabsTrigger 
+                value="all" 
+                className="text-white data-[state=active]:bg-brand-500/20 data-[state=active]:text-white data-[state=active]:font-medium"
+              >
                 All Services
               </TabsTrigger>
-              <TabsTrigger value="ai" className="text-white data-[state=active]:bg-brand-500/20">
+              <TabsTrigger 
+                value="ai" 
+                className="text-white data-[state=active]:bg-brand-500/20 data-[state=active]:text-white data-[state=active]:font-medium"
+              >
                 AI Solutions
               </TabsTrigger>
-              <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
+              <TabsTrigger 
+                value="web" 
+                className="text-white data-[state=active]:bg-brand-500/20 data-[state=active]:text-white data-[state=active]:font-medium"
+              >
                 Web Services
               </TabsTrigger>
             </TabsList>

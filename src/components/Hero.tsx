@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -54,10 +55,16 @@ const Hero = () => {
             <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
                 <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#9b87f5]/20">
+                  <TabsTrigger 
+                    value="automation" 
+                    className="text-white data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-white data-[state=active]:font-medium"
+                  >
                     AI Solutions
                   </TabsTrigger>
-                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#9b87f5]/20">
+                  <TabsTrigger 
+                    value="web" 
+                    className="text-white data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-white data-[state=active]:font-medium"
+                  >
                     Web Services
                   </TabsTrigger>
                 </TabsList>

@@ -184,12 +184,13 @@ const Services = () => {
               </ul>
               
               <div className="mt-auto">
-                <Link 
-                  to={`/services/${service.id}`}
-                  className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
+                <Button
+                  variant="link"
+                  className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                  onClick={() => navigate(`/services/${service.id}`)}
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
+                </Button>
               </div>
             </div>
           ))}
@@ -227,12 +228,13 @@ const Services = () => {
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
                     <div className="mt-auto pt-2">
-                      <Link 
-                        to="/services/web"
-                        className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
+                      <Button
+                        variant="link"
+                        className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                        onClick={() => navigate('/services/web')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
@@ -265,13 +267,15 @@ const Services = () => {
           "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
           inView && "opacity-100 transform-none"
         )}>
-          <Link
-            to="/services"
+          <Button
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#9b87f5] hover:bg-[#7E69AB] text-white h-10 px-4 py-2"
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={() => {
+              navigate('/services');
+              window.scrollTo(0, 0);
+            }}
           >
             View All Services
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -18,12 +18,14 @@ const SolutionDetails = () => {
   const solution = solutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     if (solution) {
       document.title = `${solution.title} - BizWiz`;
     } else {
       navigate('/solutions');
     }
-  }, [solution, navigate]);
+  }, [solutionId, navigate]);
 
   if (!solution) {
     return null;

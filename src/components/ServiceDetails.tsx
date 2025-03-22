@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -240,12 +241,15 @@ const ServiceDetails = () => {
   const service = allServices.find(s => s.id === serviceId);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     if (service) {
-      document.title = `${service.title} - BizWiz`;
+      document.title = `${service.title} - ToverNet`;
     } else {
       navigate('/services');
     }
-  }, [service, navigate]);
+  }, [service, navigate, serviceId]);
 
   if (!service) {
     return null;

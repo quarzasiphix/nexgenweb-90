@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Index from './pages/Index';
 import AboutPage from './pages/AboutPage';
 import AllServices from './pages/AllServices';
@@ -15,11 +15,23 @@ import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
 import { ChatProvider } from './context/ChatContext';
 
+// ScrollToTop component that will be used inside Router
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <ChatProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />

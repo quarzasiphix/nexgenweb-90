@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -183,13 +184,12 @@ const Services = () => {
               </ul>
               
               <div className="mt-auto">
-                <Button
-                  variant="link"
-                  className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  onClick={() => navigate(`/services/${service.id}`)}
+                <Link 
+                  to={`/services/${service.id}`}
+                  className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </Button>
+                </Link>
               </div>
             </div>
           ))}

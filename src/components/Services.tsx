@@ -144,7 +144,9 @@ const Services = () => {
   };
 
   const handleServiceNavigation = (serviceId: string, e: React.MouseEvent) => {
+    // Ensure we prevent default browser behavior
     e.preventDefault();
+    console.log("Navigating to service:", serviceId);
     
     if (serviceId === "custom-ai-integration" || 
         serviceId === "ai-powered-web-development" || 
@@ -163,7 +165,7 @@ const Services = () => {
       navigate('/services/web');
     }
     else {
-      console.log("Navigating to service:", serviceId);
+      console.log("Navigating to specific service:", serviceId);
       navigate(`/services/${serviceId}`);
     }
   };
@@ -198,7 +200,8 @@ const Services = () => {
         )}>
           <Button
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#9b87f5] hover:bg-[#7E69AB] text-white h-10 px-4 py-2"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               navigate('/services');
               window.scrollTo(0, 0);
             }}

@@ -12,14 +12,11 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import useAnimationObserver from '@/hooks/useAnimationObserver';
-import ChatBubble from '@/components/ChatBubble';
-import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
 
 const Index = () => {
   useAnimationObserver();
-  const { isChatOpen, closeChat } = useChat();
   const isMobile = useIsMobile();
   const { captureEvent } = useAnalytics();
   const [fastScrolling, setFastScrolling] = useState(false);
@@ -89,7 +86,6 @@ const Index = () => {
       <Contact />
       <Footer />
       <ScrollToTopButton />
-      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

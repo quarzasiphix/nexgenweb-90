@@ -14,6 +14,7 @@ import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
 import { ChatProvider } from './context/ChatContext';
+import ChatBubble from './components/ChatBubble';
 
 // Enhanced ScrollToTop component with more aggressive scrolling behavior
 const ScrollToTop = () => {
@@ -44,23 +45,35 @@ const ScrollToTop = () => {
   return null;
 }
 
+// AppContent component to hold chat-related functionality
+const AppContent = () => {
+  const { isChatOpen, closeChat } = useChat();
+  
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<AllServices />} />
+        <Route path="/services/:serviceId" element={<ServiceDetails />} />
+        <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/services/web" element={<WebServices />} />
+        <Route path="/services/ai" element={<AIServices />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
+    </>
+  );
+};
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <ChatProvider>
         <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/services/:serviceId" element={<ServiceDetails />} />
-            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
-            <Route path="/services/web" element={<WebServices />} />
-            <Route path="/services/ai" element={<AIServices />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppContent />
         </Router>
         <Toaster />
         <Sonner />

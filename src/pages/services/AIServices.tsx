@@ -71,7 +71,7 @@ const AIServices = () => {
   return (
     <div className="min-h-screen bg-neutral-900 overflow-hidden">
       <Header />
-      <main className="pt-24 pb-16 px-4 w-full">
+      <main className="pt-28 pb-16 px-4 w-full max-w-full">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-white mb-6">AI Solutions</h1>
           <p className="text-lg text-neutral-300 mb-12 max-w-3xl">

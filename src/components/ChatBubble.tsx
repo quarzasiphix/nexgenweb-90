@@ -126,7 +126,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     <div className="fixed bottom-6 right-6 bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl z-50 w-80 sm:w-96 overflow-hidden animate-scale-in">
       <div className="flex items-center justify-between bg-[#9b87f5] p-4 text-white">
         <div className="flex items-center">
-          <div className="relative w-6 h-6 mr-2 animate-rotate-slow">
+          <div className="relative w-6 h-6 mr-2">
             <div className="absolute inset-0 bg-white rounded-md"></div>
             <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
           </div>

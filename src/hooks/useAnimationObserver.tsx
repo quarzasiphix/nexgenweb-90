@@ -13,8 +13,8 @@ const useAnimationObserver = () => {
 
     const observerOptions = {
       root: null,
-      rootMargin: '50px', // Increased from 0px to trigger animations before elements are in viewport
-      threshold: 0.01  // Reduced from 0.05 to trigger animations much sooner
+      rootMargin: '100px', // Increased from 50px to 100px to trigger animations even earlier
+      threshold: 0.001  // Reduced from 0.01 to 0.001 to trigger animations at the slightest visibility
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);

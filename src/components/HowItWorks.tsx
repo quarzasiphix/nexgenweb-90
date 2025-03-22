@@ -34,7 +34,8 @@ const steps = [
 const HowItWorks = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.01,
+    rootMargin: '100px', // Increased from 50px
   });
 
   return (
@@ -42,13 +43,13 @@ const HowItWorks = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-700",
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-150",
             inView && "opacity-100 transform-none"
           )}>
             How We <span className="text-gradient">Transform</span> Your Business
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-150 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Our proven process for implementing AI-powered automation solutions 
@@ -65,10 +66,10 @@ const HowItWorks = () => {
               <div 
                 key={index} 
                 className={cn(
-                  "bg-white rounded-xl p-6 shadow-md opacity-0 transform translate-y-8 transition-all duration-500",
+                  "bg-white rounded-xl p-6 shadow-md opacity-0 transform translate-y-4 transition-all duration-150",
                   inView && "opacity-100 translate-y-0"
                 )}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ transitionDelay: `${index * 15}ms` }}
               >
                 <div className="flex flex-col items-center text-center">
                   <div className={`w-16 h-16 ${step.color} rounded-full flex items-center justify-center mb-6`}>

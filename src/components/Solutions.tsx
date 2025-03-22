@@ -173,7 +173,8 @@ export const solutionCategories = [
 const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories[0], index: number }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05, // Reduced from 0.1 to trigger sooner
+    threshold: 0.01, // Reduced from 0.05 to trigger much sooner
+    rootMargin: '50px', // Added to trigger before element is in viewport
   });
 
   const solutionId = solution.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
@@ -182,10 +183,10 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
     <div 
       ref={ref}
       className={cn(
-        "bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 transform card-hover opacity-0 translate-y-8", // Duration reduced from 500 to 300
+        "bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover opacity-0 translate-y-4", // Duration reduced from 300 to 150, translateY from 8 to 4
         inView && "opacity-100 translate-y-0"
       )}
-      style={{ transitionDelay: `${index * 50}ms` }} // Reduced delay from 100ms to 50ms
+      style={{ transitionDelay: `${index * 25}ms` }} // Reduced delay from 50ms to 25ms
     >
       <div className={`p-6 flex flex-col h-full`}>
         <div className={`w-12 h-12 rounded-lg mb-5 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
@@ -236,7 +237,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
 const Solutions = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05, // Reduced from 0.1 to trigger sooner
+    threshold: 0.01, // Reduced from 0.05 to trigger sooner
+    rootMargin: '50px', // Added to trigger before element is in viewport
   });
 
   return (
@@ -244,13 +246,13 @@ const Solutions = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-500", // Reduced from 700 to 500
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250", // Reduced from 500 to 250
             inView && "opacity-100 transform-none"
           )}>
             AI-Powered Business <span className="text-gradient">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-500 delay-50", // Reduced from 700 to 500, delay from 100 to 50
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25", // Reduced from 500 to 250, delay from 50 to 25
             inView && "opacity-100 transform-none"
           )}>
             Leverage intelligent automation across every department to drive efficiency, 

@@ -14,15 +14,28 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 import useAnimationObserver from '@/hooks/useAnimationObserver';
 import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   useAnimationObserver();
   const { isChatOpen, closeChat } = useChat();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Set page title
     document.title = "ToverNet.nl - Digital Business Solutions";
-  }, []);
+    
+    // On mobile, add a class to body for optimized animations
+    if (isMobile) {
+      document.body.classList.add('mobile-animations');
+    } else {
+      document.body.classList.remove('mobile-animations');
+    }
+    
+    return () => {
+      document.body.classList.remove('mobile-animations');
+    };
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-neutral-900">

@@ -23,5 +23,12 @@ export function useIsMobile() {
     }
   }, [])
 
+  // For mobile devices, we'll also check if the device uses touch
+  React.useEffect(() => {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      setIsMobile(true);
+    }
+  }, []);
+
   return isMobile
 }

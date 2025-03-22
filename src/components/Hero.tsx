@@ -27,7 +27,7 @@ const Hero = () => {
   return (
     <div className="relative pt-16 md:pt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 min-h-screen">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48cGF0aCBkPSJNMzAgMzBhMSAxIDAgMTEtMiAwIDEgMSAwIDAxMiAweiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
       </div>
 
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float"></div>
@@ -54,10 +54,16 @@ const Hero = () => {
             <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
                 <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#9b87f5]/20">
+                  <TabsTrigger 
+                    value="automation" 
+                    className="text-white data-[state=active]:bg-[#8B5CF6]/40 data-[state=active]:text-[#D6BCFA] data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/50"
+                  >
                     AI Solutions
                   </TabsTrigger>
-                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#9b87f5]/20">
+                  <TabsTrigger 
+                    value="web" 
+                    className="text-white data-[state=active]:bg-[#8B5CF6]/40 data-[state=active]:text-[#D6BCFA] data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/50"
+                  >
                     Web Services
                   </TabsTrigger>
                 </TabsList>

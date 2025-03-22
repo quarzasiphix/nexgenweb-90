@@ -154,7 +154,7 @@ const Contact = () => {
             inView && "opacity-100 translate-y-0"
           )}>
             <div className="flex items-center mb-4">
-              <div className="relative w-6 h-6 mr-2">
+              <div className="relative w-6 h-6 mr-2 animate-rotate-slow">
                 <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                 <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
               </div>
@@ -169,7 +169,7 @@ const Contact = () => {
                 >
                   {message.type === 'agent' && (
                     <div className="flex-shrink-0 mr-2 mt-1">
-                      <div className="relative w-6 h-6">
+                      <div className="relative w-6 h-6 animate-rotate-slow">
                         <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                         <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
                       </div>
@@ -191,7 +191,7 @@ const Contact = () => {
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="flex-shrink-0 mr-2 mt-1">
-                    <div className="relative w-6 h-6">
+                    <div className="relative w-6 h-6 animate-rotate-slow">
                       <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                       <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
                     </div>

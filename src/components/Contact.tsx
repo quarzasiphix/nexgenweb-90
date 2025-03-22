@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -19,12 +20,15 @@ const Contact = () => {
     { type: 'agent' as const, content: "Hi there! I'm your ToverNet AI assistant. I'd love to learn more about your business needs so we can schedule an appointment with our experts. What type of services are you interested in?" },
   ]);
   const [inputMessage, setInputMessage] = useState('');
-  const [userInfo, setUserInfo] = useState({
-    name: '',
-    email: '',
-    businessType: '',
-    needsAssessed: false
-  });
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Scroll to bottom when messages change
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,64 +40,53 @@ const Contact = () => {
     });
   };
 
-  const handleAIConversation = (e: React.FormEvent) => {
+  const handleAIConversation = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!inputMessage.trim()) return;
+    if (!inputMessage.trim() || isLoading) return;
     
     // Add user message
     const newMessages = [...messages, { type: 'user' as const, content: inputMessage }];
     setMessages(newMessages);
-    setInputMessage('');
     
-    // Simulate AI response based on conversation state
-    setTimeout(() => {
-      let aiResponse = '';
-      const lastUserMessage = inputMessage.toLowerCase();
+    // Clear input and set loading state
+    setInputMessage('');
+    setIsLoading(true);
+    
+    try {
+      // Send request to the webhook
+      const response = await fetch('https://n8n.quarza.online/webhook/tover', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input: inputMessage }),
+      });
       
-      if (!userInfo.businessType) {
-        // First we ask about their business type
-        setUserInfo({...userInfo, businessType: inputMessage});
-        aiResponse = `Thanks for sharing that about your ${inputMessage} business! What specific challenges are you facing that you hope we can help with?`;
-      } 
-      else if (!userInfo.needsAssessed) {
-        // Then assess their needs
-        setUserInfo({...userInfo, needsAssessed: true});
-        aiResponse = "Thank you for sharing those details. It sounds like we might be able to help you. Could you please provide your name and email so we can schedule a consultation with one of our business solutions experts?";
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-      else if (!userInfo.name || !userInfo.email) {
-        // Get contact information
-        const containsEmail = lastUserMessage.includes('@');
-        if (containsEmail) {
-          const emailMatch = inputMessage.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-          const nameMatch = inputMessage.replace(emailMatch?.[0] || '', '').trim();
-          
-          setUserInfo({
-            ...userInfo, 
-            email: emailMatch?.[0] || '',
-            name: nameMatch || userInfo.name
-          });
-          
-          aiResponse = `Perfect! ${nameMatch ? `Nice to meet you, ${nameMatch}` : 'Thanks'}. I've scheduled a consultation for you. One of our business experts will contact you at ${emailMatch?.[0]} within 24 hours to discuss how we can help your business. Is there anything else you'd like to know about our services in the meantime?`;
-        } else {
-          setUserInfo({...userInfo, name: inputMessage});
-          aiResponse = "Great! Now, could you please provide your email address so we can get in touch?";
-        }
+      
+      const data = await response.json();
+      
+      // Check if the response has the expected format
+      if (Array.isArray(data) && data.length > 0 && data[0].output) {
+        setMessages([
+          ...newMessages, 
+          { type: 'agent' as const, content: data[0].output }
+        ]);
       } else {
-        // General responses for follow-up questions
-        if (lastUserMessage.includes('price') || lastUserMessage.includes('cost') || lastUserMessage.includes('expensive')) {
-          aiResponse = "Our pricing is customized based on your specific needs and project scope. Our expert will discuss pricing options during your consultation.";
-        } else if (lastUserMessage.includes('time') || lastUserMessage.includes('long') || lastUserMessage.includes('when')) {
-          aiResponse = "Timelines vary based on project complexity. Our expert will provide a detailed timeline during your consultation based on your specific requirements.";
-        } else if (lastUserMessage.includes('thank') || lastUserMessage.includes('bye') || lastUserMessage.includes('see you')) {
-          aiResponse = "You're welcome! We look forward to speaking with you soon. Have a great day!";
-        } else {
-          aiResponse = "That's a great question. Our business solutions expert will be able to provide more specific information during your consultation. Is there anything else you'd like to know?";
-        }
+        throw new Error('Unexpected response format');
       }
-      
-      setMessages([...newMessages, { type: 'agent' as const, content: aiResponse }]);
-    }, 1000);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages([
+        ...newMessages,
+        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at tovernet.work@services.com." }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -172,6 +165,16 @@ const Contact = () => {
                   </div>
                 </div>
               ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-white/10 text-neutral-100 p-3 rounded-lg flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </div>
             
             <form onSubmit={handleAIConversation} className="flex items-center gap-2">
@@ -181,10 +184,12 @@ const Contact = () => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Type your message..."
                 className="flex-grow bg-white/10 border-white/20 text-white placeholder:text-neutral-400 focus:ring-[#9b87f5] focus:border-[#9b87f5]"
+                disabled={isLoading}
               />
               <Button 
                 type="submit" 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                disabled={isLoading}
               >
                 <Send className="h-4 w-4" />
               </Button>

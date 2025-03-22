@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
@@ -38,7 +37,7 @@ const testimonials = [
 const Testimonials = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.05,
   });
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -48,14 +47,14 @@ const Testimonials = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   const goToPrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   useEffect(() => {
@@ -66,19 +65,18 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-brand-900 to-brand-800 text-white overflow-hidden">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         
         <div className="text-center mb-16 relative z-10">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 opacity-0 transform translate-y-4 transition-all duration-700",
+            "text-3xl sm:text-4xl font-bold mb-4 opacity-0 transform translate-y-4 transition-all duration-500",
             inView && "opacity-100 transform-none"
           )}>
             What Our Clients <span className="text-brand-400">Say</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-white/80 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            "max-w-2xl mx-auto text-lg text-white/80 opacity-0 transform translate-y-4 transition-all duration-500 delay-50",
             inView && "opacity-100 transform-none"
           )}>
             Hear from businesses that have transformed their operations 
@@ -87,7 +85,7 @@ const Testimonials = () => {
         </div>
 
         <div className={cn(
-          "relative opacity-0 transition-all duration-1000 delay-200",
+          "relative opacity-0 transition-all duration-700 delay-100",
           inView && "opacity-100"
         )}>
           <div className="relative z-10 overflow-hidden rounded-2xl bg-white/10 backdrop-blur-lg p-1">
@@ -108,7 +106,7 @@ const Testimonials = () => {
                     ))}
                   </div>
                   
-                  <blockquote className={`text-xl sm:text-2xl font-medium mb-6 transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                  <blockquote className={`text-xl sm:text-2xl font-medium mb-6 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
                     "{testimonials[activeIndex].quote}"
                   </blockquote>
                   

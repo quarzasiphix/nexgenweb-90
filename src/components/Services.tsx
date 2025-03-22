@@ -10,7 +10,7 @@ import { useChat } from '@/context/ChatContext';
 const Services = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.05,
   });
   
   const navigate = useNavigate();
@@ -141,13 +141,13 @@ const Services = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-700",
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-500",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-gradient">Services</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-500 delay-50",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -160,10 +160,10 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-500 opacity-0 transform translate-y-8 hover:shadow-lg flex flex-col h-full",
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-300 opacity-0 transform translate-y-8 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
@@ -194,9 +194,8 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Web Development & Hosting Spotlight Section */}
         <div className={cn(
-          "mt-20 opacity-0 transform translate-y-4 transition-all duration-700 delay-300",
+          "mt-20 opacity-0 transform translate-y-4 transition-all duration-500 delay-150",
           inView && "opacity-100 transform-none"
         )}>
           <div className="text-center mb-10">
@@ -263,7 +262,7 @@ const Services = () => {
         </div>
 
         <div className={cn(
-          "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
+          "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
           inView && "opacity-100 transform-none"
         )}>
           <Button 

@@ -22,7 +22,22 @@ const AIServices = () => {
       const element = document.getElementById(id);
       if (element && id !== 'finance-hr') {
         setTimeout(() => {
+          // Get the header height to offset the scroll position
+          const headerHeight = document.querySelector('header')?.offsetHeight || 100;
+          
+          // Use scrollIntoView with a callback to adjust for header height
           element.scrollIntoView({ behavior: 'smooth' });
+          
+          // After scrolling into view, add an additional offset to account for the header
+          setTimeout(() => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerHeight - 20; // 20px additional padding
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }, 100);
         }, 100); // Small delay to ensure the UI has rendered
       }
     }

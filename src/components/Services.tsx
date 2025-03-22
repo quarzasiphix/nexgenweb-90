@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -7,7 +6,6 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
-import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -139,6 +137,22 @@ const Services = () => {
     ]
   };
 
+  const handleServiceNavigation = (serviceId) => {
+    if (serviceId === "custom-ai-integration" || 
+        serviceId === "ai-powered-web-development" || 
+        serviceId === "marketing-automation" || 
+        serviceId === "business-intelligence" || 
+        serviceId === "enterprise-ai-solutions") {
+      navigate('/services/ai');
+    } 
+    else if (serviceId === "cloud-hosting-solutions") {
+      navigate('/services/web');
+    }
+    else {
+      navigate(`/services/${serviceId}`);
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -187,7 +201,7 @@ const Services = () => {
                 <Button
                   variant="link"
                   className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  onClick={() => navigate(`/services/${service.id}`)}
+                  onClick={() => handleServiceNavigation(service.id)}
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
                 </Button>

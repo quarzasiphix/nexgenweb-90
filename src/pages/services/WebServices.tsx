@@ -69,9 +69,9 @@ const WebServices = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-neutral-900 overflow-x-hidden">
       <Header />
-      <main className="pt-24 pb-16 px-4">
+      <main className="pt-24 pb-16 px-4 w-full">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-white mb-6">Web Development Services</h1>
           <p className="text-lg text-neutral-300 mb-12 max-w-3xl">

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Bot, Brain, Shield, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +8,9 @@ import { useChat } from '@/context/ChatContext';
 
 const AIServices = () => {
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     document.title = "AI Services - tovernet.nl";
   }, []);
 

@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useChat } from '@/context/ChatContext';
 
 const CTASection = () => {
   const { ref, inView } = useInView({
@@ -13,12 +13,10 @@ const CTASection = () => {
   });
   
   const navigate = useNavigate();
+  const { openChat } = useChat();
 
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    openChat();
   };
 
   const benefits = [
@@ -267,3 +265,4 @@ const CTASection = () => {
 };
 
 export default CTASection;
+

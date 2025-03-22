@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -8,8 +7,8 @@ import {
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
+import { useChat } from '@/context/ChatContext';
 
-// Combined services from both AI and Web sections
 const allServices = [
   {
     id: "custom-ai-integration",
@@ -236,15 +235,14 @@ const allServices = [
 const ServiceDetails = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
+  const { openChat } = useChat();
   
-  // Find the service based on the URL parameter
   const service = allServices.find(s => s.id === serviceId);
 
   useEffect(() => {
     if (service) {
       document.title = `${service.title} - BizWiz`;
     } else {
-      // If service not found, redirect to services page
       navigate('/services');
     }
   }, [service, navigate]);
@@ -355,7 +353,7 @@ const ServiceDetails = () => {
             <Button 
               size="lg"
               className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
+              onClick={openChat}
             >
               Get Started Today
             </Button>

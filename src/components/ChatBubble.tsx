@@ -17,21 +17,6 @@ type UserInfo = {
   needsAssessed: boolean;
 };
 
-export const useChatBubble = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openChat = () => setIsOpen(true);
-  const closeChat = () => setIsOpen(false);
-  const toggleChat = () => setIsOpen(prev => !prev);
-
-  return {
-    isOpen,
-    openChat,
-    closeChat,
-    toggleChat
-  };
-};
-
 type ChatBubbleProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -47,7 +32,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       type: 'agent' as const, 
-      content: "Hi there! 👋\n\nI'm the ToverNet AI Assistant.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
+      content: "Hi there! 👋\n\n**ToverNet AI** here.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
     },
   ]);
   const [inputMessage, setInputMessage] = useState('');

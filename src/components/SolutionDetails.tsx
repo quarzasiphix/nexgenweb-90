@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -10,17 +9,18 @@ import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { solutionCategories } from './Solutions';
+import { useChat } from '@/context/ChatContext';
 
 const SolutionDetails = () => {
   const { solutionId } = useParams();
   const navigate = useNavigate();
+  const { openChat } = useChat();
   const solution = solutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
 
   useEffect(() => {
     if (solution) {
       document.title = `${solution.title} - BizWiz`;
     } else {
-      // If solution not found, redirect to solutions page
       navigate('/solutions');
     }
   }, [solution, navigate]);
@@ -131,7 +131,7 @@ const SolutionDetails = () => {
             <Button 
               size="lg"
               className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
+              onClick={openChat}
             >
               Get Started Today
             </Button>

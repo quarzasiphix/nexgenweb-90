@@ -1,14 +1,16 @@
-
 import React, { useEffect } from 'react';
 import { Globe, Server, Code, Database, Shield, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
+import { useChat } from '@/context/ChatContext';
 
 const WebServices = () => {
   useEffect(() => {
     document.title = "Web Services - tovernet.nl";
   }, []);
+
+  const { openChat } = useChat();
 
   const services = [
     {
@@ -93,7 +95,7 @@ const WebServices = () => {
                   </ul>
                   <Button 
                     className="w-full mt-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                    onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+                    onClick={openChat}
                   >
                     Get Started
                   </Button>

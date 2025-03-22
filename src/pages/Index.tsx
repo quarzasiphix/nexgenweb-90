@@ -12,9 +12,12 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import useAnimationObserver from '@/hooks/useAnimationObserver';
+import ChatBubble from '@/components/ChatBubble';
+import { useChat } from '@/context/ChatContext';
 
 const Index = () => {
   useAnimationObserver();
+  const { isChatOpen, closeChat } = useChat();
 
   useEffect(() => {
     // Set page title
@@ -34,6 +37,7 @@ const Index = () => {
       <Contact />
       <Footer />
       <ScrollToTopButton />
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

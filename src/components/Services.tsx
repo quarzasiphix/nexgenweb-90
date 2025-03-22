@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -6,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate, Link } from 'react-router-dom';
+import { useChat } from '@/context/ChatContext';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -14,12 +14,10 @@ const Services = () => {
   });
   
   const navigate = useNavigate();
+  const { openChat } = useChat();
 
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    openChat();
   };
 
   const services = [
@@ -256,7 +254,7 @@ const Services = () => {
               </div>
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={() => scrollToContact()}
+                onClick={scrollToContact}
               >
                 Get a Free Consultation
               </Button>

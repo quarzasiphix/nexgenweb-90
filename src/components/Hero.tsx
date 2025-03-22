@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -6,11 +5,13 @@ import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useChat } from '@/context/ChatContext';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const { openChat } = useChat();
 
   useEffect(() => {
     setIsVisible(true);
@@ -211,7 +212,7 @@ const Hero = () => {
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white group" 
                 size="lg"
-                onClick={() => window.location.href = 'mailto:tovernet@services.com'}
+                onClick={openChat}
               >
                 <span>Contact Us</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

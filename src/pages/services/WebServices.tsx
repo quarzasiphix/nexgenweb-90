@@ -1,5 +1,6 @@
+
 import React, { useEffect } from 'react';
-import { Globe, Database, Code, Shield } from 'lucide-react';
+import { Globe, Database, Code, Shield, Server } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';

@@ -25,6 +25,16 @@ const Hero = () => {
     }
   };
 
+  const navigateToAIService = (serviceId: string) => {
+    // For Finance & HR, go to the top of the page
+    if (serviceId === 'finance-hr') {
+      navigate('/services/ai');
+    } else {
+      // For other services, navigate to the specific section
+      navigate(`/services/ai#${serviceId}`);
+    }
+  };
+
   return (
     <div className="relative pt-16 md:pt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 min-h-screen">
       <div className="absolute inset-0 opacity-10">
@@ -82,7 +92,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={() => navigateToAIService('finance-hr')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -99,7 +109,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={() => navigateToAIService('sales-marketing')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -116,7 +126,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={() => navigateToAIService('it-security')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -133,7 +143,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={() => navigateToAIService('customer-support')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>

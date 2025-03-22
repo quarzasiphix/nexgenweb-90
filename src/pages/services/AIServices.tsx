@@ -5,22 +5,36 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const AIServices = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { hash } = location;
   
   useEffect(() => {
     // Scroll to top when component mounts
-    window.scrollTo(0, 0);
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      // If there's a hash, scroll to the element with that ID
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element && id !== 'finance-hr') {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Small delay to ensure the UI has rendered
+      }
+    }
     
     document.title = "AI Services - tovernet.nl";
-  }, []);
+  }, [hash]);
 
   const { openChat } = useChat();
 
   const services = [
     {
+      id: "finance-hr",
       title: "Finance & HR AI",
       icon: Brain,
       description: "Advanced AI solutions for financial management and HR automation.",
@@ -33,6 +47,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "sales-marketing",
       title: "Sales & Marketing AI",
       icon: LineChart,
       description: "AI-powered tools to boost your sales and marketing efforts.",
@@ -45,6 +60,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "it-security",
       title: "IT & Security",
       icon: Shield,
       description: "Intelligent security solutions for your business.",
@@ -57,6 +73,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "customer-support",
       title: "Customer Support AI",
       icon: Bot,
       description: "Transform customer service with AI automation.",
@@ -92,7 +109,7 @@ const AIServices = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
             {services.map((service, index) => (
-              <Card key={index} className="bg-neutral-800 border-neutral-700 w-full">
+              <Card key={index} id={service.id} className="bg-neutral-800 border-neutral-700 w-full">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">

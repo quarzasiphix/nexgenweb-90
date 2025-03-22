@@ -11,8 +11,8 @@ import { useChat } from '@/context/ChatContext';
 const Services = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.01, // Reduced from 0.05
-    rootMargin: '50px', // Added to trigger before element is in viewport
+    threshold: 0.01,
+    rootMargin: '50px',
   });
   
   const navigate = useNavigate();
@@ -20,6 +20,12 @@ const Services = () => {
 
   const scrollToContact = () => {
     openChat();
+  };
+
+  // Function to handle service navigation with explicit scroll to top
+  const handleServiceClick = (serviceId) => {
+    window.scrollTo(0, 0);
+    navigate(`/services/${serviceId}`);
   };
 
   const services = [
@@ -162,10 +168,10 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full", // Reduced from duration-300 translate-y-8 to duration-150 translate-y-4
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
-              style={{ transitionDelay: `${index * 25}ms` }} // Reduced from 50ms to 25ms
+              style={{ transitionDelay: `${index * 25}ms` }}
             >
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
@@ -183,14 +189,13 @@ const Services = () => {
               </ul>
               
               <div className="mt-auto">
-                <Link to={`/services/${service.id}`} className="block">
-                  <Button 
-                    variant="link" 
-                    className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  >
-                    Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                  </Button>
-                </Link>
+                <Button 
+                  variant="link" 
+                  className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                  onClick={() => handleServiceClick(service.id)}
+                >
+                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                </Button>
               </div>
             </div>
           ))}
@@ -228,14 +233,13 @@ const Services = () => {
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
                     <div className="mt-auto pt-2">
-                      <Link to={`/services/${service.id}`} className="block">
-                        <Button 
-                          variant="link" 
-                          className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        >
-                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        variant="link" 
+                        className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                        onClick={() => handleServiceClick(service.id)}
+                      >
+                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
@@ -269,7 +273,10 @@ const Services = () => {
         )}>
           <Button 
             className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => navigate('/services')}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              navigate('/services');
+            }}
           >
             View All Services
           </Button>

@@ -15,13 +15,31 @@ import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
 import { ChatProvider } from './context/ChatContext';
 
-// ScrollToTop component that will be used inside Router
+// Enhanced ScrollToTop component with more aggressive scrolling behavior
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash, key } = useLocation();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If not a hash link, scroll to top
+    if (hash === '') {
+      // Try multiple approaches for more reliable scrolling
+      window.scrollTo(0, 0);
+      
+      // Additional approach that sometimes works better in certain browsers
+      document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto', // Use 'auto' instead of 'smooth' for immediate response
+      });
+      
+      // Another approach focusing on the body
+      document.body.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto',
+      });
+    }
+  }, [pathname, hash, key]); // Respond to all location changes
   
   return null;
 }

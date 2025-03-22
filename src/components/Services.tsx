@@ -138,6 +138,8 @@ const Services = () => {
   };
 
   const handleServiceNavigation = (serviceId) => {
+    event.preventDefault();
+    
     if (serviceId === "custom-ai-integration" || 
         serviceId === "ai-powered-web-development" || 
         serviceId === "marketing-automation" || 
@@ -145,7 +147,11 @@ const Services = () => {
         serviceId === "enterprise-ai-solutions") {
       navigate('/services/ai');
     } 
-    else if (serviceId === "cloud-hosting-solutions") {
+    else if (serviceId === "cloud-hosting-solutions" ||
+             serviceId === "full-stack-development" ||
+             serviceId === "e-commerce-solutions" ||
+             serviceId === "managed-cloud-hosting" ||
+             serviceId === "database-management") {
       navigate('/services/web');
     }
     else {
@@ -245,7 +251,7 @@ const Services = () => {
                       <Button
                         variant="link"
                         className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        onClick={() => navigate('/services/web')}
+                        onClick={() => handleServiceNavigation(service.id)}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>

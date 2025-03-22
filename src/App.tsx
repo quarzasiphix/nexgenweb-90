@@ -13,7 +13,7 @@ import ServiceDetails from './components/ServiceDetails';
 import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
-import { ChatProvider } from './context/ChatContext';
+import { ChatProvider, useChat } from './context/ChatContext';
 import ChatBubble from './components/ChatBubble';
 
 // Enhanced ScrollToTop component with more aggressive scrolling behavior

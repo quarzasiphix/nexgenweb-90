@@ -21,7 +21,6 @@ const Services = () => {
     openChat();
   };
 
-  // Function to handle service navigation with explicit scroll to top
   const handleServiceClick = (serviceId) => {
     window.scrollTo(0, 0);
     navigate(`/services/${serviceId}`);

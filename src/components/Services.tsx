@@ -183,12 +183,13 @@ const Services = () => {
               </ul>
               
               <div className="mt-auto">
-                <Link 
-                  to={`/services/${service.id}`}
-                  className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
+                <Button
+                  variant="link"
+                  className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                  onClick={() => navigate(`/services/${service.id}`)}
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
+                </Button>
               </div>
             </div>
           ))}

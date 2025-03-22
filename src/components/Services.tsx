@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -7,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -20,13 +20,6 @@ const Services = () => {
 
   const scrollToContact = () => {
     openChat();
-  };
-
-  // Prevent default navigation behavior and use React Router instead
-  const handleServiceClick = (serviceId) => {
-    // Prevent the default link behavior
-    navigate(`/services/${serviceId}`);
-    window.scrollTo(0, 0);
   };
 
   const services = [
@@ -190,16 +183,12 @@ const Services = () => {
               </ul>
               
               <div className="mt-auto">
-                <Button 
-                  variant="link" 
-                  className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleServiceClick(service.id);
-                  }}
+                <Link 
+                  to={`/services/${service.id}`}
+                  className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </Button>
+                </Link>
               </div>
             </div>
           ))}
@@ -237,16 +226,12 @@ const Services = () => {
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
                     <div className="mt-auto pt-2">
-                      <Button 
-                        variant="link" 
-                        className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigate('/services/web');
-                        }}
+                      <Link 
+                        to="/services/web"
+                        className="text-[#9b87f5] hover:text-[#7E69AB] flex items-center"
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
@@ -266,10 +251,8 @@ const Services = () => {
               </div>
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToContact();
-                }}
+                onClick={scrollToContact}
+                type="button"
               >
                 Get a Free Consultation
               </Button>
@@ -281,16 +264,13 @@ const Services = () => {
           "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
           inView && "opacity-100 transform-none"
         )}>
-          <Button 
-            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo(0, 0);
-              navigate('/services');
-            }}
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#9b87f5] hover:bg-[#7E69AB] text-white h-10 px-4 py-2"
+            onClick={() => window.scrollTo(0, 0)}
           >
             View All Services
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

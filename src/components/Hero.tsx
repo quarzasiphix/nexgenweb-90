@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -22,16 +21,6 @@ const Hero = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const navigateToAIService = (serviceId: string) => {
-    // For Finance & HR, go to the top of the page
-    if (serviceId === 'finance-hr') {
-      navigate('/services/ai');
-    } else {
-      // For other services, navigate to the specific section
-      navigate(`/services/ai#${serviceId}`);
     }
   };
 
@@ -65,16 +54,10 @@ const Hero = () => {
             <div className="mb-12">
               <Tabs defaultValue="automation" className="w-full">
                 <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger 
-                    value="automation" 
-                    className="text-white data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-white data-[state=active]:font-medium"
-                  >
+                  <TabsTrigger value="automation" className="text-white data-[state=active]:bg-[#9b87f5]/20">
                     AI Solutions
                   </TabsTrigger>
-                  <TabsTrigger 
-                    value="web" 
-                    className="text-white data-[state=active]:bg-[#9b87f5]/20 data-[state=active]:text-white data-[state=active]:font-medium"
-                  >
+                  <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#9b87f5]/20">
                     Web Services
                   </TabsTrigger>
                 </TabsList>
@@ -92,7 +75,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigateToAIService('finance-hr')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -109,7 +92,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigateToAIService('sales-marketing')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -126,7 +109,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigateToAIService('it-security')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -143,7 +126,7 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigateToAIService('customer-support')}
+                        onClick={() => navigate('/services/ai')}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>

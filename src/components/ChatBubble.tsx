@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, X, Send, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,6 +28,11 @@ const formatText = (text: string) => {
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 };
 
+// Generate a random session ID
+const generateSessionId = () => {
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+};
+
 const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [messages, setMessages] = useState<Message[]>([
     { 
@@ -38,8 +42,21 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { openChat } = useChat();
+
+  useEffect(() => {
+    // Initialize session ID when component mounts
+    const storedSessionId = localStorage.getItem('chatSessionId');
+    if (storedSessionId) {
+      setSessionId(storedSessionId);
+    } else {
+      const newSessionId = generateSessionId();
+      setSessionId(newSessionId);
+      localStorage.setItem('chatSessionId', newSessionId);
+    }
+  }, []);
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -62,13 +79,16 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     setIsLoading(true);
     
     try {
-      // Send request to the webhook
+      // Send request to the webhook with session ID
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input: inputMessage }),
+        body: JSON.stringify({ 
+          input: inputMessage,
+          session: sessionId 
+        }),
       });
       
       if (!response.ok) {

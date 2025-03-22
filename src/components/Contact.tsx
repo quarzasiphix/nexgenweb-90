@@ -8,6 +8,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+// Helper function to format text with markdown-style bold syntax
+const formatText = (text: string) => {
+  // Replace **text** with <strong>text</strong> for bold
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+};
+
 const Contact = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -148,7 +154,10 @@ const Contact = () => {
             inView && "opacity-100 translate-y-0"
           )}>
             <div className="flex items-center mb-4">
-              <Bot className="h-6 w-6 text-[#9b87f5] mr-2" />
+              <div className="relative w-6 h-6 mr-2">
+                <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
+                <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
+              </div>
               <h3 className="text-xl font-semibold text-white">ToverNet AI Assistant</h3>
             </div>
             
@@ -158,18 +167,35 @@ const Contact = () => {
                   key={index} 
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
+                  {message.type === 'agent' && (
+                    <div className="flex-shrink-0 mr-2 mt-1">
+                      <div className="relative w-6 h-6">
+                        <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
+                        <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
+                      </div>
+                    </div>
+                  )}
                   <div className={cn(
                     "max-w-[80%] p-3 rounded-lg whitespace-pre-wrap",
                     message.type === 'user' 
                       ? "bg-[#9b87f5]/20 text-white" 
                       : "bg-white/10 text-neutral-100"
                   )}>
-                    {message.content}
+                    {message.type === 'agent' && (
+                      <div className="font-semibold text-[#9b87f5] mb-1">ToverNet AI</div>
+                    )}
+                    <div dangerouslySetInnerHTML={{ __html: formatText(message.content) }} />
                   </div>
                 </div>
               ))}
               {isLoading && (
                 <div className="flex justify-start">
+                  <div className="flex-shrink-0 mr-2 mt-1">
+                    <div className="relative w-6 h-6">
+                      <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
+                      <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
+                    </div>
+                  </div>
                   <div className="bg-white/10 text-neutral-100 p-3 rounded-lg flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                     <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>

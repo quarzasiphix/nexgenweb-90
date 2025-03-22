@@ -22,9 +22,11 @@ const Services = () => {
     openChat();
   };
 
+  // Prevent default navigation behavior and use React Router instead
   const handleServiceClick = (serviceId) => {
-    window.scrollTo(0, 0);
+    // Prevent the default link behavior
     navigate(`/services/${serviceId}`);
+    window.scrollTo(0, 0);
   };
 
   const services = [
@@ -191,7 +193,10 @@ const Services = () => {
                 <Button 
                   variant="link" 
                   className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  onClick={() => handleServiceClick(service.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleServiceClick(service.id);
+                  }}
                 >
                   Learn more <ArrowRight className="ml-1 h-4 w-4" />
                 </Button>
@@ -235,7 +240,10 @@ const Services = () => {
                       <Button 
                         variant="link" 
                         className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        onClick={() => navigate('/services/web')}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/services/web');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -258,7 +266,10 @@ const Services = () => {
               </div>
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={scrollToContact}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToContact();
+                }}
               >
                 Get a Free Consultation
               </Button>
@@ -272,7 +283,8 @@ const Services = () => {
         )}>
           <Button 
             className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               window.scrollTo(0, 0);
               navigate('/services');
             }}

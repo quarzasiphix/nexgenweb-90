@@ -5,14 +5,18 @@ import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { CoreServiceCard } from './services/CoreServiceCard';
+import { WebServiceCard } from './services/WebServiceCard';
+import { ServicesHeader } from './services/ServicesHeader';
+import { WebServicesSection } from './services/WebServicesSection';
 
 const Services = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.01, // Reduced from 0.05
-    rootMargin: '50px', // Added to trigger before element is in viewport
+    threshold: 0.01,
+    rootMargin: '50px',
   });
   
   const navigate = useNavigate();
@@ -103,6 +107,7 @@ const Services = () => {
     }
   ];
 
+  // Now using fully typed webDevSection data
   const webDevSection = {
     title: "Web Development & Hosting",
     description: "Our comprehensive web solutions combine cutting-edge development with reliable hosting services, all enhanced by AI technologies.",
@@ -138,138 +143,81 @@ const Services = () => {
     ]
   };
 
+  const handleServiceNavigation = (serviceId: string, e: React.MouseEvent) => {
+    // Ensure we prevent default browser behavior
+    e.preventDefault();
+    console.log("Navigating to service:", serviceId);
+    
+    if (serviceId === "custom-ai-integration" || 
+        serviceId === "ai-powered-web-development" || 
+        serviceId === "marketing-automation" || 
+        serviceId === "business-intelligence" || 
+        serviceId === "enterprise-ai-solutions") {
+      console.log("Navigating to AI services");
+      navigate('/services/ai');
+    } 
+    else if (serviceId === "cloud-hosting-solutions" ||
+             serviceId === "full-stack-development" ||
+             serviceId === "e-commerce-solutions" ||
+             serviceId === "managed-cloud-hosting" ||
+             serviceId === "database-management") {
+      console.log("Navigating to Web services");
+      navigate('/services/web');
+    }
+    else {
+      console.log("Navigating to specific service:", serviceId);
+      navigate(`/services/${serviceId}`);
+    }
+  };
+
+  const handleCoreServiceClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLButtonElement;
+    const serviceId = target.getAttribute('data-service-id');
+    if (serviceId) {
+      handleServiceNavigation(serviceId, e);
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250", // Reduced from 500 to 250
-            inView && "opacity-100 transform-none"
-          )}>
-            Our Premium <span className="text-gradient">Services</span>
-          </h2>
-          <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25", // Reduced from 500/delay-50 to 250/delay-25
-            inView && "opacity-100 transform-none"
-          )}>
-            Comprehensive AI solutions tailored to your business needs, 
-            delivered by experts in automation and artificial intelligence.
-          </p>
-        </div>
+        <ServicesHeader inView={inView} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <CoreServiceCard 
               key={index}
-              className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full", // Reduced from duration-300 translate-y-8 to duration-150 translate-y-4
-                inView && "opacity-100 translate-y-0"
-              )}
-              style={{ transitionDelay: `${index * 25}ms` }} // Reduced from 50ms to 25ms
-            >
-              <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
-                <service.icon className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-800">{service.title}</h3>
-              <p className="text-neutral-600 mb-4">{service.description}</p>
-              
-              <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
-                {service.bulletPoints.map((point, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="text-sm mr-2 mt-1">•</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="mt-auto">
-                <Link to={`/services/${service.id}`} className="block">
-                  <Button 
-                    variant="link" 
-                    className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                  >
-                    Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
+              service={service}
+              inView={inView}
+              index={index}
+              onLearnMore={(e) => {
+                e.preventDefault();
+                const serviceId = service.id;
+                handleServiceNavigation(serviceId, e);
+              }}
+            />
           ))}
         </div>
 
-        <div className={cn(
-          "mt-20 opacity-0 transform translate-y-4 transition-all duration-500 delay-150",
-          inView && "opacity-100 transform-none"
-        )}>
-          <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
-              Web Development & <span className="text-gradient">Hosting</span> Solutions
-            </h3>
-            <p className="max-w-2xl mx-auto text-lg text-neutral-600">
-              {webDevSection.description}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {webDevSection.services.map((service, index) => (
-              <Card 
-                key={index}
-                className={cn(
-                  "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8",
-                  inView && "opacity-100 translate-y-0"
-                )}
-                style={{ transitionDelay: `${400 + (index * 100)}ms` }}
-              >
-                <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
-                  <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
-                    <service.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="flex flex-col w-full h-full">
-                    <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
-                    <p className="text-neutral-600 mb-4">{service.description}</p>
-                    
-                    <div className="mt-auto pt-2">
-                      <Link to={`/services/${service.id}`} className="block">
-                        <Button 
-                          variant="link" 
-                          className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        >
-                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="mt-10 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 md:mr-6">
-                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
-                  Ready for a cutting-edge web presence?
-                </h4>
-                <p className="text-neutral-700">
-                  Our experts build and host AI-optimized websites that drive business growth.
-                </p>
-              </div>
-              <Button 
-                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={scrollToContact}
-              >
-                Get a Free Consultation
-              </Button>
-            </div>
-          </div>
-        </div>
+        <WebServicesSection 
+          webDevSection={webDevSection}
+          inView={inView}
+          onLearnMore={handleServiceNavigation}
+          onGetConsultation={scrollToContact}
+        />
 
         <div className={cn(
           "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
           inView && "opacity-100 transform-none"
         )}>
-          <Button 
-            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => navigate('/services')}
+          <Button
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#9b87f5] hover:bg-[#7E69AB] text-white h-10 px-4 py-2"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/services');
+              window.scrollTo(0, 0);
+            }}
           >
             View All Services
           </Button>

@@ -13,36 +13,67 @@ import ServiceDetails from './components/ServiceDetails';
 import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
-import { ChatProvider } from './context/ChatContext';
+import { ChatProvider, useChat } from './context/ChatContext';
+import ChatBubble from './components/ChatBubble';
 
-// ScrollToTop component that will be used inside Router
+// Enhanced ScrollToTop component with more aggressive scrolling behavior
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash, key } = useLocation();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If not a hash link, scroll to top
+    if (hash === '') {
+      // Try multiple approaches for more reliable scrolling
+      window.scrollTo(0, 0);
+      
+      // Additional approach that sometimes works better in certain browsers
+      document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto', // Use 'auto' instead of 'smooth' for immediate response
+      });
+      
+      // Another approach focusing on the body
+      document.body.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto',
+      });
+    }
+  }, [pathname, hash, key]); // Respond to all location changes
   
   return null;
 }
+
+// AppContent component to hold chat-related functionality
+const AppContent = () => {
+  const { isChatOpen, closeChat } = useChat();
+  
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<AllServices />} />
+        <Route path="/services/:serviceId" element={<ServiceDetails />} />
+        <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/services/web" element={<WebServices />} />
+        <Route path="/services/ai" element={<AIServices />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
+    </>
+  );
+};
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <ChatProvider>
         <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/services/:serviceId" element={<ServiceDetails />} />
-            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
-            <Route path="/services/web" element={<WebServices />} />
-            <Route path="/services/ai" element={<AIServices />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppContent />
         </Router>
         <Toaster />
         <Sonner />

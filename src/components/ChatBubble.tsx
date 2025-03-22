@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, X, Send, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useChat } from '@/context/ChatContext';
-import { useLocation } from 'react-router-dom';
 
 type Message = {
   type: 'user' | 'agent';
@@ -47,7 +45,6 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [sessionId, setSessionId] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { openChat } = useChat();
-  const location = useLocation();
 
   useEffect(() => {
     // Initialize session ID when component mounts
@@ -120,7 +117,6 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     }
   };
 
-  // Always show the chat bubble button on all pages, regardless of route
   if (!isOpen) {
     return (
       <button 

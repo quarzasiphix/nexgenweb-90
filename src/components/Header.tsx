@@ -55,8 +55,8 @@ const Header = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6',
         isScrolled 
-          ? 'bg-neutral-900/95 backdrop-blur-md shadow-sm' // Increased opacity from 90 to 95
-          : 'bg-neutral-900/70' // Changed from transparent to 70% opacity
+          ? 'bg-neutral-900/90 backdrop-blur-md shadow-sm' 
+          : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">

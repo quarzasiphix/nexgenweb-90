@@ -46,6 +46,7 @@ export const CoreServiceCard: React.FC<CoreServiceCardProps> = ({
           variant="link"
           className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
           onClick={onLearnMore}
+          data-service-id={service.id}
         >
           Learn more <ArrowRight className="ml-1 h-4 w-4" />
         </Button>

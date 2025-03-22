@@ -170,6 +170,15 @@ const Services = () => {
     }
   };
 
+  const handleCoreServiceClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLButtonElement;
+    const serviceId = target.getAttribute('data-service-id');
+    if (serviceId) {
+      handleServiceNavigation(serviceId, e);
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,7 +191,11 @@ const Services = () => {
               service={service}
               inView={inView}
               index={index}
-              onLearnMore={(e) => handleServiceNavigation(service.id, e)}
+              onLearnMore={(e) => {
+                e.preventDefault();
+                const serviceId = service.id;
+                handleServiceNavigation(serviceId, e);
+              }}
             />
           ))}
         </div>

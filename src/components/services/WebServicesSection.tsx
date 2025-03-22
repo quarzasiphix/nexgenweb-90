@@ -19,6 +19,11 @@ export const WebServicesSection: React.FC<WebServicesSectionProps> = ({
   onLearnMore,
   onGetConsultation
 }) => {
+  const handleServiceClick = (serviceId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    onLearnMore(serviceId, e);
+  };
+
   return (
     <div className={cn(
       "mt-20 opacity-0 transform translate-y-4 transition-all duration-500 delay-150",
@@ -40,7 +45,7 @@ export const WebServicesSection: React.FC<WebServicesSectionProps> = ({
             service={service}
             inView={inView}
             index={index}
-            onLearnMore={(e) => onLearnMore(service.id, e)}
+            onLearnMore={(e) => handleServiceClick(service.id, e)}
           />
         ))}
       </div>
@@ -57,7 +62,10 @@ export const WebServicesSection: React.FC<WebServicesSectionProps> = ({
           </div>
           <Button 
             className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-            onClick={onGetConsultation}
+            onClick={(e) => {
+              e.preventDefault();
+              onGetConsultation();
+            }}
             type="button"
           >
             Get a Free Consultation

@@ -101,14 +101,14 @@ const AIServices = () => {
                   <div className="flex flex-col sm:flex-row gap-3 mt-6">
                     <Button 
                       className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={openChat}
+                      onClick={() => openChat()}
                     >
                       Get Started
                     </Button>
                     <Button 
                       variant="outline" 
                       className="bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
-                      onClick={openChat}
+                      onClick={() => openChat()}
                     >
                       Learn More
                     </Button>

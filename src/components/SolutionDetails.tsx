@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -10,11 +11,12 @@ import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { solutionCategories } from './Solutions';
 import { useChat } from '@/context/ChatContext';
+import ChatBubble from '@/components/ChatBubble';
 
 const SolutionDetails = () => {
   const { solutionId } = useParams();
   const navigate = useNavigate();
-  const { openChat } = useChat();
+  const { openChat, isChatOpen, closeChat } = useChat();
   const solution = solutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const SolutionDetails = () => {
     } else {
       navigate('/solutions');
     }
-  }, [solutionId, navigate]);
+  }, [solutionId, navigate, solution]);
 
   if (!solution) {
     return null;
@@ -34,7 +36,7 @@ const SolutionDetails = () => {
   const IconComponent = solution.icon;
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-neutral-900 overflow-hidden">
       <Header />
       
       <main className="pt-24 pb-16 px-4">
@@ -133,13 +135,15 @@ const SolutionDetails = () => {
             <Button 
               size="lg"
               className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={openChat}
+              onClick={() => openChat()}
             >
               Get Started Today
             </Button>
           </div>
         </div>
       </main>
+      
+      <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );
 };

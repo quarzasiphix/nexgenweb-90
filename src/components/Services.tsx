@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
 
 const Services = () => {
@@ -149,13 +148,13 @@ const Services = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250", // Reduced from 500 to 250
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-gradient">Services</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25", // Reduced from 500/delay-50 to 250/delay-25
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -236,7 +235,7 @@ const Services = () => {
                       <Button 
                         variant="link" 
                         className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-                        onClick={() => handleServiceClick(service.id)}
+                        onClick={() => handleServiceClick("web")}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>

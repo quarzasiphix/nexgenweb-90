@@ -15,11 +15,13 @@ import useAnimationObserver from '@/hooks/useAnimationObserver';
 import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const Index = () => {
   useAnimationObserver();
   const { isChatOpen, closeChat } = useChat();
   const isMobile = useIsMobile();
+  const { captureEvent } = useAnalytics();
 
   useEffect(() => {
     // Set page title
@@ -32,10 +34,13 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
     }
     
+    // Log page view to PostHog
+    captureEvent('page_view', { page: 'home' });
+    
     return () => {
       document.body.classList.remove('mobile-animations');
     };
-  }, [isMobile]);
+  }, [isMobile, captureEvent]);
 
   return (
     <div className="min-h-screen bg-neutral-900">

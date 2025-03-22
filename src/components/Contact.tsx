@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -25,7 +24,7 @@ const Contact = () => {
   const [messages, setMessages] = useState<{type: 'user' | 'agent', content: string}[]>([
     { 
       type: 'agent' as const, 
-      content: "Hi there! 👋\n\nI'm the ToverNet AI Assistant.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
+      content: "Hi there! 👋\n\nI'm the BizWiz AI Assistant.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
     },
   ]);
   const [inputMessage, setInputMessage] = useState('');
@@ -91,7 +90,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       setMessages([
         ...newMessages,
-        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at tovernet.work@services.com." }
+        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at bizwiz@services.com." }
       ]);
     } finally {
       setIsLoading(false);
@@ -127,7 +126,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">tovernet.work@services.com</p>
+              <p className="text-brand-400">bizwiz@services.com</p>
             </div>
           </div>
         </div>
@@ -158,7 +157,7 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
                 <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
               </div>
-              <h3 className="text-xl font-semibold text-white">ToverNet AI Assistant</h3>
+              <h3 className="text-xl font-semibold text-white">BizWiz AI Assistant</h3>
             </div>
             
             <div className="h-80 overflow-y-auto mb-4 pr-2 space-y-4 custom-scrollbar">
@@ -182,7 +181,7 @@ const Contact = () => {
                       : "bg-white/10 text-neutral-100"
                   )}>
                     {message.type === 'agent' && (
-                      <div className="font-semibold text-[#9b87f5] mb-1">ToverNet AI</div>
+                      <div className="font-semibold text-[#9b87f5] mb-1">BizWiz AI</div>
                     )}
                     <div dangerouslySetInnerHTML={{ __html: formatText(message.content) }} />
                   </div>

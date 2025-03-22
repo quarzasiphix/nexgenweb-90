@@ -70,7 +70,7 @@ const Header = () => {
               "font-semibold text-xl transition-colors duration-300",
               isScrolled ? "text-white" : "text-white"
             )}>
-              ToverNet
+              BizWiz
             </span>
           </Link>
         </div>

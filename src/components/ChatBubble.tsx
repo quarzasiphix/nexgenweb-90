@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, X, Send, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -37,7 +38,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       type: 'agent' as const, 
-      content: "Hi there! 👋\n\n**ToverNet AI** here.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
+      content: "Hi there! 👋\n\n**BizWiz AI** here.\n\nWhat kind of services are you looking for?\n\nIf you're not sure, just tell me a bit about your business — I'll help you discover how we can support you."
     },
   ]);
   const [inputMessage, setInputMessage] = useState('');
@@ -110,7 +111,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
       console.error('Error sending message:', error);
       setMessages([
         ...newMessages,
-        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at tovernet.work@services.com." }
+        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at bizwiz@services.com." }
       ]);
     } finally {
       setIsLoading(false);
@@ -122,7 +123,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
       <button 
         onClick={openChat} 
         className="fixed bottom-6 right-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white p-4 rounded-full shadow-lg z-50 transition-all duration-300 hover:scale-110"
-        aria-label="Chat with ToverNet AI"
+        aria-label="Chat with BizWiz AI"
       >
         <MessageSquare className="h-6 w-6" />
       </button>
@@ -137,7 +138,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
             <div className="absolute inset-0 bg-white rounded-md"></div>
             <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
           </div>
-          <h3 className="font-medium">ToverNet AI Assistant</h3>
+          <h3 className="font-medium">BizWiz AI Assistant</h3>
         </div>
         <button 
           onClick={onClose}
@@ -172,7 +173,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
                 : "bg-white/10 text-neutral-100"
             )}>
               {message.type === 'agent' && (
-                <div className="font-semibold text-[#9b87f5] mb-1">ToverNet AI</div>
+                <div className="font-semibold text-[#9b87f5] mb-1">BizWiz AI</div>
               )}
               <div dangerouslySetInnerHTML={{ __html: formatText(message.content) }} />
             </div>

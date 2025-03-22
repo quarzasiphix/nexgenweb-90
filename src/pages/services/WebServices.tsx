@@ -12,7 +12,7 @@ const WebServices = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     
-    document.title = "Web Services - tovernet.nl";
+    document.title = "Web Services - BizWiz";
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();
@@ -100,7 +100,7 @@ const WebServices = () => {
                   </ul>
                   <Button 
                     className="w-full mt-6 bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                    onClick={openChat}
+                    onClick={() => openChat()}
                   >
                     Get Started
                   </Button>

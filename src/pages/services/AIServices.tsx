@@ -12,7 +12,7 @@ const AIServices = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     
-    document.title = "AI Services - tovernet.nl";
+    document.title = "AI Services - BizWiz";
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();

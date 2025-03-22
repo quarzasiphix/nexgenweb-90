@@ -11,7 +11,7 @@ const AllServices = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    document.title = "All Services - tovernet.nl";
+    document.title = "All Services - BizWiz";
   }, []);
 
   const aiServices = [
@@ -306,7 +306,7 @@ const AllServices = () => {
             <Button
               className="bg-brand-500 hover:bg-brand-600 text-white"
               size="lg"
-              onClick={() => window.location.href = 'mailto:tovernet.nl@services.com'}
+              onClick={() => window.location.href = 'mailto:bizwiz@services.com'}
             >
               Contact Us for Custom Solutions
             </Button>

@@ -26,7 +26,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "ToverNet.nl - Digital Business Solutions";
+    document.title = "BizWiz - Digital Business Solutions";
     
     // On mobile, add a class to body for optimized animations
     if (isMobile) {

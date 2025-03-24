@@ -25,7 +25,7 @@ const Index = () => {
   const [fastScrolling, setFastScrolling] = useState(false);
 
   useEffect(() => {
-    // Set page title
+    // Set page title - Updated to BizWiz
     document.title = "BizWiz - Digital Business Solutions";
     
     // On mobile, add a class to body for optimized animations

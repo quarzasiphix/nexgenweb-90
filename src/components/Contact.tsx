@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -10,9 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import emailjs from 'emailjs-com';
 
-// Helper function to format text with markdown-style bold syntax
 const formatText = (text: string) => {
-  // Replace **text** with <strong>text</strong> for bold
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 };
 
@@ -44,7 +41,10 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   useEffect(() => {
-    // Initialize session ID when component mounts
+    emailjs.init("nGnV1JrAIwNOsw29L");
+  }, []);
+
+  useEffect(() => {
     const storedSessionId = localStorage.getItem('contactChatSessionId');
     if (storedSessionId) {
       setSessionId(storedSessionId);
@@ -56,7 +56,6 @@ const Contact = () => {
   }, []);
 
   useEffect(() => {
-    // Scroll to bottom when messages change
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -85,8 +84,6 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
-      // EmailJS service setup
-      // Note: In a production app, you would need to create an EmailJS account and set up a service
       const templateParams = {
         to_email: 'bizwiz.work@gmail.com',
         from_name: formData.name,
@@ -95,15 +92,13 @@ const Contact = () => {
         message: formData.message,
       };
 
-      // Send the email through EmailJS service
       await emailjs.send(
-        'service_kcu3uir', // Replace with your EmailJS service ID
-        'template_8xeqr5n', // Replace with your EmailJS template ID
+        'service_kcu3uir',
+        'template_8xeqr5n',
         templateParams,
-        'nGnV1JrAIwNOsw29L' // Replace with your EmailJS user ID
+        'nGnV1JrAIwNOsw29L'
       );
       
-      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -133,16 +128,13 @@ const Contact = () => {
     
     if (!inputMessage.trim() || isLoading) return;
     
-    // Add user message
     const newMessages = [...messages, { type: 'user' as const, content: inputMessage }];
     setMessages(newMessages);
     
-    // Clear input and set loading state
     setInputMessage('');
     setIsLoading(true);
     
     try {
-      // Send request to the webhook with ai parameter and sessionId
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: "POST",
         headers: {
@@ -161,7 +153,6 @@ const Contact = () => {
       
       const data = await response.json();
       
-      // Check if the response has the expected format
       if (Array.isArray(data) && data.length > 0 && data[0].output) {
         setMessages([
           ...newMessages, 

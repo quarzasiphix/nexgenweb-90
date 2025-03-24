@@ -93,7 +93,7 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'service_kcu3uir',
+        'service_2flhyyr',
         'template_8xeqr5n',
         templateParams,
         'nGnV1JrAIwNOsw29L'

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -42,8 +41,8 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   useEffect(() => {
-    // Initialize EmailJS with your new client ID
-    emailjs.init("238483670871-9624g5dcnpn7mncv4oqnnlu2d804kglf.apps.googleusercontent.com");
+    // Initialize EmailJS with the correct public key
+    emailjs.init("nGnV1JrAIwNOsw29L");
   }, []);
 
   useEffect(() => {
@@ -98,7 +97,7 @@ const Contact = () => {
         'service_nxmie4r',
         'template_8xeqr5n',
         templateParams,
-        '238483670871-9624g5dcnpn7mncv4oqnnlu2d804kglf.apps.googleusercontent.com'
+        'nGnV1JrAIwNOsw29L'
       );
       
       setFormData({

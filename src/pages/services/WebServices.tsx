@@ -1,13 +1,17 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Globe, Database, Code, Shield, Server } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useToast } from '@/hooks/use-toast';
 
 const WebServices = () => {
+  const [inquiryService, setInquiryService] = useState('');
+  const { toast } = useToast();
+  
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -16,6 +20,20 @@ const WebServices = () => {
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();
+
+  const handleGetStarted = (serviceTitle: string) => {
+    setInquiryService(serviceTitle);
+    openChat();
+    
+    // Log the service inquiry
+    console.log(`User inquired about ${serviceTitle} service`);
+    
+    toast({
+      title: "Service Selected",
+      description: `We'll discuss ${serviceTitle} options in the chat.`,
+      duration: 3000,
+    });
+  };
 
   const services = [
     {
@@ -101,7 +119,7 @@ const WebServices = () => {
                   <div className="mt-6">
                     <Button 
                       className="w-full mt-auto bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => openChat()}
+                      onClick={() => handleGetStarted(service.title)}
                     >
                       Get Started
                     </Button>

@@ -191,11 +191,11 @@ const AllServices = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {aiServices.map((service, index) => (
-                    <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                      <CardContent className="p-6">
+                    <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300 flex flex-col">
+                      <CardContent className="p-6 flex flex-col h-full">
                         <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                         <p className="text-neutral-300 mb-4">{service.description}</p>
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 mb-auto">
                           {service.features.slice(0, 3).map((feature, idx) => (
                             <li key={idx} className="flex items-start text-neutral-400">
                               <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
@@ -203,12 +203,14 @@ const AllServices = () => {
                             </li>
                           ))}
                         </ul>
-                        <Button 
-                          className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
-                          onClick={() => navigate('/services/ai')}
-                        >
-                          Learn More
-                        </Button>
+                        <div className="mt-6">
+                          <Button 
+                            className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                            onClick={() => navigate('/services/ai')}
+                          >
+                            Learn More
+                          </Button>
+                        </div>
                       </CardContent>
                     </Card>
                   ))}
@@ -222,11 +224,11 @@ const AllServices = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {webServices.map((service, index) => (
-                    <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                      <CardContent className="p-6">
+                    <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300 flex flex-col">
+                      <CardContent className="p-6 flex flex-col h-full">
                         <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                         <p className="text-neutral-300 mb-4">{service.description}</p>
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 mb-auto">
                           {service.features.slice(0, 3).map((feature, idx) => (
                             <li key={idx} className="flex items-start text-neutral-400">
                               <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
@@ -234,12 +236,14 @@ const AllServices = () => {
                             </li>
                           ))}
                         </ul>
-                        <Button 
-                          className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
-                          onClick={() => navigate('/services/web')}
-                        >
-                          Learn More
-                        </Button>
+                        <div className="mt-6">
+                          <Button 
+                            className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                            onClick={() => navigate('/services/web')}
+                          >
+                            Learn More
+                          </Button>
+                        </div>
                       </CardContent>
                     </Card>
                   ))}
@@ -250,11 +254,11 @@ const AllServices = () => {
             <TabsContent value="ai">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {aiServices.map((service, index) => (
-                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                    <CardContent className="p-6">
+                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300 flex flex-col">
+                    <CardContent className="p-6 flex flex-col h-full">
                       <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                       <p className="text-neutral-300 mb-4">{service.description}</p>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2 mb-auto">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start text-neutral-400">
                             <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
@@ -262,12 +266,14 @@ const AllServices = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button 
-                        className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
-                        onClick={() => navigate('/services/ai')}
-                      >
-                        Learn More
-                      </Button>
+                      <div className="mt-6">
+                        <Button 
+                          className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                          onClick={() => navigate('/services/ai')}
+                        >
+                          Learn More
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
@@ -277,11 +283,11 @@ const AllServices = () => {
             <TabsContent value="web">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {webServices.map((service, index) => (
-                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                    <CardContent className="p-6">
+                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300 flex flex-col">
+                    <CardContent className="p-6 flex flex-col h-full">
                       <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                       <p className="text-neutral-300 mb-4">{service.description}</p>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2 mb-auto">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start text-neutral-400">
                             <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
@@ -289,12 +295,14 @@ const AllServices = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button 
-                        className="w-full mt-6 bg-brand-500 hover:bg-brand-600 text-white"
-                        onClick={() => navigate('/services/web')}
-                      >
-                        Learn More
-                      </Button>
+                      <div className="mt-6">
+                        <Button 
+                          className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                          onClick={() => navigate('/services/web')}
+                        >
+                          Learn More
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}

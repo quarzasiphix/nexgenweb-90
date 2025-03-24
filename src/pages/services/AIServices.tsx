@@ -81,8 +81,8 @@ const AIServices = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-neutral-800 border-neutral-700">
-                <CardContent className="p-6">
+              <Card key={index} className="bg-neutral-800 border-neutral-700 flex flex-col h-full">
+                <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center mb-4">
                     <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
                       <service.icon className="h-6 w-6 text-[#D6BCFA]" />
@@ -90,7 +90,7 @@ const AIServices = () => {
                     <h2 className="text-xl font-semibold text-white">{service.title}</h2>
                   </div>
                   <p className="text-neutral-300 mb-4">{service.description}</p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 mb-auto">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-neutral-400">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9b87f5] mt-2 mr-2 flex-shrink-0"></span>
@@ -98,16 +98,16 @@ const AIServices = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <Button 
-                      className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                      className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
                       onClick={() => openChat()}
                     >
                       Get Started
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
+                      className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
                       onClick={() => openChat()}
                     >
                       Learn More

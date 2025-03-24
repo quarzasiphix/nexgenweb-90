@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -11,8 +10,8 @@ import { useChat } from '@/context/ChatContext';
 const Services = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.01, // Reduced from 0.05
-    rootMargin: '50px', // Added to trigger before element is in viewport
+    threshold: 0.01,
+    rootMargin: '50px',
   });
   
   const navigate = useNavigate();
@@ -143,13 +142,13 @@ const Services = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250", // Reduced from 500 to 250
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-gradient">Services</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25", // Reduced from 500/delay-50 to 250/delay-25
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -162,10 +161,10 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full", // Reduced from duration-300 translate-y-8 to duration-150 translate-y-4
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
-              style={{ transitionDelay: `${index * 25}ms` }} // Reduced from 50ms to 25ms
+              style={{ transitionDelay: `${index * 25}ms` }}
             >
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
@@ -214,7 +213,7 @@ const Services = () => {
               <Card 
                 key={index}
                 className={cn(
-                  "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8",
+                  "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full",
                   inView && "opacity-100 translate-y-0"
                 )}
                 style={{ transitionDelay: `${400 + (index * 100)}ms` }}

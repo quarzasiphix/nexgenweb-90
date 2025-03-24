@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -62,13 +63,16 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
-      // Send request to the webhook
+      // Send request to the webhook with ai parameter
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input: inputMessage }),
+        body: JSON.stringify({ 
+          input: inputMessage,
+          ai: "BizWiz"
+        }),
       });
       
       if (!response.ok) {

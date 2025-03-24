@@ -80,7 +80,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     setIsLoading(true);
     
     try {
-      // Send request to the webhook with session ID
+      // Send request to the webhook with session ID and ai parameter
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: 'POST',
         headers: {
@@ -88,7 +88,8 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
         },
         body: JSON.stringify({ 
           input: inputMessage,
-          session: sessionId 
+          session: sessionId,
+          ai: "BizWiz"
         }),
       });
       

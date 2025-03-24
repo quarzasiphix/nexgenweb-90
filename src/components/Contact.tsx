@@ -1,7 +1,7 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -30,7 +30,20 @@ const Contact = () => {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initialize session ID when component mounts
+    const storedSessionId = localStorage.getItem('contactChatSessionId');
+    if (storedSessionId) {
+      setSessionId(storedSessionId);
+    } else {
+      const newSessionId = uuidv4();
+      setSessionId(newSessionId);
+      localStorage.setItem('contactChatSessionId', newSessionId);
+    }
+  }, []);
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -63,7 +76,7 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
-      // Send request to the webhook with ai parameter
+      // Send request to the webhook with ai parameter and sessionId
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: 'POST',
         headers: {
@@ -71,7 +84,8 @@ const Contact = () => {
         },
         body: JSON.stringify({ 
           input: inputMessage,
-          ai: "BizWiz"
+          ai: "BizWiz",
+          sessionId: sessionId
         }),
       });
       

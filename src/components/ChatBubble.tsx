@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, X, Send, MessageSquare } from 'lucide-react';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,13 +9,6 @@ import { useChat } from '@/context/ChatContext';
 type Message = {
   type: 'user' | 'agent';
   content: string;
-};
-
-type UserInfo = {
-  name: string;
-  email: string;
-  businessType: string;
-  needsAssessed: boolean;
 };
 
 type ChatBubbleProps = {
@@ -27,11 +20,6 @@ type ChatBubbleProps = {
 const formatText = (text: string) => {
   // Replace **text** with <strong>text</strong> for bold
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-};
-
-// Generate a random session ID
-const generateSessionId = () => {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
 const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
@@ -53,7 +41,7 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     if (storedSessionId) {
       setSessionId(storedSessionId);
     } else {
-      const newSessionId = generateSessionId();
+      const newSessionId = uuidv4();
       setSessionId(newSessionId);
       localStorage.setItem('chatSessionId', newSessionId);
     }
@@ -89,7 +77,8 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
         body: JSON.stringify({ 
           input: inputMessage,
           session: sessionId,
-          ai: "BizWiz"
+          ai: "BizWiz",
+          sessionId: sessionId // Adding sessionId parameter
         }),
       });
       

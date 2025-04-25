@@ -80,11 +80,23 @@ const Index = () => {
     <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
+      {/* Always show Solutions as it's crucial for understanding our offerings */}
       <Solutions />
-      <Services />
-      <HowItWorks />
-      <CaseStudies />
-      <Testimonials />
+      
+      {/* On mobile, only show key sections */}
+      {!isMobile ? (
+        <>
+          <Services />
+          <HowItWorks />
+          <CaseStudies />
+          <Testimonials />
+        </>
+      ) : (
+        // On mobile, only show HowItWorks as it's most important for conversion
+        <HowItWorks />
+      )}
+      
+      {/* Always show CTA and Contact for conversion */}
       <CTASection />
       <Contact />
       <Footer />

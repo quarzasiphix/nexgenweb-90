@@ -10,7 +10,7 @@ const NotFound = () => {
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
-    document.title = "404 Not Found - BizWiz";
+    document.title = "404 Not Found - NexGenWeb";
   }, [location.pathname]);
 
   return (

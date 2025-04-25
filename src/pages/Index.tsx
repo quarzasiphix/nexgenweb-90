@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -26,7 +25,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "BizWiz - Digital Business Solutions";
+    document.title = "NexGenWeb - Digital Business Solutions";
     
     // On mobile, add a class to body for optimized animations
     if (isMobile) {
@@ -110,4 +109,3 @@ const Index = () => {
 };
 
 export default Index;
-

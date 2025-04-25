@@ -69,7 +69,7 @@ const Header = () => {
               "font-semibold text-xl transition-colors duration-300",
               isScrolled ? "text-white" : "text-white"
             )}>
-              BizWiz
+              NexGenWeb
             </span>
           </Link>
         </div>

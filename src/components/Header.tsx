@@ -54,7 +54,7 @@ const Header = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6 w-full',
         isScrolled 
-          ? 'bg-background/90 backdrop-blur-md shadow-sm' 
+          ? 'bg-neutral-900/90 backdrop-blur-md shadow-sm' 
           : 'bg-transparent'
       )}
     >
@@ -62,12 +62,12 @@ const Header = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-primary rounded-md animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-primary/80 rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
+              <div className="absolute inset-0 bg-[#9b87f5] rounded-md animate-pulse-slow"></div>
+              <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
             </div>
             <span className={cn(
               "font-semibold text-xl transition-colors duration-300",
-              isScrolled ? "text-foreground" : "text-primary-foreground"
+              isScrolled ? "text-white" : "text-white"
             )}>
               NexGenWeb
             </span>
@@ -80,15 +80,15 @@ const Header = () => {
               key={link.name}
               onClick={() => handleNavigation(link.href)}
               className={cn(
-                "text-sm font-medium transition-colors duration-300 hover:text-primary",
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground"
+                "text-sm font-medium transition-colors duration-300 hover:text-[#D6BCFA]",
+                isScrolled ? "text-neutral-300" : "text-white"
               )}
             >
               {link.name}
             </button>
           ))}
           <Button 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
             onClick={openChat}
           >
             Contact Us

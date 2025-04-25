@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,7 @@ import Header from '@/components/Header';
 
 const CaseStudiesPage = () => {
   useEffect(() => {
-    document.title = "Case Studies - BizWiz";
+    document.title = "Case Studies - NexGenWeb";  // Updated from BizWiz
   }, []);
 
   const caseStudies = [

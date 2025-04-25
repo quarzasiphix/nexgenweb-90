@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Blocks, Award, Globe, LightbulbIcon, Rocket, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
@@ -8,7 +9,7 @@ const AboutPage = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    document.title = "About Us - NexGenWeb";
+    document.title = "About Us - NexGenWeb";  // Kept consistent with other page titles
   }, []);
 
   const coreServices = [

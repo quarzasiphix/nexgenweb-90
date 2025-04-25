@@ -92,8 +92,11 @@ const Index = () => {
           <Testimonials />
         </>
       ) : (
-        // On mobile, only show HowItWorks as it's most important for conversion
-        <HowItWorks />
+        // On mobile, show both HowItWorks and Services (web dev) as they're most important
+        <>
+          <HowItWorks />
+          <Services />
+        </>
       )}
       
       {/* Always show CTA and Contact for conversion */}
@@ -107,3 +110,4 @@ const Index = () => {
 };
 
 export default Index;
+

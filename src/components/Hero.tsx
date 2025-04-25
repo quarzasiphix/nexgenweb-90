@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -26,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative pt-16 md:pt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 min-h-screen">
+    <div className="relative pt-16 md:pt-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 min-h-[80vh] md:min-h-screen">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
       </div>
@@ -34,7 +33,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
 
-      <div className="container px-4 sm:px-6 relative z-10 mt-16">
+      <div className="container px-4 sm:px-6 relative z-10 mt-8 md:mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <div className={cn(
             "opacity-0 transform translate-y-4 transition-all duration-1000",
@@ -45,175 +44,199 @@ const Hero = () => {
                 Digital Solutions for Modern Business
               </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
               Empower Your Business with <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">BizWiz</span>
             </h1>
-            <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-white/80 mb-8 md:mb-10 max-w-2xl mx-auto">
               Advanced solutions for business automation, web development, and digital transformation.
             </p>
             
-            <div className="mb-12">
-              <Tabs defaultValue="automation" className="w-full">
-                <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-                  <TabsTrigger 
-                    value="automation" 
-                    className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/80"
-                  >
-                    AI Solutions
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="web" 
-                    className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/80"
-                  >
-                    Web Services
-                  </TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="automation" className="mt-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Bot className="h-5 w-5 text-[#D6BCFA]" />
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Finance & HR</h3>
-                      </div>
-                      <p className="text-white/80 text-sm mb-4">Automate invoicing, payroll, expense tracking, recruitment, and employee management.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
+            {isMobile ? (
+              <div className="flex flex-col gap-4 mb-8">
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                  <div className="flex items-center mb-3">
+                    <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                      <Bot className="h-5 w-5 text-[#D6BCFA]" />
                     </div>
-
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <LineChart className="h-5 w-5 text-[#D6BCFA]" />
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Sales & Marketing</h3>
-                      </div>
-                      <p className="text-white/80 text-sm mb-4">Boost lead generation, personalize campaigns, optimize ads, and enhance CRM systems.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
-
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Shield className="h-5 w-5 text-[#D6BCFA]" />
-                        </div>
-                        <h3 className="text-xl font-medium text-white">IT & Security</h3>
-                      </div>
-                      <p className="text-white/80 text-sm mb-4">Protect with threat detection, automated support, and system monitoring.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
-
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Server className="h-5 w-5 text-[#D6BCFA]" />
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Customer Support</h3>
-                      </div>
-                      <p className="text-white/80 text-sm mb-4">Deploy chatbots, automate emails, analyze customer sentiment, and transcribe calls.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
+                    <h3 className="text-lg font-medium text-white">AI Solutions</h3>
                   </div>
-                </TabsContent>
-                
-                <TabsContent value="web" className="mt-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Code className="h-5 w-5 text-[#D6BCFA]" />
-                        </div>
-                        <h3 className="text-xl font-medium text-white">Web Development</h3>
-                      </div>
-                      <p className="text-white/80 text-sm mb-4">Custom business websites, e-commerce solutions, web applications, and progressive web apps.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
+                  <p className="text-white/80 text-sm">Automate your business processes with our advanced AI solutions.</p>
+                </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Server className="h-5 w-5 text-[#D6BCFA]" />
+                <Button 
+                  className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white w-full group" 
+                  size="lg"
+                  onClick={openChat}
+                >
+                  <span>Get Started</span>
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
+            ) : (
+              <div className="mb-12">
+                <Tabs defaultValue="automation" className="w-full">
+                  <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
+                    <TabsTrigger 
+                      value="automation" 
+                      className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/80"
+                    >
+                      AI Solutions
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="web" 
+                      className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white data-[state=active]:font-semibold data-[state=active]:ring-2 data-[state=active]:ring-[#8B5CF6]/80"
+                    >
+                      Web Services
+                    </TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="automation" className="mt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Bot className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Finance & HR</h3>
                         </div>
-                        <h3 className="text-xl font-medium text-white">Cloud Hosting</h3>
+                        <p className="text-white/80 text-sm mb-4">Automate invoicing, payroll, expense tracking, recruitment, and employee management.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/ai')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
                       </div>
-                      <p className="text-white/80 text-sm mb-4">High-performance servers, managed cloud infrastructure, 99.9% uptime guarantee, and CDN integration.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Database className="h-5 w-5 text-[#D6BCFA]" />
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <LineChart className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Sales & Marketing</h3>
                         </div>
-                        <h3 className="text-xl font-medium text-white">Technical Services</h3>
+                        <p className="text-white/80 text-sm mb-4">Boost lead generation, personalize campaigns, optimize ads, and enhance CRM systems.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/ai')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
                       </div>
-                      <p className="text-white/80 text-sm mb-4">Database management, API development, system integrations, and performance optimization.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
-                          <Shield className="h-5 w-5 text-[#D6BCFA]" />
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Shield className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">IT & Security</h3>
                         </div>
-                        <h3 className="text-xl font-medium text-white">Web Security</h3>
+                        <p className="text-white/80 text-sm mb-4">Protect with threat detection, automated support, and system monitoring.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/ai')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
                       </div>
-                      <p className="text-white/80 text-sm mb-4">SSL implementation, security audits, DDoS protection, and regular security updates.</p>
-                      <Button 
-                        variant="link" 
-                        className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
-                      >
-                        Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
+
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Server className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Customer Support</h3>
+                        </div>
+                        <p className="text-white/80 text-sm mb-4">Deploy chatbots, automate emails, analyze customer sentiment, and transcribe calls.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/ai')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="web" className="mt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Code className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Web Development</h3>
+                        </div>
+                        <p className="text-white/80 text-sm mb-4">Custom business websites, e-commerce solutions, web applications, and progressive web apps.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/web')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Server className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Cloud Hosting</h3>
+                        </div>
+                        <p className="text-white/80 text-sm mb-4">High-performance servers, managed cloud infrastructure, 99.9% uptime guarantee, and CDN integration.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/web')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Database className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Technical Services</h3>
+                        </div>
+                        <p className="text-white/80 text-sm mb-4">Database management, API development, system integrations, and performance optimization.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/web')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                        <div className="flex items-center mb-4">
+                          <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
+                            <Shield className="h-5 w-5 text-[#D6BCFA]" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white">Web Security</h3>
+                        </div>
+                        <p className="text-white/80 text-sm mb-4">SSL implementation, security audits, DDoS protection, and regular security updates.</p>
+                        <Button 
+                          variant="link" 
+                          className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
+                          onClick={() => navigate('/services/web')}
+                        >
+                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            )}
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Button 
@@ -222,7 +245,7 @@ const Hero = () => {
                 onClick={openChat}
               >
                 <span>Contact Us</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
                 variant="outline" 

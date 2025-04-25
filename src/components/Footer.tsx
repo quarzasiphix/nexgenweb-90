@@ -10,8 +10,8 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <div className="relative w-8 h-8">
-                <div className="absolute inset-0 bg-brand-600 rounded-md animate-pulse-slow"></div>
-                <div className="absolute inset-0 bg-brand-500 rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
+                <div className="absolute inset-0 bg-[#9b87f5] rounded-full animate-pulse-slow"></div>
+                <div className="absolute inset-0 bg-[#7E69AB] rounded-full rotate-45 scale-75 animate-rotate-slow"></div>
               </div>
               <span className="font-semibold text-xl">
                 NexGenWeb

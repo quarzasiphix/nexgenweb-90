@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -62,8 +63,8 @@ const Header = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-[#9b87f5] rounded-md animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
+              <div className="absolute inset-0 bg-[#9b87f5] rounded-full animate-pulse-slow"></div>
+              <div className="absolute inset-0 bg-[#7E69AB] rounded-full rotate-45 scale-75 animate-rotate-slow"></div>
             </div>
             <span className={cn(
               "font-semibold text-xl transition-colors duration-300",

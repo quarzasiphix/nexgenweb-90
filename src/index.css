@@ -1,4 +1,4 @@
-
+@import './styles/design-tokens.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -110,11 +110,11 @@
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-lg;
+    @apply backdrop-blur-md bg-background/20 border border-border/30 shadow-lg;
   }
   
   .glass-morphism {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-md;
+    @apply bg-background/10 backdrop-blur-lg border border-border/20 shadow-md;
   }
   
   .section-container {
@@ -122,17 +122,18 @@
   }
 
   .btn-primary {
-    @apply px-8 py-3 font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-700 
-    transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1;
+    @apply px-8 py-3 font-medium rounded-lg text-primary-foreground bg-primary 
+    hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg 
+    transform hover:-translate-y-1;
   }
   
   .btn-secondary {
-    @apply px-8 py-3 font-medium rounded-lg border border-brand-600 text-brand-600 
-    hover:bg-brand-50 transition-all duration-300;
+    @apply px-8 py-3 font-medium rounded-lg border border-primary text-primary 
+    hover:bg-primary/10 transition-all duration-300;
   }
   
   .btn-outline {
-    @apply px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 
+    @apply px-6 py-2 border border-border rounded-lg hover:bg-accent/5 
     transition-all duration-200;
   }
   

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
@@ -6,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-neutral-900 text-white pt-16 pb-8 border-t border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <div className="relative w-8 h-8">
@@ -39,36 +40,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Solutions</h3>
             <ul className="space-y-3">
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</a></li>
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</a></li>
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</a></li>
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</a></li>
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">IT & Security</a></li>
-              <li><a href="#solutions" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</a></li>
+              <li><Link to="/services/ai#customer-support" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</Link></li>
+              <li><Link to="/services/ai#sales-automation" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</Link></li>
+              <li><Link to="/services/ai#finance" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</Link></li>
+              <li><Link to="/services/ai#hr" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</Link></li>
+              <li><Link to="/services/ai#security" className="text-neutral-400 hover:text-white transition-colors">IT & Security</Link></li>
+              <li><Link to="/services/ai#analytics" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-neutral-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#case-studies" className="text-neutral-400 hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Press & Media</a></li>
-              <li><a href="#contact" className="text-neutral-400 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Resources</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">API References</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Knowledge Base</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Community Forum</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Tutorials & Guides</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">System Status</a></li>
+              <li><Link to="/about" className="text-neutral-400 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/case-studies" className="text-neutral-400 hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link to="/contact" className="text-neutral-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>

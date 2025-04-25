@@ -80,25 +80,13 @@ const Index = () => {
     <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
-      {/* Show all sections on desktop, but only key sections on mobile */}
-      {isMobile ? (
-        <>
-          <Solutions />
-          <HowItWorks />
-          <CTASection />
-          <Contact />
-        </>
-      ) : (
-        <>
-          <Solutions />
-          <Services />
-          <HowItWorks />
-          <CaseStudies />
-          <Testimonials />
-          <CTASection />
-          <Contact />
-        </>
-      )}
+      <Solutions />
+      <Services />
+      <HowItWorks />
+      <CaseStudies />
+      <Testimonials />
+      <CTASection />
+      <Contact />
       <Footer />
       <ScrollToTopButton />
       <ChatBubble isOpen={isChatOpen} onClose={closeChat} />

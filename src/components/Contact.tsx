@@ -41,7 +41,6 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   useEffect(() => {
-    // Initialize EmailJS with the correct public key
     emailjs.init("nGnV1JrAIwNOsw29L");
   }, []);
 
@@ -86,7 +85,7 @@ const Contact = () => {
     
     try {
       const templateParams = {
-        to_email: 'bizwiz.work@gmail.com',
+        to_email: 'nexgenweb.io@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
@@ -166,7 +165,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       setMessages([
         ...newMessages,
-        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at bizwiz.work@gmail.com." }
+        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at nexgenweb.io@gmail.com." }
       ]);
     } finally {
       setIsLoading(false);
@@ -202,7 +201,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">bizwiz.work@gmail.com</p>
+              <p className="text-brand-400">nexgenweb.io@gmail.com</p>
             </div>
           </div>
         </div>

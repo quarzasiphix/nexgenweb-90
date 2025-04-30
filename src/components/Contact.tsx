@@ -40,6 +40,9 @@ const Contact = () => {
     message: ''
   });
   const [formSubmitting, setFormSubmitting] = useState(false);
+  
+  // Define a consistent contact email to use throughout the component
+  const contactEmail = "bizwiz.work@gmail.com";
 
   useEffect(() => {
     emailjs.init("ArDqM6v2Ny3InyvoQ");
@@ -165,7 +168,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       setMessages([
         ...newMessages,
-        { type: 'agent' as const, content: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at nexgenweb.io@gmail.com." }
+        { type: 'agent' as const, content: `I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at ${contactEmail}.` }
       ]);
     } finally {
       setIsLoading(false);
@@ -201,7 +204,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">nexgenweb.io@gmail.com</p>
+              <p className="text-brand-400">{contactEmail}</p>
             </div>
           </div>
         </div>

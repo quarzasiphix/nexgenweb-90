@@ -21,6 +21,7 @@ const Contact = () => {
   });
 
   const { toast } = useToast();
+  const [showAIAgent, setShowAIAgent] = useState(false);
   const [messages, setMessages] = useState<{type: 'user' | 'agent', content: string}[]>([
     { 
       type: 'agent' as const, 
@@ -195,6 +196,21 @@ const Contact = () => {
           </p>
         </div>
 
+        <div className="flex justify-center items-center mb-12">
+          <div className={cn(
+            "flex items-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 opacity-0 transform translate-y-8 transition-all duration-500",
+            inView && "opacity-100 translate-y-0"
+          )}>
+            <div className="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center mr-4">
+              <Mail className="h-6 w-6 text-brand-400" />
+            </div>
+            <div>
+              <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
+              <p className="text-brand-400">{contactEmail}</p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className={cn(
             "bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
@@ -354,22 +370,6 @@ const Contact = () => {
                 )}
               </Button>
             </form>
-          </div>
-        </div>
-
-        {/* Email section moved below the chat and form */}
-        <div className="flex justify-center items-center mt-12">
-          <div className={cn(
-            "flex items-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 opacity-0 transform translate-y-8 transition-all duration-500 delay-200",
-            inView && "opacity-100 translate-y-0"
-          )}>
-            <div className="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center mr-4">
-              <Mail className="h-6 w-6 text-brand-400" />
-            </div>
-            <div>
-              <h3 className="text-xl font-medium text-white mb-1">Email Us</h3>
-              <p className="text-brand-400">{contactEmail}</p>
-            </div>
           </div>
         </div>
       </div>

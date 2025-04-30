@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -92,8 +93,8 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'default_service',  // Use your actual service ID from EmailJS dashboard
-        'template_default', // Use your actual template ID from EmailJS dashboard
+        'service_gmail',  // Updated service ID
+        'template_pd1oxvn', // Updated template ID
         templateParams,
         'ArDqM6v2Ny3InyvoQ'
       );

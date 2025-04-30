@@ -41,7 +41,7 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   useEffect(() => {
-    emailjs.init("nGnV1JrAIwNOsw29L");
+    emailjs.init("user_BrDQq8l08cXEiIFY3zrnL");
   }, []);
 
   useEffect(() => {
@@ -93,10 +93,10 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'service_nxmie4r',
-        'template_8xeqr5n',
+        'service_gmail',
+        'template_contact',
         templateParams,
-        'nGnV1JrAIwNOsw29L'
+        'user_BrDQq8l08cXEiIFY3zrnL'
       );
       
       setFormData({

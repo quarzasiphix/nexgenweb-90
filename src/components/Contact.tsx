@@ -89,15 +89,16 @@ const Contact = () => {
     
     try {
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
+        customer_name: formData.name,
+        customer_email: formData.email,
         subject: formData.subject,
         message: formData.message,
+        current_date: new Date().toLocaleDateString(),
       };
 
       await emailjs.send(
-        'service_gmail',  // Updated service ID
-        'template_pd1oxvn', // Updated template ID
+        'service_gmail',
+        'template_pd1oxvn',
         templateParams,
         'ArDqM6v2Ny3InyvoQ'
       );

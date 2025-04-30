@@ -85,7 +85,6 @@ const Contact = () => {
     
     try {
       const templateParams = {
-        to_email: 'nexgenweb.io@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
@@ -93,8 +92,8 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'service_gmail',
-        'template_contact',
+        'default_service',  // Use your actual service ID from EmailJS dashboard
+        'template_default', // Use your actual template ID from EmailJS dashboard
         templateParams,
         'ArDqM6v2Ny3InyvoQ'
       );

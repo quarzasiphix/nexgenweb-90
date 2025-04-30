@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -87,6 +88,7 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
+      // Updated template parameters to match the exact format shown
       const templateParams = {
         customer_name: formData.name,
         customer_email: formData.email,

@@ -41,7 +41,7 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
   
   // Define a consistent contact email to use throughout the component
-  const contactEmail = "nexgenweb@example.com";
+  const contactEmail = "nexgenweb.io@gmail.com";
 
   useEffect(() => {
     emailjs.init("ArDqM6v2Ny3InyvoQ");

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -42,7 +41,7 @@ const Contact = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
   
   // Define a consistent contact email to use throughout the component
-  const contactEmail = "bizwiz.work@gmail.com";
+  const contactEmail = "nexgenweb@example.com";
 
   useEffect(() => {
     emailjs.init("ArDqM6v2Ny3InyvoQ");

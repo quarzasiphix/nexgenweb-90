@@ -211,25 +211,9 @@ const Contact = () => {
           </div>
         </div>
 
-        {!showAIAgent ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className={cn(
-            "max-w-2xl mx-auto text-center opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
-            inView && "opacity-100 translate-y-0"
-          )}>
-            <Button 
-              onClick={() => setShowAIAgent(true)}
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white px-8 py-6 rounded-xl font-medium text-lg flex items-center mx-auto"
-            >
-              <Bot className="mr-2 h-5 w-5" />
-              Talk to Our AI Assistant
-            </Button>
-            <p className="mt-4 text-neutral-400 text-sm">
-              Our AI assistant will help identify your needs and schedule an appointment with our experts
-            </p>
-          </div>
-        ) : (
-          <div className={cn(
-            "max-w-2xl mx-auto bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
+            "bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
             inView && "opacity-100 translate-y-0"
           )}>
             <div className="flex items-center mb-4">
@@ -303,27 +287,9 @@ const Contact = () => {
               </Button>
             </form>
           </div>
-        )}
 
-        <div className={cn(
-          "max-w-2xl mx-auto mt-12 text-center opacity-0 transform translate-y-8 transition-all duration-500 delay-200",
-          inView && "opacity-100 translate-y-0"
-        )}>
-          <p className="text-neutral-400">
-            Or fill out our traditional contact form
-          </p>
-          <Button 
-            onClick={() => setShowAIAgent(false)}
-            variant="link" 
-            className="text-[#9b87f5] hover:text-[#7E69AB]"
-          >
-            Show contact form
-          </Button>
-        </div>
-
-        {!showAIAgent && (
           <div className={cn(
-            "max-w-2xl mx-auto bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100 mt-6",
+            "bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
             inView && "opacity-100 translate-y-0"
           )}>
             <h3 className="text-2xl font-semibold mb-6 text-white">Send us a message</h3>
@@ -405,7 +371,7 @@ const Contact = () => {
               </Button>
             </form>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

@@ -1,14 +1,17 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Bot, LineChart, Laptop, Building2, Mail, Globe, 
-  Server, Code, Database, ArrowLeft
+  Server, Code, Database, ArrowLeft, ShoppingCart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useAnalytics } from '@/hooks/use-analytics';
+import { useToast } from '@/hooks/use-toast';
 
 const allServices = [
   {
@@ -18,6 +21,7 @@ const allServices = [
     icon: Bot,
     color: "from-blue-500 to-blue-600",
     category: "ai",
+    price: 1499,
     features: [
       "Automated data processing",
       "Custom AI model integration",
@@ -40,6 +44,7 @@ const allServices = [
     icon: Laptop,
     color: "from-purple-500 to-purple-600",
     category: "ai",
+    price: 1299,
     features: [
       "Custom business websites with AI-optimized UX",
       "E-commerce platforms with AI product recommendations",
@@ -62,6 +67,7 @@ const allServices = [
     icon: Mail,
     color: "from-green-500 to-green-600",
     category: "ai",
+    price: 999,
     features: [
       "Dynamic email campaigns",
       "AI-powered content generation",
@@ -84,6 +90,7 @@ const allServices = [
     icon: LineChart,
     color: "from-orange-500 to-orange-600",
     category: "ai",
+    price: 1199,
     features: [
       "Interactive data dashboards",
       "Predictive analytics",
@@ -106,6 +113,7 @@ const allServices = [
     icon: Building2,
     color: "from-red-500 to-red-600",
     category: "ai",
+    price: 2499,
     features: [
       "Enterprise-wide AI strategy",
       "Department-specific AI solutions",
@@ -128,6 +136,7 @@ const allServices = [
     icon: Server,
     color: "from-indigo-500 to-indigo-600",
     category: "ai",
+    price: 899,
     features: [
       "High-performance dedicated servers for AI workloads",
       "Managed cloud hosting with automatic scaling",
@@ -150,6 +159,7 @@ const allServices = [
     icon: Code,
     color: "from-teal-500 to-teal-600",
     category: "web",
+    price: 1399,
     features: [
       "Frontend development with React, Vue, or Angular",
       "Backend API development with Node.js, Python, or PHP",
@@ -172,6 +182,7 @@ const allServices = [
     icon: Globe,
     color: "from-pink-500 to-pink-600",
     category: "web",
+    price: 1699,
     features: [
       "Custom e-commerce platform development",
       "Integration with payment gateways and shipping providers",
@@ -194,6 +205,7 @@ const allServices = [
     icon: Server,
     color: "from-blue-600 to-blue-700",
     category: "web",
+    price: 799,
     features: [
       "High-performance cloud servers",
       "Auto-scaling based on traffic demands",
@@ -216,6 +228,7 @@ const allServices = [
     icon: Database,
     color: "from-violet-500 to-violet-600",
     category: "web",
+    price: 999,
     features: [
       "Database design and architecture",
       "Performance optimization and tuning",
@@ -237,6 +250,8 @@ const ServiceDetails = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
+  const { captureEvent } = useAnalytics();
+  const { toast } = useToast();
   
   const service = allServices.find(s => s.id === serviceId);
 
@@ -245,15 +260,48 @@ const ServiceDetails = () => {
     window.scrollTo(0, 0);
     
     if (service) {
-      document.title = `${service.title} - ToverNet`;
+      document.title = `${service.title} - BizWiz`;
+      // Track page view with analytics
+      captureEvent('service_details_view', { 
+        service_id: service.id,
+        service_title: service.title,
+        service_category: service.category
+      });
     } else {
       navigate('/services');
     }
-  }, [service, navigate, serviceId]);
+  }, [service, navigate, serviceId, captureEvent]);
 
   if (!service) {
     return null;
   }
+
+  const handlePurchase = () => {
+    // Track purchase intent
+    captureEvent('service_purchase_initiated', { 
+      service_id: service.id,
+      service_title: service.title,
+      service_price: service.price
+    });
+    
+    // Store selected service in session storage to use on checkout page
+    sessionStorage.setItem('checkoutService', JSON.stringify({
+      id: service.id,
+      title: service.title,
+      price: service.price,
+      category: service.category
+    }));
+    
+    // Show toast notification
+    toast({
+      title: "Service added to cart",
+      description: `${service.title} has been added to your cart.`,
+      duration: 3000,
+    });
+    
+    // Navigate to checkout
+    navigate('/checkout');
+  };
 
   const IconComponent = service.icon;
 
@@ -276,11 +324,22 @@ const ServiceDetails = () => {
             <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-r ${service.color}`}>
               <IconComponent className="h-8 w-8 text-white" />
             </div>
-            <div>
+            <div className="flex-grow">
               <h1 className="text-4xl font-bold text-white mb-2">{service.title}</h1>
               <p className="text-lg text-neutral-300 max-w-3xl">
                 {service.description}
               </p>
+            </div>
+            <div className="flex flex-col items-center bg-neutral-800 p-4 rounded-lg border border-neutral-700">
+              <p className="text-lg font-medium text-neutral-300 mb-1">Starting at</p>
+              <p className="text-3xl font-bold text-white mb-3">${service.price}</p>
+              <Button 
+                className="bg-brand-500 hover:bg-brand-600 text-white flex items-center gap-2"
+                onClick={handlePurchase}
+              >
+                <ShoppingCart size={18} />
+                Purchase Now
+              </Button>
             </div>
           </div>
 
@@ -349,21 +408,36 @@ const ServiceDetails = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts will help you implement {service.title} solutions tailored to your specific business needs.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={openChat}
-            >
-              Get Started Today
-            </Button>
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 text-center md:text-left">
+                <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
+                <p className="text-neutral-300 max-w-2xl">
+                  Our team of experts will help you implement {service.title} solutions tailored to your specific business needs.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  size="lg"
+                  className="bg-brand-500 hover:bg-brand-600 text-white"
+                  onClick={openChat}
+                >
+                  Get a Consultation
+                </Button>
+                <Button 
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-brand-500 flex items-center gap-2"
+                  onClick={handlePurchase}
+                >
+                  <ShoppingCart size={18} />
+                  Purchase Now
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </main>
+      
       <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>
   );

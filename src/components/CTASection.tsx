@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
@@ -74,27 +75,7 @@ const CTASection = () => {
               ))}
             </ul>
             
-            <div className={cn(
-              "flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
-              inView && "opacity-100 transform-none"
-            )}>
-              <Button 
-                className="bg-white text-brand-700 hover:bg-gray-100 font-medium btn-primary"
-                size="lg"
-                onClick={() => scrollToContact()}
-              >
-                <span>Start Free Trial</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="bg-transparent border border-white text-white hover:bg-white/10"
-                size="lg"
-                onClick={() => scrollToContact()}
-              >
-                Schedule Demo
-              </Button>
-            </div>
+            {/* Buttons removed from here */}
           </div>
           
           <div className={cn(

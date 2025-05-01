@@ -230,3 +230,68 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* Mobile-specific compact layout */
+@media (max-width: 767px) {
+  /* Reduce overall vertical spacing */
+  section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  /* Reduce spacing between section elements */
+  section > div > div:not(:last-child) {
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Make headings more compact */
+  h2 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Tighten up card spacing */
+  .card, .bg-white {
+    padding: 1rem !important;
+  }
+  
+  /* Reduce grid gap on mobile */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Optimize padding for mobile containers */
+  .max-w-7xl {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Make buttons more compact */
+  button, .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Reduce empty space */
+  .py-20 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  .mb-16 {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mt-20 {
+    margin-top: 2rem !important;
+  }
+  
+  /* Make text slightly smaller */
+  .text-lg {
+    font-size: 1rem !important;
+  }
+}

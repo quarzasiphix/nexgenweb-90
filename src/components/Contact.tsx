@@ -90,15 +90,16 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
-      // Updated template parameters to match the exact format in the new email template
+      // Update template parameters to match the exact format expected by the EmailJS template
       const templateParams = {
-        customer_name: formData.name,
-        customer_email: formData.email,
+        name: formData.name,
+        email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        current_date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString()
       };
 
+      // Send email using EmailJS
       await emailjs.send(
         'service_gmail',
         'template_pd1oxvn',

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
@@ -9,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="flex items-center space-x-2 mb-6">
+            <Link to="/" className="flex items-center space-x-2 mb-6">
               <div className="relative w-8 h-8">
                 <div className="absolute inset-0 bg-[#9b87f5] rounded-md animate-pulse-slow"></div>
                 <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
@@ -17,7 +16,7 @@ const Footer = () => {
               <span className="font-semibold text-xl">
                 NexGenWeb
               </span>
-            </div>
+            </Link>
             <p className="text-neutral-400 mb-6">
               Leading provider of digital business solutions. Helping companies streamline operations and boost productivity.
             </p>

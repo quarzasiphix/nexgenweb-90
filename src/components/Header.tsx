@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import Logo from './Logo';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,20 +61,12 @@ const Header = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-[#9b87f5] rounded-md animate-pulse-slow"></div>
-              <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75 animate-rotate-slow"></div>
-            </div>
-            <span className={cn(
-              "font-semibold text-xl transition-colors duration-300",
-              isScrolled ? "text-white" : "text-white"
-            )}>
-              NexGenWeb
-            </span>
-          </Link>
-        </div>
+        <Logo 
+          textClassName={cn(
+            "font-semibold text-xl transition-colors duration-300",
+            isScrolled ? "text-white" : "text-white"
+          )}
+        />
 
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (

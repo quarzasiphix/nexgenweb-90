@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -16,6 +15,7 @@ import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
+import Logo from '@/components/Logo';
 
 const Index = () => {
   useAnimationObserver();

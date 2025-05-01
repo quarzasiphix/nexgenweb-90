@@ -1,4 +1,3 @@
-
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
@@ -23,7 +22,8 @@ export function useIsMobile() {
     }
   }, [])
 
-  // For mobile devices, we'll also check if the device uses touch
+  // For mobile devices, we'll keep the touch detection,
+  // but it won't affect what components are shown
   React.useEffect(() => {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
       setIsMobile(true);

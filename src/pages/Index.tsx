@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -79,26 +80,11 @@ const Index = () => {
     <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
-      {/* Always show Solutions as it's crucial for understanding our offerings */}
       <Solutions />
-      
-      {/* On mobile, only show key sections */}
-      {!isMobile ? (
-        <>
-          <Services />
-          <HowItWorks />
-          <CaseStudies />
-          <Testimonials />
-        </>
-      ) : (
-        // On mobile, show both HowItWorks and Services (web dev) as they're most important
-        <>
-          <HowItWorks />
-          <Services />
-        </>
-      )}
-      
-      {/* Always show CTA and Contact for conversion */}
+      <Services />
+      <HowItWorks />
+      <CaseStudies />
+      <Testimonials />
       <CTASection />
       <Contact />
       <Footer />

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -242,6 +243,19 @@ const Services = () => {
             ))}
           </div>
           
+          {/* View All Services button moved here, above the CTA section */}
+          <div className={cn(
+            "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
+            inView && "opacity-100 transform-none"
+          )}>
+            <Button 
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+              onClick={() => navigate('/services')}
+            >
+              View All Services
+            </Button>
+          </div>
+          
           <div className="mt-10 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-6">
@@ -262,17 +276,7 @@ const Services = () => {
           </div>
         </div>
 
-        <div className={cn(
-          "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
-          inView && "opacity-100 transform-none"
-        )}>
-          <Button 
-            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => navigate('/services')}
-          >
-            View All Services
-          </Button>
-        </div>
+        {/* Removed the View All Services button from here as it's now placed above */}
       </div>
     </section>
   );

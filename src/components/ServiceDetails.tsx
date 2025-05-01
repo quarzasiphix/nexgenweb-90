@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Bot, LineChart, Laptop, Building2, Mail, Globe, 
@@ -9,6 +10,8 @@ import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useToast } from '@/hooks/use-toast';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const allServices = [
   {
@@ -18,6 +21,7 @@ const allServices = [
     icon: Bot,
     color: "from-blue-500 to-blue-600",
     category: "ai",
+    price: 4999,
     features: [
       "Automated data processing",
       "Custom AI model integration",
@@ -40,6 +44,7 @@ const allServices = [
     icon: Laptop,
     color: "from-purple-500 to-purple-600",
     category: "ai",
+    price: 3999,
     features: [
       "Custom business websites with AI-optimized UX",
       "E-commerce platforms with AI product recommendations",
@@ -62,6 +67,7 @@ const allServices = [
     icon: Mail,
     color: "from-green-500 to-green-600",
     category: "ai",
+    price: 2499,
     features: [
       "Dynamic email campaigns",
       "AI-powered content generation",
@@ -84,6 +90,7 @@ const allServices = [
     icon: LineChart,
     color: "from-orange-500 to-orange-600",
     category: "ai",
+    price: 3499,
     features: [
       "Interactive data dashboards",
       "Predictive analytics",
@@ -106,6 +113,7 @@ const allServices = [
     icon: Building2,
     color: "from-red-500 to-red-600",
     category: "ai",
+    price: 9999,
     features: [
       "Enterprise-wide AI strategy",
       "Department-specific AI solutions",
@@ -128,6 +136,7 @@ const allServices = [
     icon: Server,
     color: "from-indigo-500 to-indigo-600",
     category: "ai",
+    price: 1499,
     features: [
       "High-performance dedicated servers for AI workloads",
       "Managed cloud hosting with automatic scaling",
@@ -150,6 +159,7 @@ const allServices = [
     icon: Code,
     color: "from-teal-500 to-teal-600",
     category: "web",
+    price: 5999,
     features: [
       "Frontend development with React, Vue, or Angular",
       "Backend API development with Node.js, Python, or PHP",
@@ -172,6 +182,7 @@ const allServices = [
     icon: Globe,
     color: "from-pink-500 to-pink-600",
     category: "web",
+    price: 4499,
     features: [
       "Custom e-commerce platform development",
       "Integration with payment gateways and shipping providers",
@@ -194,6 +205,7 @@ const allServices = [
     icon: Server,
     color: "from-blue-600 to-blue-700",
     category: "web",
+    price: 999,
     features: [
       "High-performance cloud servers",
       "Auto-scaling based on traffic demands",
@@ -216,6 +228,7 @@ const allServices = [
     icon: Database,
     color: "from-violet-500 to-violet-600",
     category: "web",
+    price: 1999,
     features: [
       "Database design and architecture",
       "Performance optimization and tuning",
@@ -230,6 +243,192 @@ const allServices = [
       "Scalable architecture design for growing data needs",
       "Database monitoring and proactive maintenance"
     ]
+  },
+  // Adding the new services from web services page
+  {
+    id: "web-development",
+    title: "Web Development",
+    description: "Custom web solutions tailored to your business needs.",
+    icon: Code,
+    color: "from-blue-500 to-blue-600",
+    category: "web",
+    price: 4999,
+    features: [
+      "Custom business websites",
+      "E-commerce platforms",
+      "Web applications",
+      "Progressive Web Apps (PWAs)",
+      "API development"
+    ],
+    detailed: [
+      "Detailed requirements gathering and specification",
+      "Modern design with responsive layouts for all devices",
+      "Custom functionality development based on business needs",
+      "Comprehensive testing across browsers and devices",
+      "SEO optimization and performance tuning"
+    ]
+  },
+  {
+    id: "cloud-hosting",
+    title: "Cloud Hosting",
+    description: "Reliable and scalable hosting solutions.",
+    icon: Server,
+    color: "from-indigo-500 to-indigo-600", 
+    category: "web",
+    price: 1299,
+    features: [
+      "High-performance servers",
+      "99.9% uptime guarantee",
+      "Automated backups",
+      "CDN integration",
+      "24/7 monitoring"
+    ],
+    detailed: [
+      "Server provisioning and configuration",
+      "Security hardening and access control setup",
+      "Automated backup scheduling and retention policies",
+      "Performance monitoring and alert systems",
+      "Disaster recovery planning and implementation"
+    ]
+  },
+  {
+    id: "technical-services",
+    title: "Technical Services",
+    description: "Comprehensive technical solutions for your web presence.",
+    icon: Database,
+    color: "from-teal-500 to-teal-600",
+    category: "web",
+    price: 2499,
+    features: [
+      "Database management",
+      "System integration",
+      "Performance optimization",
+      "API development",
+      "Technical consulting"
+    ],
+    detailed: [
+      "Technical architecture assessment and planning",
+      "System integration between disparate platforms",
+      "API development for internal and external services",
+      "Performance optimization of existing systems",
+      "Technical documentation and knowledge transfer"
+    ]
+  },
+  {
+    id: "web-security",
+    title: "Web Security",
+    description: "Protect your web assets with advanced security measures.",
+    icon: Shield,
+    color: "from-red-500 to-red-600",
+    category: "web",
+    price: 1999,
+    features: [
+      "SSL implementation",
+      "Security audits",
+      "DDoS protection",
+      "Regular updates",
+      "Compliance monitoring"
+    ],
+    detailed: [
+      "Comprehensive security assessment and analysis",
+      "Implementation of security best practices",
+      "SSL/TLS certificate management and configuration",
+      "DDoS attack prevention and mitigation measures",
+      "Security monitoring and incident response"
+    ]
+  },
+  // AI services from the AIServices page
+  {
+    id: "finance-hr-ai",
+    title: "Finance & HR AI",
+    description: "Advanced AI solutions for financial management and HR automation.",
+    icon: Brain,
+    color: "from-green-500 to-green-600",
+    category: "ai",
+    price: 4999,
+    features: [
+      "Automated invoice processing and expense tracking",
+      "AI-driven payroll management",
+      "Smart recruitment and candidate screening",
+      "Employee performance analytics",
+      "Automated compliance monitoring"
+    ],
+    detailed: [
+      "Integration with existing finance and HR systems",
+      "Custom AI models trained on your business data",
+      "Automated reporting and analytics dashboards",
+      "Compliance monitoring and risk assessment",
+      "Continuous model improvement and optimization"
+    ]
+  },
+  {
+    id: "sales-marketing-ai",
+    title: "Sales & Marketing AI",
+    description: "AI-powered tools to boost your sales and marketing efforts.",
+    icon: LineChart,
+    color: "from-blue-500 to-blue-600",
+    category: "ai",
+    price: 3999,
+    features: [
+      "Predictive lead scoring",
+      "Automated campaign optimization",
+      "Customer behavior analysis",
+      "Sales forecasting",
+      "Content personalization"
+    ],
+    detailed: [
+      "Customer segmentation and targeting strategies",
+      "AI-powered content generation and optimization",
+      "Automated A/B testing for campaigns",
+      "Sales pipeline optimization and forecasting",
+      "Integration with CRM and marketing platforms"
+    ]
+  },
+  {
+    id: "it-security",
+    title: "IT & Security",
+    description: "Intelligent security solutions for your business.",
+    icon: Shield,
+    color: "from-red-500 to-red-600",
+    category: "ai",
+    price: 5999,
+    features: [
+      "AI-powered threat detection",
+      "Automated system monitoring",
+      "Smart backup management",
+      "Predictive maintenance",
+      "Security compliance automation"
+    ],
+    detailed: [
+      "Security audit and vulnerability assessment",
+      "Implementation of AI-powered threat detection systems",
+      "Automated incident response and remediation",
+      "Compliance monitoring and reporting",
+      "Security awareness training and documentation"
+    ]
+  },
+  {
+    id: "customer-support-ai",
+    title: "Customer Support AI",
+    description: "Transform customer service with AI automation.",
+    icon: Bot,
+    color: "from-purple-500 to-purple-600",
+    category: "ai",
+    price: 2999,
+    features: [
+      "24/7 AI chatbots",
+      "Automated email responses",
+      "Sentiment analysis",
+      "Call center automation",
+      "Customer journey optimization"
+    ],
+    detailed: [
+      "Custom chatbot development and training",
+      "Integration with existing customer support systems",
+      "Sentiment analysis and customer feedback processing",
+      "Automated response systems for common inquiries",
+      "Continuous improvement based on interaction data"
+    ]
   }
 ];
 
@@ -237,8 +436,32 @@ const ServiceDetails = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
+  const { toast } = useToast();
+  const { captureEvent } = useAnalytics();
   
   const service = allServices.find(s => s.id === serviceId);
+
+  const handleBuyNow = () => {
+    if (service) {
+      captureEvent('begin_checkout', {
+        service_id: service.id,
+        service_name: service.title,
+        price: service.price,
+        currency: 'USD'
+      });
+      
+      navigate('/checkout', { 
+        state: { 
+          service: {
+            id: service.id,
+            title: service.title,
+            price: service.price,
+            description: service.description
+          }
+        } 
+      });
+    }
+  };
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -246,16 +469,28 @@ const ServiceDetails = () => {
     
     if (service) {
       document.title = `${service.title} - ToverNet`;
+      
+      // Track service view
+      captureEvent('service_details_view', {
+        service_id: service.id,
+        service_name: service.title,
+        service_category: service.category
+      });
     } else {
       navigate('/services');
     }
-  }, [service, navigate, serviceId]);
+  }, [service, navigate, serviceId, captureEvent]);
 
   if (!service) {
     return null;
   }
 
   const IconComponent = service.icon;
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(service.price);
 
   return (
     <div className="min-h-screen bg-neutral-900">
@@ -277,8 +512,11 @@ const ServiceDetails = () => {
               <IconComponent className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">{service.title}</h1>
-              <p className="text-lg text-neutral-300 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-3">
+                <h1 className="text-4xl font-bold text-white">{service.title}</h1>
+                <span className="text-2xl font-semibold text-brand-500">{formattedPrice}</span>
+              </div>
+              <p className="text-lg text-neutral-300 max-w-3xl mt-2">
                 {service.description}
               </p>
             </div>
@@ -352,14 +590,14 @@ const ServiceDetails = () => {
           <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
             <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts will help you implement {service.title} solutions tailored to your specific business needs.
+              Get started with {service.title} for {formattedPrice} and transform your business today.
             </p>
             <Button 
               size="lg"
               className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={openChat}
+              onClick={handleBuyNow}
             >
-              Get Started Today
+              Buy Now - {formattedPrice}
             </Button>
           </div>
         </div>

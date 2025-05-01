@@ -12,11 +12,23 @@ import { Card, CardContent } from '@/components/ui/card';
 import { solutionCategories } from './Solutions';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useAnalytics } from '@/hooks/use-analytics';
+
+// Pricing for solutions
+const solutionPricing = {
+  "ai-automation": 4999,
+  "data-analytics": 3999, 
+  "cloud-solutions": 2999,
+  "cybersecurity": 5999,
+  "digital-transformation": 7999,
+  "erp-integration": 6999
+};
 
 const SolutionDetails = () => {
   const { solutionId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
+  const { captureEvent } = useAnalytics();
   const solution = solutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
 
   useEffect(() => {
@@ -24,16 +36,50 @@ const SolutionDetails = () => {
     
     if (solution) {
       document.title = `${solution.title} - BizWiz`;
+      
+      // Track solution view
+      captureEvent('solution_details_view', {
+        solution_id: solutionId,
+        solution_name: solution.title,
+      });
     } else {
       navigate('/solutions');
     }
-  }, [solutionId, navigate, solution]);
+  }, [solutionId, navigate, solution, captureEvent]);
 
   if (!solution) {
     return null;
   }
 
   const IconComponent = solution.icon;
+  const solutionIdKey = solutionId as keyof typeof solutionPricing;
+  const price = solutionPricing[solutionIdKey] || 3999;
+  
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(price);
+
+  const handleBuyNow = () => {
+    captureEvent('begin_checkout', {
+      solution_id: solutionId,
+      solution_name: solution.title,
+      price: price,
+      currency: 'USD'
+    });
+    
+    navigate('/checkout', { 
+      state: { 
+        service: {
+          id: solutionId,
+          title: solution.title,
+          price: price,
+          description: solution.description
+        }
+      } 
+    });
+  };
 
   return (
     <div className="min-h-screen bg-neutral-900 overflow-hidden">
@@ -55,7 +101,10 @@ const SolutionDetails = () => {
               <IconComponent className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">{solution.title}</h1>
+              <div className="flex flex-wrap items-center gap-3">
+                <h1 className="text-4xl font-bold text-white mb-2">{solution.title}</h1>
+                <span className="text-2xl font-semibold text-brand-500">{formattedPrice}</span>
+              </div>
               <p className="text-lg text-neutral-300 max-w-3xl">
                 {solution.description}
               </p>
@@ -130,14 +179,14 @@ const SolutionDetails = () => {
           <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
             <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts will help you implement {solution.title} solutions tailored to your specific business needs.
+              Get started with {solution.title} for {formattedPrice} and transform your business today.
             </p>
             <Button 
               size="lg"
               className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={() => openChat()}
+              onClick={handleBuyNow}
             >
-              Get Started Today
+              Buy Now - {formattedPrice}
             </Button>
           </div>
         </div>

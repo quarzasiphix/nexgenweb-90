@@ -6,8 +6,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useNavigate } from 'react-router-dom';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const AIServices = () => {
+  const navigate = useNavigate();
+  const { captureEvent } = useAnalytics();
+  
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -17,8 +22,21 @@ const AIServices = () => {
 
   const { openChat, isChatOpen, closeChat } = useChat();
 
+  const handleServiceClick = (serviceId: string, serviceTitle: string) => {
+    // Log the service view
+    captureEvent('service_view', {
+      service_id: serviceId,
+      service_name: serviceTitle,
+      source: 'ai_services_page'
+    });
+    
+    // Navigate to the service details page
+    navigate(`/services/${serviceId}`);
+  };
+
   const services = [
     {
+      id: "finance-hr-ai",
       title: "Finance & HR AI",
       icon: Brain,
       description: "Advanced AI solutions for financial management and HR automation.",
@@ -31,6 +49,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "sales-marketing-ai",
       title: "Sales & Marketing AI",
       icon: LineChart,
       description: "AI-powered tools to boost your sales and marketing efforts.",
@@ -43,6 +62,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "it-security",
       title: "IT & Security",
       icon: Shield,
       description: "Intelligent security solutions for your business.",
@@ -55,6 +75,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "customer-support-ai",
       title: "Customer Support AI",
       icon: Bot,
       description: "Transform customer service with AI automation.",
@@ -81,7 +102,11 @@ const AIServices = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-neutral-800 border-neutral-700 flex flex-col h-full">
+              <Card 
+                key={index} 
+                className="bg-neutral-800 border-neutral-700 flex flex-col h-full hover:border-[#9b87f5] cursor-pointer transition-all"
+                onClick={() => handleServiceClick(service.id, service.title)}
+              >
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center mb-4">
                     <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
@@ -101,16 +126,12 @@ const AIServices = () => {
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <Button 
                       className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => openChat()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleServiceClick(service.id, service.title);
+                      }}
                     >
-                      Get Started
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
-                      onClick={() => openChat()}
-                    >
-                      Learn More
+                      View Details
                     </Button>
                   </div>
                 </CardContent>

@@ -7,10 +7,14 @@ import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const WebServices = () => {
   const [inquiryService, setInquiryService] = useState('');
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { captureEvent } = useAnalytics();
   
   useEffect(() => {
     // Scroll to top when component mounts
@@ -21,22 +25,23 @@ const WebServices = () => {
 
   const { openChat, isChatOpen, closeChat } = useChat();
 
-  const handleGetStarted = (serviceTitle: string) => {
+  const handleServiceClick = (serviceId: string, serviceTitle: string) => {
     setInquiryService(serviceTitle);
-    openChat();
     
-    // Log the service inquiry
-    console.log(`User inquired about ${serviceTitle} service`);
-    
-    toast({
-      title: "Service Selected",
-      description: `We'll discuss ${serviceTitle} options in the chat.`,
-      duration: 3000,
+    // Log the service view
+    captureEvent('service_view', {
+      service_id: serviceId,
+      service_name: serviceTitle,
+      source: 'web_services_page'
     });
+    
+    // Navigate to the service details page
+    navigate(`/services/${serviceId}`);
   };
 
   const services = [
     {
+      id: "web-development",
       title: "Web Development",
       icon: Code,
       description: "Custom web solutions tailored to your business needs.",
@@ -49,6 +54,7 @@ const WebServices = () => {
       ]
     },
     {
+      id: "cloud-hosting",
       title: "Cloud Hosting",
       icon: Server,
       description: "Reliable and scalable hosting solutions.",
@@ -61,6 +67,7 @@ const WebServices = () => {
       ]
     },
     {
+      id: "technical-services",
       title: "Technical Services",
       icon: Database,
       description: "Comprehensive technical solutions for your web presence.",
@@ -73,6 +80,7 @@ const WebServices = () => {
       ]
     },
     {
+      id: "web-security",
       title: "Web Security",
       icon: Shield,
       description: "Protect your web assets with advanced security measures.",
@@ -99,7 +107,11 @@ const WebServices = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-neutral-800 border-neutral-700 flex flex-col h-full">
+              <Card 
+                key={index} 
+                className="bg-neutral-800 border-neutral-700 flex flex-col h-full hover:border-[#9b87f5] cursor-pointer transition-all"
+                onClick={() => handleServiceClick(service.id, service.title)}
+              >
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center mb-4">
                     <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
@@ -119,9 +131,12 @@ const WebServices = () => {
                   <div className="mt-6">
                     <Button 
                       className="w-full mt-auto bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => handleGetStarted(service.title)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleServiceClick(service.id, service.title);
+                      }}
                     >
-                      Get Started
+                      View Details
                     </Button>
                   </div>
                 </CardContent>

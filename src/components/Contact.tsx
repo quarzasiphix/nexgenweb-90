@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -90,14 +89,20 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
-      // Update template parameters to match the exact format expected by the EmailJS template
+      // Adjust template parameters to exactly match the email template fields
       const templateParams = {
-        name: formData.name,
-        email: formData.email,
+        from_name: formData.name,
+        from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        date: new Date().toLocaleDateString()
+        date_submitted: new Date().toLocaleDateString()
       };
+
+      // Track form submission in analytics
+      captureEvent('contact_form_submission_attempt', {
+        subject_length: formData.subject.length,
+        message_length: formData.message.length
+      });
 
       // Send email using EmailJS
       await emailjs.send(
@@ -107,9 +112,10 @@ const Contact = () => {
         'ArDqM6v2Ny3InyvoQ'
       );
       
-      // Track form submission in analytics
+      // Track successful form submission in analytics
       captureEvent('contact_form_submitted', {
-        subject: formData.subject
+        subject: formData.subject,
+        success: true
       });
       
       setFormData({
@@ -129,7 +135,8 @@ const Contact = () => {
       
       // Track form error in analytics
       captureEvent('contact_form_error', {
-        error_message: error instanceof Error ? error.message : 'Unknown error'
+        error_message: error instanceof Error ? error.message : 'Unknown error',
+        success: false
       });
       
       toast({

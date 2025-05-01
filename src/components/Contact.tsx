@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
+import { Mail, ArrowRight, Send } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import emailjs from 'emailjs-com';
 import { useAnalytics } from '@/hooks/use-analytics';
+import Logo from '@/components/Logo';
 
 const formatText = (text: string) => {
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -242,11 +243,8 @@ const Contact = () => {
             inView && "opacity-100 translate-y-0"
           )}>
             <div className="flex items-center mb-4">
-              <div className="relative w-6 h-6 mr-2">
-                <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
-                <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-              </div>
-              <h3 className="text-xl font-semibold text-white">BizWiz AI Assistant</h3>
+              <Logo showText={false} className="" asLink={false} />
+              <h3 className="text-xl font-semibold text-white ml-2">BizWiz AI Assistant</h3>
             </div>
             
             <div className="h-80 overflow-y-auto mb-4 pr-2 space-y-4 custom-scrollbar">
@@ -257,10 +255,7 @@ const Contact = () => {
                 >
                   {message.type === 'agent' && (
                     <div className="flex-shrink-0 mr-2 mt-1">
-                      <div className="relative w-6 h-6 animate-rotate-slow">
-                        <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
-                        <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-                      </div>
+                      <Logo showText={false} className="w-6 h-6" asLink={false} />
                     </div>
                   )}
                   <div className={cn(
@@ -279,10 +274,7 @@ const Contact = () => {
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="flex-shrink-0 mr-2 mt-1">
-                    <div className="relative w-6 h-6 animate-rotate-slow">
-                      <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
-                      <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-                    </div>
+                    <Logo showText={false} className="w-6 h-6" asLink={false} />
                   </div>
                   <div className="bg-white/10 text-neutral-100 p-3 rounded-lg flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>

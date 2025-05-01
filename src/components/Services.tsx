@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -169,7 +168,6 @@ const Services = () => {
               )}
               style={{ 
                 transitionDelay: `${index * (isMobile ? 15 : 25)}ms`,
-                // Ensure cards are wider on mobile and have appropriate spacing
                 padding: isMobile ? "1.25rem" : "1.5rem"
               }}
             >
@@ -269,7 +267,7 @@ const Services = () => {
             </div>
           </div>
           
-          {/* Web Presence CTA - Positioned after the How We Transform Your Business section */}
+          {/* Web Presence CTA - Now positioned correctly after the "How We Transform Your Business" section */}
           <div className="mb-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-6">
@@ -308,7 +306,6 @@ const Services = () => {
                 )}
                 style={{ 
                   transitionDelay: `${400 + (index * (isMobile ? 60 : 100))}ms`,
-                  // Ensure consistent padding on mobile
                   margin: isMobile ? "0 0 1rem 0" : undefined
                 }}
               >

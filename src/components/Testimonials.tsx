@@ -64,20 +64,20 @@ const Testimonials = () => {
   }, [activeIndex]);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-brand-900 to-brand-800 text-white overflow-hidden">
-      <div ref={ref} className="section-container relative">
+    <section className="py-20 bg-gradient-to-br from-brand-900 to-brand-800 text-white overflow-hidden">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         
         <div className="text-center mb-16 relative z-10">
           <h2 className={cn(
-            "section-title-light opacity-0 transform translate-y-4 transition-all duration-500",
+            "text-3xl sm:text-4xl font-bold mb-4 opacity-0 transform translate-y-4 transition-all duration-500",
             inView && "opacity-100 transform-none"
           )}>
             What Our Clients <span className="text-brand-400">Say</span>
           </h2>
           <p className={cn(
-            "section-description text-white/80 opacity-0 transform translate-y-4 transition-all duration-500 delay-50",
+            "max-w-2xl mx-auto text-lg text-white/80 opacity-0 transform translate-y-4 transition-all duration-500 delay-50",
             inView && "opacity-100 transform-none"
           )}>
             Hear from businesses that have transformed their operations 

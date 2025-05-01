@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -7,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { useNavigate, Link } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Services = () => {
   const { ref, inView } = useInView({
@@ -17,6 +17,7 @@ const Services = () => {
   
   const navigate = useNavigate();
   const { openChat } = useChat();
+  const isMobile = useIsMobile();
 
   const scrollToContact = () => {
     openChat();
@@ -139,17 +140,17 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="section-padding bg-white">
-      <div ref={ref} className="section-container">
+    <section id="services" className="py-20 bg-white">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "section-title opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-gradient">Services</span>
           </h2>
           <p className={cn(
-            "section-description text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -165,7 +166,10 @@ const Services = () => {
                 "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
-              style={{ transitionDelay: `${index * 25}ms` }}
+              style={{ 
+                transitionDelay: `${index * (isMobile ? 15 : 25)}ms`,
+                padding: isMobile ? "1.25rem" : "1.5rem"
+              }}
             >
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
@@ -196,30 +200,93 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0 md:mr-6">
-              <h4 className="text-xl font-semibold mb-2 text-neutral-900">
-                Ready for a cutting-edge web presence?
-              </h4>
-              <p className="text-neutral-700">
-                Our experts build and host AI-optimized websites that drive business growth.
-              </p>
-            </div>
-            <Button 
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-              onClick={scrollToContact}
-            >
-              Get a Free Consultation
-            </Button>
-          </div>
-        </div>
-
         <div className={cn(
           "mt-20 opacity-0 transform translate-y-4 transition-all duration-500 delay-150",
           inView && "opacity-100 transform-none"
         )}>
+          <div className="text-center mb-10">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
+              How We <span className="text-gradient">Transform</span> Your Business
+            </h3>
+            <p className="max-w-2xl mx-auto text-lg text-neutral-600">
+              Our proven process for implementing AI-powered automation solutions that drive real business results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Laptop className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">1</span>
+                AI Analysis
+              </div>
+              <p className="text-neutral-600">
+                Our AI analyzes your business processes to identify automation opportunities and efficiency gaps.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">2</span>
+                Custom Solution
+              </div>
+              <p className="text-neutral-600">
+                We develop tailored AI solutions designed specifically for your business needs and goals.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-emerald-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Bot className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">3</span>
+                Seamless Integration
+              </div>
+              <p className="text-neutral-600">
+                Our team implements and integrates the AI solutions with your existing systems and workflows.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-orange-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <LineChart className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">4</span>
+                Optimization
+              </div>
+              <p className="text-neutral-600">
+                Continuous monitoring and optimization ensure maximum performance and ROI for your business.
+              </p>
+            </div>
+          </div>
+          
+          {/* Web Presence CTA - Now positioned correctly after the "How We Transform Your Business" section */}
+          <div className="mb-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 md:mr-6">
+                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
+                  Ready for a cutting-edge web presence?
+                </h4>
+                <p className="text-neutral-700">
+                  Our experts build and host AI-optimized websites that drive business growth.
+                </p>
+              </div>
+              <Button 
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
+                onClick={scrollToContact}
+              >
+                Get a Free Consultation
+              </Button>
+            </div>
+          </div>
+
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
               Web Development & <span className="text-gradient">Hosting</span> Solutions
@@ -237,7 +304,10 @@ const Services = () => {
                   "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full",
                   inView && "opacity-100 translate-y-0"
                 )}
-                style={{ transitionDelay: `${400 + (index * 100)}ms` }}
+                style={{ 
+                  transitionDelay: `${400 + (index * (isMobile ? 60 : 100))}ms`,
+                  margin: isMobile ? "0 0 1rem 0" : undefined
+                }}
               >
                 <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
                   <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
@@ -262,18 +332,19 @@ const Services = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        <div className={cn(
-          "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
-          inView && "opacity-100 transform-none"
-        )}>
-          <Button 
-            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-            onClick={() => navigate('/services')}
-          >
-            View All Services
-          </Button>
+          
+          {/* View All Services button */}
+          <div className={cn(
+            "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
+            inView && "opacity-100 transform-none"
+          )}>
+            <Button 
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+              onClick={() => navigate('/services')}
+            >
+              View All Services
+            </Button>
+          </div>
         </div>
       </div>
     </section>

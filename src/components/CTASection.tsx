@@ -75,7 +75,18 @@ const CTASection = () => {
               ))}
             </ul>
             
-            {/* Buttons removed from here */}
+            <Button 
+              variant="outline" 
+              className={cn(
+                "bg-transparent border border-white text-white hover:bg-white/10 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
+                inView && "opacity-100 transform-none"
+              )}
+              size="lg"
+              onClick={() => navigate('/services/ai')}
+            >
+              <span>Learn About Our AI Services</span>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
           
           <div className={cn(

@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import emailjs from 'emailjs-com';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const formatText = (text: string) => {
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -21,6 +22,7 @@ const Contact = () => {
   });
 
   const { toast } = useToast();
+  const { captureEvent } = useAnalytics();
   const [showAIAgent, setShowAIAgent] = useState(false);
   const [messages, setMessages] = useState<{type: 'user' | 'agent', content: string}[]>([
     { 
@@ -88,7 +90,7 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
-      // Updated template parameters to match the exact format in the email template
+      // Updated template parameters to match the exact format in the new email template
       const templateParams = {
         customer_name: formData.name,
         customer_email: formData.email,
@@ -104,6 +106,11 @@ const Contact = () => {
         'ArDqM6v2Ny3InyvoQ'
       );
       
+      // Track form submission in analytics
+      captureEvent('contact_form_submitted', {
+        subject: formData.subject
+      });
+      
       setFormData({
         name: '',
         email: '',
@@ -118,6 +125,12 @@ const Contact = () => {
       });
     } catch (error) {
       console.error("Error sending email:", error);
+      
+      // Track form error in analytics
+      captureEvent('contact_form_error', {
+        error_message: error instanceof Error ? error.message : 'Unknown error'
+      });
+      
       toast({
         title: "Error",
         description: "There was a problem sending your message. Please try again later.",
@@ -140,6 +153,11 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
+      // Track AI conversation in analytics
+      captureEvent('ai_assistant_message_sent', {
+        session_id: sessionId
+      });
+      
       const response = await fetch('https://n8n.quarza.online/webhook/tover', {
         method: "POST",
         headers: {
@@ -163,6 +181,12 @@ const Contact = () => {
           ...newMessages, 
           { type: 'agent' as const, content: data[0].output }
         ]);
+        
+        // Track AI response in analytics
+        captureEvent('ai_assistant_response_received', {
+          session_id: sessionId,
+          response_length: data[0].output.length
+        });
       } else {
         throw new Error('Unexpected response format');
       }
@@ -172,6 +196,12 @@ const Contact = () => {
         ...newMessages,
         { type: 'agent' as const, content: `I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at ${contactEmail}.` }
       ]);
+      
+      // Track AI error in analytics
+      captureEvent('ai_assistant_error', {
+        error_message: error instanceof Error ? error.message : 'Unknown error',
+        session_id: sessionId
+      });
     } finally {
       setIsLoading(false);
     }

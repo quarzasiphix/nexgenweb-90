@@ -14,6 +14,20 @@ import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
 import { ChatProvider } from './context/ChatContext';
+import { PostHogProvider } from 'posthog-js/react';
+import posthog from 'posthog-js';
+
+// Initialize PostHog
+if (typeof window !== 'undefined') {
+  posthog.init('phc_67TgLEEMULzavgmCYEuHht0hXxc5TkVyyoVjrWIGPdo', {
+    api_host: 'https://eu.posthog.com',
+    capture_pageview: false, // We'll manually capture page views
+    persistence: 'localStorage',
+  });
+
+  // Log when PostHog is loaded
+  console.info('PostHog loaded!');
+}
 
 // ScrollToTop component that will be used inside Router
 const ScrollToTop = () => {
@@ -28,26 +42,28 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <ChatProvider>
-        <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/services/:serviceId" element={<ServiceDetails />} />
-            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
-            <Route path="/services/web" element={<WebServices />} />
-            <Route path="/services/ai" element={<AIServices />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-        <Toaster />
-        <Sonner />
-      </ChatProvider>
-    </ThemeProvider>
+    <PostHogProvider client={posthog}>
+      <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
+        <ChatProvider>
+          <Router>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<AllServices />} />
+              <Route path="/services/:serviceId" element={<ServiceDetails />} />
+              <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+              <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/services/web" element={<WebServices />} />
+              <Route path="/services/ai" element={<AIServices />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Router>
+          <Toaster />
+          <Sonner />
+        </ChatProvider>
+      </ThemeProvider>
+    </PostHogProvider>
   );
 }
 

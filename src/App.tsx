@@ -1,18 +1,25 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Index from './pages/Index';
-import AboutPage from './pages/About';
-import CaseStudiesPage from './pages/CaseStudies';
+import AboutPage from './pages/AboutPage'; // Fixed import path
+import CaseStudiesPage from './pages/CaseStudiesPage'; // Fixed import path
 import AllServices from './pages/AllServices';
 import AIServices from './pages/services/AIServices';
 import WebServices from './pages/services/WebServices';
 import NotFound from './pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
 import { ChatProvider } from '@/context/ChatContext';
-import { AnalyticsProvider } from '@/hooks/use-analytics';
+import { useAnalytics } from '@/hooks/use-analytics'; // Import useAnalytics instead of AnalyticsProvider
 
 // Add import for the new checkout page
 import CheckoutPage from './pages/CheckoutPage';
+
+// Create a simple Analytics Provider since it's missing
+const AnalyticsProvider = ({ children }: { children: React.ReactNode }) => {
+  // This is a simple wrapper component that would normally provide analytics context
+  return <>{children}</>;
+};
 
 function App() {
   return (

@@ -1,6 +1,21 @@
 
+import React, { createContext, useContext, ReactNode } from 'react';
 import { usePostHog } from 'posthog-js/react';
 import { isAnalyticsAvailable } from '@/lib/analytics';
+
+// Create an analytics context
+const AnalyticsContext = createContext<ReturnType<typeof useAnalytics> | undefined>(undefined);
+
+// Analytics provider component
+export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
+  const analytics = useAnalytics();
+  
+  return (
+    <AnalyticsContext.Provider value={analytics}>
+      {children}
+    </AnalyticsContext.Provider>
+  );
+};
 
 export function useAnalytics() {
   // Use the PostHog hook
@@ -34,3 +49,12 @@ export function useAnalytics() {
     identifyUser
   };
 }
+
+// Hook for consuming the analytics context
+export const useAnalyticsContext = () => {
+  const context = useContext(AnalyticsContext);
+  if (context === undefined) {
+    throw new Error('useAnalyticsContext must be used within an AnalyticsProvider');
+  }
+  return context;
+};

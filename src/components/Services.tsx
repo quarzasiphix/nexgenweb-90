@@ -208,6 +208,89 @@ const Services = () => {
         )}>
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
+              How We <span className="text-gradient">Transform</span> Your Business
+            </h3>
+            <p className="max-w-2xl mx-auto text-lg text-neutral-600">
+              Our proven process for implementing AI-powered automation solutions that drive real business results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Laptop className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">1</span>
+                AI Analysis
+              </div>
+              <p className="text-neutral-600">
+                Our AI analyzes your business processes to identify automation opportunities and efficiency gaps.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">2</span>
+                Custom Solution
+              </div>
+              <p className="text-neutral-600">
+                We develop tailored AI solutions designed specifically for your business needs and goals.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-emerald-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Bot className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">3</span>
+                Seamless Integration
+              </div>
+              <p className="text-neutral-600">
+                Our team implements and integrates the AI solutions with your existing systems and workflows.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 text-center">
+              <div className="bg-orange-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <LineChart className="h-8 w-8 text-white" />
+              </div>
+              <div className="font-semibold text-xl mb-2 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-2">4</span>
+                Optimization
+              </div>
+              <p className="text-neutral-600">
+                Continuous monitoring and optimization ensure maximum performance and ROI for your business.
+              </p>
+            </div>
+          </div>
+          
+          {/* Web Presence CTA - Positioned after the How We Transform Your Business section */}
+          <div className="mb-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 md:mr-6">
+                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
+                  Ready for a cutting-edge web presence?
+                </h4>
+                <p className="text-neutral-700">
+                  Our experts build and host AI-optimized websites that drive business growth.
+                </p>
+              </div>
+              <Button 
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
+                onClick={scrollToContact}
+              >
+                Get a Free Consultation
+              </Button>
+            </div>
+          </div>
+
+          <div className="text-center mb-10">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
               Web Development & <span className="text-gradient">Hosting</span> Solutions
             </h3>
             <p className="max-w-2xl mx-auto text-lg text-neutral-600">
@@ -264,26 +347,6 @@ const Services = () => {
             >
               View All Services
             </Button>
-          </div>
-          
-          {/* Web Presence CTA - Moved to appear after the services sections */}
-          <div className="mt-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 md:mr-6">
-                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
-                  Ready for a cutting-edge web presence?
-                </h4>
-                <p className="text-neutral-700">
-                  Our experts build and host AI-optimized websites that drive business growth.
-                </p>
-              </div>
-              <Button 
-                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={scrollToContact}
-              >
-                Get a Free Consultation
-              </Button>
-            </div>
           </div>
         </div>
       </div>

@@ -1,11 +1,12 @@
 
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
+import { CheckCircle, ArrowRight, Globe, Server, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { useToast } from '@/hooks/use-toast';
 
 const CTASection = () => {
   const { ref, inView } = useInView({
@@ -15,9 +16,25 @@ const CTASection = () => {
   
   const navigate = useNavigate();
   const { openChat } = useChat();
+  const { toast } = useToast();
 
-  const scrollToContact = () => {
-    openChat();
+  const handleCheckout = (planName: string, price: string) => {
+    toast({
+      title: "Added to cart",
+      description: `${planName} (${price}) has been added to your cart.`,
+      duration: 3000,
+    });
+    
+    // In a real implementation, this would add to cart or initiate checkout
+    // For now, we'll simulate by navigating to a checkout page
+    setTimeout(() => {
+      navigate('/checkout', { 
+        state: { 
+          plan: planName,
+          price: price 
+        }
+      });
+    }, 1000);
   };
 
   const benefits = [
@@ -137,16 +154,17 @@ const CTASection = () => {
                         </li>
                       ))}
                     </ul>
+                    
+                    <Button
+                      className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100 flex items-center justify-center"
+                      onClick={() => handleCheckout(plan.title + " AI Plan", plan.price)}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      {plan.price === "Custom" ? "Request Quote" : "Buy Now"}
+                    </Button>
                   </div>
                 ))}
               </div>
-              
-              <Button 
-                className="w-full mt-6 bg-white text-brand-700 hover:bg-gray-100"
-                onClick={() => scrollToContact()}
-              >
-                Compare All Plans
-              </Button>
             </div>
           </div>
         </div>
@@ -208,16 +226,17 @@ const CTASection = () => {
                           </li>
                         ))}
                       </ul>
+                      
+                      <Button 
+                        className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100 flex items-center justify-center"
+                        onClick={() => handleCheckout(pkg.name + " Web Package", pkg.price)}
+                      >
+                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        Buy Now
+                      </Button>
                     </div>
                   ))}
                 </div>
-                
-                <Button 
-                  className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100"
-                  onClick={() => scrollToContact()}
-                >
-                  Get a Custom Quote
-                </Button>
               </div>
             </div>
             

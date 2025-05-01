@@ -1,53 +1,38 @@
-
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Index from './pages/Index';
-import AboutPage from './pages/AboutPage';
+import AboutPage from './pages/About';
+import CaseStudiesPage from './pages/CaseStudies';
 import AllServices from './pages/AllServices';
-import NotFound from './pages/NotFound';
-import { ThemeProvider } from './components/ui/theme-provider';
-import { Toaster } from './components/ui/toaster';
-import { Toaster as Sonner } from './components/ui/sonner';
-import CaseStudiesPage from './pages/CaseStudiesPage';
-import ServiceDetails from './components/ServiceDetails';
-import SolutionDetails from './components/SolutionDetails';
-import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
-import { ChatProvider } from './context/ChatContext';
+import WebServices from './pages/services/WebServices';
+import NotFound from './pages/NotFound';
+import { Toaster } from '@/components/ui/toaster';
+import { ChatProvider } from '@/context/ChatContext';
+import { AnalyticsProvider } from '@/hooks/use-analytics';
 
-// ScrollToTop component that will be used inside Router
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  
-  return null;
-}
+// Add import for the new checkout page
+import CheckoutPage from './pages/CheckoutPage';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
+    <AnalyticsProvider>
       <ChatProvider>
         <Router>
-          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/services/:serviceId" element={<ServiceDetails />} />
-            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
-            <Route path="/services/web" element={<WebServices />} />
+            <Route path="/services" element={<AllServices />} />
             <Route path="/services/ai" element={<AIServices />} />
+            <Route path="/services/web" element={<WebServices />} />
+            <Route path="/checkout" element={<CheckoutPage />} /> {/* Add new checkout route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Toaster />
         </Router>
-        <Toaster />
-        <Sonner />
       </ChatProvider>
-    </ThemeProvider>
+    </AnalyticsProvider>
   );
 }
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Bot, LineChart, Laptop, Building2, Mail, Globe, 
-  Server, Code, Database, ArrowLeft, Shield, Brain
+  Server, Code, Database, ArrowLeft
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';

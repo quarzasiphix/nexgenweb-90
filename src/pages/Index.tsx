@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -15,7 +16,6 @@ import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
-import Logo from '@/components/Logo';
 
 const Index = () => {
   useAnimationObserver();
@@ -26,7 +26,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "NexGenWeb - Digital Business Solutions";
+    document.title = "BizWiz - Digital Business Solutions";
     
     // On mobile, add a class to body for optimized animations
     if (isMobile) {

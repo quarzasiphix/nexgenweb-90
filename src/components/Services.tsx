@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -33,7 +34,7 @@ const Services = () => {
         "Ongoing maintenance and optimization"
       ],
       icon: Bot,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "ai-powered-web-development",
@@ -46,7 +47,7 @@ const Services = () => {
         "Personalized product recommendations"
       ],
       icon: Laptop,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "marketing-automation",
@@ -59,7 +60,7 @@ const Services = () => {
         "Optimized ad spend and dynamic campaigns"
       ],
       icon: Mail,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "business-intelligence",
@@ -72,7 +73,7 @@ const Services = () => {
         "Data-driven decision making support"
       ],
       icon: LineChart,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "enterprise-ai-solutions",
@@ -85,7 +86,7 @@ const Services = () => {
         "Multi-department automation workflows"
       ],
       icon: Building2,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     },
     {
       id: "cloud-hosting-solutions",
@@ -98,7 +99,7 @@ const Services = () => {
         "Enterprise-grade security protection"
       ],
       icon: Server,
-      color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+      color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]"
     }
   ];
 
@@ -111,28 +112,28 @@ const Services = () => {
         title: "Full-Stack Development",
         description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
         icon: Code,
-        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+        color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "e-commerce-solutions",
         title: "E-Commerce Solutions",
         description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
         icon: Globe,
-        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+        color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "managed-cloud-hosting",
         title: "Managed Cloud Hosting",
         description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization. Our managed cloud services include 24/7 monitoring, proactive issue resolution, and regular security audits to ensure your applications remain available and protected.",
         icon: Server,
-        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+        color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "database-management",
         title: "Database Management",
         description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
         icon: Database,
-        color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+        color: "bg-gradient-to-r from-[#9b87f5] to-[#7E69AB]",
       }
     ]
   };
@@ -145,7 +146,7 @@ const Services = () => {
             "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            Our Premium <span className="text-gradient">Services</span>
+            Our Premium <span className="text-[#9b87f5]">Services</span>
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
@@ -175,7 +176,7 @@ const Services = () => {
               <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
                 {service.bulletPoints.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    <span className="text-sm mr-2 mt-1">•</span>
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9b87f5] mt-2 mr-2 flex-shrink-0"></span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -184,10 +185,9 @@ const Services = () => {
               <div className="mt-auto">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
-                    variant="link" 
-                    className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                    className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white w-full"
                   >
-                    Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                    Learn More
                   </Button>
                 </Link>
               </div>
@@ -201,7 +201,7 @@ const Services = () => {
         )}>
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
-              Web Development & <span className="text-gradient">Hosting</span> Solutions
+              Web Development & <span className="text-[#9b87f5]">Hosting</span> Solutions
             </h3>
             <p className="max-w-2xl mx-auto text-lg text-neutral-600">
               {webDevSection.description}
@@ -229,10 +229,9 @@ const Services = () => {
                     <div className="mt-auto pt-2">
                       <Link to={`/services/${service.id}`} className="block">
                         <Button 
-                          variant="link" 
-                          className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
+                          className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white w-full"
                         >
-                          Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                          Learn More
                         </Button>
                       </Link>
                     </div>

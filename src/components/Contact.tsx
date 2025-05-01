@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Bot, Send } from 'lucide-react';
@@ -89,13 +90,14 @@ const Contact = () => {
     setFormSubmitting(true);
     
     try {
-      // Adjust template parameters to exactly match the email template fields
+      // Update template parameters to match the exact format expected by the EmailJS template
+      // These parameter names match the double-curly brace values in the template
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
+        customer_name: formData.name,
+        customer_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        date_submitted: new Date().toLocaleDateString()
+        current_date: new Date().toLocaleDateString()
       };
 
       // Track form submission in analytics

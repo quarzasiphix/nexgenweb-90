@@ -1,13 +1,8 @@
 
-import React, { createContext, useContext } from 'react';
 import { usePostHog } from 'posthog-js/react';
 import { isAnalyticsAvailable } from '@/lib/analytics';
 
-// Create a context for analytics
-const AnalyticsContext = createContext<ReturnType<typeof useAnalyticsProvider> | undefined>(undefined);
-
-// Provider hook that creates analytics object and handles initialization
-function useAnalyticsProvider() {
+export function useAnalytics() {
   // Use the PostHog hook
   const posthog = usePostHog();
   
@@ -36,27 +31,6 @@ function useAnalyticsProvider() {
   return { 
     posthog,
     captureEvent,
-    identifyUser,
+    identifyUser
   };
-}
-
-// Provider component that wraps your app and makes analytics object available
-export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
-  const analytics = useAnalyticsProvider();
-  return (
-    <AnalyticsContext.Provider value={analytics}>
-      {children}
-    </AnalyticsContext.Provider>
-  );
-}
-
-// Hook for components to get access to the analytics API
-export function useAnalytics() {
-  const context = useContext(AnalyticsContext);
-  if (context === undefined) {
-    // If useAnalytics is called outside of AnalyticsProvider,
-    // fall back to direct usage instead of throwing an error
-    return useAnalyticsProvider();
-  }
-  return context;
 }

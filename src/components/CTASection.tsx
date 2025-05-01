@@ -1,12 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle, ArrowRight, Globe, Server } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
-import { useAnalytics } from '@/hooks/use-analytics';
 
 const CTASection = () => {
   const { ref, inView } = useInView({
@@ -16,27 +15,9 @@ const CTASection = () => {
   
   const navigate = useNavigate();
   const { openChat } = useChat();
-  const { captureEvent } = useAnalytics();
 
-  const [selectedAIPlan, setSelectedAIPlan] = useState<string | null>(null);
-  const [selectedWebPlan, setSelectedWebPlan] = useState<string | null>(null);
-
-  const handleSelectAIPlan = (planTitle: string, price: string) => {
-    setSelectedAIPlan(planTitle);
-    captureEvent('plan_selected', { plan: planTitle, type: 'ai', price });
-  };
-
-  const handleSelectWebPlan = (planTitle: string, price: string) => {
-    setSelectedWebPlan(planTitle);
-    captureEvent('plan_selected', { plan: planTitle, type: 'web', price });
-  };
-
-  const proceedToCheckout = (planType: 'ai' | 'web') => {
-    const plan = planType === 'ai' ? selectedAIPlan : selectedWebPlan;
-    if (plan) {
-      navigate(`/checkout?plan=${encodeURIComponent(plan)}&type=${planType}`);
-      captureEvent('checkout_started', { plan, type: planType });
-    }
+  const scrollToContact = () => {
+    openChat();
   };
 
   const benefits = [
@@ -53,53 +34,6 @@ const CTASection = () => {
     "Managed security and automatic updates",
     "Scalable infrastructure that grows with your business",
     "24/7 technical support and monitoring"
-  ];
-
-  const aiPlans = [
-    { 
-      title: "Starter", 
-      price: "$499", 
-      description: "Perfect for small businesses",
-      features: ["AI Chatbot", "Basic Analytics", "Email Automation", "5 Workflow Automations"] 
-    },
-    { 
-      title: "Professional", 
-      price: "$999", 
-      description: "Most popular for growing teams",
-      features: ["Advanced AI Chatbot", "Full Analytics Suite", "Marketing Automation", "Unlimited Workflows", "Priority Support"] 
-    },
-    { 
-      title: "Enterprise", 
-      price: "Custom", 
-      description: "For large organizations",
-      features: ["Custom AI Solutions", "Dedicated Account Manager", "Integration Services", "Custom Reporting", "24/7 Premium Support"] 
-    }
-  ];
-
-  const webPlans = [
-    {
-      name: "Business Starter",
-      price: "$899",
-      features: [
-        "5-page responsive website",
-        "AI-powered chatbot",
-        "Standard hosting package",
-        "Basic SEO optimization",
-        "1 year of maintenance"
-      ]
-    },
-    {
-      name: "Business Pro",
-      price: "$1,999",
-      features: [
-        "10-page responsive website",
-        "Custom AI features",
-        "High-performance hosting",
-        "Advanced SEO & analytics",
-        "2 years of maintenance",
-        "Monthly performance reports"
-      ]
-    }
   ];
 
   return (
@@ -166,16 +100,29 @@ const CTASection = () => {
               </div>
               
               <div className="space-y-5">
-                {aiPlans.map((plan, index) => (
+                {[
+                  { 
+                    title: "Starter", 
+                    price: "$499", 
+                    description: "Perfect for small businesses",
+                    features: ["AI Chatbot", "Basic Analytics", "Email Automation", "5 Workflow Automations"] 
+                  },
+                  { 
+                    title: "Professional", 
+                    price: "$999", 
+                    description: "Most popular for growing teams",
+                    features: ["Advanced AI Chatbot", "Full Analytics Suite", "Marketing Automation", "Unlimited Workflows", "Priority Support"] 
+                  },
+                  { 
+                    title: "Enterprise", 
+                    price: "Custom", 
+                    description: "For large organizations",
+                    features: ["Custom AI Solutions", "Dedicated Account Manager", "Integration Services", "Custom Reporting", "24/7 Premium Support"] 
+                  }
+                ].map((plan, index) => (
                   <div 
                     key={index} 
-                    onClick={() => handleSelectAIPlan(plan.title, plan.price)}
-                    className={cn(
-                      "p-4 rounded-xl border transition-colors cursor-pointer",
-                      selectedAIPlan === plan.title 
-                        ? "bg-white/20 border-white" 
-                        : "bg-white/5 hover:bg-white/10 border-white/10"
-                    )}
+                    className="p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-pointer"
                   >
                     <div className="flex justify-between items-center mb-2">
                       <h4 className="font-semibold">{plan.title}</h4>
@@ -195,11 +142,10 @@ const CTASection = () => {
               </div>
               
               <Button 
-                className="w-full mt-6 bg-white text-brand-700 hover:bg-gray-100 disabled:opacity-50"
-                disabled={!selectedAIPlan}
-                onClick={() => proceedToCheckout('ai')}
+                className="w-full mt-6 bg-white text-brand-700 hover:bg-gray-100"
+                onClick={() => scrollToContact()}
               >
-                {selectedAIPlan ? `Buy Now: ${selectedAIPlan}` : 'Select a Plan Above'}
+                Compare All Plans
               </Button>
             </div>
           </div>
@@ -224,17 +170,32 @@ const CTASection = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  {webPlans.map((pkg, idx) => (
-                    <div 
-                      key={idx} 
-                      onClick={() => handleSelectWebPlan(pkg.name, pkg.price)}
-                      className={cn(
-                        "p-4 rounded-lg border transition-colors cursor-pointer",
-                        selectedWebPlan === pkg.name 
-                          ? "bg-white/20 border-white" 
-                          : "bg-white/5 hover:bg-white/10 border-white/10"
-                      )}
-                    >
+                  {[
+                    {
+                      name: "Business Starter",
+                      price: "$899",
+                      features: [
+                        "5-page responsive website",
+                        "AI-powered chatbot",
+                        "Standard hosting package",
+                        "Basic SEO optimization",
+                        "1 year of maintenance"
+                      ]
+                    },
+                    {
+                      name: "Business Pro",
+                      price: "$1,999",
+                      features: [
+                        "10-page responsive website",
+                        "Custom AI features",
+                        "High-performance hosting",
+                        "Advanced SEO & analytics",
+                        "2 years of maintenance",
+                        "Monthly performance reports"
+                      ]
+                    }
+                  ].map((pkg, idx) => (
+                    <div key={idx} className="p-4 rounded-lg bg-white/5 border border-white/10">
                       <div className="flex justify-between items-center mb-2">
                         <h5 className="font-semibold">{pkg.name}</h5>
                         <span className="font-bold">{pkg.price}</span>
@@ -252,11 +213,10 @@ const CTASection = () => {
                 </div>
                 
                 <Button 
-                  className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100 disabled:opacity-50"
-                  disabled={!selectedWebPlan}
-                  onClick={() => proceedToCheckout('web')}
+                  className="w-full mt-4 bg-white text-brand-700 hover:bg-gray-100"
+                  onClick={() => scrollToContact()}
                 >
-                  {selectedWebPlan ? `Buy Now: ${selectedWebPlan}` : 'Select a Plan Above'}
+                  Get a Custom Quote
                 </Button>
               </div>
             </div>
@@ -297,3 +257,4 @@ const CTASection = () => {
 };
 
 export default CTASection;
+

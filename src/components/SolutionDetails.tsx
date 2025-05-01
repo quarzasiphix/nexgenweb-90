@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Bot, Brain, DollarSign, Users, FileText, 
   BarChart3, Truck, Shield, Scale, Database,
-  ArrowLeft, ShoppingCart
+  ArrowLeft
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -12,73 +12,26 @@ import { Card, CardContent } from '@/components/ui/card';
 import { solutionCategories } from './Solutions';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
-import { useAnalytics } from '@/hooks/use-analytics';
-import { useToast } from '@/hooks/use-toast';
-
-// Add pricing to solution categories
-const enhancedSolutionCategories = solutionCategories.map(solution => ({
-  ...solution,
-  price: solution.title.includes('Enterprise') ? 2499 :
-         solution.title.includes('Advanced') ? 1499 :
-         solution.title.includes('Healthcare') ? 1899 :
-         solution.title.includes('Retail') ? 1699 :
-         solution.title.includes('Financial') ? 1999 : 1299
-}));
 
 const SolutionDetails = () => {
   const { solutionId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
-  const { captureEvent } = useAnalytics();
-  const { toast } = useToast();
-  
-  const solution = enhancedSolutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
+  const solution = solutionCategories.find(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === solutionId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     
     if (solution) {
       document.title = `${solution.title} - BizWiz`;
-      // Track page view with analytics
-      captureEvent('solution_details_view', {
-        solution_id: solutionId,
-        solution_title: solution.title
-      });
     } else {
       navigate('/solutions');
     }
-  }, [solutionId, navigate, solution, captureEvent]);
+  }, [solutionId, navigate, solution]);
 
   if (!solution) {
     return null;
   }
-
-  const handlePurchase = () => {
-    // Track purchase intent
-    captureEvent('solution_purchase_initiated', { 
-      solution_id: solutionId,
-      solution_title: solution.title,
-      solution_price: solution.price
-    });
-    
-    // Store selected solution in session storage to use on checkout page
-    sessionStorage.setItem('checkoutService', JSON.stringify({
-      id: solutionId,
-      title: solution.title,
-      price: solution.price,
-      category: 'solution'
-    }));
-    
-    // Show toast notification
-    toast({
-      title: "Solution added to cart",
-      description: `${solution.title} has been added to your cart.`,
-      duration: 3000,
-    });
-    
-    // Navigate to checkout
-    navigate('/checkout');
-  };
 
   const IconComponent = solution.icon;
 
@@ -101,22 +54,11 @@ const SolutionDetails = () => {
             <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
               <IconComponent className="h-8 w-8 text-white" />
             </div>
-            <div className="flex-grow">
+            <div>
               <h1 className="text-4xl font-bold text-white mb-2">{solution.title}</h1>
               <p className="text-lg text-neutral-300 max-w-3xl">
                 {solution.description}
               </p>
-            </div>
-            <div className="flex flex-col items-center bg-neutral-800 p-4 rounded-lg border border-neutral-700">
-              <p className="text-lg font-medium text-neutral-300 mb-1">Starting at</p>
-              <p className="text-3xl font-bold text-white mb-3">${solution.price}</p>
-              <Button 
-                className="bg-brand-500 hover:bg-brand-600 text-white flex items-center gap-2"
-                onClick={handlePurchase}
-              >
-                <ShoppingCart size={18} />
-                Purchase Now
-              </Button>
             </div>
           </div>
 
@@ -185,32 +127,18 @@ const SolutionDetails = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 text-center md:text-left">
-                <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
-                <p className="text-neutral-300 max-w-2xl">
-                  Our team of experts will help you implement {solution.title} solutions tailored to your specific business needs.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg"
-                  className="bg-brand-500 hover:bg-brand-600 text-white"
-                  onClick={openChat}
-                >
-                  Get a Consultation
-                </Button>
-                <Button 
-                  size="lg"
-                  className="bg-white hover:bg-gray-100 text-brand-500 flex items-center gap-2"
-                  onClick={handlePurchase}
-                >
-                  <ShoppingCart size={18} />
-                  Purchase Now
-                </Button>
-              </div>
-            </div>
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
+            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
+              Our team of experts will help you implement {solution.title} solutions tailored to your specific business needs.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-brand-500 hover:bg-brand-600 text-white"
+              onClick={() => openChat()}
+            >
+              Get Started Today
+            </Button>
           </div>
         </div>
       </main>

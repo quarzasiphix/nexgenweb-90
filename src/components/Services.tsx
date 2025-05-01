@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -162,11 +161,10 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full cursor-pointer",
+                "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
               style={{ transitionDelay: `${index * 25}ms` }}
-              onClick={() => navigate(`/services/${service.id}`)}
             >
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
@@ -215,11 +213,10 @@ const Services = () => {
               <Card 
                 key={index}
                 className={cn(
-                  "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full cursor-pointer",
+                  "border border-neutral-200 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full",
                   inView && "opacity-100 translate-y-0"
                 )}
                 style={{ transitionDelay: `${400 + (index * 100)}ms` }}
-                onClick={() => navigate(`/services/${service.id}`)}
               >
                 <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
                   <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>

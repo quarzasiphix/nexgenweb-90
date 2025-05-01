@@ -14,22 +14,6 @@ import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
 import AIServices from './pages/services/AIServices';
 import { ChatProvider } from './context/ChatContext';
-import CheckoutPage from './pages/CheckoutPage';
-import { usePostHog } from 'posthog-js/react';
-import { useAnalytics } from '@/hooks/use-analytics';
-
-// AnalyticsProvider component that initializes analytics
-const AnalyticsProvider = ({ children }: { children: React.ReactNode }) => {
-  const posthog = usePostHog();
-
-  useEffect(() => {
-    if (posthog) {
-      console.info('PostHog loaded!');
-    }
-  }, [posthog]);
-
-  return <>{children}</>;
-};
 
 // ScrollToTop component that will be used inside Router
 const ScrollToTop = () => {
@@ -45,27 +29,24 @@ const ScrollToTop = () => {
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <AnalyticsProvider>
-        <ChatProvider>
-          <Router>
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<AllServices />} />
-              <Route path="/services/:serviceId" element={<ServiceDetails />} />
-              <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
-              <Route path="/case-studies" element={<CaseStudiesPage />} />
-              <Route path="/services/web" element={<WebServices />} />
-              <Route path="/services/ai" element={<AIServices />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Router>
-          <Toaster />
-          <Sonner />
-        </ChatProvider>
-      </AnalyticsProvider>
+      <ChatProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/services/:serviceId" element={<ServiceDetails />} />
+            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/services/web" element={<WebServices />} />
+            <Route path="/services/ai" element={<AIServices />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+        <Toaster />
+        <Sonner />
+      </ChatProvider>
     </ThemeProvider>
   );
 }

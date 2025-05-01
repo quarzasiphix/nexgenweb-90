@@ -82,19 +82,20 @@ const Index = () => {
       {/* Always show Solutions as it's crucial for understanding our offerings */}
       <Solutions />
       
-      {/* Make sure Services appears in both mobile and desktop layouts */}
-      <Services />
-      
       {/* On mobile, only show key sections */}
       {!isMobile ? (
         <>
+          <Services />
           <HowItWorks />
           <CaseStudies />
           <Testimonials />
         </>
       ) : (
-        // On mobile, show HowItWorks as it's important
-        <HowItWorks />
+        // On mobile, show both HowItWorks and Services (web dev) as they're most important
+        <>
+          <HowItWorks />
+          <Services />
+        </>
       )}
       
       {/* Always show CTA and Contact for conversion */}

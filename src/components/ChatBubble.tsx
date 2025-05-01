@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bot, X, Send, MessageSquare } from 'lucide-react';
+import { X, Send, MessageSquare } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useChat } from '@/context/ChatContext';
+import Logo from '@/components/Logo';
 
 type Message = {
   type: 'user' | 'agent';
@@ -124,11 +125,8 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
     <div className="fixed bottom-6 right-6 bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl z-50 w-80 sm:w-96 overflow-hidden animate-scale-in">
       <div className="flex items-center justify-between bg-[#9b87f5] p-4 text-white">
         <div className="flex items-center">
-          <div className="relative w-6 h-6 mr-2">
-            <div className="absolute inset-0 bg-white rounded-md"></div>
-            <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-          </div>
-          <h3 className="font-medium">BizWiz AI Assistant</h3>
+          <Logo showText={false} className="w-6 h-6" asLink={false} />
+          <h3 className="font-medium ml-2">BizWiz AI Assistant</h3>
         </div>
         <button 
           onClick={onClose}
@@ -149,11 +147,8 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
             )}
           >
             {message.type === 'agent' && (
-              <div className="flex-shrink-0 mr-2 mt-1">
-                <div className="relative w-6 h-6">
-                  <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
-                  <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-                </div>
+              <div className="flex-shrink-0 mr-2 mt-1 w-6 h-6">
+                {/* Logo removed here - empty div kept for spacing */}
               </div>
             )}
             <div className={cn(
@@ -171,11 +166,8 @@ const ChatBubble = ({ isOpen, onClose }: ChatBubbleProps) => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="flex-shrink-0 mr-2 mt-1">
-              <div className="relative w-6 h-6">
-                <div className="absolute inset-0 bg-[#9b87f5] rounded-md"></div>
-                <div className="absolute inset-0 bg-[#7E69AB] rounded-md rotate-45 scale-75"></div>
-              </div>
+            <div className="flex-shrink-0 mr-2 mt-1 w-6 h-6">
+              {/* Logo removed here - empty div kept for spacing */}
             </div>
             <div className="bg-white/10 text-neutral-100 p-3 rounded-lg flex items-center space-x-2">
               <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>

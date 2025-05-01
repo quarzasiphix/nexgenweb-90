@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Send } from 'lucide-react';
@@ -254,8 +253,8 @@ const Contact = () => {
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {message.type === 'agent' && (
-                    <div className="flex-shrink-0 mr-2 mt-1">
-                      <Logo showText={false} className="w-6 h-6" asLink={false} />
+                    <div className="flex-shrink-0 mr-2 mt-1 w-6 h-6">
+                      {/* Logo removed here - keep empty space for alignment */}
                     </div>
                   )}
                   <div className={cn(
@@ -273,8 +272,8 @@ const Contact = () => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="flex-shrink-0 mr-2 mt-1">
-                    <Logo showText={false} className="w-6 h-6" asLink={false} />
+                  <div className="flex-shrink-0 mr-2 mt-1 w-6 h-6">
+                    {/* Logo removed here - keep empty space for alignment */}
                   </div>
                   <div className="bg-white/10 text-neutral-100 p-3 rounded-lg flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#9b87f5] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>

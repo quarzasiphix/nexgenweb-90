@@ -34,7 +34,3 @@ export function useAnalytics() {
     identifyUser
   };
 }
-
-export interface AnalyticsProviderProps {
-  children: React.ReactNode;
-}

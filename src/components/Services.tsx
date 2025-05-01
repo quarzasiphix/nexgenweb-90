@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -138,17 +139,17 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="section-padding bg-white">
+      <div ref={ref} className="section-container">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
+            "section-title opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-gradient">Services</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "section-description text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -193,6 +194,26 @@ const Services = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-6 md:mb-0 md:mr-6">
+              <h4 className="text-xl font-semibold mb-2 text-neutral-900">
+                Ready for a cutting-edge web presence?
+              </h4>
+              <p className="text-neutral-700">
+                Our experts build and host AI-optimized websites that drive business growth.
+              </p>
+            </div>
+            <Button 
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
+              onClick={scrollToContact}
+            >
+              Get a Free Consultation
+            </Button>
+          </div>
         </div>
 
         <div className={cn(
@@ -240,25 +261,6 @@ const Services = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-          
-          <div className="mt-10 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 md:mr-6">
-                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
-                  Ready for a cutting-edge web presence?
-                </h4>
-                <p className="text-neutral-700">
-                  Our experts build and host AI-optimized websites that drive business growth.
-                </p>
-              </div>
-              <Button 
-                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white whitespace-nowrap"
-                onClick={scrollToContact}
-              >
-                Get a Free Consultation
-              </Button>
-            </div>
           </div>
         </div>
 

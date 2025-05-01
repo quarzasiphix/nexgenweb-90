@@ -117,8 +117,25 @@
     @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-md;
   }
   
+  /* New standardized section styling */
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-20;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold mb-6 text-neutral-900;
+  }
+  
+  .section-title-light {
+    @apply text-3xl sm:text-4xl font-bold mb-6 text-white;
+  }
+  
+  .section-description {
+    @apply max-w-2xl mx-auto text-lg mb-10;
   }
 
   .btn-primary {

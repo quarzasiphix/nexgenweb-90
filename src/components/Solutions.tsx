@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -173,8 +173,8 @@ export const solutionCategories = [
 const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories[0], index: number }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.01, // Reduced from 0.05 to trigger much sooner
-    rootMargin: '50px', // Added to trigger before element is in viewport
+    threshold: 0.01,
+    rootMargin: '50px',
   });
 
   const solutionId = solution.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
@@ -183,10 +183,10 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
     <div 
       ref={ref}
       className={cn(
-        "bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover opacity-0 translate-y-4", // Duration reduced from 300 to 150, translateY from 8 to 4
+        "bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover opacity-0 translate-y-4",
         inView && "opacity-100 translate-y-0"
       )}
-      style={{ transitionDelay: `${index * 25}ms` }} // Reduced delay from 50ms to 25ms
+      style={{ transitionDelay: `${index * 25}ms` }}
     >
       <div className={`p-6 flex flex-col h-full`}>
         <div className={`w-12 h-12 rounded-lg mb-5 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
@@ -237,22 +237,22 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
 const Solutions = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.01, // Reduced from 0.05 to trigger sooner
-    rootMargin: '50px', // Added to trigger before element is in viewport
+    threshold: 0.01,
+    rootMargin: '50px',
   });
 
   return (
-    <section id="solutions" className="py-20 bg-neutral-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="section-padding bg-neutral-50">
+      <div className="section-container">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250", // Reduced from 500 to 250
+            "section-title opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             AI-Powered Business <span className="text-gradient">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25", // Reduced from 500 to 250, delay from 50 to 25
+            "section-description text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Leverage intelligent automation across every department to drive efficiency, 

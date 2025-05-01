@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight } from 'lucide-react';
@@ -50,17 +51,17 @@ const CaseStudies = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="case-studies" className="py-20 bg-neutral-900 relative overflow-hidden">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="case-studies" className="section-padding bg-neutral-900 relative overflow-hidden">
+      <div ref={ref} className="section-container relative z-10">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-700",
+            "section-title-light opacity-0 transform translate-y-4 transition-all duration-700",
             inView && "opacity-100 transform-none"
           )}>
             Success <span className="text-gradient">Stories</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            "section-description text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
             inView && "opacity-100 transform-none"
           )}>
             See how businesses like yours have achieved remarkable results with our solutions.

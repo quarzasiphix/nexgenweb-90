@@ -35,21 +35,21 @@ const HowItWorks = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.01,
-    rootMargin: '100px', // Increased from 50px
+    rootMargin: '100px',
   });
 
   return (
-    <section id="how-it-works" className="py-20 bg-neutral-50">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="section-padding bg-neutral-50">
+      <div ref={ref} className="section-container">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-150",
+            "section-title opacity-0 transform translate-y-4 transition-all duration-150",
             inView && "opacity-100 transform-none"
           )}>
             How We <span className="text-gradient">Transform</span> Your Business
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-150 delay-25",
+            "section-description text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-150 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Our proven process for implementing AI-powered automation solutions 

@@ -1,45 +1,53 @@
 
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Index from './pages/Index';
-import AboutPage from './pages/AboutPage'; // Fixed import path
-import CaseStudiesPage from './pages/CaseStudiesPage'; // Fixed import path
+import AboutPage from './pages/AboutPage';
 import AllServices from './pages/AllServices';
-import AIServices from './pages/services/AIServices';
-import WebServices from './pages/services/WebServices';
 import NotFound from './pages/NotFound';
-import { Toaster } from '@/components/ui/toaster';
-import { ChatProvider } from '@/context/ChatContext';
-import { useAnalytics } from '@/hooks/use-analytics'; // Import useAnalytics instead of AnalyticsProvider
+import { ThemeProvider } from './components/ui/theme-provider';
+import { Toaster } from './components/ui/toaster';
+import { Toaster as Sonner } from './components/ui/sonner';
+import CaseStudiesPage from './pages/CaseStudiesPage';
+import ServiceDetails from './components/ServiceDetails';
+import SolutionDetails from './components/SolutionDetails';
+import WebServices from './pages/services/WebServices';
+import AIServices from './pages/services/AIServices';
+import { ChatProvider } from './context/ChatContext';
 
-// Add import for the new checkout page
-import CheckoutPage from './pages/CheckoutPage';
-
-// Create a simple Analytics Provider since it's missing
-const AnalyticsProvider = ({ children }: { children: React.ReactNode }) => {
-  // This is a simple wrapper component that would normally provide analytics context
-  return <>{children}</>;
-};
+// ScrollToTop component that will be used inside Router
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
 function App() {
   return (
-    <AnalyticsProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <ChatProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/services" element={<AllServices />} />
-            <Route path="/services/ai" element={<AIServices />} />
+            <Route path="/services/:serviceId" element={<ServiceDetails />} />
+            <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/services/web" element={<WebServices />} />
-            <Route path="/checkout" element={<CheckoutPage />} /> {/* Add new checkout route */}
+            <Route path="/services/ai" element={<AIServices />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Toaster />
         </Router>
+        <Toaster />
+        <Sonner />
       </ChatProvider>
-    </AnalyticsProvider>
+    </ThemeProvider>
   );
 }
 

@@ -253,7 +253,7 @@ const Services = () => {
             ))}
           </div>
           
-          {/* View All Services button moved here, above the CTA section */}
+          {/* View All Services button */}
           <div className={cn(
             "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
             inView && "opacity-100 transform-none"
@@ -266,7 +266,8 @@ const Services = () => {
             </Button>
           </div>
           
-          <div className="mt-10 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
+          {/* Web Presence CTA - Moved to appear after the services sections */}
+          <div className="mt-16 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-6">
                 <h4 className="text-xl font-semibold mb-2 text-neutral-900">
@@ -285,8 +286,6 @@ const Services = () => {
             </div>
           </div>
         </div>
-
-        {/* Removed the View All Services button from here as it's now placed above */}
       </div>
     </section>
   );

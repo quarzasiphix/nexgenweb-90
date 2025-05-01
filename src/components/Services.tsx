@@ -253,7 +253,7 @@ const Services = () => {
             ))}
           </div>
           
-          {/* View All Services button moved here, above the CTA section */}
+          {/* View All Services button */}
           <div className={cn(
             "text-center mt-12 opacity-0 transform translate-y-4 transition-all duration-500 delay-200",
             inView && "opacity-100 transform-none"
@@ -266,6 +266,47 @@ const Services = () => {
             </Button>
           </div>
           
+          {/* How We Transform Your Business section */}
+          <div className="mt-20 mb-10">
+            <div className="text-center">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
+                How We <span className="text-gradient">Transform</span> Your Business
+              </h3>
+              <p className="max-w-2xl mx-auto text-lg text-neutral-600">
+                Our proven approach combines cutting-edge technology with strategic expertise to deliver measurable results for your organization.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+              {[
+                {
+                  title: "Strategic Consultation",
+                  description: "We thoroughly analyze your business needs and develop a tailored technology roadmap aligned with your goals.",
+                  icon: LineChart
+                },
+                {
+                  title: "Implementation Excellence",
+                  description: "Our expert team designs and deploys solutions with minimal disruption to your existing operations.",
+                  icon: Zap
+                },
+                {
+                  title: "Continuous Optimization",
+                  description: "We provide ongoing support, monitoring, and refinement to ensure lasting success and maximum ROI.",
+                  icon: Laptop
+                }
+              ].map((item, index) => (
+                <div key={index} className="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-md transition-all">
+                  <div className="w-12 h-12 rounded-full mb-5 flex items-center justify-center bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]">
+                    <item.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-semibold mb-3 text-neutral-800">{item.title}</h4>
+                  <p className="text-neutral-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Ready for a cutting-edge web presence - moved below How We Transform Your Business */}
           <div className="mt-10 p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-6">
@@ -285,8 +326,6 @@ const Services = () => {
             </div>
           </div>
         </div>
-
-        {/* Removed the View All Services button from here as it's now placed above */}
       </div>
     </section>
   );

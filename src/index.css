@@ -154,11 +154,6 @@
   .blue-card {
     @apply bg-gradient-to-br from-brand-700/90 to-brand-800/90 text-white border border-white/10 shadow-md;
   }
-  
-  /* New class for fixed gradient background matching the header */
-  .fixed-bg-gradient {
-    @apply bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800;
-  }
 }
 
 /* Core animation classes */

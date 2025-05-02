@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,37 +63,40 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					50: '#EBF5FF',  // Updated to match new color scheme
-					100: '#D6E8FF',
-					200: '#B3D1FF',
-					300: '#80B2FF',
-					400: '#4B9FE3',
+					50: '#F5F8FC',  // Updated to be lighter
+					100: '#E6EEFA',
+					200: '#C5D6EF',
+					300: '#A4BFE4',
+					400: '#7E69AB',  // Changed to purple
 					500: '#0070D1',  // Primary blue
 					600: '#005CB8',
 					700: '#00489C',
 					800: '#003366',
-					900: '#002144',
+					900: '#2C394B',
 				},
 				neutral: {
-					50: '#F5F8FC',  // Updated for blue-tinted neutrals
-					100: '#EDF1F7',
-					200: '#DCE3ED',
-					300: '#C5D0DF',
-					400: '#A3B0C2',
-					500: '#768296',
-					600: '#5A697E',
-					700: '#445266',
-					800: '#2C394B',
-					900: '#1A2433',
+					50: '#F9F9FA',  // Updated for less blue-tinted neutrals
+					100: '#F1F1F3',
+					200: '#E4E4E8',
+					300: '#D1D1D6',
+					400: '#A3A3A9',
+					500: '#767679',
+					600: '#5A5A5E',
+					700: '#444446',
+					800: '#2C2C2F',
+					900: '#1A1A1C',
 				},
-				// Add bizwiz theme colors for direct tailwind access
+				// Add diversified theme colors for direct tailwind access
 				bizwiz: {
 					primary: '#0070D1',
 					'primary-light': '#4B9FE3',
-					accent: '#00A0FF',
-					neutral: '#2C394B',
-					light: '#EBF5FF',
-					gray: '#F5F8FC',
+					accent: '#7E69AB',  // Added purple
+					neutral: '#444444',
+					light: '#F5F8FC',
+					gray: '#F6F6F7',
+					warm: '#E5A663',  // Added warm orange
+					success: '#4CAF50',  // Added success green
+					info: '#00A0FF',   // Added info blue
 				}
 			},
 			borderRadius: {

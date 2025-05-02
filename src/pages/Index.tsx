@@ -17,11 +17,11 @@ import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
 
-// Custom CSS classes for different section themes - now all using the same refined blue theme
+// Custom CSS classes for different section themes - now with more color variety
 const sectionThemes = {
-  solutions: "solutions-theme", // Consistent blue theme
-  services: "solutions-theme",  // Same blue theme 
-  webDev: "solutions-theme"     // Same blue theme
+  solutions: "solutions-theme", // Blue theme
+  services: "services-theme",   // Purple theme 
+  webDev: "webdev-theme"        // Warm orange theme
 }
 
 const Index = () => {
@@ -42,13 +42,13 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
     }
     
-    // Add theme-specific CSS variables - now using the new refined color palette
+    // Add theme-specific CSS variables - now using the new diversified color palette
     document.documentElement.style.setProperty('--solutions-primary', 'var(--bizwiz-primary)');
     document.documentElement.style.setProperty('--solutions-secondary', 'var(--bizwiz-primary-light)');
-    document.documentElement.style.setProperty('--services-primary', 'var(--bizwiz-primary)');
-    document.documentElement.style.setProperty('--services-secondary', 'var(--bizwiz-primary-light)');
-    document.documentElement.style.setProperty('--webdev-primary', 'var(--bizwiz-primary)');
-    document.documentElement.style.setProperty('--webdev-secondary', 'var(--bizwiz-primary-light)');
+    document.documentElement.style.setProperty('--services-primary', 'var(--bizwiz-accent)');
+    document.documentElement.style.setProperty('--services-secondary', '#8F7CBF');
+    document.documentElement.style.setProperty('--webdev-primary', 'var(--bizwiz-warm)');
+    document.documentElement.style.setProperty('--webdev-secondary', '#F0B778');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -75,6 +74,107 @@ const PricingSection = () => {
     }
   ];
 
+  const webServices = [
+    {
+      id: "web-basic",
+      title: "Web Basic",
+      price: "$899",
+      period: "/one-time",
+      description: "Professional website for small businesses",
+      features: [
+        "5-page Responsive Website",
+        "Basic AI Chatbot",
+        "Standard Hosting",
+        "Basic SEO",
+        "1 Year Maintenance",
+        "Email Support"
+      ]
+    },
+    {
+      id: "web-business",
+      title: "Web Business",
+      price: "$1,999",
+      period: "/one-time",
+      description: "Complete web presence for growing businesses",
+      features: [
+        "10-page Custom Website",
+        "Advanced AI Features",
+        "High-performance Hosting",
+        "Advanced SEO & Analytics",
+        "E-commerce Integration",
+        "2 Years Maintenance",
+        "Priority Support"
+      ],
+      popular: true
+    },
+    {
+      id: "web-enterprise",
+      title: "Web Enterprise",
+      price: "Custom",
+      period: "",
+      description: "Enterprise-grade web solutions",
+      features: [
+        "Unlimited Pages",
+        "Custom Web Application",
+        "Advanced AI Integration",
+        "Enterprise Hosting",
+        "Full-stack Development",
+        "Ongoing Maintenance",
+        "24/7 Dedicated Support",
+        "Security Audits"
+      ]
+    }
+  ];
+
+  const premiumServices = [
+    {
+      id: "custom-ai-integration",
+      title: "Custom AI Integration",
+      price: "$4,999",
+      period: "/project",
+      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
+      features: [
+        "Bespoke AI Solutions",
+        "Seamless Integration",
+        "Custom API Development",
+        "Data Preparation & Cleaning",
+        "Expert Implementation",
+        "Ongoing Support"
+      ]
+    },
+    {
+      id: "ai-powered-web",
+      title: "AI-Powered Web",
+      price: "$3,999",
+      period: "/project",
+      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
+      features: [
+        "Real-time User Adaptation",
+        "Personalized User Experiences",
+        "Intelligent Search",
+        "Content Recommendations",
+        "Behavior Analysis",
+        "Multi-platform Deployment"
+      ],
+      popular: true
+    },
+    {
+      id: "enterprise-ai",
+      title: "Enterprise AI",
+      price: "Custom",
+      period: "",
+      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
+      features: [
+        "Organization-wide AI Governance",
+        "Custom Knowledge Management",
+        "Multi-department Workflows",
+        "Security & Compliance",
+        "Enterprise Data Integration",
+        "Executive Dashboard"
+      ]
+    }
+  ];
+
   return (
     <section id="pricing" className="py-20 bg-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,6 +195,9 @@ const PricingSection = () => {
             </TabsTrigger>
             <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
               Web Development
+            </TabsTrigger>
+            <TabsTrigger value="premium" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+              Premium Services
             </TabsTrigger>
           </TabsList>
           
@@ -273,6 +376,45 @@ const PricingSection = () => {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="premium" className="mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {premiumServices.map((service) => (
+                <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
+                  {service.popular && (
+                    <div className="absolute top-0 right-0 bg-[#9b87f5] text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
+                      MOST POPULAR
+                    </div>
+                  )}
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
+                    <div className="flex items-baseline mb-4">
+                      <span className="text-3xl font-bold text-white">{service.price}</span>
+                      {service.period && <span className="text-neutral-400 ml-2">{service.period}</span>}
+                    </div>
+                    <p className="text-neutral-300 mb-6">{service.description}</p>
+                    <ul className="space-y-3 mb-auto">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start text-neutral-400">
+                          <Check className="h-4 w-4 text-[#9b87f5] mt-1 mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-6">
+                      <Button 
+                        className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                        variant={service.popular ? "default" : "white"}
+                        onClick={() => handleBuyNow('Premium Services', service.title, service.price)}
+                      >
+                        {service.price === "Custom" ? "Contact Us" : "Buy Now"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </TabsContent>
         </Tabs>

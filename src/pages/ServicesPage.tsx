@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -132,6 +131,55 @@ const ServicesPage = () => {
     }
   ];
 
+  const premiumServices = [
+    {
+      id: "custom-ai-integration",
+      title: "Custom AI Integration",
+      price: "$4,999",
+      description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
+      features: [
+        "Bespoke AI Solutions",
+        "Seamless Integration",
+        "Custom API Development",
+        "Data Preparation & Cleaning",
+        "Expert Implementation",
+        "Ongoing Support & Maintenance",
+        "Performance Optimization"
+      ]
+    },
+    {
+      id: "ai-powered-web",
+      title: "AI-Powered Web",
+      price: "$3,999",
+      description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
+      features: [
+        "Real-time User Adaptation",
+        "Personalized User Experiences",
+        "Intelligent Search Functionality",
+        "Content Recommendations",
+        "Behavior Analysis",
+        "Multi-platform Deployment",
+        "Continuous Optimization"
+      ],
+      popular: true
+    },
+    {
+      id: "enterprise-ai",
+      title: "Enterprise AI",
+      price: "Custom",
+      description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
+      features: [
+        "Organization-wide AI Governance",
+        "Custom Knowledge Management",
+        "Multi-department Workflows",
+        "Security & Compliance",
+        "Enterprise Data Integration",
+        "Executive Dashboard",
+        "Dedicated AI Team"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-neutral-900">
       <Header />
@@ -150,6 +198,9 @@ const ServicesPage = () => {
               </TabsTrigger>
               <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
                 Web Development
+              </TabsTrigger>
+              <TabsTrigger value="premium" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+                Premium Services
               </TabsTrigger>
             </TabsList>
             
@@ -255,6 +306,62 @@ const ServicesPage = () => {
                     "SEO Best Practices", 
                     "Performance Optimization", 
                     "Content Management System"
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <Check className="h-4 w-4 text-[#9b87f5] mt-1 mr-2 flex-shrink-0" />
+                      <span className="text-neutral-300">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="premium" className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {premiumServices.map((service) => (
+                  <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
+                    {service.popular && (
+                      <div className="absolute top-0 right-0 bg-[#9b87f5] text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
+                        MOST POPULAR
+                      </div>
+                    )}
+                    <CardContent className="p-6 flex flex-col h-full">
+                      <h2 className="text-xl font-semibold text-white mb-2">{service.title}</h2>
+                      <div className="flex items-baseline mb-4">
+                        <span className="text-3xl font-bold text-white">{service.price}</span>
+                        {service.price !== "Custom" && <span className="text-neutral-400 ml-2">/project</span>}
+                      </div>
+                      <p className="text-neutral-300 mb-6">{service.description}</p>
+                      <ul className="space-y-3 mb-auto">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start text-neutral-400">
+                            <Check className="h-4 w-4 text-[#9b87f5] mt-1 mr-2 flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-6">
+                        <Button 
+                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          variant={service.popular ? "default" : "white"}
+                          onClick={() => handleBuyNow('Premium Services', service.title, service.price)}
+                        >
+                          {service.price === "Custom" ? "Contact Us" : "Buy Now"}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
+                <h3 className="text-xl font-semibold text-white mb-4">All Premium Service Plans Include:</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  {[
+                    "Strategic Consultation", 
+                    "Custom Implementation", 
+                    "Dedicated Project Manager", 
+                    "VIP Support"
                   ].map((feature, index) => (
                     <div key={index} className="flex items-start">
                       <Check className="h-4 w-4 text-[#9b87f5] mt-1 mr-2 flex-shrink-0" />

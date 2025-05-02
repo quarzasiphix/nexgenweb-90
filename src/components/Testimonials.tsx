@@ -65,7 +65,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-brand-900 to-brand-800 text-white overflow-hidden">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div ref={ref} className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         

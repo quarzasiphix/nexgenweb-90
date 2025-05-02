@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -15,7 +14,11 @@ export default {
 			center: true,
 			padding: '2rem',
 			screens: {
-				'2xl': '1400px'
+				'sm': '640px',
+				'md': '768px',
+				'lg': '1024px',
+				'xl': '1280px',
+				'2xl': '1536px'
 			}
 		},
 		extend: {
@@ -145,6 +148,10 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'hero-pattern': 'linear-gradient(to right, rgba(243, 244, 246, 0.1), rgba(243, 244, 246, 0.1)), url("/hero-pattern.svg")',
+			},
+			maxWidth: {
+				'7xl': '85rem',
+				'8xl': '90rem',
 			}
 		}
 	},

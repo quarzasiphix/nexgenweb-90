@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Bot, Brain, Shield, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -22,7 +22,7 @@ const AIServices = () => {
 
   const { openChat, isChatOpen, closeChat } = useChat();
 
-  // Handle Buy Now button click
+  // Updated to navigate directly to the pricing section
   const handleBuyNow = (serviceTitle: string) => {
     toast({
       title: "Service Selected",
@@ -30,8 +30,8 @@ const AIServices = () => {
       duration: 3000,
     });
     
-    // Navigate to services page with AI tab selected
-    navigate('/services');
+    // Navigate to homepage and scroll to pricing section
+    navigate('/?tab=ai#pricing');
   };
 
   const services = [

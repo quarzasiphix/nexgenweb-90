@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from 'lucide-react';
@@ -16,7 +15,7 @@ const AllServices = () => {
     document.title = "All Services - BizWiz";
   }, []);
 
-  // Handle Buy Now button click
+  // Updated to navigate directly to the pricing section
   const handleBuyNow = (serviceTitle: string, serviceType: string) => {
     toast({
       title: "Service Selected",
@@ -24,12 +23,8 @@ const AllServices = () => {
       duration: 3000,
     });
     
-    // Navigate to the correct services page based on service type
-    if (serviceType === 'ai') {
-      navigate('/services/ai');
-    } else {
-      navigate('/services/web');
-    }
+    // Navigate to homepage with the correct tab and pricing section
+    navigate(`/?tab=${serviceType}#pricing`);
   };
 
   const aiServices = [

@@ -1,13 +1,15 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useNavigate } from 'react-router-dom';
 
 const AIServices = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -19,6 +21,7 @@ const AIServices = () => {
 
   const services = [
     {
+      id: "finance-hr-ai",
       title: "Finance & HR AI",
       icon: Brain,
       description: "Advanced AI solutions for financial management and HR automation.",
@@ -31,6 +34,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "sales-marketing-ai",
       title: "Sales & Marketing AI",
       icon: LineChart,
       description: "AI-powered tools to boost your sales and marketing efforts.",
@@ -43,6 +47,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "it-security-ai",
       title: "IT & Security",
       icon: Shield,
       description: "Intelligent security solutions for your business.",
@@ -55,6 +60,7 @@ const AIServices = () => {
       ]
     },
     {
+      id: "customer-support-ai",
       title: "Customer Support AI",
       icon: Bot,
       description: "Transform customer service with AI automation.",
@@ -108,7 +114,7 @@ const AIServices = () => {
                     <Button 
                       variant="outline" 
                       className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
-                      onClick={() => openChat()}
+                      onClick={() => navigate(`/services/ai/${service.id}`)}
                     >
                       Learn More
                     </Button>

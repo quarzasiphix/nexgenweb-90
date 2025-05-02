@@ -12,7 +12,9 @@ import CaseStudiesPage from './pages/CaseStudiesPage';
 import ServiceDetails from './components/ServiceDetails';
 import SolutionDetails from './components/SolutionDetails';
 import WebServices from './pages/services/WebServices';
+import WebServiceDetail from './pages/services/WebServiceDetail';
 import AIServices from './pages/services/AIServices';
+import AIServiceDetail from './pages/services/AIServiceDetail';
 import { ChatProvider } from './context/ChatContext';
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
@@ -55,7 +57,9 @@ function App() {
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/services/web" element={<WebServices />} />
+              <Route path="/services/web/:serviceId" element={<WebServiceDetail />} />
               <Route path="/services/ai" element={<AIServices />} />
+              <Route path="/services/ai/:serviceId" element={<AIServiceDetail />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>

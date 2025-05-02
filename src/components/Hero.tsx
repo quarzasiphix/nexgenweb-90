@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, LineChart, Shield, Server, Code, Database } from 'lucide-react';
@@ -7,12 +6,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useChat } from '@/context/ChatContext';
+import { useToast } from '@/hooks/use-toast';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const { openChat } = useChat();
+  const { toast } = useToast();
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,6 +24,15 @@ const Hero = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleServiceCardClick = (service: string, path: string) => {
+    toast({
+      title: "Package Selected",
+      description: `Viewing details for ${service}`,
+      duration: 3000,
+    });
+    navigate(path);
   };
 
   return (
@@ -71,7 +81,10 @@ const Hero = () => {
                 
                 <TabsContent value="automation" className="mt-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Finance & HR", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Bot className="h-5 w-5 text-[#D6BCFA]" />
@@ -82,13 +95,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/ai');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Sales & Marketing", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <LineChart className="h-5 w-5 text-[#D6BCFA]" />
@@ -99,13 +118,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/ai');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("IT & Security", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Shield className="h-5 w-5 text-[#D6BCFA]" />
@@ -116,13 +141,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/ai');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Customer Support", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Server className="h-5 w-5 text-[#D6BCFA]" />
@@ -133,7 +164,10 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/ai')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/ai');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
@@ -143,7 +177,10 @@ const Hero = () => {
                 
                 <TabsContent value="web" className="mt-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Web Development", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Code className="h-5 w-5 text-[#D6BCFA]" />
@@ -154,13 +191,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/web');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Cloud Hosting", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Server className="h-5 w-5 text-[#D6BCFA]" />
@@ -171,13 +214,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/web');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Technical Services", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Database className="h-5 w-5 text-[#D6BCFA]" />
@@ -188,13 +237,19 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/web');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all">
+                    <div 
+                      onClick={() => handleServiceCardClick("Web Security", "/services")} 
+                      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer"
+                    >
                       <div className="flex items-center mb-4">
                         <div className="p-2 rounded-full bg-[#9b87f5]/20 mr-3">
                           <Shield className="h-5 w-5 text-[#D6BCFA]" />
@@ -205,7 +260,10 @@ const Hero = () => {
                       <Button 
                         variant="link" 
                         className="text-[#D6BCFA] p-0 hover:text-[#9b87f5]"
-                        onClick={() => navigate('/services/web')}
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          navigate('/services/web');
+                        }}
                       >
                         Learn more <ArrowRight className="ml-1 h-4 w-4" />
                       </Button>

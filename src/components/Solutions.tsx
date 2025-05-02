@@ -577,17 +577,25 @@ const Solutions = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="solutions" className="py-20 bg-neutral-50">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-20 bg-gradient-to-br from-neutral-900 to-neutral-800 relative overflow-hidden">
+      {/* Background elements for visual consistency with the header */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
+      </div>
+
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900",
+            "text-3xl sm:text-4xl font-bold mb-4 text-white",
             inView && "opacity-100 transform-none"
           )}>
-            Our Business <span className="text-gradient">Solutions</span>
+            Our Business <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600",
+            "max-w-2xl mx-auto text-lg text-white/80",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive solutions tailored to your business needs, 
@@ -602,19 +610,19 @@ const Solutions = () => {
           value={activeTab}
         >
           <div className="flex justify-center">
-            <TabsList className="mb-8 bg-white border border-neutral-200">
-              <TabsTrigger value="ai-solutions">AI Solutions</TabsTrigger>
-              <TabsTrigger value="web-development">Web Development</TabsTrigger>
-              <TabsTrigger value="premium-services">Premium Services</TabsTrigger>
+            <TabsList className="mb-8 bg-white/10 backdrop-blur-sm border border-white/20">
+              <TabsTrigger value="ai-solutions" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">AI Solutions</TabsTrigger>
+              <TabsTrigger value="web-development" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">Web Development</TabsTrigger>
+              <TabsTrigger value="premium-services" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">Premium Services</TabsTrigger>
             </TabsList>
           </div>
           
           <TabsContent value="ai-solutions" className="mt-0 w-full">
             <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                AI <span className="text-gradient">Solutions</span> for Business
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                AI <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Solutions</span> for Business
               </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
+              <p className="max-w-3xl mx-auto text-lg text-white/80 mb-8">
                 Our intelligent automation solutions streamline operations and drive growth across
                 every area of your business with cutting-edge AI technology.
               </p>
@@ -629,10 +637,10 @@ const Solutions = () => {
           
           <TabsContent value="web-development" className="mt-0 w-full">
             <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                Web Development & <span className="text-gradient">Hosting</span> Solutions
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                Web Development & <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Hosting</span> Solutions
               </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
+              <p className="max-w-3xl mx-auto text-lg text-white/80 mb-8">
                 Our comprehensive web solutions combine cutting-edge development with reliable hosting services, 
                 all enhanced by AI technologies.
               </p>
@@ -644,13 +652,13 @@ const Solutions = () => {
               ))}
             </div>
             
-            <div className="p-6 border border-neutral-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
+            <div className="p-6 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm shadow-sm">
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="mb-6 md:mb-0 md:mr-6">
-                  <h4 className="text-xl font-semibold mb-2 text-neutral-900">
+                  <h4 className="text-xl font-semibold mb-2 text-white">
                     Ready for a cutting-edge web presence?
                   </h4>
-                  <p className="text-neutral-700">
+                  <p className="text-white/80">
                     Our experts build and host AI-optimized websites that drive business growth.
                   </p>
                 </div>
@@ -666,10 +674,10 @@ const Solutions = () => {
           
           <TabsContent value="premium-services" className="mt-0 w-full">
             <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                Premium <span className="text-gradient">Services</span>
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                Premium <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Services</span>
               </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
+              <p className="max-w-3xl mx-auto text-lg text-white/80 mb-8">
                 Comprehensive AI solutions tailored to your business needs, 
                 delivered by experts in automation and artificial intelligence.
               </p>
@@ -694,7 +702,7 @@ const Solutions = () => {
         
         <div className="flex items-center justify-center mt-8 gap-4">
           <Button 
-            className="bg-white border-neutral-200 hover:bg-neutral-100 text-neutral-900 h-8 w-8 rounded-full p-0"
+            className="bg-white/10 border-white/20 hover:bg-white/20 text-white h-8 w-8 rounded-full p-0"
             onClick={() => {
               if (activeTab === 'web-development') setActiveTab('ai-solutions');
               else if (activeTab === 'premium-services') setActiveTab('web-development');
@@ -705,7 +713,7 @@ const Solutions = () => {
             <span className="text-lg">←</span>
           </Button>
           <Button 
-            className="bg-white border-neutral-200 hover:bg-neutral-100 text-neutral-900 h-8 w-8 rounded-full p-0"
+            className="bg-white/10 border-white/20 hover:bg-white/20 text-white h-8 w-8 rounded-full p-0"
             onClick={() => {
               if (activeTab === 'ai-solutions') setActiveTab('web-development');
               else if (activeTab === 'web-development') setActiveTab('premium-services');

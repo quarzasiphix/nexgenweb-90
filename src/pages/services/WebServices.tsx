@@ -36,6 +36,18 @@ const WebServices = () => {
       duration: 3000,
     });
   };
+  
+  // Handle Buy Now button click
+  const handleBuyNow = (serviceTitle: string) => {
+    toast({
+      title: "Service Selected",
+      description: `You've selected the ${serviceTitle} service. Proceeding to checkout.`,
+      duration: 3000,
+    });
+    
+    // Navigate to services page with web tab selected
+    navigate('/services');
+  };
 
   const services = [
     {
@@ -125,9 +137,9 @@ const WebServices = () => {
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <Button 
                       className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => handleGetStarted(service.title)}
+                      onClick={() => handleBuyNow(service.title)}
                     >
-                      Get Started
+                      Buy Now
                     </Button>
                     <Button 
                       variant="outline"

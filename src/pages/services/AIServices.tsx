@@ -7,9 +7,12 @@ import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const AIServices = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -18,6 +21,18 @@ const AIServices = () => {
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();
+
+  // Handle Buy Now button click
+  const handleBuyNow = (serviceTitle: string) => {
+    toast({
+      title: "Service Selected",
+      description: `You've selected the ${serviceTitle} service. Proceeding to checkout.`,
+      duration: 3000,
+    });
+    
+    // Navigate to services page with AI tab selected
+    navigate('/services');
+  };
 
   const services = [
     {
@@ -107,9 +122,9 @@ const AIServices = () => {
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <Button 
                       className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => openChat()}
+                      onClick={() => handleBuyNow(service.title)}
                     >
-                      Get Started
+                      Buy Now
                     </Button>
                     <Button 
                       variant="outline" 

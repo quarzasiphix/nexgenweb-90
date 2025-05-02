@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Index from './pages/Index';
 import AboutPage from './pages/AboutPage';
 import AllServices from './pages/AllServices';
+import ServicesPage from './pages/ServicesPage';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './components/ui/theme-provider';
 import { Toaster } from './components/ui/toaster';
@@ -52,7 +53,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<AllServices />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/all" element={<AllServices />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />

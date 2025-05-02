@@ -76,9 +76,8 @@ const CTASection = () => {
             </ul>
             
             <Button 
-              variant="outline" 
               className={cn(
-                "bg-transparent border border-white text-white hover:bg-white/10 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
+                "bg-white text-brand-700 hover:bg-gray-100 opacity-0 transform translate-y-4 transition-all duration-700 delay-500",
                 inView && "opacity-100 transform-none"
               )}
               size="lg"
@@ -240,8 +239,7 @@ const CTASection = () => {
               </ul>
               
               <Button 
-                variant="outline" 
-                className="bg-transparent border border-white text-white hover:bg-white/10"
+                className="bg-white text-brand-700 hover:bg-gray-100"
                 size="lg"
                 onClick={() => navigate('/services/web')}
               >
@@ -257,4 +255,3 @@ const CTASection = () => {
 };
 
 export default CTASection;
-

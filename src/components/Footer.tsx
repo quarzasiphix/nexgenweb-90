@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
@@ -39,12 +40,12 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Solutions</h3>
             <ul className="space-y-3">
-              <li><Link to="/services/ai#customer-support" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</Link></li>
-              <li><Link to="/services/ai#sales-automation" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</Link></li>
-              <li><Link to="/services/ai#finance" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</Link></li>
-              <li><Link to="/services/ai#hr" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</Link></li>
-              <li><Link to="/services/ai#security" className="text-neutral-400 hover:text-white transition-colors">IT & Security</Link></li>
-              <li><Link to="/services/ai#analytics" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</Link></li>
+              <li><Link to="/solutions/customer-support-ai" className="text-neutral-400 hover:text-white transition-colors">Customer Support AI</Link></li>
+              <li><Link to="/solutions/sales-automation" className="text-neutral-400 hover:text-white transition-colors">Sales Automation</Link></li>
+              <li><Link to="/solutions/finance-accounting" className="text-neutral-400 hover:text-white transition-colors">Finance & Accounting</Link></li>
+              <li><Link to="/solutions/hr-recruitment" className="text-neutral-400 hover:text-white transition-colors">HR & Recruitment</Link></li>
+              <li><Link to="/solutions/it-security" className="text-neutral-400 hover:text-white transition-colors">IT & Security</Link></li>
+              <li><Link to="/solutions/data-analytics" className="text-neutral-400 hover:text-white transition-colors">Data Analytics</Link></li>
             </ul>
           </div>
           

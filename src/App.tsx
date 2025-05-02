@@ -20,6 +20,14 @@ import { ChatProvider } from './context/ChatContext';
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 
+// Import solution pages
+import CustomerSupportAI from './pages/solutions/CustomerSupportAI';
+import SalesAutomation from './pages/solutions/SalesAutomation';
+import FinanceAccounting from './pages/solutions/FinanceAccounting';
+import HRRecruitment from './pages/solutions/HRRecruitment';
+import ITSecurity from './pages/solutions/ITSecurity';
+import DataAnalytics from './pages/solutions/DataAnalytics';
+
 // Initialize PostHog
 if (typeof window !== 'undefined') {
   posthog.init('phc_67TgLEEMULzavgmCYEuHht0hXxc5TkVyyoVjrWIGPdo', {
@@ -62,6 +70,15 @@ function App() {
               <Route path="/services/web/:serviceId" element={<WebServiceDetail />} />
               <Route path="/services/ai" element={<AIServices />} />
               <Route path="/services/ai/:serviceId" element={<AIServiceDetail />} />
+              
+              {/* Solution pages */}
+              <Route path="/solutions/customer-support-ai" element={<CustomerSupportAI />} />
+              <Route path="/solutions/sales-automation" element={<SalesAutomation />} />
+              <Route path="/solutions/finance-accounting" element={<FinanceAccounting />} />
+              <Route path="/solutions/hr-recruitment" element={<HRRecruitment />} />
+              <Route path="/solutions/it-security" element={<ITSecurity />} />
+              <Route path="/solutions/data-analytics" element={<DataAnalytics />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>

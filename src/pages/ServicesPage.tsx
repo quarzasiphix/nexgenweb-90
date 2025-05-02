@@ -191,16 +191,16 @@ const ServicesPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <Tabs defaultValue="ai" className="w-full mb-16">
-            <TabsList className="max-w-md mx-auto bg-neutral-800 mb-8">
-              <TabsTrigger value="ai" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+          <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
+            <TabsList className="max-w-md mx-auto mb-8">
+              <TabsTrigger value="ai">
                 AI Solutions
               </TabsTrigger>
-              <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
-                Web Development
+              <TabsTrigger value="web">
+                Web Dev
               </TabsTrigger>
-              <TabsTrigger value="premium" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
-                Premium Services
+              <TabsTrigger value="premium">
+                Premium
               </TabsTrigger>
             </TabsList>
             

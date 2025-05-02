@@ -308,19 +308,40 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   }
   
   /* Mobile tab fixes */
-  .TabsList {
+  [role="tablist"] {
     width: 100% !important;
-    overflow-x: auto !important;
-    -ms-overflow-style: none !important; /* IE and Edge */
-    scrollbar-width: none !important; /* Firefox */
+    display: flex !important;
   }
   
-  .TabsList::-webkit-scrollbar {
-    display: none !important;
+  [role="tab"] {
+    flex: 1 !important;
+    white-space: nowrap !important;
   }
-  
-  .TabsTrigger {
-    min-width: auto !important;
-    flex-shrink: 0 !important;
+}
+
+/* Custom tabs for pricing section */
+.pricing-tabs [role="tablist"] {
+  background: #1A1F2C !important;
+  border-color: #333 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+}
+
+.pricing-tabs [role="tab"] {
+  color: white !important;
+  flex: 1 !important;
+}
+
+.pricing-tabs [role="tab"][data-state="active"] {
+  background: #9b87f5 !important;
+  color: white !important;
+}
+
+@media (max-width: 640px) {
+  .pricing-tabs [role="tab"] {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 0.875rem !important;
   }
 }

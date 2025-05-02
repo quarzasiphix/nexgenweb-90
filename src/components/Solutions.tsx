@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database, 
@@ -581,7 +580,7 @@ const Solutions = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900",
+            "text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-neutral-900",
             inView && "opacity-100 transform-none"
           )}>
             Our Business <span className="text-gradient">Solutions</span>

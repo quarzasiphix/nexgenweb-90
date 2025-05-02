@@ -585,13 +585,7 @@ const Solutions = () => {
           )}>
             Our Business <span className="text-gradient">Solutions</span>
           </h2>
-          <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600",
-            inView && "opacity-100 transform-none"
-          )}>
-            Comprehensive solutions tailored to your business needs, 
-            from AI automation to web development and premium services.
-          </p>
+          {/* Removed text that was here */}
         </div>
 
         <Tabs 

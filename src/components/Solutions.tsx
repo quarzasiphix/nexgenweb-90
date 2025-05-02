@@ -187,6 +187,20 @@ const webDevServices = [
     description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
     icon: Code,
     color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    features: [
+      "Responsive design implementation",
+      "Modern UI/UX practices",
+      "API integrations",
+      "Performance optimization",
+      "Cross-browser compatibility"
+    ],
+    detailed: [
+      "Our experts create responsive websites that adapt to any device",
+      "We implement clean, maintainable code architecture",
+      "End-to-end development with frontend and backend solutions",
+      "Integration with third-party APIs and services",
+      "Performance optimization and SEO best practices"
+    ]
   },
   {
     id: "e-commerce-solutions",
@@ -194,6 +208,20 @@ const webDevServices = [
     description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
     icon: Globe,
     color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    features: [
+      "Product catalog management",
+      "Secure payment processing",
+      "Customer account management",
+      "Order management systems",
+      "Analytics and reporting"
+    ],
+    detailed: [
+      "AI-powered product recommendation engines boost sales",
+      "Secure payment gateway integration with multiple options",
+      "Streamlined checkout processes to reduce abandonment",
+      "Inventory management with automated alerts",
+      "Detailed sales analytics and customer behavior insights"
+    ]
   },
   {
     id: "managed-cloud-hosting",
@@ -201,6 +229,20 @@ const webDevServices = [
     description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization. Our managed cloud services include 24/7 monitoring, proactive issue resolution, and regular security audits to ensure your applications remain available and protected.",
     icon: Server,
     color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    features: [
+      "Automated scaling",
+      "24/7 monitoring",
+      "Regular backups",
+      "Security management",
+      "Performance optimization"
+    ],
+    detailed: [
+      "Infrastructure automatically scales to handle traffic spikes",
+      "Round-the-clock monitoring with instant alert systems",
+      "Regular and automated backup systems with quick restore",
+      "Security patches and updates applied promptly",
+      "Continuous performance tuning for optimal page load times"
+    ]
   },
   {
     id: "database-management",
@@ -208,6 +250,20 @@ const webDevServices = [
     description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
     icon: Database,
     color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    features: [
+      "Database design",
+      "Data migration",
+      "Query optimization",
+      "Backup solutions",
+      "Performance monitoring"
+    ],
+    detailed: [
+      "Efficient database schema design for optimal performance",
+      "Smooth data migration with minimal downtime",
+      "Query optimization to reduce response times",
+      "Comprehensive backup strategies with quick recovery",
+      "Ongoing performance monitoring and proactive improvements"
+    ]
   }
 ];
 
@@ -216,79 +272,115 @@ const premiumServices = [
     id: "custom-ai-integration",
     title: "Custom AI Integration",
     description: "Seamlessly integrate AI into your existing systems with custom workflows and automation pipelines.",
-    bulletPoints: [
+    icon: Bot,
+    color: "from-purple-500 to-pink-400",
+    features: [
+      "Bespoke AI solutions",
+      "Seamless integration",
+      "Data preparation",
+      "Ongoing maintenance"
+    ],
+    detailed: [
       "Bespoke AI solutions that connect directly with your current infrastructure",
       "Minimize disruption while maximizing efficiency",
       "Complete handling from data preparation to deployment",
       "Ongoing maintenance and optimization"
-    ],
-    icon: Bot,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   },
   {
     id: "ai-powered-web-development",
     title: "AI-Powered Web Development",
     description: "Create intelligent, responsive websites with AI-driven content and personalization capabilities.",
-    bulletPoints: [
+    icon: Laptop,
+    color: "from-blue-500 to-cyan-400",
+    features: [
+      "Real-time adaptation",
+      "Personalized experiences",
+      "Intelligent search",
+      "Content recommendations"
+    ],
+    detailed: [
       "Real-time adaptation to user behavior",
       "Customized experiences that boost engagement",
       "Intelligent search functionality",
       "Personalized product recommendations"
-    ],
-    icon: Laptop,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   },
   {
     id: "marketing-automation",
     title: "Marketing Automation",
     description: "Deploy AI-driven marketing campaigns that adapt in real-time to maximize engagement and conversions.",
-    bulletPoints: [
+    icon: Mail,
+    color: "from-green-500 to-lime-400",
+    features: [
+      "Behavior analysis",
+      "Targeted content",
+      "Predictive analytics",
+      "Campaign optimization"
+    ],
+    detailed: [
       "Analysis of user behavior patterns",
       "Perfectly timed, highly relevant content delivery",
       "Predictive analytics for customer needs",
       "Optimized ad spend and dynamic campaigns"
-    ],
-    icon: Mail,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   },
   {
     id: "business-intelligence",
     title: "Business Intelligence",
     description: "Transform data into actionable insights with AI-powered analytics and custom reporting dashboards.",
-    bulletPoints: [
+    icon: LineChart,
+    color: "from-amber-500 to-yellow-400",
+    features: [
+      "Data consolidation",
+      "Visual dashboards",
+      "Predictive models",
+      "Decision support"
+    ],
+    detailed: [
       "Data consolidation from multiple sources",
       "Intuitive visualizations highlighting trends",
       "Predictive models for market forecasting",
       "Data-driven decision making support"
-    ],
-    icon: LineChart,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   },
   {
     id: "enterprise-ai-solutions",
     title: "Enterprise AI Solutions",
     description: "Comprehensive AI integration strategies tailored for large organizations and complex requirements.",
-    bulletPoints: [
+    icon: Building2,
+    color: "from-emerald-500 to-teal-400",
+    features: [
+      "Governance frameworks",
+      "Security compliance",
+      "Knowledge management",
+      "Multi-department workflows"
+    ],
+    detailed: [
       "Organization-wide AI governance frameworks",
       "Scale, security, and compliance solutions",
       "Custom knowledge management systems",
       "Multi-department automation workflows"
-    ],
-    icon: Building2,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   },
   {
     id: "cloud-hosting-solutions",
     title: "Cloud Hosting Solutions",
     description: "Scalable, secure, and reliable hosting infrastructure optimized for AI-powered applications.",
-    bulletPoints: [
+    icon: Server,
+    color: "from-indigo-500 to-violet-400",
+    features: [
+      "Computational architecture",
+      "Resource allocation",
+      "Continuous monitoring",
+      "Security protection"
+    ],
+    detailed: [
       "Architecture for demanding computational requirements",
       "Automatic resource allocation",
       "Redundant systems with continuous monitoring",
       "Enterprise-grade security protection"
-    ],
-    icon: Server,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]"
+    ]
   }
 ];
 
@@ -359,32 +451,56 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
     rootMargin: '50px',
   });
 
+  const serviceId = service.id.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
   return (
-    <Card 
+    <div 
       ref={ref}
-      className="border border-neutral-200 shadow-sm hover:shadow-md transition-all h-full"
+      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
     >
-      <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
-        <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
+      <div className="p-6 flex flex-col h-full">
+        <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center ${service.color}`}>
           <service.icon className="h-6 w-6 text-white" />
         </div>
-        <div className="flex flex-col w-full h-full">
-          <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
-          <p className="text-neutral-600 mb-4">{service.description}</p>
-          
-          <div className="mt-auto pt-2">
-            <Link to={`/services/${service.id}`} className="block">
-              <Button 
-                variant="link" 
-                className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-              >
-                Learn more <span className="ml-1">→</span>
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{service.title}</h3>
+        <p className="text-neutral-600 mb-3 flex-grow">{service.description}</p>
+        
+        <Tabs defaultValue="features" className="mb-4">
+          <TabsList className="grid w-full grid-cols-2 mb-3">
+            <TabsTrigger value="features">Features</TabsTrigger>
+            <TabsTrigger value="details">How It Works</TabsTrigger>
+          </TabsList>
+          <TabsContent value="features" className="mt-0">
+            <ul className="space-y-1">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-center text-neutral-700">
+                  <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+          <TabsContent value="details" className="mt-0">
+            <ul className="space-y-1 text-sm">
+              {service.detailed.map((detail, idx) => (
+                <li key={idx} className="flex items-start text-neutral-700">
+                  <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+        </Tabs>
+        
+        <Link to={`/services/${serviceId}`} className="mt-auto w-full">
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-1 px-3 rounded-lg ${service.color || "from-[#9b87f5] to-[#7E69AB]"}`}>
+            Learn More
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 };
 
@@ -395,33 +511,52 @@ const PremiumServiceCard = ({ service, index }: { service: typeof premiumService
     rootMargin: '50px',
   });
 
+  const serviceId = service.id.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
   return (
     <div 
       ref={ref}
-      className="bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 hover:shadow-lg flex flex-col h-full"
+      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
     >
-      <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
-        <service.icon className="h-6 w-6 text-white" />
-      </div>
-      <h3 className="text-xl font-semibold mb-3 text-neutral-800">{service.title}</h3>
-      <p className="text-neutral-600 mb-4">{service.description}</p>
-      
-      <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
-        {service.bulletPoints.map((point, idx) => (
-          <li key={idx} className="flex items-start">
-            <span className="text-sm mr-2 mt-1">•</span>
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
-      
-      <div className="mt-auto">
-        <Link to={`/services/${service.id}`} className="block">
-          <Button 
-            variant="link" 
-            className="text-[#9b87f5] p-0 hover:text-[#7E69AB] flex items-center"
-          >
-            Learn more <span className="ml-1">→</span>
+      <div className="p-6 flex flex-col h-full">
+        <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
+          <service.icon className="h-6 w-6 text-white" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{service.title}</h3>
+        <p className="text-neutral-600 mb-3 flex-grow">{service.description}</p>
+        
+        <Tabs defaultValue="features" className="mb-4">
+          <TabsList className="grid w-full grid-cols-2 mb-3">
+            <TabsTrigger value="features">Features</TabsTrigger>
+            <TabsTrigger value="details">How It Works</TabsTrigger>
+          </TabsList>
+          <TabsContent value="features" className="mt-0">
+            <ul className="space-y-1">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-center text-neutral-700">
+                  <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+          <TabsContent value="details" className="mt-0">
+            <ul className="space-y-1 text-sm">
+              {service.detailed.map((detail, idx) => (
+                <li key={idx} className="flex items-start text-neutral-700">
+                  <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+        </Tabs>
+        
+        <Link to={`/services/${serviceId}`} className="mt-auto w-full">
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-1 px-3 rounded-lg ${service.color}`}>
+            Learn More
           </Button>
         </Link>
       </div>
@@ -492,7 +627,7 @@ const Solutions = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-10">
               {webDevServices.map((service, index) => (
                 <WebDevCard key={service.id} service={service} index={index} />
               ))}

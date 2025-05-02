@@ -28,7 +28,7 @@ const CTASection = () => {
               variant="white"
               size="lg"
               onClick={openChat}
-              className="font-medium"
+              className="font-medium shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Chat With Us
             </Button>
@@ -36,7 +36,7 @@ const CTASection = () => {
               variant="outline-white" 
               size="lg"
               onClick={() => navigate('/contact')}
-              className="font-medium"
+              className="font-medium bg-transparent border-2 border-white text-white hover:bg-white/10"
             >
               Contact Us
             </Button>

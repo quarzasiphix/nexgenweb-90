@@ -293,7 +293,7 @@ const premiumServices = [
 ];
 
 const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories[0], index: number }) => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     threshold: 0.01, 
     rootMargin: '50px',
@@ -304,11 +304,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
   return (
     <div 
       ref={ref}
-      className={cn(
-        "bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover opacity-0 translate-y-4",
-        inView && "opacity-100 translate-y-0"
-      )}
-      style={{ transitionDelay: `${index * 25}ms` }}
+      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
     >
       <div className={`p-6 flex flex-col h-full`}>
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
@@ -357,7 +353,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
 };
 
 const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], index: number }) => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     threshold: 0.01,
     rootMargin: '50px',
@@ -366,11 +362,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
   return (
     <Card 
       ref={ref}
-      className={cn(
-        "border border-neutral-200 shadow-sm hover:shadow-md transition-all h-full opacity-0 transform translate-y-8",
-        inView && "opacity-100 translate-y-0"
-      )}
-      style={{ transitionDelay: `${100 + (index * 50)}ms` }}
+      className="border border-neutral-200 shadow-sm hover:shadow-md transition-all h-full"
     >
       <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
         <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
@@ -397,7 +389,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
 };
 
 const PremiumServiceCard = ({ service, index }: { service: typeof premiumServices[0], index: number }) => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     threshold: 0.01,
     rootMargin: '50px',
@@ -406,11 +398,7 @@ const PremiumServiceCard = ({ service, index }: { service: typeof premiumService
   return (
     <div 
       ref={ref}
-      className={cn(
-        "bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
-        inView && "opacity-100 translate-y-0"
-      )}
-      style={{ transitionDelay: `${index * 25}ms` }}
+      className="bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-150 hover:shadow-lg flex flex-col h-full"
     >
       <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
         <service.icon className="h-6 w-6 text-white" />
@@ -457,13 +445,13 @@ const Solutions = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900",
             inView && "opacity-100 transform-none"
           )}>
             Our Business <span className="text-gradient">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "max-w-2xl mx-auto text-lg text-neutral-600",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive solutions tailored to your business needs, 

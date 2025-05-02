@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -82,10 +81,10 @@ const Index = () => {
       <Hero />
       <Solutions />
       <HowItWorks />
-      <CTASection />
       <CaseStudies />
       <Testimonials />
       <PricingSection />
+      <CTASection />
       <Contact />
       <Footer />
       <ScrollToTopButton />

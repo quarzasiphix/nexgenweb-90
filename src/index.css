@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -45,13 +46,13 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* New creative blue color palette for different themes */
-    --solutions-primary: #4B9CD3;   /* Azure blue theme */
-    --solutions-secondary: #8CC7F4;
-    --services-primary: #1A5F9C;    /* Sapphire blue theme */
-    --services-secondary: #2D7CC2;
-    --webdev-primary: #003366;      /* Cobalt blue theme */
-    --webdev-secondary: #0A5CB3;
+    /* New refined color palette - cohesive blue theme */
+    --bizwiz-primary: #0070D1;        /* Stronger primary blue */
+    --bizwiz-primary-light: #4B9FE3;  /* Lighter blue for hover states */
+    --bizwiz-accent: #00A0FF;         /* Vibrant accent blue for call-to-actions */
+    --bizwiz-neutral: #2C394B;        /* Dark blue-gray for text */
+    --bizwiz-light: #EBF5FF;          /* Light blue background */
+    --bizwiz-gray: #F5F8FC;           /* Subtle blue-tinted gray */
   }
 
   .dark {
@@ -116,56 +117,56 @@
 }
 
 @layer components {
-  /* Theme-specific styles - now all using same color scheme */
+  /* Refined theme-specific styles with more consistent color application */
   .solutions-theme {
-    @apply bg-gradient-to-b from-white to-blue-50;
+    @apply bg-gradient-to-b from-white to-[var(--bizwiz-light)];
   }
   
   .solutions-theme button {
-    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
+    @apply bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white;
   }
   
   .solutions-theme h2 span,
   .solutions-theme h3 span {
-    @apply text-[var(--solutions-primary)];
+    @apply text-[var(--bizwiz-primary)];
   }
   
   .services-theme {
-    @apply bg-gradient-to-b from-white to-blue-50;
+    @apply bg-gradient-to-b from-white to-[var(--bizwiz-light)];
   }
   
   .services-theme button {
-    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
+    @apply bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white;
   }
   
   .services-theme h2 span,
   .services-theme h3 span {
-    @apply text-[var(--solutions-primary)];
+    @apply text-[var(--bizwiz-primary)];
   }
   
   .webdev-theme {
-    @apply bg-gradient-to-b from-white to-blue-50;
+    @apply bg-gradient-to-b from-white to-[var(--bizwiz-light)];
   }
   
   .webdev-theme button {
-    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
+    @apply bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white;
   }
   
   .webdev-theme h2 span,
   .webdev-theme h3 span {
-    @apply text-[var(--solutions-primary)];
+    @apply text-[var(--bizwiz-primary)];
   }
   
   .service-title {
-    @apply text-2xl font-semibold text-neutral-800;
+    @apply text-2xl font-semibold text-[var(--bizwiz-neutral)];
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-white/90 border border-blue-100 shadow-lg;
+    @apply backdrop-blur-md bg-white/90 border border-[var(--bizwiz-primary-light)]/20 shadow-lg;
   }
   
   .glass-morphism {
-    @apply bg-white/90 backdrop-blur-lg border border-blue-50 shadow-md;
+    @apply bg-white/90 backdrop-blur-lg border border-[var(--bizwiz-primary-light)]/20 shadow-md;
   }
   
   .section-container {
@@ -173,13 +174,13 @@
   }
 
   .btn-primary {
-    @apply px-8 py-3 font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-700 
+    @apply px-8 py-3 font-medium rounded-lg text-white bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)]
     transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1;
   }
   
   .btn-secondary {
-    @apply px-8 py-3 font-medium rounded-lg border border-brand-600 text-brand-600 
-    hover:bg-brand-50 transition-all duration-300;
+    @apply px-8 py-3 font-medium rounded-lg border border-[var(--bizwiz-primary)] text-[var(--bizwiz-primary)]
+    hover:bg-[var(--bizwiz-light)] transition-all duration-300;
   }
   
   .btn-outline {
@@ -192,7 +193,7 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--bizwiz-primary)] to-[var(--bizwiz-accent)];
   }
 }
 
@@ -259,7 +260,7 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(75, 156, 211, 0.2);
+  border: 1px solid rgba(0, 112, 209, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
@@ -274,12 +275,12 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4B9CD3;
+  background: var(--bizwiz-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1A5F9C;
+  background: var(--bizwiz-primary-light);
 }
 
 /* Mobile-specific compact layout */

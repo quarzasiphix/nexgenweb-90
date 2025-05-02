@@ -143,13 +143,13 @@ const Services = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-5xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-5xl font-bold mb-4 text-[var(--bizwiz-neutral)] opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            Our Premium <span className="text-[#4B9CD3]">Services</span>
+            Our Premium <span className="text-[var(--bizwiz-primary)]">Services</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "max-w-2xl mx-auto text-lg text-[var(--bizwiz-neutral)]/80 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Comprehensive AI solutions tailored to your business needs, 
@@ -162,21 +162,21 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "service-card bg-white rounded-xl border border-blue-100 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
+                "service-card bg-white rounded-xl border border-[var(--bizwiz-primary-light)]/20 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
               style={{ transitionDelay: `${index * 25}ms` }}
             >
-              <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center bg-gradient-to-r from-[#4B9CD3] to-[#8CC7F4]`}>
+              <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center bg-gradient-to-r from-[var(--bizwiz-primary)] to-[var(--bizwiz-accent)]`}>
                 <service.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="service-title">{service.title}</h3>
-              <p className="text-neutral-600 mb-4">{service.description}</p>
+              <p className="text-[var(--bizwiz-neutral)]/80 mb-4">{service.description}</p>
               
-              <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
+              <ul className="text-[var(--bizwiz-neutral)]/80 mb-6 space-y-2 flex-grow">
                 {service.bulletPoints.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#4B9CD3] mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--bizwiz-primary)] mt-2 mr-2 flex-shrink-0"></span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -185,7 +185,7 @@ const Services = () => {
               <div className="mt-auto">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
-                    className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white w-full"
+                    className="bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white w-full"
                   >
                     Learn More
                   </Button>
@@ -200,10 +200,10 @@ const Services = () => {
           inView && "opacity-100 transform-none"
         )}>
           <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-neutral-900">
-              Web Development & <span className="text-[#4B9CD3]">Hosting</span> Solutions
+            <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-[var(--bizwiz-neutral)]">
+              Web Development & <span className="text-[var(--bizwiz-primary)]">Hosting</span> Solutions
             </h3>
-            <p className="max-w-2xl mx-auto text-lg text-neutral-600">
+            <p className="max-w-2xl mx-auto text-lg text-[var(--bizwiz-neutral)]/80">
               {webDevSection.description}
             </p>
           </div>
@@ -213,23 +213,23 @@ const Services = () => {
               <Card 
                 key={index}
                 className={cn(
-                  "border border-blue-100 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full",
+                  "border border-[var(--bizwiz-primary-light)]/20 shadow-sm hover:shadow-md transition-all opacity-0 transform translate-y-8 h-full",
                   inView && "opacity-100 translate-y-0"
                 )}
                 style={{ transitionDelay: `${400 + (index * 100)}ms` }}
               >
                 <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
-                  <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-[#4B9CD3] to-[#8CC7F4]`}>
+                  <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-[var(--bizwiz-primary)] to-[var(--bizwiz-accent)]`}>
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex flex-col w-full h-full">
                     <h4 className="service-title">{service.title}</h4>
-                    <p className="text-neutral-600 mb-4">{service.description}</p>
+                    <p className="text-[var(--bizwiz-neutral)]/80 mb-4">{service.description}</p>
                     
                     <div className="mt-auto pt-2">
                       <Link to={`/services/${service.id}`} className="block">
                         <Button 
-                          className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white w-full"
+                          className="bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white w-full"
                         >
                           Learn More
                         </Button>
@@ -241,18 +241,18 @@ const Services = () => {
             ))}
           </div>
           
-          <div className="mt-10 p-6 border border-blue-100 rounded-xl bg-gradient-to-r from-blue-50 to-white shadow-sm">
+          <div className="mt-10 p-6 border border-[var(--bizwiz-primary-light)]/20 rounded-xl bg-gradient-to-r from-[var(--bizwiz-light)] to-white shadow-sm">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-6">
-                <h4 className="text-xl font-semibold mb-2 text-neutral-900">
+                <h4 className="text-xl font-semibold mb-2 text-[var(--bizwiz-neutral)]">
                   Ready for a cutting-edge web presence?
                 </h4>
-                <p className="text-neutral-700">
+                <p className="text-[var(--bizwiz-neutral)]/80">
                   Our experts build and host AI-optimized websites that drive business growth.
                 </p>
               </div>
               <Button 
-                className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white whitespace-nowrap"
+                className="bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white whitespace-nowrap"
                 onClick={scrollToContact}
               >
                 Get a Free Consultation
@@ -266,7 +266,7 @@ const Services = () => {
           inView && "opacity-100 transform-none"
         )}>
           <Button 
-            className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white"
+            className="bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white"
             onClick={() => navigate('/services')}
           >
             View All Services

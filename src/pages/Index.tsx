@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -16,11 +17,11 @@ import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
 
-// Custom CSS classes for different section themes - now all using the same blue theme
+// Custom CSS classes for different section themes - now all using the same refined blue theme
 const sectionThemes = {
-  solutions: "solutions-theme", // Azure blue theme
-  services: "solutions-theme",  // Now using Azure blue theme too
-  webDev: "solutions-theme"     // Now using Azure blue theme too
+  solutions: "solutions-theme", // Consistent blue theme
+  services: "solutions-theme",  // Same blue theme 
+  webDev: "solutions-theme"     // Same blue theme
 }
 
 const Index = () => {
@@ -41,13 +42,13 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
     }
     
-    // Add theme-specific CSS variables - now all using the same blue colors
-    document.documentElement.style.setProperty('--solutions-primary', '#4B9CD3');  // Azure blue
-    document.documentElement.style.setProperty('--solutions-secondary', '#8CC7F4');
-    document.documentElement.style.setProperty('--services-primary', '#4B9CD3');   // Now Azure blue
-    document.documentElement.style.setProperty('--services-secondary', '#8CC7F4');
-    document.documentElement.style.setProperty('--webdev-primary', '#4B9CD3');     // Now Azure blue
-    document.documentElement.style.setProperty('--webdev-secondary', '#8CC7F4');
+    // Add theme-specific CSS variables - now using the new refined color palette
+    document.documentElement.style.setProperty('--solutions-primary', 'var(--bizwiz-primary)');
+    document.documentElement.style.setProperty('--solutions-secondary', 'var(--bizwiz-primary-light)');
+    document.documentElement.style.setProperty('--services-primary', 'var(--bizwiz-primary)');
+    document.documentElement.style.setProperty('--services-secondary', 'var(--bizwiz-primary-light)');
+    document.documentElement.style.setProperty('--webdev-primary', 'var(--bizwiz-primary)');
+    document.documentElement.style.setProperty('--webdev-secondary', 'var(--bizwiz-primary-light)');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });

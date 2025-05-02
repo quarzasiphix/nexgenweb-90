@@ -189,11 +189,11 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
       style={{ transitionDelay: `${index * 25}ms` }}
     >
       <div className={`p-6 flex flex-col h-full`}>
-        <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center bg-gradient-to-r from-[#4B9CD3] to-[#8CC7F4]`}>
+        <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center bg-gradient-to-r from-[var(--bizwiz-primary)] to-[var(--bizwiz-accent)]`}>
           <solution.icon className="h-6 w-6 text-white" />
         </div>
         <h3 className="service-title mb-2">{solution.title}</h3>
-        <p className="text-neutral-600 mb-3 flex-grow">{solution.description}</p>
+        <p className="text-[var(--bizwiz-neutral)] mb-3 flex-grow">{solution.description}</p>
         
         <Tabs defaultValue="features" className="mb-4">
           <TabsList className="grid w-full grid-cols-2 mb-3">
@@ -203,8 +203,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           <TabsContent value="features" className="mt-0">
             <ul className="space-y-1">
               {solution.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-neutral-700">
-                  <svg className="w-3 h-3 mr-1 text-[#4B9CD3]" fill="currentColor" viewBox="0 0 20 20">
+                <li key={idx} className="flex items-center text-[var(--bizwiz-neutral)]">
+                  <svg className="w-3 h-3 mr-1 text-[var(--bizwiz-primary)]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   {feature}
@@ -215,8 +215,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           <TabsContent value="details" className="mt-0">
             <ul className="space-y-1 text-sm">
               {solution.detailed.map((detail, idx) => (
-                <li key={idx} className="flex items-start text-neutral-700">
-                  <span className="inline-block w-1 h-1 rounded-full bg-[#4B9CD3] mt-1.5 mr-1 flex-shrink-0"></span>
+                <li key={idx} className="flex items-start text-[var(--bizwiz-neutral)]">
+                  <span className="inline-block w-1 h-1 rounded-full bg-[var(--bizwiz-primary)] mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>
               ))}
@@ -225,7 +225,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
         </Tabs>
         
         <Link to={`/solutions/${solutionId}`} className="mt-auto w-full">
-          <Button className="w-full bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white">
+          <Button className="w-full bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white">
             Learn More
           </Button>
         </Link>
@@ -242,17 +242,17 @@ const Solutions = () => {
   });
 
   return (
-    <section id="solutions" className="py-20 bg-gradient-to-b from-white to-blue-50">
+    <section id="solutions" className="py-20 bg-gradient-to-b from-white to-[var(--bizwiz-light)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-5xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-5xl font-bold mb-4 text-[var(--bizwiz-neutral)] opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            AI-Powered Business <span className="text-[#4B9CD3]">Solutions</span>
+            AI-Powered Business <span className="text-[var(--bizwiz-primary)]">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "max-w-2xl mx-auto text-lg text-[var(--bizwiz-neutral)]/80 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Leverage intelligent automation across every department to drive efficiency, 

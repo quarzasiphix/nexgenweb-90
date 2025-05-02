@@ -64,28 +64,37 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					50: '#f0f9ff',
-					100: '#e0f2fe',
-					200: '#bae6fd',
-					300: '#7dd3fc',
-					400: '#38bdf8',
-					500: '#0ea5e9',
-					600: '#0284c7',
-					700: '#0369a1',
-					800: '#075985',
-					900: '#0c4a6e',
+					50: '#EBF5FF',  // Updated to match new color scheme
+					100: '#D6E8FF',
+					200: '#B3D1FF',
+					300: '#80B2FF',
+					400: '#4B9FE3',
+					500: '#0070D1',  // Primary blue
+					600: '#005CB8',
+					700: '#00489C',
+					800: '#003366',
+					900: '#002144',
 				},
 				neutral: {
-					50: '#fafafa',
-					100: '#f5f5f5',
-					200: '#e5e5e5',
-					300: '#d4d4d4',
-					400: '#a3a3a3',
-					500: '#737373',
-					600: '#525252',
-					700: '#404040',
-					800: '#262626',
-					900: '#171717',
+					50: '#F5F8FC',  // Updated for blue-tinted neutrals
+					100: '#EDF1F7',
+					200: '#DCE3ED',
+					300: '#C5D0DF',
+					400: '#A3B0C2',
+					500: '#768296',
+					600: '#5A697E',
+					700: '#445266',
+					800: '#2C394B',
+					900: '#1A2433',
+				},
+				// Add bizwiz theme colors for direct tailwind access
+				bizwiz: {
+					primary: '#0070D1',
+					'primary-light': '#4B9FE3',
+					accent: '#00A0FF',
+					neutral: '#2C394B',
+					light: '#EBF5FF',
+					gray: '#F5F8FC',
 				}
 			},
 			borderRadius: {
@@ -145,6 +154,7 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'hero-pattern': 'linear-gradient(to right, rgba(243, 244, 246, 0.1), rgba(243, 244, 246, 0.1)), url("/hero-pattern.svg")',
+				'blue-gradient': 'linear-gradient(to right, var(--bizwiz-primary), var(--bizwiz-accent))',
 			}
 		}
 	},

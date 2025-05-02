@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Solutions from '@/components/Solutions';
 import HowItWorks from '@/components/HowItWorks';
 import CaseStudies from '@/components/CaseStudies';
 import Testimonials from '@/components/Testimonials';
@@ -79,7 +78,6 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900">
       <Header />
       <Hero />
-      <Solutions />
       <HowItWorks />
       <CaseStudies />
       <Testimonials />

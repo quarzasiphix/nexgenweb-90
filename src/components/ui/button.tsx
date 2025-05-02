@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         white: "bg-white text-neutral-900 hover:bg-white/90 shadow-md", // Enhanced white variant
-        brand: "bg-brand-600 text-white hover:bg-brand-700 shadow-md", // New brand variant
+        brand: "bg-[#9b87f5] text-white hover:bg-[#7E69AB] shadow-md", // Updated brand variant to match tabs
         'outline-white': "bg-transparent border border-white text-white hover:bg-white/10", // New outline white variant
       },
       size: {

@@ -578,9 +578,9 @@ const Solutions = () => {
   return (
     <section id="solutions" className="py-20 bg-neutral-50">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="text-center mb-16">
+        <div ref={ref} className="text-center mb-8">
           <h2 className={cn(
-            "text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-neutral-900",
+            "text-4xl sm:text-5xl md:text-6xl font-bold mb-10 text-neutral-900",
             inView && "opacity-100 transform-none"
           )}>
             Our Business <span className="text-gradient">Solutions</span>
@@ -595,7 +595,7 @@ const Solutions = () => {
           value={activeTab}
         >
           <div className="flex justify-center">
-            <TabsList className="mb-8 bg-white border border-neutral-200">
+            <TabsList className="mb-12 shadow-md">
               <TabsTrigger value="ai-solutions">AI Solutions</TabsTrigger>
               <TabsTrigger value="web-development">Web Development</TabsTrigger>
               <TabsTrigger value="premium-services">Premium Services</TabsTrigger>

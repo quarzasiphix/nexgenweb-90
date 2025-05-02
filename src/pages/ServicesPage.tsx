@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Contact from '@/components/Contact';
 
 const ServicesPage = () => {
   const { toast } = useToast();
@@ -21,6 +22,17 @@ const ServicesPage = () => {
     document.title = "Services & Pricing - NexGenWeb";
   }, []);
 
+  // Function to scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If we're not on a page with the contact section, navigate to it
+      navigate('/contact');
+    }
+  };
+
   // Simulate checkout process - in a real app, this would connect to Stripe
   const handleBuyNow = (service: string, tier: string, price: string) => {
     setSelectedPlan(`${tier} (${price})`);
@@ -32,7 +44,7 @@ const ServicesPage = () => {
     
     // In a real implementation, this would redirect to Stripe checkout
     setTimeout(() => {
-      openChat();
+      scrollToContact();
     }, 1000);
   };
 
@@ -383,7 +395,7 @@ const ServicesPage = () => {
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
                 size="lg"
-                onClick={openChat}
+                onClick={scrollToContact}
               >
                 Chat with an Expert
               </Button>
@@ -391,7 +403,7 @@ const ServicesPage = () => {
                 variant="outline"
                 className="bg-transparent text-white border-white hover:bg-white/10"
                 size="lg"
-                onClick={() => navigate('/contact')}
+                onClick={scrollToContact}
               >
                 Request a Quote
               </Button>
@@ -399,6 +411,10 @@ const ServicesPage = () => {
           </div>
         </div>
       </main>
+
+      {/* Add the Contact component so we can scroll to it */}
+      <Contact />
+      
       <Footer />
       <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>

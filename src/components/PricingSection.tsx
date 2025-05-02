@@ -25,6 +25,14 @@ const PricingSection = () => {
     navigate('/services');
   };
 
+  // Function to scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const aiServices = [
     {
       id: "ai-starter",
@@ -446,7 +454,7 @@ const PricingSection = () => {
             <Button 
               className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
               size="lg"
-              onClick={openChat}
+              onClick={scrollToContact}
             >
               Chat with an Expert
             </Button>
@@ -454,7 +462,7 @@ const PricingSection = () => {
               variant="outline"
               className="bg-transparent text-white border-white hover:bg-white/10"
               size="lg"
-              onClick={() => navigate('/contact')}
+              onClick={scrollToContact}
             >
               Request a Quote
             </Button>

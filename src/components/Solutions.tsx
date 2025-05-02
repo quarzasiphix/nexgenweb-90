@@ -397,24 +397,24 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
   return (
     <div 
       ref={ref}
-      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
+      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className={`p-6 flex flex-col h-full`}>
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
           <solution.icon className="h-6 w-6 text-white" />
         </div>
-        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{solution.title}</h3>
-        <p className="text-neutral-600 mb-3 flex-grow">{solution.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-white">{solution.title}</h3>
+        <p className="text-white/80 mb-3 flex-grow">{solution.description}</p>
         
         <Tabs defaultValue="features" className="mb-4">
-          <TabsList className="grid w-full grid-cols-2 mb-3">
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="details">How It Works</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-3 bg-white/10 backdrop-blur-sm border border-white/20">
+            <TabsTrigger value="features" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">Features</TabsTrigger>
+            <TabsTrigger value="details" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">How It Works</TabsTrigger>
           </TabsList>
           <TabsContent value="features" className="mt-0">
             <ul className="space-y-1">
               {solution.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-neutral-700">
+                <li key={idx} className="flex items-center text-white/90">
                   <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -426,7 +426,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           <TabsContent value="details" className="mt-0">
             <ul className="space-y-1 text-sm">
               {solution.detailed.map((detail, idx) => (
-                <li key={idx} className="flex items-start text-neutral-700">
+                <li key={idx} className="flex items-start text-white/90">
                   <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>
@@ -457,24 +457,24 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
   return (
     <div 
       ref={ref}
-      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
+      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className="p-6 flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
           <service.icon className="h-6 w-6 text-white" />
         </div>
-        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{service.title}</h3>
-        <p className="text-neutral-600 mb-3 flex-grow">{service.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
+        <p className="text-white/80 mb-3 flex-grow">{service.description}</p>
         
         <Tabs defaultValue="features" className="mb-4">
-          <TabsList className="grid w-full grid-cols-2 mb-3">
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="details">How It Works</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-3 bg-white/10 backdrop-blur-sm border border-white/20">
+            <TabsTrigger value="features" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">Features</TabsTrigger>
+            <TabsTrigger value="details" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">How It Works</TabsTrigger>
           </TabsList>
           <TabsContent value="features" className="mt-0">
             <ul className="space-y-1">
               {service.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-neutral-700">
+                <li key={idx} className="flex items-center text-white/90">
                   <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -486,7 +486,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
           <TabsContent value="details" className="mt-0">
             <ul className="space-y-1 text-sm">
               {service.detailed.map((detail, idx) => (
-                <li key={idx} className="flex items-start text-neutral-700">
+                <li key={idx} className="flex items-start text-white/90">
                   <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>
@@ -517,24 +517,24 @@ const PremiumServiceCard = ({ service, index }: { service: typeof premiumService
   return (
     <div 
       ref={ref}
-      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
+      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className="p-6 flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
           <service.icon className="h-6 w-6 text-white" />
         </div>
-        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{service.title}</h3>
-        <p className="text-neutral-600 mb-3 flex-grow">{service.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
+        <p className="text-white/80 mb-3 flex-grow">{service.description}</p>
         
         <Tabs defaultValue="features" className="mb-4">
-          <TabsList className="grid w-full grid-cols-2 mb-3">
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="details">How It Works</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-3 bg-white/10 backdrop-blur-sm border border-white/20">
+            <TabsTrigger value="features" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">Features</TabsTrigger>
+            <TabsTrigger value="details" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">How It Works</TabsTrigger>
           </TabsList>
           <TabsContent value="features" className="mt-0">
             <ul className="space-y-1">
               {service.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-neutral-700">
+                <li key={idx} className="flex items-center text-white/90">
                   <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -546,7 +546,7 @@ const PremiumServiceCard = ({ service, index }: { service: typeof premiumService
           <TabsContent value="details" className="mt-0">
             <ul className="space-y-1 text-sm">
               {service.detailed.map((detail, idx) => (
-                <li key={idx} className="flex items-start text-neutral-700">
+                <li key={idx} className="flex items-start text-white/90">
                   <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>

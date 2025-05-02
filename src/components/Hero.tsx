@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
@@ -235,7 +236,7 @@ const Hero = () => {
                 }`}
                 onClick={() => setActiveTab('web')}
               >
-                Web Services
+                Web Development
               </button>
               <button
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
@@ -243,7 +244,7 @@ const Hero = () => {
                 }`}
                 onClick={() => setActiveTab('premium')}
               >
-                Premium Services
+                Premium Solutions
               </button>
             </div>
           </div>

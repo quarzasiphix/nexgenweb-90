@@ -6,13 +6,31 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Header from '@/components/Header';
+import { useToast } from '@/hooks/use-toast';
 
 const AllServices = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   
   useEffect(() => {
     document.title = "All Services - BizWiz";
   }, []);
+
+  // Handle Buy Now button click
+  const handleBuyNow = (serviceTitle: string, serviceType: string) => {
+    toast({
+      title: "Service Selected",
+      description: `You've selected the ${serviceTitle} service. Proceeding to checkout.`,
+      duration: 3000,
+    });
+    
+    // Navigate to the correct services page based on service type
+    if (serviceType === 'ai') {
+      navigate('/services/ai');
+    } else {
+      navigate('/services/web');
+    }
+  };
 
   const aiServices = [
     {
@@ -203,9 +221,15 @@ const AllServices = () => {
                             </li>
                           ))}
                         </ul>
-                        <div className="mt-6">
+                        <div className="mt-6 flex flex-col sm:flex-row gap-3">
                           <Button 
-                            className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                            className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                            onClick={() => handleBuyNow(service.title, 'ai')}
+                          >
+                            Buy Now
+                          </Button>
+                          <Button 
+                            className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
                             onClick={() => navigate('/services/ai')}
                           >
                             Learn More
@@ -236,9 +260,15 @@ const AllServices = () => {
                             </li>
                           ))}
                         </ul>
-                        <div className="mt-6">
+                        <div className="mt-6 flex flex-col sm:flex-row gap-3">
                           <Button 
-                            className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                            className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                            onClick={() => handleBuyNow(service.title, 'web')}
+                          >
+                            Buy Now
+                          </Button>
+                          <Button 
+                            className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
                             onClick={() => navigate('/services/web')}
                           >
                             Learn More
@@ -266,9 +296,15 @@ const AllServices = () => {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-6">
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3">
                         <Button 
-                          className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                          className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                          onClick={() => handleBuyNow(service.title, 'ai')}
+                        >
+                          Buy Now
+                        </Button>
+                        <Button 
+                          className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
                           onClick={() => navigate('/services/ai')}
                         >
                           Learn More
@@ -295,9 +331,15 @@ const AllServices = () => {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-6">
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3">
                         <Button 
-                          className="w-full bg-brand-500 hover:bg-brand-600 text-white"
+                          className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                          onClick={() => handleBuyNow(service.title, 'web')}
+                        >
+                          Buy Now
+                        </Button>
+                        <Button 
+                          className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
                           onClick={() => navigate('/services/web')}
                         >
                           Learn More

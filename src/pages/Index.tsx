@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -17,11 +16,11 @@ import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
 
-// Custom CSS classes for different section themes
+// Custom CSS classes for different section themes - now all using the same blue theme
 const sectionThemes = {
   solutions: "solutions-theme", // Azure blue theme
-  services: "services-theme",   // Sapphire blue theme
-  webDev: "webdev-theme"        // Cobalt blue theme
+  services: "solutions-theme",  // Now using Azure blue theme too
+  webDev: "solutions-theme"     // Now using Azure blue theme too
 }
 
 const Index = () => {
@@ -42,13 +41,13 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
     }
     
-    // Add theme-specific CSS variables with new creative blue palette
+    // Add theme-specific CSS variables - now all using the same blue colors
     document.documentElement.style.setProperty('--solutions-primary', '#4B9CD3');  // Azure blue
     document.documentElement.style.setProperty('--solutions-secondary', '#8CC7F4');
-    document.documentElement.style.setProperty('--services-primary', '#1A5F9C');   // Sapphire blue
-    document.documentElement.style.setProperty('--services-secondary', '#2D7CC2');
-    document.documentElement.style.setProperty('--webdev-primary', '#003366');     // Cobalt blue
-    document.documentElement.style.setProperty('--webdev-secondary', '#0A5CB3');
+    document.documentElement.style.setProperty('--services-primary', '#4B9CD3');   // Now Azure blue
+    document.documentElement.style.setProperty('--services-secondary', '#8CC7F4');
+    document.documentElement.style.setProperty('--webdev-primary', '#4B9CD3');     // Now Azure blue
+    document.documentElement.style.setProperty('--webdev-secondary', '#8CC7F4');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });

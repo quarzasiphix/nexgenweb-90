@@ -116,7 +116,7 @@
 }
 
 @layer components {
-  /* Theme-specific styles */
+  /* Theme-specific styles - now all using same color scheme */
   .solutions-theme {
     @apply bg-gradient-to-b from-white to-blue-50;
   }
@@ -131,29 +131,29 @@
   }
   
   .services-theme {
-    @apply bg-white;
+    @apply bg-gradient-to-b from-white to-blue-50;
   }
   
   .services-theme button {
-    @apply bg-[var(--services-primary)] hover:bg-[var(--services-secondary)] text-white;
+    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
   }
   
   .services-theme h2 span,
   .services-theme h3 span {
-    @apply text-[var(--services-primary)];
+    @apply text-[var(--solutions-primary)];
   }
   
   .webdev-theme {
-    @apply bg-gradient-to-b from-blue-50 to-white;
+    @apply bg-gradient-to-b from-white to-blue-50;
   }
   
   .webdev-theme button {
-    @apply bg-[var(--webdev-primary)] hover:bg-[var(--webdev-secondary)] text-white;
+    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
   }
   
   .webdev-theme h2 span,
   .webdev-theme h3 span {
-    @apply text-[var(--webdev-primary)];
+    @apply text-[var(--solutions-primary)];
   }
   
   .service-title {

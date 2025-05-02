@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -145,7 +146,7 @@ const Services = () => {
             "text-3xl sm:text-5xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            Our Premium <span className="text-[#1A5F9C]">Services</span>
+            Our Premium <span className="text-[#4B9CD3]">Services</span>
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
@@ -166,7 +167,7 @@ const Services = () => {
               )}
               style={{ transitionDelay: `${index * 25}ms` }}
             >
-              <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
+              <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center bg-gradient-to-r from-[#4B9CD3] to-[#8CC7F4]`}>
                 <service.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="service-title">{service.title}</h3>
@@ -175,7 +176,7 @@ const Services = () => {
               <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
                 {service.bulletPoints.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1A5F9C] mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#4B9CD3] mt-2 mr-2 flex-shrink-0"></span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -184,7 +185,7 @@ const Services = () => {
               <div className="mt-auto">
                 <Link to={`/services/${service.id}`} className="block">
                   <Button 
-                    className="bg-[#1A5F9C] hover:bg-[#2D7CC2] text-white w-full"
+                    className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white w-full"
                   >
                     Learn More
                   </Button>
@@ -200,7 +201,7 @@ const Services = () => {
         )}>
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-neutral-900">
-              Web Development & <span className="text-[#003366]">Hosting</span> Solutions
+              Web Development & <span className="text-[#4B9CD3]">Hosting</span> Solutions
             </h3>
             <p className="max-w-2xl mx-auto text-lg text-neutral-600">
               {webDevSection.description}
@@ -218,7 +219,7 @@ const Services = () => {
                 style={{ transitionDelay: `${400 + (index * 100)}ms` }}
               >
                 <CardContent className="p-6 flex flex-col sm:flex-row items-start gap-4 h-full">
-                  <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center ${service.color}`}>
+                  <div className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-[#4B9CD3] to-[#8CC7F4]`}>
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex flex-col w-full h-full">
@@ -228,7 +229,7 @@ const Services = () => {
                     <div className="mt-auto pt-2">
                       <Link to={`/services/${service.id}`} className="block">
                         <Button 
-                          className="bg-[#003366] hover:bg-[#0A5CB3] text-white w-full"
+                          className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white w-full"
                         >
                           Learn More
                         </Button>
@@ -251,7 +252,7 @@ const Services = () => {
                 </p>
               </div>
               <Button 
-                className="bg-[#003366] hover:bg-[#0A5CB3] text-white whitespace-nowrap"
+                className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white whitespace-nowrap"
                 onClick={scrollToContact}
               >
                 Get a Free Consultation
@@ -265,7 +266,7 @@ const Services = () => {
           inView && "opacity-100 transform-none"
         )}>
           <Button 
-            className="bg-[#1A5F9C] hover:bg-[#2D7CC2] text-white"
+            className="bg-[#4B9CD3] hover:bg-[#8CC7F4] text-white"
             onClick={() => navigate('/services')}
           >
             View All Services

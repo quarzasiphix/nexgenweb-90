@@ -124,7 +124,10 @@ const AIServices = () => {
                     </div>
                   </div>
                   <p className="text-neutral-300 mb-2">{service.description}</p>
-                  <p className="text-xl font-bold text-white mb-4">{service.price}</p>
+                  <div className="flex justify-between items-baseline mb-4">
+                    <p className="text-xl font-bold text-white">{service.price}</p>
+                    <p className="text-sm text-neutral-400">Included in {service.package} Package</p>
+                  </div>
                   <ul className="space-y-2 mb-auto">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-neutral-400">

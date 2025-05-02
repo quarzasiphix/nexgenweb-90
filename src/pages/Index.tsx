@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -6,7 +7,6 @@ import HowItWorks from '@/components/HowItWorks';
 import CaseStudies from '@/components/CaseStudies';
 import Testimonials from '@/components/Testimonials';
 import PricingSection from '@/components/PricingSection';
-import CTASection from '@/components/CTASection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
@@ -84,7 +84,6 @@ const Index = () => {
       <CaseStudies />
       <Testimonials />
       <PricingSection />
-      <CTASection />
       <Contact />
       <Footer />
       <ScrollToTopButton />

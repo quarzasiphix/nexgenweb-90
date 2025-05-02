@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, ArrowRight, Send } from 'lucide-react';
@@ -225,14 +226,13 @@ const Contact = () => {
             "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-700",
             inView && "opacity-100 transform-none"
           )}>
-            Get in <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Touch</span>
+            Need a <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Custom Solution</span>?
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
             inView && "opacity-100 transform-none"
           )}>
-            Ready to transform your business with our solutions? 
-            Contact us today for more information.
+            We offer tailored solutions designed specifically for your business needs. Contact our experts for a personalized consultation.
           </p>
         </div>
 

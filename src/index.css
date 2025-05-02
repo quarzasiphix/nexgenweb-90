@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -304,5 +305,22 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   /* Make text slightly smaller */
   .text-lg {
     font-size: 1rem !important;
+  }
+  
+  /* Mobile tab fixes */
+  .TabsList {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-width: none !important; /* Firefox */
+  }
+  
+  .TabsList::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .TabsTrigger {
+    min-width: auto !important;
+    flex-shrink: 0 !important;
   }
 }

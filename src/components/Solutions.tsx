@@ -16,6 +16,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import { useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const solutionCategories = [
   {
@@ -574,6 +575,7 @@ const Solutions = () => {
   const [activeTab, setActiveTab] = useState('ai-solutions');
   const { openChat } = useChat();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   return (
     <section id="solutions" className="py-20 bg-neutral-50">
@@ -585,7 +587,6 @@ const Solutions = () => {
           )}>
             Our Business <span className="text-gradient">Solutions</span>
           </h2>
-          {/* Removed text that was here */}
         </div>
 
         <Tabs 
@@ -595,10 +596,16 @@ const Solutions = () => {
           value={activeTab}
         >
           <div className="flex justify-center">
-            <TabsList className="mb-12 shadow-md">
-              <TabsTrigger value="ai-solutions">AI Solutions</TabsTrigger>
-              <TabsTrigger value="web-development">Web Development</TabsTrigger>
-              <TabsTrigger value="premium-services">Premium Services</TabsTrigger>
+            <TabsList className={`mb-12 shadow-md ${isMobile ? 'w-full flex' : ''}`}>
+              <TabsTrigger value="ai-solutions" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'AI' : 'AI Solutions'}
+              </TabsTrigger>
+              <TabsTrigger value="web-development" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'Web Dev' : 'Web Development'}
+              </TabsTrigger>
+              <TabsTrigger value="premium-services" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'Premium' : 'Premium Services'}
+              </TabsTrigger>
             </TabsList>
           </div>
           

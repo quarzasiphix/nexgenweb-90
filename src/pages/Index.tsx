@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -30,8 +31,10 @@ const Index = () => {
     // On mobile, add a class to body for optimized animations
     if (isMobile) {
       document.body.classList.add('mobile-animations');
+      document.body.classList.add('mobile-view'); // Add new class for mobile-specific styling
     } else {
       document.body.classList.remove('mobile-animations');
+      document.body.classList.remove('mobile-view');
     }
     
     // Log page view to PostHog
@@ -70,6 +73,7 @@ const Index = () => {
     
     return () => {
       document.body.classList.remove('mobile-animations');
+      document.body.classList.remove('mobile-view');
       document.body.classList.remove('fast-scrolling');
       window.removeEventListener('scroll', handleScroll);
     };

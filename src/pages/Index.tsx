@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -79,12 +80,15 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white">
       <Header />
       <Hero />
-      <Solutions />
-      <HowItWorks />
-      <CaseStudies />
-      <Testimonials />
-      <PricingSection />
-      <CTASection />
+      {/* Remove any margins/paddings between sections */}
+      <div className="seamless-sections">
+        <Solutions />
+        <HowItWorks />
+        <CaseStudies />
+        <Testimonials />
+        <PricingSection />
+        <CTASection />
+      </div>
       <Contact />
       <Footer />
       <ScrollToTopButton />

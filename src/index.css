@@ -154,6 +154,21 @@
   .blue-card {
     @apply bg-gradient-to-br from-brand-700/90 to-brand-800/90 text-white border border-white/10 shadow-md;
   }
+  
+  /* Remove section borders/gaps */
+  .seamless-sections > section {
+    @apply border-none;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+  }
+  
+  /* Ensure section gradient continuity */
+  .seamless-sections > section + section {
+    @apply pt-24 pb-20;
+    background-image: linear-gradient(180deg, transparent, var(--tw-gradient-to));
+    border-top: none;
+  }
 }
 
 /* Core animation classes */
@@ -304,5 +319,10 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   /* Make text slightly smaller */
   .text-lg {
     font-size: 1rem !important;
+  }
+  
+  /* Ensure sections flow seamlessly on mobile */
+  .seamless-sections > section + section {
+    padding-top: 2rem !important;
   }
 }

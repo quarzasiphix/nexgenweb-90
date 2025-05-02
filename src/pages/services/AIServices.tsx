@@ -23,10 +23,10 @@ const AIServices = () => {
   const { openChat, isChatOpen, closeChat } = useChat();
 
   // Navigate directly to the services pricing page
-  const handleBuyNow = (serviceTitle: string) => {
+  const handleBuyNow = (serviceTitle: string, packageType: string) => {
     toast({
       title: "Service Selected",
-      description: `You've selected the ${serviceTitle} service. Proceeding to checkout.`,
+      description: `You've selected the ${packageType} package which includes ${serviceTitle}. Proceeding to checkout.`,
       duration: 3000,
     });
     
@@ -40,6 +40,8 @@ const AIServices = () => {
       title: "Finance & HR AI",
       icon: Brain,
       description: "Advanced AI solutions for financial management and HR automation.",
+      package: "Premium",
+      price: "$299/month",
       features: [
         "Automated invoice processing and expense tracking",
         "AI-driven payroll management",
@@ -53,6 +55,8 @@ const AIServices = () => {
       title: "Sales & Marketing AI",
       icon: LineChart,
       description: "AI-powered tools to boost your sales and marketing efforts.",
+      package: "Business",
+      price: "$199/month",
       features: [
         "Predictive lead scoring",
         "Automated campaign optimization",
@@ -66,6 +70,8 @@ const AIServices = () => {
       title: "IT & Security",
       icon: Shield,
       description: "Intelligent security solutions for your business.",
+      package: "Enterprise",
+      price: "$499/month",
       features: [
         "AI-powered threat detection",
         "Automated system monitoring",
@@ -79,6 +85,8 @@ const AIServices = () => {
       title: "Customer Support AI",
       icon: Bot,
       description: "Transform customer service with AI automation.",
+      package: "Business",
+      price: "$199/month",
       features: [
         "24/7 AI chatbots",
         "Automated email responses",
@@ -104,13 +112,19 @@ const AIServices = () => {
             {services.map((service, index) => (
               <Card key={index} className="bg-neutral-800 border-neutral-700 flex flex-col h-full">
                 <CardContent className="p-6 flex flex-col h-full">
-                  <div className="flex items-center mb-4">
-                    <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
-                      <service.icon className="h-6 w-6 text-[#D6BCFA]" />
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="p-2 rounded-lg bg-[#9b87f5]/20 mr-3">
+                        <service.icon className="h-6 w-6 text-[#D6BCFA]" />
+                      </div>
+                      <h2 className="text-xl font-semibold text-white">{service.title}</h2>
                     </div>
-                    <h2 className="text-xl font-semibold text-white">{service.title}</h2>
+                    <div className="bg-[#9b87f5]/10 text-[#D6BCFA] px-3 py-1 rounded-full text-sm font-medium">
+                      {service.package}
+                    </div>
                   </div>
-                  <p className="text-neutral-300 mb-4">{service.description}</p>
+                  <p className="text-neutral-300 mb-2">{service.description}</p>
+                  <p className="text-xl font-bold text-white mb-4">{service.price}</p>
                   <ul className="space-y-2 mb-auto">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-neutral-400">
@@ -122,9 +136,9 @@ const AIServices = () => {
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <Button 
                       className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-                      onClick={() => handleBuyNow(service.title)}
+                      onClick={() => handleBuyNow(service.title, service.package)}
                     >
-                      Buy Now
+                      Buy {service.package} Package
                     </Button>
                     <Button 
                       variant="outline" 
@@ -137,6 +151,21 @@ const AIServices = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="mt-16 bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Need a Custom AI Solution?</h2>
+            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
+              Our team can build tailored AI solutions specific to your business requirements. 
+              Contact us to discuss how we can help you leverage AI for your unique challenges.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+              onClick={() => openChat()}
+            >
+              Get a Custom Quote
+            </Button>
           </div>
         </div>
       </main>

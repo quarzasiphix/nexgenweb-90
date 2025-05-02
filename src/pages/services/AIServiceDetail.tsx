@@ -8,8 +8,9 @@ import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { Bot, Brain, Shield, LineChart } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
-// Define the services data
+// Define the services data with added pricing information
 const aiServiceDetails = {
   "finance-hr-ai": {
     title: "Finance & HR AI",
@@ -30,6 +31,8 @@ const aiServiceDetails = {
       "Make data-driven HR decisions with comprehensive analytics",
       "Stay compliant with automated monitoring and alerts"
     ],
+    package: "Premium",
+    price: "$299/month",
     useCases: [
       {
         title: "Automated Invoice Processing",
@@ -64,6 +67,8 @@ const aiServiceDetails = {
       "Forecast sales with higher accuracy to improve resource allocation",
       "Deliver personalized content that resonates with each customer segment"
     ],
+    package: "Business",
+    price: "$199/month",
     useCases: [
       {
         title: "Lead Scoring & Prioritization",
@@ -98,6 +103,8 @@ const aiServiceDetails = {
       "Reduce downtime through predictive maintenance",
       "Simplify compliance with automated security checks"
     ],
+    package: "Enterprise",
+    price: "$499/month",
     useCases: [
       {
         title: "Intelligent Threat Detection",
@@ -132,6 +139,8 @@ const aiServiceDetails = {
       "Streamline call center operations and reduce wait times",
       "Create seamless customer experiences across touchpoints"
     ],
+    package: "Business",
+    price: "$199/month",
     useCases: [
       {
         title: "24/7 Customer Support Chatbots",
@@ -153,6 +162,7 @@ const AIServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
+  const { toast } = useToast();
   
   const serviceDetails = serviceId ? aiServiceDetails[serviceId as keyof typeof aiServiceDetails] : null;
   
@@ -169,6 +179,16 @@ const AIServiceDetail = () => {
   if (!serviceDetails) {
     return null;
   }
+
+  const handleBuyNow = () => {
+    toast({
+      title: "Package Selected",
+      description: `You've selected the ${serviceDetails.package} package (${serviceDetails.price}) which includes ${serviceDetails.title}.`,
+      duration: 3000,
+    });
+    
+    navigate('/services?tab=ai');
+  };
 
   const IconComponent = serviceDetails.icon;
 
@@ -191,9 +211,17 @@ const AIServiceDetail = () => {
             <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-[#9b87f5]/20">
               <IconComponent className="h-8 w-8 text-[#D6BCFA]" />
             </div>
-            <div>
-              <h1 className="text-4xl font-bold text-white mb-2">{serviceDetails.title}</h1>
-              <p className="text-lg text-neutral-300 max-w-3xl">
+            <div className="flex-1">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <h1 className="text-4xl font-bold text-white mb-2">{serviceDetails.title}</h1>
+                <div className="flex flex-col items-start md:items-end">
+                  <div className="bg-[#9b87f5]/20 text-[#D6BCFA] px-3 py-1 rounded-full text-sm font-medium mb-1">
+                    {serviceDetails.package} Package
+                  </div>
+                  <div className="text-2xl font-bold text-white">{serviceDetails.price}</div>
+                </div>
+              </div>
+              <p className="text-lg text-neutral-300 max-w-3xl mt-2">
                 {serviceDetails.fullDescription}
               </p>
             </div>
@@ -245,18 +273,31 @@ const AIServiceDetail = () => {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts will help you implement {serviceDetails.title} solutions tailored to your specific business needs.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-              onClick={() => openChat()}
-            >
-              Get Started Today
-            </Button>
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <h2 className="text-2xl font-bold text-white mb-2">Ready to Transform Your Business?</h2>
+                <p className="text-neutral-300 max-w-2xl">
+                  Get started with the {serviceDetails.package} package ({serviceDetails.price}) which includes {serviceDetails.title} and much more!
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <Button 
+                  size="lg"
+                  className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white px-8"
+                  onClick={handleBuyNow}
+                >
+                  Buy {serviceDetails.package} Package
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10"
+                  onClick={openChat}
+                >
+                  Get a Custom Quote
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </main>

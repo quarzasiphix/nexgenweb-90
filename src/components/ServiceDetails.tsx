@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
@@ -9,6 +10,7 @@ import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useToast } from '@/hooks/use-toast';
 
 const allServices = [
   {
@@ -18,6 +20,8 @@ const allServices = [
     icon: Bot,
     color: "from-blue-500 to-blue-600",
     category: "ai",
+    package: "Enterprise",
+    price: "$499/month",
     features: [
       "Automated data processing",
       "Custom AI model integration",
@@ -40,6 +44,8 @@ const allServices = [
     icon: Laptop,
     color: "from-purple-500 to-purple-600",
     category: "ai",
+    package: "Premium",
+    price: "$299/month",
     features: [
       "Custom business websites with AI-optimized UX",
       "E-commerce platforms with AI product recommendations",
@@ -62,6 +68,8 @@ const allServices = [
     icon: Mail,
     color: "from-green-500 to-green-600",
     category: "ai",
+    package: "Business",
+    price: "$199/month",
     features: [
       "Dynamic email campaigns",
       "AI-powered content generation",
@@ -84,6 +92,8 @@ const allServices = [
     icon: LineChart,
     color: "from-orange-500 to-orange-600",
     category: "ai",
+    package: "Premium",
+    price: "$299/month",
     features: [
       "Interactive data dashboards",
       "Predictive analytics",
@@ -106,6 +116,8 @@ const allServices = [
     icon: Building2,
     color: "from-red-500 to-red-600",
     category: "ai",
+    package: "Enterprise",
+    price: "$499/month",
     features: [
       "Enterprise-wide AI strategy",
       "Department-specific AI solutions",
@@ -128,6 +140,8 @@ const allServices = [
     icon: Server,
     color: "from-indigo-500 to-indigo-600",
     category: "ai",
+    package: "Business",
+    price: "$199/month",
     features: [
       "High-performance dedicated servers for AI workloads",
       "Managed cloud hosting with automatic scaling",
@@ -150,6 +164,8 @@ const allServices = [
     icon: Code,
     color: "from-teal-500 to-teal-600",
     category: "web",
+    package: "Premium",
+    price: "$249/month",
     features: [
       "Frontend development with React, Vue, or Angular",
       "Backend API development with Node.js, Python, or PHP",
@@ -172,6 +188,8 @@ const allServices = [
     icon: Globe,
     color: "from-pink-500 to-pink-600",
     category: "web",
+    package: "Business",
+    price: "$149/month",
     features: [
       "Custom e-commerce platform development",
       "Integration with payment gateways and shipping providers",
@@ -194,6 +212,8 @@ const allServices = [
     icon: Server,
     color: "from-blue-600 to-blue-700",
     category: "web",
+    package: "Starter",
+    price: "$49/month",
     features: [
       "High-performance cloud servers",
       "Auto-scaling based on traffic demands",
@@ -216,6 +236,8 @@ const allServices = [
     icon: Database,
     color: "from-violet-500 to-violet-600",
     category: "web",
+    package: "Premium",
+    price: "$249/month",
     features: [
       "Database design and architecture",
       "Performance optimization and tuning",
@@ -237,6 +259,7 @@ const ServiceDetails = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
+  const { toast } = useToast();
   
   const service = allServices.find(s => s.id === serviceId);
 
@@ -254,6 +277,16 @@ const ServiceDetails = () => {
   if (!service) {
     return null;
   }
+
+  const handleBuyNow = () => {
+    toast({
+      title: "Package Selected",
+      description: `You've selected the ${service.package} package (${service.price}) which includes ${service.title}.`,
+      duration: 3000,
+    });
+    
+    navigate(`/services?tab=${service.category}`);
+  };
 
   const IconComponent = service.icon;
 
@@ -276,9 +309,17 @@ const ServiceDetails = () => {
             <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-r ${service.color}`}>
               <IconComponent className="h-8 w-8 text-white" />
             </div>
-            <div>
-              <h1 className="text-4xl font-bold text-white mb-2">{service.title}</h1>
-              <p className="text-lg text-neutral-300 max-w-3xl">
+            <div className="flex-1">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <h1 className="text-4xl font-bold text-white mb-2">{service.title}</h1>
+                <div className="flex flex-col items-start md:items-end">
+                  <div className={`bg-gradient-to-r ${service.color} bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium mb-1`}>
+                    {service.package} Package
+                  </div>
+                  <div className="text-2xl font-bold text-white">{service.price}</div>
+                </div>
+              </div>
+              <p className="text-lg text-neutral-300 max-w-3xl mt-2">
                 {service.description}
               </p>
             </div>
@@ -349,18 +390,31 @@ const ServiceDetails = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts will help you implement {service.title} solutions tailored to your specific business needs.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={openChat}
-            >
-              Get Started Today
-            </Button>
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <h2 className="text-2xl font-bold text-white mb-2">Ready to Transform Your Business?</h2>
+                <p className="text-neutral-300 max-w-2xl">
+                  Get started with the {service.package} package ({service.price}) which includes {service.title} and much more!
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <Button 
+                  size="lg"
+                  className="bg-brand-500 hover:bg-brand-600 text-white px-8"
+                  onClick={handleBuyNow}
+                >
+                  Buy {service.package} Package
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10"
+                  onClick={openChat}
+                >
+                  Get a Custom Quote
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </main>

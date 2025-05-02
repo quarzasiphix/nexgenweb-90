@@ -142,6 +142,18 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700;
   }
+
+  .blue-gradient-bg {
+    @apply bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900;
+  }
+  
+  .blue-gradient-light {
+    @apply bg-gradient-to-r from-brand-500/90 to-brand-600/90;
+  }
+  
+  .blue-card {
+    @apply bg-gradient-to-br from-brand-700/90 to-brand-800/90 text-white border border-white/10 shadow-md;
+  }
 }
 
 /* Core animation classes */

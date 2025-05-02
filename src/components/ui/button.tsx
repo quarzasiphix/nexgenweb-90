@@ -19,7 +19,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        white: "bg-white text-neutral-900 hover:bg-white/90", // Added a new white variant for better contrast on dark backgrounds
+        white: "bg-white text-neutral-900 hover:bg-white/90 shadow-md", // Enhanced white variant
+        brand: "bg-brand-600 text-white hover:bg-brand-700 shadow-md", // New brand variant
+        'outline-white': "bg-transparent border border-white text-white hover:bg-white/10", // New outline white variant
       },
       size: {
         default: "h-10 px-4 py-2",

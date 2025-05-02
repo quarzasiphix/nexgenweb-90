@@ -2,13 +2,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { Button } from '@/components/ui/button';
 
 const CTASection = () => {
   const navigate = useNavigate();
   const { openChat } = useChat();
 
   return (
-    <section className="py-20 bg-gradient-to-r from-brand-600 to-brand-800 text-white">
+    <section className="py-20 bg-gradient-to-r from-brand-700/90 to-brand-600/90 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
@@ -23,18 +24,22 @@ const CTASection = () => {
             and help you find the perfect solution for your business needs.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              className="bg-white text-brand-700 hover:bg-gray-100 px-6 py-3 rounded-md font-medium"
+            <Button 
+              variant="white"
+              size="lg"
               onClick={openChat}
+              className="font-medium"
             >
               Chat With Us
-            </button>
-            <button 
-              className="bg-transparent border border-white text-white hover:bg-white/10 px-6 py-3 rounded-md font-medium"
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
               onClick={() => navigate('/contact')}
+              className="bg-transparent border border-white text-white hover:bg-white/10 font-medium"
             >
               Contact Us
-            </button>
+            </Button>
           </div>
         </div>
       </div>

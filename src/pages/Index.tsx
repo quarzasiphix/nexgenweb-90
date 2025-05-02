@@ -3,11 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Solutions from '@/components/Solutions';
-import Services from '@/components/Services';
 import HowItWorks from '@/components/HowItWorks';
 import CaseStudies from '@/components/CaseStudies';
 import Testimonials from '@/components/Testimonials';
-import PricingSection from '@/components/PricingSection';
 import CTASection from '@/components/CTASection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -78,15 +76,13 @@ const Index = () => {
   }, [isMobile, captureEvent, fastScrolling]);
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900">
       <Header />
       <Hero />
       <Solutions />
-      <Services />
       <HowItWorks />
       <CaseStudies />
       <Testimonials />
-      <PricingSection />
       <CTASection />
       <Contact />
       <Footer />

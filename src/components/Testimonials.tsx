@@ -64,22 +64,17 @@ const Testimonials = () => {
   }, [activeIndex]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white overflow-hidden relative">
-      {/* Background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
-      </div>
-
-      <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float" style={{ animationDelay: '1s' }}></div>
-      
-      <div ref={ref} className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 bg-gradient-to-br from-brand-900 to-brand-800 text-white overflow-hidden">
+      <div ref={ref} className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        
         <div className="text-center mb-16 relative z-10">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-500",
+            "text-3xl sm:text-4xl font-bold mb-4 opacity-0 transform translate-y-4 transition-all duration-500",
             inView && "opacity-100 transform-none"
           )}>
-            What Our Clients <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Say</span>
+            What Our Clients <span className="text-brand-400">Say</span>
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-white/80 opacity-0 transform translate-y-4 transition-all duration-500 delay-50",
@@ -94,7 +89,7 @@ const Testimonials = () => {
           "relative opacity-0 transition-all duration-700 delay-100",
           inView && "opacity-100"
         )}>
-          <div className="relative z-10 overflow-hidden rounded-2xl bg-white/10 backdrop-blur-lg p-1 border border-white/10">
+          <div className="relative z-10 overflow-hidden rounded-2xl bg-white/10 backdrop-blur-lg p-1">
             <div className="py-12 px-4 sm:px-8 md:px-12">
               <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
                 <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white/20">

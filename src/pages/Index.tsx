@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -77,18 +76,15 @@ const Index = () => {
   }, [isMobile, captureEvent, fastScrolling]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900">
       <Header />
       <Hero />
-      {/* Each section gets proper spacing while maintaining seamless transitions */}
-      <div className="seamless-sections">
-        <Solutions />
-        <HowItWorks />
-        <CaseStudies />
-        <Testimonials />
-        <PricingSection />
-        <CTASection />
-      </div>
+      <Solutions />
+      <HowItWorks />
+      <CaseStudies />
+      <Testimonials />
+      <PricingSection />
+      <CTASection />
       <Contact />
       <Footer />
       <ScrollToTopButton />

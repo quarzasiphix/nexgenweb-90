@@ -9,20 +9,15 @@ const CTASection = () => {
   const { openChat } = useChat();
 
   return (
-    <section className="py-24 text-white relative overflow-hidden">
-      {/* Background elements - using the same pattern as other sections */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
-      </div>
-      
-      {/* Luminous orbs for the gradient effect - match with other sections */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 bg-gradient-to-r from-brand-700/90 to-brand-600/90 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
+        
         <div className="relative z-10 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Have Questions About Our <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Services</span>?
+            Have Questions About Our <span className="text-gradient-light">Services</span>?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Our team is ready to answer any questions you might have about our services

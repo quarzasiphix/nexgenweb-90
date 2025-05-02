@@ -80,7 +80,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white">
       <Header />
       <Hero />
-      {/* Remove any margins/paddings between sections */}
+      {/* Each section gets proper spacing while maintaining seamless transitions */}
       <div className="seamless-sections">
         <Solutions />
         <HowItWorks />

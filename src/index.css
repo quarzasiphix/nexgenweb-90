@@ -155,19 +155,19 @@
     @apply bg-gradient-to-br from-brand-700/90 to-brand-800/90 text-white border border-white/10 shadow-md;
   }
   
-  /* Remove section borders/gaps */
+  /* Section spacing with seamless transitions */
   .seamless-sections > section {
-    @apply border-none;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    /* Keep sections distinct but with smooth transitions */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    position: relative;
     border-top: none !important;
   }
   
-  /* Ensure section gradient continuity */
+  /* Gradient continuity between sections */
   .seamless-sections > section + section {
-    @apply pt-24 pb-20;
+    margin-top: 0;
     background-image: linear-gradient(180deg, transparent, var(--tw-gradient-to));
-    border-top: none;
   }
 }
 
@@ -322,7 +322,8 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   }
   
   /* Ensure sections flow seamlessly on mobile */
-  .seamless-sections > section + section {
-    padding-top: 2rem !important;
+  .seamless-sections > section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
   }
 }

@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -45,6 +44,14 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Theme colors for different sections */
+    --solutions-primary: #6E59A5;
+    --solutions-secondary: #9b87f5;
+    --services-primary: #33C3F0;
+    --services-secondary: #0EA5E9;
+    --webdev-primary: #F97316;
+    --webdev-secondary: #FB923C;
   }
 
   .dark {
@@ -109,6 +116,34 @@
 }
 
 @layer components {
+  /* Theme-specific styles */
+  .solutions-theme button {
+    @apply bg-[var(--solutions-primary)] hover:bg-[#514080] text-white;
+  }
+  
+  .solutions-theme h2 span,
+  .solutions-theme h3 span {
+    @apply text-[var(--solutions-primary)];
+  }
+  
+  .services-theme button {
+    @apply bg-[var(--services-primary)] hover:bg-[var(--services-secondary)] text-white;
+  }
+  
+  .services-theme h2 span,
+  .services-theme h3 span {
+    @apply text-[var(--services-primary)];
+  }
+  
+  .webdev-theme button {
+    @apply bg-[var(--webdev-primary)] hover:bg-[var(--webdev-secondary)] text-white;
+  }
+  
+  .webdev-theme h2 span,
+  .webdev-theme h3 span {
+    @apply text-[var(--webdev-primary)];
+  }
+  
   .glass-card {
     @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-lg;
   }

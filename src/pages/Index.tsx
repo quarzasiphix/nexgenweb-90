@@ -17,6 +17,13 @@ import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
 
+// Custom CSS classes for different section themes
+const sectionThemes = {
+  solutions: "solutions-theme", // Purple theme
+  services: "services-theme",   // Blue theme
+  webDev: "webdev-theme"        // Orange theme
+}
+
 const Index = () => {
   useAnimationObserver();
   const { isChatOpen, closeChat } = useChat();
@@ -34,6 +41,14 @@ const Index = () => {
     } else {
       document.body.classList.remove('mobile-animations');
     }
+    
+    // Add theme-specific CSS variables
+    document.documentElement.style.setProperty('--solutions-primary', '#6E59A5');
+    document.documentElement.style.setProperty('--solutions-secondary', '#9b87f5');
+    document.documentElement.style.setProperty('--services-primary', '#33C3F0');
+    document.documentElement.style.setProperty('--services-secondary', '#0EA5E9');
+    document.documentElement.style.setProperty('--webdev-primary', '#F97316');
+    document.documentElement.style.setProperty('--webdev-secondary', '#FB923C');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });
@@ -73,6 +88,14 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
       document.body.classList.remove('fast-scrolling');
       window.removeEventListener('scroll', handleScroll);
+      
+      // Clean up theme CSS variables
+      document.documentElement.style.removeProperty('--solutions-primary');
+      document.documentElement.style.removeProperty('--solutions-secondary');
+      document.documentElement.style.removeProperty('--services-primary');
+      document.documentElement.style.removeProperty('--services-secondary');
+      document.documentElement.style.removeProperty('--webdev-primary');
+      document.documentElement.style.removeProperty('--webdev-secondary');
     };
   }, [isMobile, captureEvent, fastScrolling]);
 
@@ -80,8 +103,12 @@ const Index = () => {
     <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
-      <Solutions />
-      <Services />
+      <div className={sectionThemes.solutions}>
+        <Solutions />
+      </div>
+      <div className={sectionThemes.services}>
+        <Services />
+      </div>
       <HowItWorks />
       <CaseStudies />
       <Testimonials />

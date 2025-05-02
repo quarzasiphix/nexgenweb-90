@@ -26,7 +26,7 @@ export const solutionCategories = [
       "AI predicts future financial trends based on past transactions",
       "AI calculates wages, generates payslips, and integrates with tax systems"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "Customer Engagement",
@@ -46,7 +46,7 @@ export const solutionCategories = [
       "AI transcribes and analyzes customer calls for valuable insights",
       "Virtual assistants provide personalized customer experiences"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "Sales & Marketing",
@@ -66,7 +66,7 @@ export const solutionCategories = [
       "AI predicts future sales and market trends for better planning",
       "AI keeps track of client interactions and suggests follow-ups"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "HR & Recruitment",
@@ -86,7 +86,7 @@ export const solutionCategories = [
       "AI tailors employee training based on performance and skills",
       "AI identifies trends in employee satisfaction and productivity"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "Logistics & Supply Chain",
@@ -106,7 +106,7 @@ export const solutionCategories = [
       "AI predicts future demand based on historical data",
       "AI optimizes warehouse operations and product placement"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "IT & Security",
@@ -126,7 +126,7 @@ export const solutionCategories = [
       "AI predicts when equipment needs maintenance before breakdown",
       "AI ensures data is backed up and recoverable"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "Legal & Compliance",
@@ -146,7 +146,7 @@ export const solutionCategories = [
       "AI combs through legal documents to find relevant information",
       "AI identifies and assesses potential legal and compliance risks"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   },
   {
     title: "Data Analytics",
@@ -166,7 +166,7 @@ export const solutionCategories = [
       "AI creates visual dashboards for easy data interpretation",
       "AI identifies emerging market trends and opportunities"
     ],
-    color: "from-[#9b87f5] to-[#7E69AB]"
+    color: "from-[#6E59A5] to-[#9b87f5]"
   }
 ];
 
@@ -204,7 +204,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
             <ul className="space-y-1">
               {solution.features.map((feature, idx) => (
                 <li key={idx} className="flex items-center text-neutral-700">
-                  <svg className="w-3 h-3 mr-1 text-[#9b87f5]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 mr-1 text-[#6E59A5]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   {feature}
@@ -216,7 +216,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
             <ul className="space-y-1 text-sm">
               {solution.detailed.map((detail, idx) => (
                 <li key={idx} className="flex items-start text-neutral-700">
-                  <span className="inline-block w-1 h-1 rounded-full bg-[#9b87f5] mt-1.5 mr-1 flex-shrink-0"></span>
+                  <span className="inline-block w-1 h-1 rounded-full bg-[#6E59A5] mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>
               ))}
@@ -225,7 +225,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
         </Tabs>
         
         <Link to={`/solutions/${solutionId}`} className="mt-auto w-full">
-          <Button className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] text-white">
+          <Button className="w-full bg-[#6E59A5] hover:bg-[#514080] text-white">
             Learn More
           </Button>
         </Link>
@@ -249,7 +249,7 @@ const Solutions = () => {
             "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            AI-Powered Business <span className="text-[#9b87f5]">Solutions</span>
+            AI-Powered Business <span className="text-[#6E59A5]">Solutions</span>
           </h2>
           <p className={cn(
             "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",

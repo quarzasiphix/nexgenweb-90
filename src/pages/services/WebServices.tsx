@@ -37,7 +37,7 @@ const WebServices = () => {
     });
   };
   
-  // Updated to navigate directly to the pricing section
+  // Navigate directly to the services pricing page
   const handleBuyNow = (serviceTitle: string) => {
     toast({
       title: "Service Selected",
@@ -45,8 +45,8 @@ const WebServices = () => {
       duration: 3000,
     });
     
-    // Navigate to homepage and scroll to pricing section with web tab selected
-    navigate('/?tab=web#pricing');
+    // Navigate to the dedicated services page with web tab selected
+    navigate('/services?tab=web');
   };
 
   const services = [

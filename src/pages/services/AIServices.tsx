@@ -22,7 +22,7 @@ const AIServices = () => {
 
   const { openChat, isChatOpen, closeChat } = useChat();
 
-  // Updated to navigate directly to the pricing section
+  // Navigate directly to the services pricing page
   const handleBuyNow = (serviceTitle: string) => {
     toast({
       title: "Service Selected",
@@ -30,8 +30,8 @@ const AIServices = () => {
       duration: 3000,
     });
     
-    // Navigate to homepage and scroll to pricing section
-    navigate('/?tab=ai#pricing');
+    // Navigate to the dedicated services page with AI tab selected
+    navigate('/services?tab=ai');
   };
 
   const services = [

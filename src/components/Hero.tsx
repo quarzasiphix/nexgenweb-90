@@ -125,7 +125,7 @@ const SolutionCard = ({ solution }) => {
         <h3 className="text-xl font-semibold mb-2 text-white">{solution.title}</h3>
         <p className="text-white/80 mb-4">{solution.description}</p>
         <div className="flex items-center text-white">
-          <span className="text-sm font-medium">Learn More</span>
+          <span className="text-sm font-medium">View Pricing</span>
           <ArrowRight className="ml-2 h-4 w-4" />
         </div>
       </Link>

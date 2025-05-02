@@ -291,9 +291,9 @@ const WebServiceDetail = () => {
                 <Button 
                   variant="outline"
                   className="border-white/20 text-white hover:bg-white/10"
-                  onClick={openChat}
+                  onClick={() => navigate('/services?tab=web')}
                 >
-                  Get a Custom Quote
+                  View Pricing
                 </Button>
               </div>
             </div>

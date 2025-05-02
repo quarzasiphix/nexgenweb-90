@@ -6,14 +6,27 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const FinanceAccounting = () => {
   const { isChatOpen, openChat, closeChat } = useChat();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Finance & Accounting Solutions - NexGenWeb";
   }, []);
+
+  const handlePricingClick = () => {
+    toast({
+      title: "Pricing Information",
+      description: "Viewing pricing for Finance & Accounting Solutions.",
+      duration: 3000,
+    });
+    navigate('/services?tab=ai');
+  };
 
   return (
     <div className="min-h-screen bg-neutral-900 flex flex-col">
@@ -47,9 +60,9 @@ const FinanceAccounting = () => {
                     size="lg" 
                     variant="outline" 
                     className="border-white/20 text-white hover:bg-white/10"
-                    onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={handlePricingClick}
                   >
-                    Learn More
+                    View Pricing
                   </Button>
                 </div>
               </div>
@@ -69,6 +82,10 @@ const FinanceAccounting = () => {
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-6">
+                    <p className="text-white font-semibold mb-1">Included in Premium Package</p>
+                    <p className="text-brand-400 text-xl font-bold">$299/month</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -142,18 +159,32 @@ const FinanceAccounting = () => {
 
           {/* CTA Section */}
           <section className="py-12 md:py-20">
-            <div className="bg-gradient-to-r from-neutral-800 to-neutral-800/50 border border-white/10 rounded-2xl p-8 md:p-12 text-center">
-              <h2 className="text-3xl font-bold text-white mb-6">Ready to modernize your finance department?</h2>
-              <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-                Join industry leaders who have transformed their financial operations with our AI solutions
-              </p>
-              <Button 
-                onClick={openChat}
-                size="lg"
-                className="bg-brand-500 hover:bg-brand-600 text-white"
-              >
-                Request a Consultation
-              </Button>
+            <div className="bg-gradient-to-r from-neutral-800 to-neutral-800/50 border border-white/10 rounded-2xl p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center justify-between">
+                <div className="text-center md:text-left mb-6 md:mb-0">
+                  <h2 className="text-3xl font-bold text-white mb-6">Ready to modernize your finance department?</h2>
+                  <p className="text-lg text-neutral-300 max-w-2xl">
+                    Join industry leaders who have transformed their financial operations with our AI solutions
+                  </p>
+                  <p className="text-neutral-300 mt-2"><span className="font-semibold">Premium Package:</span> $299/month</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Button 
+                    onClick={handlePricingClick}
+                    size="lg"
+                    className="bg-brand-500 hover:bg-brand-600 text-white"
+                  >
+                    View Pricing
+                  </Button>
+                  <Button 
+                    onClick={openChat}
+                    variant="outline" 
+                    className="border-white/20 text-white hover:bg-white/10"
+                  >
+                    Contact Sales
+                  </Button>
+                </div>
+              </div>
             </div>
           </section>
         </div>

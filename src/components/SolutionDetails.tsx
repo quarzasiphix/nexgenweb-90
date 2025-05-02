@@ -16,10 +16,10 @@ import { useToast } from '@/hooks/use-toast';
 
 // Add a mapping for solutions to pricing packages
 const solutionPackages = {
-  "ai-powered-sales-automation": { package: "Business", price: "$199/month" },
-  "intelligent-customer-service": { package: "Business", price: "$199/month" },
   "finance-and-accounting": { package: "Premium", price: "$299/month" },
   "hr-and-recruitment": { package: "Premium", price: "$299/month" },
+  "ai-powered-sales-automation": { package: "Business", price: "$199/month" },
+  "intelligent-customer-service": { package: "Business", price: "$199/month" },
   "it-and-security": { package: "Enterprise", price: "$499/month" },
   "data-analytics-and-bi": { package: "Premium", price: "$299/month" },
   "customer-engagement": { package: "Business", price: "$199/month" },
@@ -192,9 +192,9 @@ const SolutionDetails = () => {
                 <Button 
                   variant="outline"
                   className="border-white/20 text-white hover:bg-white/10"
-                  onClick={openChat}
+                  onClick={() => navigate('/services?tab=ai')}
                 >
-                  Get a Custom Quote
+                  View Pricing
                 </Button>
               </div>
             </div>

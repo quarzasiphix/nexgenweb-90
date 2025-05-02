@@ -146,9 +146,9 @@ const AIServices = () => {
                     <Button 
                       variant="outline" 
                       className="w-full bg-transparent text-[#9b87f5] border-[#9b87f5] hover:bg-[#9b87f5]/10"
-                      onClick={() => navigate(`/services/ai/${service.id}`)}
+                      onClick={() => navigate('/services?tab=ai')}
                     >
-                      Learn More
+                      View Pricing
                     </Button>
                   </div>
                 </CardContent>

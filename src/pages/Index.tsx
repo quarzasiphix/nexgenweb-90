@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -16,13 +15,7 @@ import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useAnalytics } from '@/hooks/use-analytics';
-
-// Custom CSS classes for different section themes - now with more color variety
-const sectionThemes = {
-  solutions: "solutions-theme", // Blue theme
-  services: "services-theme",   // Purple theme 
-  webDev: "webdev-theme"        // Warm orange theme
-}
+import Logo from '@/components/Logo';
 
 const Index = () => {
   useAnimationObserver();
@@ -33,7 +26,7 @@ const Index = () => {
 
   useEffect(() => {
     // Set page title
-    document.title = "BizWiz - Digital Business Solutions";
+    document.title = "NexGenWeb - Digital Business Solutions";
     
     // On mobile, add a class to body for optimized animations
     if (isMobile) {
@@ -41,14 +34,6 @@ const Index = () => {
     } else {
       document.body.classList.remove('mobile-animations');
     }
-    
-    // Add theme-specific CSS variables - now using the new diversified color palette
-    document.documentElement.style.setProperty('--solutions-primary', 'var(--bizwiz-primary)');
-    document.documentElement.style.setProperty('--solutions-secondary', 'var(--bizwiz-primary-light)');
-    document.documentElement.style.setProperty('--services-primary', 'var(--bizwiz-accent)');
-    document.documentElement.style.setProperty('--services-secondary', '#8F7CBF');
-    document.documentElement.style.setProperty('--webdev-primary', 'var(--bizwiz-warm)');
-    document.documentElement.style.setProperty('--webdev-secondary', '#F0B778');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });
@@ -88,30 +73,16 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
       document.body.classList.remove('fast-scrolling');
       window.removeEventListener('scroll', handleScroll);
-      
-      // Clean up theme CSS variables
-      document.documentElement.style.removeProperty('--solutions-primary');
-      document.documentElement.style.removeProperty('--solutions-secondary');
-      document.documentElement.style.removeProperty('--services-primary');
-      document.documentElement.style.removeProperty('--services-secondary');
-      document.documentElement.style.removeProperty('--webdev-primary');
-      document.documentElement.style.removeProperty('--webdev-secondary');
     };
   }, [isMobile, captureEvent, fastScrolling]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-900">
       <Header />
       <Hero />
-      <div className={sectionThemes.solutions}>
-        <Solutions />
-      </div>
-      <div className={sectionThemes.services}>
-        <Services />
-      </div>
-      <div className={sectionThemes.webDev}>
-        <HowItWorks />
-      </div>
+      <Solutions />
+      <Services />
+      <HowItWorks />
       <CaseStudies />
       <Testimonials />
       <CTASection />

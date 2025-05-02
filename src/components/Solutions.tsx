@@ -26,7 +26,7 @@ export const solutionCategories = [
       "AI predicts future financial trends based on past transactions",
       "AI calculates wages, generates payslips, and integrates with tax systems"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-emerald-500 to-teal-400"
   },
   {
     title: "Customer Engagement",
@@ -46,7 +46,7 @@ export const solutionCategories = [
       "AI transcribes and analyzes customer calls for valuable insights",
       "Virtual assistants provide personalized customer experiences"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-blue-500 to-cyan-400"
   },
   {
     title: "Sales & Marketing",
@@ -66,7 +66,7 @@ export const solutionCategories = [
       "AI predicts future sales and market trends for better planning",
       "AI keeps track of client interactions and suggests follow-ups"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-purple-500 to-pink-400"
   },
   {
     title: "HR & Recruitment",
@@ -86,7 +86,7 @@ export const solutionCategories = [
       "AI tailors employee training based on performance and skills",
       "AI identifies trends in employee satisfaction and productivity"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-amber-500 to-yellow-400"
   },
   {
     title: "Logistics & Supply Chain",
@@ -106,7 +106,7 @@ export const solutionCategories = [
       "AI predicts future demand based on historical data",
       "AI optimizes warehouse operations and product placement"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-green-500 to-lime-400"
   },
   {
     title: "IT & Security",
@@ -126,7 +126,7 @@ export const solutionCategories = [
       "AI predicts when equipment needs maintenance before breakdown",
       "AI ensures data is backed up and recoverable"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-red-500 to-orange-400"
   },
   {
     title: "Legal & Compliance",
@@ -146,7 +146,7 @@ export const solutionCategories = [
       "AI combs through legal documents to find relevant information",
       "AI identifies and assesses potential legal and compliance risks"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-indigo-500 to-violet-400"
   },
   {
     title: "Data Analytics",
@@ -166,7 +166,7 @@ export const solutionCategories = [
       "AI creates visual dashboards for easy data interpretation",
       "AI identifies emerging market trends and opportunities"
     ],
-    color: "from-[#6E59A5] to-[#9b87f5]"
+    color: "from-indigo-500 to-blue-400"
   }
 ];
 
@@ -189,11 +189,11 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
       style={{ transitionDelay: `${index * 25}ms` }}
     >
       <div className={`p-6 flex flex-col h-full`}>
-        <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center bg-gradient-to-r from-[var(--bizwiz-primary)] to-[var(--bizwiz-accent)]`}>
+        <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
           <solution.icon className="h-6 w-6 text-white" />
         </div>
-        <h3 className="service-title mb-2">{solution.title}</h3>
-        <p className="text-[var(--bizwiz-neutral)] mb-3 flex-grow">{solution.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-neutral-800">{solution.title}</h3>
+        <p className="text-neutral-600 mb-3 flex-grow">{solution.description}</p>
         
         <Tabs defaultValue="features" className="mb-4">
           <TabsList className="grid w-full grid-cols-2 mb-3">
@@ -203,8 +203,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           <TabsContent value="features" className="mt-0">
             <ul className="space-y-1">
               {solution.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-[var(--bizwiz-neutral)]">
-                  <svg className="w-3 h-3 mr-1 text-[var(--bizwiz-primary)]" fill="currentColor" viewBox="0 0 20 20">
+                <li key={idx} className="flex items-center text-neutral-700">
+                  <svg className="w-3 h-3 mr-1 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   {feature}
@@ -215,8 +215,8 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
           <TabsContent value="details" className="mt-0">
             <ul className="space-y-1 text-sm">
               {solution.detailed.map((detail, idx) => (
-                <li key={idx} className="flex items-start text-[var(--bizwiz-neutral)]">
-                  <span className="inline-block w-1 h-1 rounded-full bg-[var(--bizwiz-primary)] mt-1.5 mr-1 flex-shrink-0"></span>
+                <li key={idx} className="flex items-start text-neutral-700">
+                  <span className="inline-block w-1 h-1 rounded-full bg-brand-500 mt-1.5 mr-1 flex-shrink-0"></span>
                   {detail}
                 </li>
               ))}
@@ -225,7 +225,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
         </Tabs>
         
         <Link to={`/solutions/${solutionId}`} className="mt-auto w-full">
-          <Button className="w-full bg-[var(--bizwiz-primary)] hover:bg-[var(--bizwiz-primary-light)] text-white">
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-1 px-3 rounded-lg ${solution.color}`}>
             Learn More
           </Button>
         </Link>
@@ -242,17 +242,17 @@ const Solutions = () => {
   });
 
   return (
-    <section id="solutions" className="py-20 bg-gradient-to-b from-white to-[var(--bizwiz-light)]">
+    <section id="solutions" className="py-20 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-5xl font-bold mb-4 text-[var(--bizwiz-neutral)] opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
-            AI-Powered Business <span className="text-[var(--bizwiz-primary)]">Solutions</span>
+            AI-Powered Business <span className="text-gradient">Solutions</span>
           </h2>
           <p className={cn(
-            "max-w-2xl mx-auto text-lg text-[var(--bizwiz-neutral)]/80 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
+            "max-w-2xl mx-auto text-lg text-neutral-600 opacity-0 transform translate-y-4 transition-all duration-250 delay-25",
             inView && "opacity-100 transform-none"
           )}>
             Leverage intelligent automation across every department to drive efficiency, 

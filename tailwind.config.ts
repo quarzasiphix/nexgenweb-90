@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,40 +64,28 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					50: '#F5F8FC',  // Updated to be lighter
-					100: '#E6EEFA',
-					200: '#C5D6EF',
-					300: '#A4BFE4',
-					400: '#7E69AB',  // Changed to purple
-					500: '#0070D1',  // Primary blue
-					600: '#005CB8',
-					700: '#00489C',
-					800: '#003366',
-					900: '#2C394B',
+					50: '#f0f9ff',
+					100: '#e0f2fe',
+					200: '#bae6fd',
+					300: '#7dd3fc',
+					400: '#38bdf8',
+					500: '#0ea5e9',
+					600: '#0284c7',
+					700: '#0369a1',
+					800: '#075985',
+					900: '#0c4a6e',
 				},
 				neutral: {
-					50: '#F9F9FA',  // Updated for less blue-tinted neutrals
-					100: '#F1F1F3',
-					200: '#E4E4E8',
-					300: '#D1D1D6',
-					400: '#A3A3A9',
-					500: '#767679',
-					600: '#5A5A5E',
-					700: '#444446',
-					800: '#2C2C2F',
-					900: '#1A1A1C',
-				},
-				// Add diversified theme colors for direct tailwind access
-				bizwiz: {
-					primary: '#0070D1',
-					'primary-light': '#4B9FE3',
-					accent: '#7E69AB',  // Added purple
-					neutral: '#444444',
-					light: '#F5F8FC',
-					gray: '#F6F6F7',
-					warm: '#E5A663',  // Added warm orange
-					success: '#4CAF50',  // Added success green
-					info: '#00A0FF',   // Added info blue
+					50: '#fafafa',
+					100: '#f5f5f5',
+					200: '#e5e5e5',
+					300: '#d4d4d4',
+					400: '#a3a3a3',
+					500: '#737373',
+					600: '#525252',
+					700: '#404040',
+					800: '#262626',
+					900: '#171717',
 				}
 			},
 			borderRadius: {
@@ -156,7 +145,6 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'hero-pattern': 'linear-gradient(to right, rgba(243, 244, 246, 0.1), rgba(243, 244, 246, 0.1)), url("/hero-pattern.svg")',
-				'blue-gradient': 'linear-gradient(to right, var(--bizwiz-primary), var(--bizwiz-accent))',
 			}
 		}
 	},

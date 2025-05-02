@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database, 
@@ -397,7 +396,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof solutionCategories
   return (
     <div 
       ref={ref}
-      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
+      className="bg-gradient-to-br from-neutral-800/80 to-neutral-900/80 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className={`p-6 flex flex-col h-full`}>
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
@@ -457,7 +456,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
   return (
     <div 
       ref={ref}
-      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
+      className="bg-gradient-to-br from-neutral-800/80 to-neutral-900/80 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className="p-6 flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
@@ -517,7 +516,7 @@ const PremiumServiceCard = ({ service, index }: { service: typeof premiumService
   return (
     <div 
       ref={ref}
-      className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
+      className="bg-gradient-to-br from-neutral-800/80 to-neutral-900/80 rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover border border-white/10 backdrop-blur-sm"
     >
       <div className="p-6 flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
@@ -577,8 +576,8 @@ const Solutions = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="solutions" className="py-20 bg-gradient-to-br from-neutral-900 to-neutral-800 relative overflow-hidden">
-      {/* Background elements for visual consistency with the header */}
+    <section id="solutions" className="py-20 bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 relative overflow-hidden">
+      {/* Background elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
       </div>

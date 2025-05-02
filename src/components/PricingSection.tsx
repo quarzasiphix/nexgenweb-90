@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -176,27 +177,35 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-neutral-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-20 bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 overflow-hidden relative">
+      {/* Background elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48cGF0aCBkPSJNMzYgMzBhNiA2IDAgMTEtMTIgMCA2IDYgMCAwMTEyIDB6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
+      </div>
+
+      <div className="absolute top-0 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Services & Pricing
+            Services & <span className="text-gradient bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA]">Pricing</span>
           </h2>
-          <p className="text-lg text-neutral-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-3xl mx-auto">
             Choose the perfect package for your business needs. All plans include our 
             award-winning customer support and satisfaction guarantee.
           </p>
         </div>
 
         <Tabs defaultValue="ai" className="w-full mb-12">
-          <TabsList className="max-w-md mx-auto bg-neutral-800 mb-8">
-            <TabsTrigger value="ai" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+          <TabsList className="max-w-md mx-auto bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
+            <TabsTrigger value="ai" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">
               AI Solutions
             </TabsTrigger>
-            <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+            <TabsTrigger value="web" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">
               Web Development
             </TabsTrigger>
-            <TabsTrigger value="premium" className="text-white data-[state=active]:bg-[#8B5CF6] data-[state=active]:text-white">
+            <TabsTrigger value="premium" className="text-white data-[state=active]:bg-[#8B5CF6]/60 data-[state=active]:text-white">
               Premium Services
             </TabsTrigger>
           </TabsList>
@@ -419,7 +428,7 @@ const PricingSection = () => {
           </TabsContent>
         </Tabs>
 
-        <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
+        <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg p-6 mt-10">
           <h3 className="text-xl font-semibold text-white mb-4">All AI Solution Plans Include:</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -430,7 +439,7 @@ const PricingSection = () => {
             ].map((feature, index) => (
               <div key={index} className="flex items-start">
                 <Check className="h-4 w-4 text-[#9b87f5] mt-1 mr-2 flex-shrink-0" />
-                <span className="text-neutral-300">{feature}</span>
+                <span className="text-white/80">{feature}</span>
               </div>
             ))}
           </div>
@@ -438,7 +447,7 @@ const PricingSection = () => {
 
         <div className="mt-16 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Need a Custom Solution?</h2>
-          <p className="text-neutral-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
             We offer tailored solutions designed specifically for your business needs.
             Contact our experts for a personalized consultation.
           </p>

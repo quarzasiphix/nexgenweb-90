@@ -76,7 +76,7 @@ const Index = () => {
   }, [isMobile, captureEvent, fastScrolling]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900">
+    <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white">
       <Header />
       <Hero />
       <Solutions />

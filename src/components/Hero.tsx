@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code } from 'lucide-react';
+import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -70,6 +70,38 @@ const featuredWebServices = [
     description: "AI-optimized database design and maintenance.",
     color: "from-amber-500 to-yellow-400",
     path: "/services/database-management"
+  }
+];
+
+// Premium Services
+const premiumServices = [
+  {
+    title: "Custom AI Integration",
+    icon: Brain,
+    description: "Seamlessly integrate AI into your existing systems with custom workflows.",
+    color: "from-purple-500 to-pink-400",
+    path: "/services/custom-ai-integration"
+  },
+  {
+    title: "AI-Powered Web",
+    icon: Star,
+    description: "Create intelligent, responsive websites with AI-driven personalization.",
+    color: "from-blue-500 to-cyan-400",
+    path: "/services/ai-powered-web"
+  },
+  {
+    title: "Enterprise AI Strategy",
+    icon: Award,
+    description: "Comprehensive AI integration tailored for large organizations.",
+    color: "from-emerald-500 to-teal-400",
+    path: "/services/enterprise-ai"
+  },
+  {
+    title: "Managed AI Services",
+    icon: Trophy,
+    description: "Let our experts handle all your AI needs with our premium managed service.",
+    color: "from-amber-500 to-yellow-400",
+    path: "/services/managed-ai-services"
   }
 ];
 
@@ -206,6 +238,14 @@ const Hero = () => {
               >
                 Web Services
               </button>
+              <button
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  activeTab === 'premium' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
+                }`}
+                onClick={() => setActiveTab('premium')}
+              >
+                Premium Services
+              </button>
             </div>
           </div>
 
@@ -214,9 +254,13 @@ const Hero = () => {
               ? featuredSolutions.map((solution, index) => (
                   <SolutionCard key={index} solution={solution} />
                 ))
-              : featuredWebServices.map((service, index) => (
-                  <SolutionCard key={index} solution={service} />
-                ))
+              : activeTab === 'web' 
+                ? featuredWebServices.map((service, index) => (
+                    <SolutionCard key={index} solution={service} />
+                  ))
+                : premiumServices.map((service, index) => (
+                    <SolutionCard key={index} solution={service} />
+                  ))
             }
           </div>
           
@@ -225,7 +269,7 @@ const Hero = () => {
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
               onClick={() => navigate(activeTab === 'ai' ? '/solutions' : '/services')}
             >
-              View All {activeTab === 'ai' ? 'Solutions' : 'Services'}
+              View All {activeTab === 'ai' ? 'Solutions' : activeTab === 'web' ? 'Services' : 'Premium Services'}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

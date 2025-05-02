@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
@@ -267,7 +266,7 @@ const Hero = () => {
           <div className="text-center mt-8">
             <Button 
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
-              onClick={() => navigate(activeTab === 'ai' ? '/solutions' : '/services')}
+              onClick={() => navigate(activeTab === 'ai' ? '/services/all' : '/services')}
             >
               View All {activeTab === 'ai' ? 'Solutions' : activeTab === 'web' ? 'Services' : 'Premium Services'}
               <ArrowRight className="ml-2 h-4 w-4" />

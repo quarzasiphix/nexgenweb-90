@@ -179,7 +179,8 @@ const ServicesPage = () => {
                       </ul>
                       <div className="mt-6">
                         <Button 
-                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : 'bg-white text-[#444]'} hover:bg-opacity-90 text-white`}
+                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          variant={service.popular ? "default" : "white"}
                           onClick={() => handleBuyNow('AI Solutions', service.title, service.price)}
                         >
                           {service.price === "Custom" ? "Contact Us" : "Buy Now"}
@@ -234,7 +235,8 @@ const ServicesPage = () => {
                       </ul>
                       <div className="mt-6">
                         <Button 
-                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : 'bg-white text-[#444]'} hover:bg-opacity-90 text-white`}
+                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          variant={service.popular ? "default" : "white"}
                           onClick={() => handleBuyNow('Web Development', service.title, service.price)}
                         >
                           {service.price === "Custom" ? "Contact Us" : "Buy Now"}

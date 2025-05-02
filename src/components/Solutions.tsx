@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database, 
@@ -584,15 +583,8 @@ const Solutions = () => {
             "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900",
             inView && "opacity-100 transform-none"
           )}>
-            Our Business <span className="text-gradient">Solutions</span>
+            <span className="text-gradient">Solutions</span>
           </h2>
-          <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-600",
-            inView && "opacity-100 transform-none"
-          )}>
-            Comprehensive solutions tailored to your business needs, 
-            from AI automation to web development and premium services.
-          </p>
         </div>
 
         <Tabs 
@@ -610,16 +602,6 @@ const Solutions = () => {
           </div>
           
           <TabsContent value="ai-solutions" className="mt-0 w-full">
-            <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                AI <span className="text-gradient">Solutions</span> for Business
-              </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
-                Our intelligent automation solutions streamline operations and drive growth across
-                every area of your business with cutting-edge AI technology.
-              </p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {solutionCategories.map((solution, index) => (
                 <SolutionCard key={index} solution={solution} index={index} />
@@ -628,16 +610,6 @@ const Solutions = () => {
           </TabsContent>
           
           <TabsContent value="web-development" className="mt-0 w-full">
-            <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                Web Development & <span className="text-gradient">Hosting</span> Solutions
-              </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
-                Our comprehensive web solutions combine cutting-edge development with reliable hosting services, 
-                all enhanced by AI technologies.
-              </p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-10">
               {webDevServices.map((service, index) => (
                 <WebDevCard key={service.id} service={service} index={index} />
@@ -665,16 +637,6 @@ const Solutions = () => {
           </TabsContent>
           
           <TabsContent value="premium-services" className="mt-0 w-full">
-            <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-                Premium <span className="text-gradient">Services</span>
-              </h3>
-              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
-                Comprehensive AI solutions tailored to your business needs, 
-                delivered by experts in automation and artificial intelligence.
-              </p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
               {premiumServices.map((service, index) => (
                 <PremiumServiceCard key={service.id} service={service} index={index} />

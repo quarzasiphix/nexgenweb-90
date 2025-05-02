@@ -24,8 +24,11 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'AI Solutions', href: '/services/ai' },
+    { name: 'Web Services', href: '/services/web' },
     { name: 'Case Studies', href: '/case-studies' },
+    { name: 'About', href: '/about' },
   ];
 
   const handleNavigation = (href: string) => {

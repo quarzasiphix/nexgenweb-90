@@ -142,7 +142,7 @@ const Services = () => {
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
+            "text-3xl sm:text-5xl font-bold mb-4 text-neutral-900 opacity-0 transform translate-y-4 transition-all duration-250",
             inView && "opacity-100 transform-none"
           )}>
             Our Premium <span className="text-[#1A5F9C]">Services</span>
@@ -161,7 +161,7 @@ const Services = () => {
             <div 
               key={index}
               className={cn(
-                "bg-white rounded-xl border border-blue-100 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
+                "service-card bg-white rounded-xl border border-blue-100 p-6 transition-all duration-150 opacity-0 transform translate-y-4 hover:shadow-lg flex flex-col h-full",
                 inView && "opacity-100 translate-y-0"
               )}
               style={{ transitionDelay: `${index * 25}ms` }}
@@ -169,7 +169,7 @@ const Services = () => {
               <div className={`w-12 h-12 rounded-full mb-5 flex items-center justify-center ${service.color}`}>
                 <service.icon className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-800">{service.title}</h3>
+              <h3 className="service-title">{service.title}</h3>
               <p className="text-neutral-600 mb-4">{service.description}</p>
               
               <ul className="text-neutral-600 mb-6 space-y-2 flex-grow">
@@ -199,7 +199,7 @@ const Services = () => {
           inView && "opacity-100 transform-none"
         )}>
           <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-neutral-900">
+            <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-neutral-900">
               Web Development & <span className="text-[#003366]">Hosting</span> Solutions
             </h3>
             <p className="max-w-2xl mx-auto text-lg text-neutral-600">
@@ -222,7 +222,7 @@ const Services = () => {
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex flex-col w-full h-full">
-                    <h4 className="text-lg font-semibold mb-2 text-neutral-800">{service.title}</h4>
+                    <h4 className="service-title">{service.title}</h4>
                     <p className="text-neutral-600 mb-4">{service.description}</p>
                     
                     <div className="mt-auto pt-2">

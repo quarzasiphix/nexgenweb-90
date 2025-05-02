@@ -156,6 +156,10 @@
     @apply text-[var(--webdev-primary)];
   }
   
+  .service-title {
+    @apply text-2xl font-semibold text-neutral-800;
+  }
+  
   .glass-card {
     @apply backdrop-blur-md bg-white/90 border border-blue-100 shadow-lg;
   }
@@ -340,5 +344,15 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   /* Make text slightly smaller */
   .text-lg {
     font-size: 1rem !important;
+  }
+  
+  .service-card h3, 
+  .card h4 {
+    @apply text-2xl font-semibold mb-3 text-neutral-800;
+  }
+  
+  .service-card h3,
+  .card h4 {
+    font-size: 1.5rem !important;
   }
 }

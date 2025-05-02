@@ -43,11 +43,11 @@ const Index = () => {
     }
     
     // Add theme-specific CSS variables
-    document.documentElement.style.setProperty('--solutions-primary', '#6E59A5');
+    document.documentElement.style.setProperty('--solutions-primary', '#6E59A5');  // Purple
     document.documentElement.style.setProperty('--solutions-secondary', '#9b87f5');
-    document.documentElement.style.setProperty('--services-primary', '#33C3F0');
+    document.documentElement.style.setProperty('--services-primary', '#33C3F0');   // Blue
     document.documentElement.style.setProperty('--services-secondary', '#0EA5E9');
-    document.documentElement.style.setProperty('--webdev-primary', '#F97316');
+    document.documentElement.style.setProperty('--webdev-primary', '#F97316');     // Orange
     document.documentElement.style.setProperty('--webdev-secondary', '#FB923C');
     
     // Log page view to PostHog
@@ -109,7 +109,9 @@ const Index = () => {
       <div className={sectionThemes.services}>
         <Services />
       </div>
-      <HowItWorks />
+      <div className={sectionThemes.webDev}>
+        <HowItWorks />
+      </div>
       <CaseStudies />
       <Testimonials />
       <CTASection />

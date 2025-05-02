@@ -46,11 +46,11 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
     
     /* Theme colors for different sections */
-    --solutions-primary: #6E59A5;
+    --solutions-primary: #6E59A5;   /* Purple theme */
     --solutions-secondary: #9b87f5;
-    --services-primary: #33C3F0;
+    --services-primary: #33C3F0;    /* Blue theme */
     --services-secondary: #0EA5E9;
-    --webdev-primary: #F97316;
+    --webdev-primary: #F97316;      /* Orange theme */
     --webdev-secondary: #FB923C;
   }
 

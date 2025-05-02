@@ -221,21 +221,6 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-neutral-900 text-white">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className={cn(
-            "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-700",
-            inView && "opacity-100 transform-none"
-          )}>
-            Need a <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Custom Solution</span>?
-          </h2>
-          <p className={cn(
-            "max-w-2xl mx-auto text-lg text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
-            inView && "opacity-100 transform-none"
-          )}>
-            We offer tailored solutions designed specifically for your business needs. Contact our experts for a personalized consultation.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className={cn(
             "bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-sm opacity-0 transform translate-y-8 transition-all duration-500 delay-100",
@@ -389,7 +374,7 @@ const Contact = () => {
           </div>
         </div>
         
-        {/* Email Us section - moved below the chat and form */}
+        {/* Email Us section - added below the chat and form */}
         <div className="flex justify-center items-center mt-12">
           <div className={cn(
             "flex items-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 opacity-0 transform translate-y-8 transition-all duration-500",
@@ -403,6 +388,22 @@ const Contact = () => {
               <p className="text-brand-400">{contactEmail}</p>
             </div>
           </div>
+        </div>
+
+        {/* Adding the title at the bottom with contact us */}
+        <div className="text-center mt-16">
+          <h2 className={cn(
+            "text-3xl sm:text-4xl font-bold mb-4 text-white opacity-0 transform translate-y-4 transition-all duration-700",
+            inView && "opacity-100 transform-none"
+          )}>
+            Need a <span className="text-gradient bg-gradient-to-r from-brand-400 to-purple-400">Custom Solution</span>? Contact Us
+          </h2>
+          <p className={cn(
+            "max-w-2xl mx-auto text-lg text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-700 delay-100",
+            inView && "opacity-100 transform-none"
+          )}>
+            We offer tailored solutions designed specifically for your business needs. Contact our experts for a personalized consultation.
+          </p>
         </div>
       </div>
     </section>

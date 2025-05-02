@@ -19,9 +19,9 @@ import { useAnalytics } from '@/hooks/use-analytics';
 
 // Custom CSS classes for different section themes
 const sectionThemes = {
-  solutions: "solutions-theme", // Purple theme
-  services: "services-theme",   // Blue theme
-  webDev: "webdev-theme"        // Orange theme
+  solutions: "solutions-theme", // Azure blue theme
+  services: "services-theme",   // Sapphire blue theme
+  webDev: "webdev-theme"        // Cobalt blue theme
 }
 
 const Index = () => {
@@ -42,13 +42,13 @@ const Index = () => {
       document.body.classList.remove('mobile-animations');
     }
     
-    // Add theme-specific CSS variables
-    document.documentElement.style.setProperty('--solutions-primary', '#6E59A5');  // Purple
-    document.documentElement.style.setProperty('--solutions-secondary', '#9b87f5');
-    document.documentElement.style.setProperty('--services-primary', '#33C3F0');   // Blue
-    document.documentElement.style.setProperty('--services-secondary', '#0EA5E9');
-    document.documentElement.style.setProperty('--webdev-primary', '#F97316');     // Orange
-    document.documentElement.style.setProperty('--webdev-secondary', '#FB923C');
+    // Add theme-specific CSS variables with new creative blue palette
+    document.documentElement.style.setProperty('--solutions-primary', '#4B9CD3');  // Azure blue
+    document.documentElement.style.setProperty('--solutions-secondary', '#8CC7F4');
+    document.documentElement.style.setProperty('--services-primary', '#1A5F9C');   // Sapphire blue
+    document.documentElement.style.setProperty('--services-secondary', '#2D7CC2');
+    document.documentElement.style.setProperty('--webdev-primary', '#003366');     // Cobalt blue
+    document.documentElement.style.setProperty('--webdev-secondary', '#0A5CB3');
     
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });
@@ -100,7 +100,7 @@ const Index = () => {
   }, [isMobile, captureEvent, fastScrolling]);
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-white">
       <Header />
       <Hero />
       <div className={sectionThemes.solutions}>

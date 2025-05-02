@@ -45,13 +45,13 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* Theme colors for different sections */
-    --solutions-primary: #6E59A5;   /* Purple theme */
-    --solutions-secondary: #9b87f5;
-    --services-primary: #33C3F0;    /* Blue theme */
-    --services-secondary: #0EA5E9;
-    --webdev-primary: #F97316;      /* Orange theme */
-    --webdev-secondary: #FB923C;
+    /* New creative blue color palette for different themes */
+    --solutions-primary: #4B9CD3;   /* Azure blue theme */
+    --solutions-secondary: #8CC7F4;
+    --services-primary: #1A5F9C;    /* Sapphire blue theme */
+    --services-secondary: #2D7CC2;
+    --webdev-primary: #003366;      /* Cobalt blue theme */
+    --webdev-secondary: #0A5CB3;
   }
 
   .dark {
@@ -104,7 +104,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-white text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
     width: 100%;
     position: relative;
@@ -117,13 +117,21 @@
 
 @layer components {
   /* Theme-specific styles */
+  .solutions-theme {
+    @apply bg-gradient-to-b from-white to-blue-50;
+  }
+  
   .solutions-theme button {
-    @apply bg-[var(--solutions-primary)] hover:bg-[#514080] text-white;
+    @apply bg-[var(--solutions-primary)] hover:bg-[var(--solutions-secondary)] text-white;
   }
   
   .solutions-theme h2 span,
   .solutions-theme h3 span {
     @apply text-[var(--solutions-primary)];
+  }
+  
+  .services-theme {
+    @apply bg-white;
   }
   
   .services-theme button {
@@ -133,6 +141,10 @@
   .services-theme h2 span,
   .services-theme h3 span {
     @apply text-[var(--services-primary)];
+  }
+  
+  .webdev-theme {
+    @apply bg-gradient-to-b from-blue-50 to-white;
   }
   
   .webdev-theme button {
@@ -145,11 +157,11 @@
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-lg;
+    @apply backdrop-blur-md bg-white/90 border border-blue-100 shadow-lg;
   }
   
   .glass-morphism {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-md;
+    @apply bg-white/90 backdrop-blur-lg border border-blue-50 shadow-md;
   }
   
   .section-container {
@@ -240,10 +252,10 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
 
 /* Glassmorphism styles */
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(75, 156, 211, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
@@ -254,16 +266,16 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f7fd;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #4B9CD3;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #1A5F9C;
 }
 
 /* Mobile-specific compact layout */

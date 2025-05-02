@@ -3,11 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Solutions from '@/components/Solutions';
-import Services from '@/components/Services';
 import HowItWorks from '@/components/HowItWorks';
 import CaseStudies from '@/components/CaseStudies';
 import Testimonials from '@/components/Testimonials';
-import PricingSection from '@/components/PricingSection';
 import CTASection from '@/components/CTASection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -82,11 +80,9 @@ const Index = () => {
       <Header />
       <Hero />
       <Solutions />
-      <Services />
       <HowItWorks />
       <CaseStudies />
       <Testimonials />
-      <PricingSection />
       <CTASection />
       <Contact />
       <Footer />

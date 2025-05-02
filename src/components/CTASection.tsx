@@ -17,7 +17,7 @@ const CTASection = () => {
         
         <div className="relative z-10 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Have Questions About Our Services?
+            Have Questions About Our <span className="text-gradient-light">Services</span>?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Our team is ready to answer any questions you might have about our services

@@ -610,6 +610,16 @@ const Solutions = () => {
           </div>
           
           <TabsContent value="ai-solutions" className="mt-0 w-full">
+            <div className="mb-8 text-center">
+              <h3 className="text-2xl font-bold mb-4 text-neutral-900">
+                AI <span className="text-gradient">Solutions</span> for Business
+              </h3>
+              <p className="max-w-3xl mx-auto text-lg text-neutral-600 mb-8">
+                Our intelligent automation solutions streamline operations and drive growth across
+                every area of your business with cutting-edge AI technology.
+              </p>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {solutionCategories.map((solution, index) => (
                 <SolutionCard key={index} solution={solution} index={index} />

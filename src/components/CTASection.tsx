@@ -2,7 +2,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
-import { Button } from '@/components/ui/button';
 
 const CTASection = () => {
   const navigate = useNavigate();
@@ -23,24 +22,6 @@ const CTASection = () => {
             Our team is ready to answer any questions you might have about our services
             and help you find the perfect solution for your business needs.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              variant="white"
-              size="lg"
-              onClick={openChat}
-              className="font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Chat With Us
-            </Button>
-            <Button 
-              variant="outline-white" 
-              size="lg"
-              onClick={() => navigate('/contact')}
-              className="font-medium bg-transparent border-2 border-white text-white hover:bg-white/10"
-            >
-              Contact Us
-            </Button>
-          </div>
         </div>
       </div>
     </section>

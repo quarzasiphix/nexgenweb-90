@@ -450,23 +450,13 @@ const PricingSection = () => {
             We offer tailored solutions designed specifically for your business needs.
             Contact our experts for a personalized consultation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-              size="lg"
-              onClick={scrollToContact}
-            >
-              Chat with an Expert
-            </Button>
-            <Button 
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white/10"
-              size="lg"
-              onClick={scrollToContact}
-            >
-              Request a Quote
-            </Button>
-          </div>
+          <Button 
+            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+            size="lg"
+            onClick={scrollToContact}
+          >
+            Chat with an Expert
+          </Button>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scale, Database, 
@@ -186,7 +187,7 @@ const webDevServices = [
     title: "Full-Stack Development",
     description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
     icon: Code,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    color: "from-blue-500 to-cyan-400",
     features: [
       "Responsive design implementation",
       "Modern UI/UX practices",
@@ -207,7 +208,7 @@ const webDevServices = [
     title: "E-Commerce Solutions",
     description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
     icon: Globe,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    color: "from-purple-500 to-pink-400",
     features: [
       "Product catalog management",
       "Secure payment processing",
@@ -228,7 +229,7 @@ const webDevServices = [
     title: "Managed Cloud Hosting",
     description: "Scalable, secure hosting infrastructure with automated backups, updates, and performance optimization. Our managed cloud services include 24/7 monitoring, proactive issue resolution, and regular security audits to ensure your applications remain available and protected.",
     icon: Server,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    color: "from-emerald-500 to-teal-400",
     features: [
       "Automated scaling",
       "24/7 monitoring",
@@ -249,7 +250,7 @@ const webDevServices = [
     title: "Database Management",
     description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
     icon: Database,
-    color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
+    color: "from-amber-500 to-yellow-400",
     features: [
       "Database design",
       "Data migration",
@@ -459,7 +460,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
       className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-150 transform card-hover"
     >
       <div className="p-6 flex flex-col h-full">
-        <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center ${service.color}`}>
+        <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
           <service.icon className="h-6 w-6 text-white" />
         </div>
         <h3 className="text-xl font-semibold mb-2 text-neutral-800">{service.title}</h3>
@@ -495,7 +496,7 @@ const WebDevCard = ({ service, index }: { service: typeof webDevServices[0], ind
         </Tabs>
         
         <Link to={`/services/${serviceId}`} className="mt-auto w-full">
-          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-1 px-3 rounded-lg ${service.color || "from-[#9b87f5] to-[#7E69AB]"}`}>
+          <Button className={`w-full bg-gradient-to-r hover:bg-gradient-to-br border-none shadow-md hover:shadow-lg transition-all duration-300 text-white font-medium py-1 px-3 rounded-lg ${service.color}`}>
             Learn More
           </Button>
         </Link>

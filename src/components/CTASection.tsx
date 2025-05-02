@@ -33,10 +33,10 @@ const CTASection = () => {
               Chat With Us
             </Button>
             <Button 
-              variant="outline" 
+              variant="outline-white" 
               size="lg"
               onClick={() => navigate('/contact')}
-              className="bg-transparent border border-white text-white hover:bg-white/10 font-medium"
+              className="font-medium"
             >
               Contact Us
             </Button>

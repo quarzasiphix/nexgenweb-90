@@ -339,15 +339,15 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
 
 @media (max-width: 640px) {
   .pricing-tabs [role="tab"] {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding: 8px !important;
     font-size: 0.875rem !important;
   }
   
   [role="tab"], .TabSelector button {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding: 8px !important;
     font-size: 0.875rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .TabSelector {
@@ -355,5 +355,10 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+  
+  .TabSelector button {
+    min-width: 0;
+    flex: 1;
   }
 }

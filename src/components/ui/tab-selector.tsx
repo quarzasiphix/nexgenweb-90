@@ -26,24 +26,20 @@ export const TabSelector = ({
   
   return (
     <div className={cn(
-      "flex rounded-xl overflow-hidden w-full",
+      "flex rounded-lg overflow-hidden w-full",
       isLight 
-        ? "bg-white/20 backdrop-blur-sm border border-white/30" 
-        : "bg-[#1A1F2C] backdrop-blur-sm border border-[#2A2F3C]",
+        ? "bg-[#141824]/80 backdrop-blur-sm border border-[#222940]" 
+        : "bg-[#141824]/80 backdrop-blur-sm border border-[#222940]",
       className
     )}>
       {options.map((option) => (
         <button
           key={option.id}
           className={cn(
-            "px-3 py-3 text-sm font-medium transition-all duration-200 whitespace-nowrap flex-1",
+            "px-4 py-3 text-sm font-medium transition-all duration-200 whitespace-nowrap flex-1",
             option.id === active 
-              ? isLight 
-                ? "bg-white text-neutral-900" 
-                : "bg-[#9b87f5] text-white" 
-              : isLight 
-                ? "text-white hover:bg-white/20" 
-                : "text-gray-300 hover:text-white hover:bg-[#2A2F3C]"
+              ? "bg-[#9b87f5] text-white" 
+              : "text-gray-300 hover:bg-[#222940]/80"
           )}
           onClick={() => onChange(option.id)}
         >

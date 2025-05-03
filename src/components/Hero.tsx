@@ -231,8 +231,7 @@ const Hero = () => {
               options={tabOptions}
               active={activeTab}
               onChange={setActiveTab}
-              variant="light"
-              className="max-w-full w-full sm:max-w-md mx-2 sm:mx-0"
+              className="max-w-full w-full sm:max-w-2xl mx-auto"
             />
           </div>
 

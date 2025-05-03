@@ -215,7 +215,7 @@ const ServicesPage = () => {
               options={tabOptions}
               active={activeTab}
               onChange={setActiveTab}
-              className="max-w-full w-full sm:max-w-2xl mx-auto"
+              className="max-w-full w-full sm:max-w-2xl mx-auto px-1"
             />
           </div>
           

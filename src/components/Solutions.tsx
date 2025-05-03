@@ -601,7 +601,7 @@ const Solutions = () => {
             options={tabOptions}
             active={activeTab}
             onChange={setActiveTab}
-            className="max-w-xs sm:max-w-md shadow-md px-1"
+            className="max-w-full w-full sm:max-w-2xl mx-auto px-1"
           />
         </div>
         

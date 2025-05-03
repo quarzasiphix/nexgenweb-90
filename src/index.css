@@ -337,15 +337,16 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   color: white !important;
 }
 
+/* Improved mobile tab styling */
 @media (max-width: 640px) {
   .pricing-tabs [role="tab"] {
-    padding: 8px !important;
-    font-size: 0.875rem !important;
+    padding: 10px 4px !important;
+    font-size: 0.75rem !important;
   }
   
   [role="tab"], .TabSelector button {
-    padding: 8px !important;
-    font-size: 0.875rem !important;
+    padding: 10px 4px !important;
+    font-size: 0.75rem !important;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -360,5 +361,8 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   .TabSelector button {
     min-width: 0;
     flex: 1;
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    padding: 8px 2px !important;
   }
 }

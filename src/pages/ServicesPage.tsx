@@ -205,14 +205,14 @@ const ServicesPage = () => {
           </p>
 
           <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
-            <TabsList className="max-w-md mx-auto mb-8">
-              <TabsTrigger value="ai">
+            <TabsList className="max-w-sm mx-auto mb-8 w-full flex justify-between overflow-x-auto">
+              <TabsTrigger value="ai" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
                 AI Solutions
               </TabsTrigger>
-              <TabsTrigger value="web">
+              <TabsTrigger value="web" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
                 Web Development
               </TabsTrigger>
-              <TabsTrigger value="premium">
+              <TabsTrigger value="premium" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
                 Premium Solutions
               </TabsTrigger>
             </TabsList>
@@ -255,7 +255,7 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
                 <h3 className="text-xl font-semibold text-white mb-4">All AI Solution Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
@@ -311,7 +311,7 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
                 <h3 className="text-xl font-semibold text-white mb-4">All Web Development Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
@@ -357,7 +357,7 @@ const ServicesPage = () => {
                         <Button 
                           className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
                           variant={service.popular ? "default" : "white"}
-                          onClick={() => handleBuyNow('Premium Services', service.title, service.price)}
+                          onClick={() => handleBuyNow('Premium Solutions', service.title, service.price)}
                         >
                           {service.price === "Custom" ? "Contact Us" : "Buy Now"}
                         </Button>
@@ -367,8 +367,8 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
-                <h3 className="text-xl font-semibold text-white mb-4">All Premium Service Plans Include:</h3>
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
+                <h3 className="text-xl font-semibold text-white mb-4">All Premium Solution Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     "Strategic Consultation", 

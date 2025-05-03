@@ -17,6 +17,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 export const solutionCategories = [
   {

@@ -221,9 +221,9 @@ const Hero = () => {
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="inline-flex p-1 rounded-lg bg-white/10 backdrop-blur-sm overflow-x-auto max-w-full">
+            <div className="inline-flex p-1 rounded-lg bg-white/10 backdrop-blur-sm w-full max-w-[280px] sm:max-w-full">
               <button
-                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-2 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
                   activeTab === 'ai' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
                 }`}
                 onClick={() => setActiveTab('ai')}
@@ -231,7 +231,7 @@ const Hero = () => {
                 AI Solutions
               </button>
               <button
-                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-2 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
                   activeTab === 'web' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
                 }`}
                 onClick={() => setActiveTab('web')}
@@ -239,7 +239,7 @@ const Hero = () => {
                 Web Development
               </button>
               <button
-                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-2 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
                   activeTab === 'premium' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
                 }`}
                 onClick={() => setActiveTab('premium')}

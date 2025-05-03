@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -210,11 +211,12 @@ const ServicesPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <div className="mb-8">
+          <div className="mb-8 flex justify-center">
             <TabSelector
               options={tabOptions}
               active={activeTab}
               onChange={setActiveTab}
+              className="max-w-xs sm:max-w-md shadow-lg"
             />
           </div>
           

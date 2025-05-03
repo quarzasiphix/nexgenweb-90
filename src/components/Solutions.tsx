@@ -579,9 +579,9 @@ const Solutions = () => {
   const isMobile = useIsMobile();
 
   const tabOptions = [
-    { id: 'ai-solutions', label: isMobile ? 'AI' : 'AI Solutions' },
-    { id: 'web-development', label: isMobile ? 'Web Dev' : 'Web Development' },
-    { id: 'premium-services', label: isMobile ? 'Premium' : 'Premium Services' }
+    { id: 'ai-solutions', label: 'AI Solutions' },
+    { id: 'web-development', label: 'Web Development' },
+    { id: 'premium-services', label: 'Premium Services' }
   ];
 
   return (
@@ -601,7 +601,7 @@ const Solutions = () => {
             options={tabOptions}
             active={activeTab}
             onChange={setActiveTab}
-            className="shadow-md"
+            className="max-w-xs sm:max-w-md shadow-md"
           />
         </div>
         

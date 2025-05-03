@@ -581,7 +581,7 @@ const Solutions = () => {
   const tabOptions = [
     { id: 'ai-solutions', label: 'AI Solutions' },
     { id: 'web-development', label: 'Web Development' },
-    { id: 'premium-services', label: 'Premium Services' }
+    { id: 'premium-services', label: 'Premium Solutions' }
   ];
 
   return (
@@ -601,7 +601,7 @@ const Solutions = () => {
             options={tabOptions}
             active={activeTab}
             onChange={setActiveTab}
-            className="max-w-xs sm:max-w-md shadow-md"
+            className="max-w-xs sm:max-w-md shadow-md px-1"
           />
         </div>
         

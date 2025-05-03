@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
@@ -233,7 +232,7 @@ const Hero = () => {
               active={activeTab}
               onChange={setActiveTab}
               variant="light"
-              className="max-w-xs sm:max-w-md"
+              className="max-w-xs sm:max-w-md px-1"
             />
           </div>
 

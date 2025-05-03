@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -216,7 +215,7 @@ const ServicesPage = () => {
               options={tabOptions}
               active={activeTab}
               onChange={setActiveTab}
-              className="max-w-xs sm:max-w-md shadow-lg"
+              className="max-w-xs sm:max-w-md shadow-lg px-1"
             />
           </div>
           

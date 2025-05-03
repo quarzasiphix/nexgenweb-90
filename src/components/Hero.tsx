@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Scale, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
@@ -8,6 +7,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useChat } from '@/context/ChatContext';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
+import { TabSelector } from '@/components/ui/tab-selector';
 
 // Featured solution categories
 const featuredSolutions = [
@@ -157,6 +157,12 @@ const Hero = () => {
     }
   };
 
+  const tabOptions = [
+    { id: 'ai', label: 'AI Solutions' },
+    { id: 'web', label: 'Web Development' },
+    { id: 'premium', label: 'Premium Solutions' }
+  ];
+
   return (
     <div className="relative pt-16 md:pt-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 min-h-screen">
       <div className="absolute inset-0 opacity-10">
@@ -221,32 +227,12 @@ const Hero = () => {
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="flex p-1 rounded-lg bg-white/10 backdrop-blur-sm w-full max-w-[320px] sm:max-w-full">
-              <button
-                className={`px-2 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
-                  activeTab === 'ai' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
-                onClick={() => setActiveTab('ai')}
-              >
-                AI Solutions
-              </button>
-              <button
-                className={`px-2 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
-                  activeTab === 'web' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
-                onClick={() => setActiveTab('web')}
-              >
-                Web Development
-              </button>
-              <button
-                className={`px-2 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-1 ${
-                  activeTab === 'premium' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
-                onClick={() => setActiveTab('premium')}
-              >
-                Premium Solutions
-              </button>
-            </div>
+            <TabSelector 
+              options={tabOptions}
+              active={activeTab}
+              onChange={setActiveTab}
+              variant="light"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

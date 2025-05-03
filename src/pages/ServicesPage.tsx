@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,14 +8,15 @@ import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Contact from '@/components/Contact';
+import { TabSelector } from '@/components/ui/tab-selector';
 
 const ServicesPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('ai');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -193,6 +193,12 @@ const ServicesPage = () => {
     }
   ];
 
+  const tabOptions = [
+    { id: 'ai', label: 'AI Solutions' },
+    { id: 'web', label: 'Web Development' },
+    { id: 'premium', label: 'Premium Solutions' }
+  ];
+
   return (
     <div className="min-h-screen bg-neutral-900">
       <Header />
@@ -204,20 +210,16 @@ const ServicesPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
-            <TabsList className="max-w-sm mx-auto mb-8 w-full flex justify-between overflow-x-auto">
-              <TabsTrigger value="ai" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
-                AI Solutions
-              </TabsTrigger>
-              <TabsTrigger value="web" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
-                Web Development
-              </TabsTrigger>
-              <TabsTrigger value="premium" className="text-xs sm:text-sm whitespace-nowrap px-2 sm:px-4">
-                Premium Solutions
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="ai" className="space-y-8">
+          <div className="mb-8">
+            <TabSelector
+              options={tabOptions}
+              active={activeTab}
+              onChange={setActiveTab}
+            />
+          </div>
+          
+          <div className="space-y-8">
+            <div className={activeTab === 'ai' ? 'block' : 'hidden'}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {aiServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -271,9 +273,9 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </TabsContent>
+            </div>
             
-            <TabsContent value="web" className="space-y-8">
+            <div className={activeTab === 'web' ? 'block' : 'hidden'}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {webServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -327,9 +329,9 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </TabsContent>
+            </div>
             
-            <TabsContent value="premium" className="space-y-8">
+            <div className={activeTab === 'premium' ? 'block' : 'hidden'}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {premiumServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -383,8 +385,8 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </div>
           
           <div className="mt-20 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">Need a Custom Solution?</h2>

@@ -232,7 +232,7 @@ const Hero = () => {
               active={activeTab}
               onChange={setActiveTab}
               variant="light"
-              className="max-w-xs sm:max-w-md px-1"
+              className="max-w-full w-full sm:max-w-md mx-2 sm:mx-0"
             />
           </div>
 

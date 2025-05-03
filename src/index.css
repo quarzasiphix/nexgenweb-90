@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -343,5 +342,18 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
     padding-left: 8px !important;
     padding-right: 8px !important;
     font-size: 0.875rem !important;
+  }
+  
+  [role="tab"], .TabSelector button {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .TabSelector {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }

@@ -181,13 +181,13 @@ const AllServices = () => {
             <div className="flex justify-center">
               <TabsList className="max-w-md mx-auto">
                 <TabsTrigger value="all">
-                  {isMobile ? 'All' : 'All Services'}
+                  All Services
                 </TabsTrigger>
                 <TabsTrigger value="ai">
-                  {isMobile ? 'AI' : 'AI Solutions'}
+                  AI Solutions
                 </TabsTrigger>
                 <TabsTrigger value="web">
-                  {isMobile ? 'Web' : 'Web Services'}
+                  Web Development
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -326,7 +326,7 @@ const AllServices = () => {
                 size="lg"
                 onClick={() => navigate(`/services/${activeTab}`)}
               >
-                View All {activeTab === 'ai' ? 'AI Solutions' : 'Web Services'}
+                View All {activeTab === 'ai' ? 'AI Solutions' : 'Web Development'}
               </Button>
             )}
             {activeTab === 'all' && (

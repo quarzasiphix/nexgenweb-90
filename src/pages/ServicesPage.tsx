@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -209,10 +210,10 @@ const ServicesPage = () => {
                 AI Solutions
               </TabsTrigger>
               <TabsTrigger value="web">
-                Web Dev
+                Web Development
               </TabsTrigger>
               <TabsTrigger value="premium">
-                Premium
+                Premium Solutions
               </TabsTrigger>
             </TabsList>
             

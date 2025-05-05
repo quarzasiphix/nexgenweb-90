@@ -284,13 +284,13 @@ const EnhancedAllServices = () => {
             <div className="flex justify-center">
               <TabsList className="max-w-md mx-auto mb-12">
                 <TabsTrigger value="ai-solutions">
-                  {isMobile ? 'AI' : 'AI Solutions'}
+                  AI Solutions
                 </TabsTrigger>
                 <TabsTrigger value="web-services">
-                  {isMobile ? 'Web' : 'Web Services'}
+                  Web Development
                 </TabsTrigger>
                 <TabsTrigger value="premium-services">
-                  {isMobile ? 'Premium' : 'Premium Services'}
+                  Premium Solutions
                 </TabsTrigger>
               </TabsList>
             </div>

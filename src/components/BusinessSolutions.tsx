@@ -188,6 +188,18 @@ const BusinessSolutions = () => {
     threshold: 0.1
   });
 
+  // Update this function to navigate to the appropriate services page based on the active tab
+  const handleLearnMoreClick = () => {
+    if (activeTab === 'ai') {
+      navigate('/services/ai');
+    } else if (activeTab === 'web') {
+      navigate('/services/web');
+    } else if (activeTab === 'premium') {
+      // For premium tab, navigate to the first premium service detailed page
+      navigate('/services/custom-ai-integration');
+    }
+  };
+
   return (
     <div className="bg-neutral-900 py-20">
       <div className="container px-4 sm:px-6 mx-auto">
@@ -252,7 +264,7 @@ const BusinessSolutions = () => {
           <div className="text-center mt-8">
             <Button 
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
-              onClick={() => activeTab === 'ai' ? navigate('/services/ai') : activeTab === 'web' ? navigate('/services/web') : navigate('/services/custom-ai-integration')}
+              onClick={handleLearnMoreClick}
             >
               Learn More
               <ArrowRight className="ml-2 h-4 w-4" />

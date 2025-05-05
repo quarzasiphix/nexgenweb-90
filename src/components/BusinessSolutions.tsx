@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Featured solution categories - showing all services instead of just 4
 const featuredSolutions = [
@@ -182,6 +182,7 @@ const SolutionCard = ({ solution }) => {
 const BusinessSolutions = () => {
   const [activeTab, setActiveTab] = useState('ai');
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   
   const { ref: solutionsRef, inView: solutionsInView } = useInView({
     triggerOnce: true,
@@ -218,30 +219,30 @@ const BusinessSolutions = () => {
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="inline-flex p-1 rounded-lg bg-white/10 backdrop-blur-sm">
+            <div className={`inline-flex p-1 rounded-lg bg-white/10 backdrop-blur-sm ${isMobile ? 'w-full grid grid-cols-3' : ''}`}>
               <button
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                   activeTab === 'ai' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
+                } ${isMobile ? 'px-2 text-xs' : ''}`}
                 onClick={() => setActiveTab('ai')}
               >
-                AI Solutions
+                {isMobile ? 'AI' : 'AI Solutions'}
               </button>
               <button
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                   activeTab === 'web' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
+                } ${isMobile ? 'px-2 text-xs' : ''}`}
                 onClick={() => setActiveTab('web')}
               >
-                Web Development
+                {isMobile ? 'Web' : 'Web Development'}
               </button>
               <button
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                   activeTab === 'premium' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                }`}
+                } ${isMobile ? 'px-2 text-xs' : ''}`}
                 onClick={() => setActiveTab('premium')}
               >
-                Premium Solutions
+                {isMobile ? 'Premium' : 'Premium Solutions'}
               </button>
             </div>
           </div>

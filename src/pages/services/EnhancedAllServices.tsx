@@ -11,11 +11,13 @@ import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const EnhancedAllServices = () => {
   const navigate = useNavigate();
   const { isChatOpen, closeChat, openChat } = useChat();
   const [activeTab, setActiveTab] = useState('ai-solutions');
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -281,15 +283,24 @@ const EnhancedAllServices = () => {
             value={activeTab}
           >
             <div className="flex justify-center">
-              <TabsList className="mb-12 shadow-md bg-neutral-800 border-neutral-700">
-                <TabsTrigger value="ai-solutions" className="text-white data-[state=active]:bg-[#9b87f5]/20">
-                  AI Solutions
+              <TabsList className={`mb-12 shadow-md bg-neutral-800 border-neutral-700 ${isMobile ? 'w-full grid grid-cols-3 gap-px' : ''}`}>
+                <TabsTrigger 
+                  value="ai-solutions" 
+                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'AI' : 'AI Solutions'}
                 </TabsTrigger>
-                <TabsTrigger value="web-services" className="text-white data-[state=active]:bg-[#9b87f5]/20">
-                  Web Services
+                <TabsTrigger 
+                  value="web-services" 
+                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'Web' : 'Web Services'}
                 </TabsTrigger>
-                <TabsTrigger value="premium-services" className="text-white data-[state=active]:bg-[#9b87f5]/20">
-                  Premium Services
+                <TabsTrigger 
+                  value="premium-services" 
+                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'Premium' : 'Premium Services'}
                 </TabsTrigger>
               </TabsList>
             </div>

@@ -1,14 +1,17 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Header from '@/components/Header';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const AllServices = () => {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
+  const [activeTab, setActiveTab] = useState('all');
   
   useEffect(() => {
     document.title = "All Services - BizWiz";
@@ -170,18 +173,34 @@ const AllServices = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="max-w-md mx-auto bg-neutral-800 border-neutral-700 mb-8">
-              <TabsTrigger value="all" className="text-white data-[state=active]:bg-brand-500/20">
-                All Services
-              </TabsTrigger>
-              <TabsTrigger value="ai" className="text-white data-[state=active]:bg-brand-500/20">
-                AI Solutions
-              </TabsTrigger>
-              <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
-                Web Services
-              </TabsTrigger>
-            </TabsList>
+          <Tabs 
+            defaultValue="all" 
+            className="mb-12"
+            value={activeTab}
+            onValueChange={setActiveTab}
+          >
+            <div className="flex justify-center">
+              <TabsList className={`max-w-full mx-auto bg-neutral-800 border-neutral-700 mb-8 ${isMobile ? 'w-full grid grid-cols-3 gap-px' : ''}`}>
+                <TabsTrigger 
+                  value="all" 
+                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'All' : 'All Services'}
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="ai" 
+                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'AI' : 'AI Solutions'}
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="web" 
+                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
+                >
+                  {isMobile ? 'Web' : 'Web Services'}
+                </TabsTrigger>
+              </TabsList>
+            </div>
             
             <TabsContent value="all">
               <div className="mb-10">
@@ -310,14 +329,25 @@ const AllServices = () => {
             </TabsContent>
           </Tabs>
           
-          <div className="text-center">
-            <Button
-              className="bg-brand-500 hover:bg-brand-600 text-white"
-              size="lg"
-              onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com'}
-            >
-              Contact Us for Custom Solutions
-            </Button>
+          <div className="flex items-center justify-center gap-4">
+            {activeTab !== 'all' && (
+              <Button
+                className="bg-brand-500 hover:bg-brand-600 text-white"
+                size="lg"
+                onClick={() => navigate(`/services/${activeTab}`)}
+              >
+                View All {activeTab === 'ai' ? 'AI Solutions' : 'Web Services'}
+              </Button>
+            )}
+            {activeTab === 'all' && (
+              <Button
+                className="bg-brand-500 hover:bg-brand-600 text-white"
+                size="lg"
+                onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com'}
+              >
+                Contact Us for Custom Solutions
+              </Button>
+            )}
           </div>
         </div>
       </main>

@@ -43,7 +43,13 @@ const aiServiceDetails = {
         title: "Performance Analytics",
         description: "Analyze employee performance with AI-powered insights, identifying top performers and areas needing improvement."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This service is included in our AI Professional monthly plan. It provides comprehensive finance and HR automation solutions.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with additional custom features)"]
+    }
   },
   "sales-marketing-ai": {
     title: "Sales & Marketing AI",
@@ -77,7 +83,13 @@ const aiServiceDetails = {
         title: "Personalized Customer Journeys",
         description: "Create individualized marketing experiences based on customer behavior, preferences, and history."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This service is included in our AI Professional monthly plan. It provides comprehensive sales and marketing automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with enhanced predictive capabilities)"]
+    }
   },
   "it-security-ai": {
     title: "IT & Security",
@@ -111,7 +123,13 @@ const aiServiceDetails = {
         title: "Predictive IT Maintenance",
         description: "AI predicts when hardware and software components are likely to fail, allowing for proactive maintenance."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "Web Business + AI Professional",
+      price: "From $2,998",
+      description: "This service is available as part of our Web Business plan with AI Professional add-on, providing comprehensive IT security with AI-powered protection.",
+      includedIn: ["Web Business + AI Professional", "Web Enterprise + AI Enterprise (enhanced features)"]
+    }
   },
   "customer-support-ai": {
     title: "Customer Support AI",
@@ -145,7 +163,13 @@ const aiServiceDetails = {
         title: "Automated Ticket Routing",
         description: "Customer issues are automatically categorized and routed to the most appropriate department or specialist."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "AI Starter",
+      price: "$499/mo",
+      description: "Basic chatbot features are included in our AI Starter plan, with advanced features available in Professional and Enterprise tiers.",
+      includedIn: ["AI Starter plan (basic features)", "AI Professional plan (advanced features)", "AI Enterprise plan (complete solution)"]
+    }
   }
 };
 
@@ -171,6 +195,10 @@ const AIServiceDetail = () => {
   }
 
   const IconComponent = serviceDetails.icon;
+
+  const handleBuyNow = () => {
+    navigate('/services/pricing', { state: { selectedService: serviceDetails.packageInfo.name } });
+  };
 
   return (
     <div className="min-h-screen bg-neutral-900 overflow-hidden">
@@ -230,6 +258,41 @@ const AIServiceDetail = () => {
               </CardContent>
             </Card>
           </div>
+          
+          {/* Package Information Card */}
+          <div className="mb-12">
+            <Card className="bg-[#9b87f5]/10 border-[#9b87f5]/30">
+              <CardContent className="p-6">
+                <h2 className="text-xl font-semibold text-white mb-4">Package Information</h2>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                  <div>
+                    <h3 className="text-lg font-medium text-white">{serviceDetails.packageInfo.name}</h3>
+                    <p className="text-2xl font-bold text-[#D6BCFA] mt-1">{serviceDetails.packageInfo.price}</p>
+                  </div>
+                  <Button 
+                    className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white mt-4 md:mt-0"
+                    onClick={handleBuyNow}
+                  >
+                    Buy Now
+                  </Button>
+                </div>
+                <p className="text-neutral-300 mb-4">{serviceDetails.packageInfo.description}</p>
+                <div>
+                  <h4 className="font-medium text-white mb-2">Included in:</h4>
+                  <ul className="space-y-1">
+                    {serviceDetails.packageInfo.includedIn.map((pkg, idx) => (
+                      <li key={idx} className="flex items-start text-neutral-300">
+                        <svg className="w-5 h-5 mr-2 text-[#D6BCFA] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {pkg}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           <h2 className="text-2xl font-bold text-white mb-6">Use Cases</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -250,13 +313,22 @@ const AIServiceDetail = () => {
             <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
               Our team of experts will help you implement {serviceDetails.title} solutions tailored to your specific business needs.
             </p>
-            <Button 
-              size="lg"
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-              onClick={() => openChat()}
-            >
-              Get Started Today
-            </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                size="lg"
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                onClick={handleBuyNow}
+              >
+                Buy Now: {serviceDetails.packageInfo.price}
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline-white" 
+                onClick={openChat}
+              >
+                Chat with an Expert
+              </Button>
+            </div>
           </div>
         </div>
       </main>

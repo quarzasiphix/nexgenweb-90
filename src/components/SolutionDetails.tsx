@@ -34,6 +34,58 @@ const SolutionDetails = () => {
   }
 
   const IconComponent = solution.icon;
+  
+  // Added package information for solutions
+  const packageInfo = {
+    "business-process-automation": {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing comprehensive business process automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with additional custom processes)"]
+    },
+    "data-analysis-insights": {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing advanced data analysis and business intelligence tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with custom dashboards)"]
+    },
+    "ai-powered-customer-experience": {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, with enhanced features available in Enterprise.",
+      includedIn: ["AI Professional plan (standard features)", "AI Enterprise plan (enhanced customization)"]
+    },
+    "supply-chain-optimization": {
+      name: "AI Enterprise",
+      price: "Custom",
+      description: "This advanced solution is available in our Enterprise AI package, with pricing tailored to your business scale and requirements.",
+      includedIn: ["AI Enterprise plan only"]
+    },
+    "regulatory-compliance": {
+      name: "AI Enterprise",
+      price: "Custom",
+      description: "This specialized solution is available in our Enterprise AI package, with industry-specific compliance frameworks.",
+      includedIn: ["AI Enterprise plan only"]
+    },
+    "secure-data-management": {
+      name: "Web Business + AI Professional",
+      price: "From $2,998",
+      description: "This comprehensive solution combines our Web Business plan and AI Professional subscription for complete data security.",
+      includedIn: ["Web Business + AI Professional", "Web Enterprise + AI Enterprise (enhanced features)"]
+    }
+  };
+
+  // Get the package info based on the solution ID
+  const solutionPackageInfo = packageInfo[solutionId as keyof typeof packageInfo] || {
+    name: "AI Professional",
+    price: "$999/mo",
+    description: "This solution is typically included in our AI Professional monthly plan. Contact us for specific details about your needs.",
+    includedIn: ["AI Professional plan", "AI Enterprise plan (for custom requirements)"]
+  };
+
+  const handleBuyNow = () => {
+    navigate('/services/pricing', { state: { selectedService: solutionPackageInfo.name } });
+  };
 
   return (
     <div className="min-h-screen bg-neutral-900 overflow-hidden">
@@ -93,6 +145,41 @@ const SolutionDetails = () => {
               </CardContent>
             </Card>
           </div>
+          
+          {/* Package Information Card */}
+          <div className="mb-12">
+            <Card className="bg-[#9b87f5]/10 border-[#9b87f5]/30">
+              <CardContent className="p-6">
+                <h2 className="text-xl font-semibold text-white mb-4">Package Information</h2>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                  <div>
+                    <h3 className="text-lg font-medium text-white">{solutionPackageInfo.name}</h3>
+                    <p className="text-2xl font-bold text-[#D6BCFA] mt-1">{solutionPackageInfo.price}</p>
+                  </div>
+                  <Button 
+                    className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white mt-4 md:mt-0"
+                    onClick={handleBuyNow}
+                  >
+                    Buy Now
+                  </Button>
+                </div>
+                <p className="text-neutral-300 mb-4">{solutionPackageInfo.description}</p>
+                <div>
+                  <h4 className="font-medium text-white mb-2">Included in:</h4>
+                  <ul className="space-y-1">
+                    {solutionPackageInfo.includedIn.map((pkg, idx) => (
+                      <li key={idx} className="flex items-start text-neutral-300">
+                        <svg className="w-5 h-5 mr-2 text-[#D6BCFA] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {pkg}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-white mb-6">Benefits for Your Business</h2>
@@ -132,13 +219,22 @@ const SolutionDetails = () => {
             <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
               Our team of experts will help you implement {solution.title} solutions tailored to your specific business needs.
             </p>
-            <Button 
-              size="lg"
-              className="bg-brand-500 hover:bg-brand-600 text-white"
-              onClick={() => openChat()}
-            >
-              Get Started Today
-            </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                size="lg"
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                onClick={handleBuyNow}
+              >
+                Buy Now: {solutionPackageInfo.price}
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline-white"
+                onClick={openChat}
+              >
+                Chat with an Expert
+              </Button>
+            </div>
           </div>
         </div>
       </main>

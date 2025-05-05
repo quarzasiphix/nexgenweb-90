@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useToast } from '@/hooks/use-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -15,13 +15,45 @@ import Contact from '@/components/Contact';
 const PricingPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   const { openChat, isChatOpen, closeChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("ai");
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Pricing - NexGenWeb";
-  }, []);
+    
+    // Check if there's a selected service from navigation state
+    if (location.state && location.state.selectedService) {
+      const serviceName = location.state.selectedService;
+      setSelectedPlan(serviceName);
+      
+      // Determine which tab to activate based on the service name
+      if (serviceName.includes("AI")) {
+        setActiveTab("ai");
+      } else if (serviceName.includes("Web")) {
+        setActiveTab("web");
+      } else if (serviceName.includes("Custom") || serviceName.includes("Enterprise")) {
+        setActiveTab("premium");
+      }
+      
+      // Show toast notifying the user
+      toast({
+        title: "Package Selected",
+        description: `You've selected the ${serviceName} package. Review the details below.`,
+        duration: 5000,
+      });
+      
+      // Scroll to the pricing section
+      setTimeout(() => {
+        const pricingTabs = document.querySelector('.pricing-tabs');
+        if (pricingTabs) {
+          pricingTabs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 500);
+    }
+  }, [location, toast]);
 
   // Function to scroll to contact section
   const scrollToContact = () => {
@@ -204,7 +236,7 @@ const PricingPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
+          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full mb-16 pricing-tabs">
             <TabsList className="max-w-md mx-auto mb-8">
               <TabsTrigger value="ai">
                 AI Solutions
@@ -220,10 +252,24 @@ const PricingPage = () => {
             <TabsContent value="ai" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {aiServices.map((service) => (
-                  <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
+                  <Card 
+                    key={service.id} 
+                    className={`bg-neutral-800 border ${
+                      selectedPlan?.includes(service.title) 
+                        ? 'border-green-500' 
+                        : service.popular 
+                          ? 'border-[#9b87f5]' 
+                          : 'border-neutral-700'
+                    } flex flex-col h-full relative overflow-hidden`}
+                  >
                     {service.popular && (
                       <div className="absolute top-0 right-0 bg-[#9b87f5] text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
                         MOST POPULAR
+                      </div>
+                    )}
+                    {selectedPlan?.includes(service.title) && (
+                      <div className="absolute top-0 left-0 bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-br-lg">
+                        SELECTED
                       </div>
                     )}
                     <CardContent className="p-6 flex flex-col h-full">
@@ -243,11 +289,21 @@ const PricingPage = () => {
                       </ul>
                       <div className="mt-6">
                         <Button 
-                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          className={`w-full ${
+                            selectedPlan?.includes(service.title) 
+                              ? 'bg-green-500 hover:bg-green-600' 
+                              : service.popular 
+                                ? 'bg-[#9b87f5]' 
+                                : ''
+                          }`}
                           variant={service.popular ? "default" : "white"}
                           onClick={() => handleBuyNow('AI Solutions', service.title, service.price)}
                         >
-                          {service.price === "Custom" ? "Contact Us" : "Buy Now"}
+                          {selectedPlan?.includes(service.title) 
+                            ? "Selected" 
+                            : service.price === "Custom" 
+                              ? "Contact Us" 
+                              : "Buy Now"}
                         </Button>
                       </div>
                     </CardContent>
@@ -276,10 +332,24 @@ const PricingPage = () => {
             <TabsContent value="web" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {webServices.map((service) => (
-                  <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
+                  <Card 
+                    key={service.id} 
+                    className={`bg-neutral-800 border ${
+                      selectedPlan?.includes(service.title) 
+                        ? 'border-green-500' 
+                        : service.popular 
+                          ? 'border-[#9b87f5]' 
+                          : 'border-neutral-700'
+                    } flex flex-col h-full relative overflow-hidden`}
+                  >
                     {service.popular && (
                       <div className="absolute top-0 right-0 bg-[#9b87f5] text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
                         MOST POPULAR
+                      </div>
+                    )}
+                    {selectedPlan?.includes(service.title) && (
+                      <div className="absolute top-0 left-0 bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-br-lg">
+                        SELECTED
                       </div>
                     )}
                     <CardContent className="p-6 flex flex-col h-full">
@@ -299,11 +369,21 @@ const PricingPage = () => {
                       </ul>
                       <div className="mt-6">
                         <Button 
-                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          className={`w-full ${
+                            selectedPlan?.includes(service.title) 
+                              ? 'bg-green-500 hover:bg-green-600' 
+                              : service.popular 
+                                ? 'bg-[#9b87f5]' 
+                                : ''
+                          }`}
                           variant={service.popular ? "default" : "white"}
                           onClick={() => handleBuyNow('Web Development', service.title, service.price)}
                         >
-                          {service.price === "Custom" ? "Contact Us" : "Buy Now"}
+                          {selectedPlan?.includes(service.title) 
+                            ? "Selected" 
+                            : service.price === "Custom" 
+                              ? "Contact Us" 
+                              : "Buy Now"}
                         </Button>
                       </div>
                     </CardContent>
@@ -332,10 +412,24 @@ const PricingPage = () => {
             <TabsContent value="premium" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {premiumServices.map((service) => (
-                  <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
+                  <Card 
+                    key={service.id} 
+                    className={`bg-neutral-800 border ${
+                      selectedPlan?.includes(service.title) 
+                        ? 'border-green-500' 
+                        : service.popular 
+                          ? 'border-[#9b87f5]' 
+                          : 'border-neutral-700'
+                    } flex flex-col h-full relative overflow-hidden`}
+                  >
                     {service.popular && (
                       <div className="absolute top-0 right-0 bg-[#9b87f5] text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
                         MOST POPULAR
+                      </div>
+                    )}
+                    {selectedPlan?.includes(service.title) && (
+                      <div className="absolute top-0 left-0 bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-br-lg">
+                        SELECTED
                       </div>
                     )}
                     <CardContent className="p-6 flex flex-col h-full">
@@ -355,11 +449,21 @@ const PricingPage = () => {
                       </ul>
                       <div className="mt-6">
                         <Button 
-                          className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
+                          className={`w-full ${
+                            selectedPlan?.includes(service.title) 
+                              ? 'bg-green-500 hover:bg-green-600' 
+                              : service.popular 
+                                ? 'bg-[#9b87f5]' 
+                                : ''
+                          }`}
                           variant={service.popular ? "default" : "white"}
                           onClick={() => handleBuyNow('Premium Services', service.title, service.price)}
                         >
-                          {service.price === "Custom" ? "Contact Us" : "Buy Now"}
+                          {selectedPlan?.includes(service.title) 
+                            ? "Selected" 
+                            : service.price === "Custom" 
+                              ? "Contact Us" 
+                              : "Buy Now"}
                         </Button>
                       </div>
                     </CardContent>

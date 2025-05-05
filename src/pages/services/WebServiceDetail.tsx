@@ -42,7 +42,13 @@ const webServiceDetails = {
         title: "Custom Web Application",
         description: "Tailor-made web applications that automate your business processes and improve operational efficiency."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "Web Business",
+      price: "$1,999",
+      description: "This service is included in our Web Business plan. It provides complete web development services with professional design and functionality.",
+      includedIn: ["Web Basic plan (5-page site only)", "Web Business plan (full features)", "Web Enterprise plan (custom applications)"]
+    }
   },
   "cloud-hosting": {
     title: "Cloud Hosting",
@@ -76,7 +82,13 @@ const webServiceDetails = {
         title: "Business Applications",
         description: "Dedicated hosting environments for your mission-critical business applications."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "Web Basic",
+      price: "$899",
+      description: "Cloud hosting is included in all our web plans, with enhanced features and capacity in higher tier plans.",
+      includedIn: ["Web Basic plan (standard hosting)", "Web Business plan (high-performance hosting)", "Web Enterprise plan (enterprise-grade hosting)"]
+    }
   },
   "technical-services": {
     title: "Technical Services",
@@ -110,7 +122,13 @@ const webServiceDetails = {
         title: "API Development",
         description: "Custom API development to enable secure communication between your web platforms and third-party services."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "Web Business",
+      price: "$1,999",
+      description: "This service is included in our Web Business plan and includes comprehensive technical services for optimized web performance.",
+      includedIn: ["Web Business plan", "Web Enterprise plan (enhanced features)"]
+    }
   },
   "web-security": {
     title: "Web Security",
@@ -144,7 +162,13 @@ const webServiceDetails = {
         title: "Compliance Requirements",
         description: "Security implementations tailored to meet specific industry regulations like GDPR, HIPAA, or PCI DSS."
       }
-    ]
+    ],
+    packageInfo: {
+      name: "Web Business",
+      price: "$1,999",
+      description: "Basic security features are included in all plans, with advanced security measures in the Business and Enterprise tiers.",
+      includedIn: ["Web Basic plan (basic security)", "Web Business plan (advanced security)", "Web Enterprise plan (enterprise-grade security)"]
+    }
   }
 };
 
@@ -170,6 +194,10 @@ const WebServiceDetail = () => {
   }
 
   const IconComponent = serviceDetails.icon;
+
+  const handleBuyNow = () => {
+    navigate('/services/pricing', { state: { selectedService: serviceDetails.packageInfo.name } });
+  };
 
   return (
     <div className="min-h-screen bg-neutral-900 overflow-hidden">
@@ -229,6 +257,41 @@ const WebServiceDetail = () => {
               </CardContent>
             </Card>
           </div>
+          
+          {/* Package Information Card */}
+          <div className="mb-12">
+            <Card className="bg-[#9b87f5]/10 border-[#9b87f5]/30">
+              <CardContent className="p-6">
+                <h2 className="text-xl font-semibold text-white mb-4">Package Information</h2>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                  <div>
+                    <h3 className="text-lg font-medium text-white">{serviceDetails.packageInfo.name}</h3>
+                    <p className="text-2xl font-bold text-[#D6BCFA] mt-1">{serviceDetails.packageInfo.price}</p>
+                  </div>
+                  <Button 
+                    className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white mt-4 md:mt-0"
+                    onClick={handleBuyNow}
+                  >
+                    Buy Now
+                  </Button>
+                </div>
+                <p className="text-neutral-300 mb-4">{serviceDetails.packageInfo.description}</p>
+                <div>
+                  <h4 className="font-medium text-white mb-2">Included in:</h4>
+                  <ul className="space-y-1">
+                    {serviceDetails.packageInfo.includedIn.map((pkg, idx) => (
+                      <li key={idx} className="flex items-start text-neutral-300">
+                        <svg className="w-5 h-5 mr-2 text-[#D6BCFA] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {pkg}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           <h2 className="text-2xl font-bold text-white mb-6">Use Cases</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -249,13 +312,22 @@ const WebServiceDetail = () => {
             <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
               Our team of experts will help you implement {serviceDetails.title} solutions tailored to your specific business needs.
             </p>
-            <Button 
-              size="lg"
-              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
-              onClick={() => openChat()}
-            >
-              Get Started Today
-            </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                size="lg"
+                className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                onClick={handleBuyNow}
+              >
+                Buy Now: {serviceDetails.packageInfo.price}
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline-white"
+                onClick={openChat}
+              >
+                Chat with an Expert
+              </Button>
+            </div>
           </div>
         </div>
       </main>

@@ -7,9 +7,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
-import { useToast } from '@/hooks/use-toast';
 
-// Define the services data with added pricing information
+// Define the services data
 const webServiceDetails = {
   "web-development": {
     title: "Web Development",
@@ -30,8 +29,6 @@ const webServiceDetails = {
       "Improve site performance and load times",
       "Ensure your website works across all devices"
     ],
-    package: "Business",
-    price: "$149/month",
     useCases: [
       {
         title: "Business Website",
@@ -66,8 +63,6 @@ const webServiceDetails = {
       "Improve global reach with content delivery networks",
       "Rest easy with 24/7 monitoring and support"
     ],
-    package: "Starter",
-    price: "$49/month",
     useCases: [
       {
         title: "High-Traffic Websites",
@@ -102,8 +97,6 @@ const webServiceDetails = {
       "Enable secure data exchange between applications",
       "Get expert guidance on technical decisions"
     ],
-    package: "Premium",
-    price: "$249/month",
     useCases: [
       {
         title: "Database Optimization",
@@ -138,8 +131,6 @@ const webServiceDetails = {
       "Stay protected against the latest security threats",
       "Meet industry security standards and regulations"
     ],
-    package: "Enterprise",
-    price: "$399/month",
     useCases: [
       {
         title: "E-commerce Security",
@@ -161,7 +152,6 @@ const WebServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
-  const { toast } = useToast();
   
   const serviceDetails = serviceId ? webServiceDetails[serviceId as keyof typeof webServiceDetails] : null;
   
@@ -178,16 +168,6 @@ const WebServiceDetail = () => {
   if (!serviceDetails) {
     return null;
   }
-
-  const handleBuyNow = () => {
-    toast({
-      title: "Package Selected",
-      description: `You've selected the ${serviceDetails.package} package (${serviceDetails.price}) which includes ${serviceDetails.title}.`,
-      duration: 3000,
-    });
-    
-    navigate('/services?tab=web');
-  };
 
   const IconComponent = serviceDetails.icon;
 
@@ -210,17 +190,9 @@ const WebServiceDetail = () => {
             <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-[#9b87f5]/20">
               <IconComponent className="h-8 w-8 text-[#D6BCFA]" />
             </div>
-            <div className="flex-1">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <h1 className="text-4xl font-bold text-white mb-2">{serviceDetails.title}</h1>
-                <div className="flex flex-col items-start md:items-end">
-                  <div className="bg-[#9b87f5]/20 text-[#D6BCFA] px-3 py-1 rounded-full text-sm font-medium mb-1">
-                    {serviceDetails.package} Package
-                  </div>
-                  <div className="text-2xl font-bold text-white">{serviceDetails.price}</div>
-                </div>
-              </div>
-              <p className="text-lg text-neutral-300 max-w-3xl mt-2">
+            <div>
+              <h1 className="text-4xl font-bold text-white mb-2">{serviceDetails.title}</h1>
+              <p className="text-lg text-neutral-300 max-w-3xl">
                 {serviceDetails.fullDescription}
               </p>
             </div>
@@ -272,31 +244,18 @@ const WebServiceDetail = () => {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="text-center md:text-left mb-6 md:mb-0">
-                <h2 className="text-2xl font-bold text-white mb-2">Ready to Start Your Web Project?</h2>
-                <p className="text-neutral-300 max-w-2xl">
-                  Get started with the {serviceDetails.package} package ({serviceDetails.price}) which includes {serviceDetails.title} and much more!
-                </p>
-              </div>
-              <div className="flex flex-col gap-3">
-                <Button 
-                  size="lg"
-                  className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white px-8"
-                  onClick={handleBuyNow}
-                >
-                  Buy {serviceDetails.package} Package
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="border-white/20 text-white hover:bg-white/10"
-                  onClick={() => navigate('/services?tab=web')}
-                >
-                  View Pricing
-                </Button>
-              </div>
-            </div>
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Ready to Start Your Web Project?</h2>
+            <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
+              Our team of experts will help you implement {serviceDetails.title} solutions tailored to your specific business needs.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+              onClick={() => openChat()}
+            >
+              Get Started Today
+            </Button>
           </div>
         </div>
       </main>

@@ -8,15 +8,14 @@ import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Contact from '@/components/Contact';
-import { TabSelector } from '@/components/ui/tab-selector';
 
 const ServicesPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState('ai');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -193,12 +192,6 @@ const ServicesPage = () => {
     }
   ];
 
-  const tabOptions = [
-    { id: 'ai', label: 'AI Solutions' },
-    { id: 'web', label: 'Web Development' },
-    { id: 'premium', label: 'Premium Solutions' }
-  ];
-
   return (
     <div className="min-h-screen bg-neutral-900">
       <Header />
@@ -210,17 +203,20 @@ const ServicesPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <div className="mb-8 flex justify-center">
-            <TabSelector
-              options={tabOptions}
-              active={activeTab}
-              onChange={setActiveTab}
-              className="max-w-full w-full sm:max-w-2xl mx-auto px-1"
-            />
-          </div>
-          
-          <div className="space-y-8">
-            <div className={activeTab === 'ai' ? 'block' : 'hidden'}>
+          <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
+            <TabsList className="max-w-md mx-auto mb-8">
+              <TabsTrigger value="ai">
+                AI Solutions
+              </TabsTrigger>
+              <TabsTrigger value="web">
+                Web Dev
+              </TabsTrigger>
+              <TabsTrigger value="premium">
+                Premium
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="ai" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {aiServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -258,7 +254,7 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
                 <h3 className="text-xl font-semibold text-white mb-4">All AI Solution Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
@@ -274,9 +270,9 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </TabsContent>
             
-            <div className={activeTab === 'web' ? 'block' : 'hidden'}>
+            <TabsContent value="web" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {webServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -314,7 +310,7 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
                 <h3 className="text-xl font-semibold text-white mb-4">All Web Development Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
@@ -330,9 +326,9 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </TabsContent>
             
-            <div className={activeTab === 'premium' ? 'block' : 'hidden'}>
+            <TabsContent value="premium" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {premiumServices.map((service) => (
                   <Card key={service.id} className={`bg-neutral-800 border ${service.popular ? 'border-[#9b87f5]' : 'border-neutral-700'} flex flex-col h-full relative overflow-hidden`}>
@@ -360,7 +356,7 @@ const ServicesPage = () => {
                         <Button 
                           className={`w-full ${service.popular ? 'bg-[#9b87f5]' : ''}`}
                           variant={service.popular ? "default" : "white"}
-                          onClick={() => handleBuyNow('Premium Solutions', service.title, service.price)}
+                          onClick={() => handleBuyNow('Premium Services', service.title, service.price)}
                         >
                           {service.price === "Custom" ? "Contact Us" : "Buy Now"}
                         </Button>
@@ -370,8 +366,8 @@ const ServicesPage = () => {
                 ))}
               </div>
               
-              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-4 sm:p-6 mt-10">
-                <h3 className="text-xl font-semibold text-white mb-4">All Premium Solution Plans Include:</h3>
+              <div className="bg-neutral-800 border border-neutral-700 rounded-lg p-6 mt-10">
+                <h3 className="text-xl font-semibold text-white mb-4">All Premium Service Plans Include:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     "Strategic Consultation", 
@@ -386,8 +382,8 @@ const ServicesPage = () => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
+            </TabsContent>
+          </Tabs>
           
           <div className="mt-20 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">Need a Custom Solution?</h2>

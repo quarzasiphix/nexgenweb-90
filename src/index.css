@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -337,32 +338,10 @@ body.fast-scrolling.mobile-animations .stagger-children > * {
   color: white !important;
 }
 
-/* Improved mobile tab styling */
 @media (max-width: 640px) {
   .pricing-tabs [role="tab"] {
-    padding: 10px 4px !important;
-    font-size: 0.75rem !important;
-  }
-  
-  [role="tab"], .TabSelector button {
-    padding: 10px 4px !important;
-    font-size: 0.75rem !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .TabSelector {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  
-  .TabSelector button {
-    min-width: 0;
-    flex: 1;
-    font-size: 0.75rem !important;
-    line-height: 1rem !important;
-    padding: 8px 2px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 0.875rem !important;
   }
 }

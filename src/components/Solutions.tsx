@@ -4,7 +4,7 @@ import { Bot, Brain, DollarSign, Users, FileText, BarChart3, Truck, Shield, Scal
   Globe, Server, Code, Laptop, Mail, LineChart, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { TabSelector } from "@/components/ui/tab-selector";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from 'react-router-dom';
 import { 
   Carousel, 
@@ -17,7 +17,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useChat } from '@/context/ChatContext';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 export const solutionCategories = [
   {
@@ -578,12 +577,6 @@ const Solutions = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
 
-  const tabOptions = [
-    { id: 'ai-solutions', label: 'AI Solutions' },
-    { id: 'web-development', label: 'Web Development' },
-    { id: 'premium-services', label: 'Premium Solutions' }
-  ];
-
   return (
     <section id="solutions" className="py-20 bg-neutral-50">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -596,17 +589,27 @@ const Solutions = () => {
           </h2>
         </div>
 
-        <div className="mb-12 flex justify-center">
-          <TabSelector 
-            options={tabOptions}
-            active={activeTab}
-            onChange={setActiveTab}
-            className="max-w-full w-full sm:max-w-2xl mx-auto px-1"
-          />
-        </div>
-        
-        <div>
-          <div className={activeTab === 'ai-solutions' ? 'block' : 'hidden'}>
+        <Tabs 
+          defaultValue="ai-solutions" 
+          className="w-full mb-10"
+          onValueChange={setActiveTab}
+          value={activeTab}
+        >
+          <div className="flex justify-center">
+            <TabsList className={`mb-12 shadow-md ${isMobile ? 'w-full flex' : ''}`}>
+              <TabsTrigger value="ai-solutions" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'AI' : 'AI Solutions'}
+              </TabsTrigger>
+              <TabsTrigger value="web-development" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'Web Dev' : 'Web Development'}
+              </TabsTrigger>
+              <TabsTrigger value="premium-services" className={isMobile ? 'flex-1' : ''}>
+                {isMobile ? 'Premium' : 'Premium Services'}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+          
+          <TabsContent value="ai-solutions" className="mt-0 w-full">
             <div className="mb-8 text-center">
               <h3 className="text-2xl font-bold mb-4 text-neutral-900">
                 AI <span className="text-gradient">Solutions</span> for Business
@@ -622,9 +625,9 @@ const Solutions = () => {
                 <SolutionCard key={index} solution={solution} index={index} />
               ))}
             </div>
-          </div>
+          </TabsContent>
           
-          <div className={activeTab === 'web-development' ? 'block' : 'hidden'}>
+          <TabsContent value="web-development" className="mt-0 w-full">
             <div className="mb-8 text-center">
               <h3 className="text-2xl font-bold mb-4 text-neutral-900">
                 Web Development & <span className="text-gradient">Hosting</span> Solutions
@@ -659,9 +662,9 @@ const Solutions = () => {
                 </Button>
               </div>
             </div>
-          </div>
+          </TabsContent>
           
-          <div className={activeTab === 'premium-services' ? 'block' : 'hidden'}>
+          <TabsContent value="premium-services" className="mt-0 w-full">
             <div className="mb-8 text-center">
               <h3 className="text-2xl font-bold mb-4 text-neutral-900">
                 Premium <span className="text-gradient">Services</span>
@@ -686,8 +689,8 @@ const Solutions = () => {
                 View All Services
               </Button>
             </div>
-          </div>
-        </div>
+          </TabsContent>
+        </Tabs>
         
         <div className="flex items-center justify-center mt-8 gap-4">
           <Button 

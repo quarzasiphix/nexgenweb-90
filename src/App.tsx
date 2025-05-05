@@ -20,6 +20,8 @@ import AIServiceDetail from './pages/services/AIServiceDetail';
 import { ChatProvider } from './context/ChatContext';
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
+import PricingPage from './pages/services/PricingPage';
+import EnhancedAllServices from './pages/services/EnhancedAllServices';
 
 // Initialize PostHog
 if (typeof window !== 'undefined') {
@@ -54,8 +56,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/all" element={<AllServices />} />
+              <Route path="/services" element={<EnhancedAllServices />} />
+              <Route path="/services/all" element={<EnhancedAllServices />} />
+              <Route path="/services/pricing" element={<PricingPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
               <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />

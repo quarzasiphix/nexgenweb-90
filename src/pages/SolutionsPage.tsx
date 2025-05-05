@@ -52,7 +52,7 @@ const SolutionsPage = () => {
                 onClick={() => navigate('/services')}
                 className="w-full bg-[#9b87f5]"
               >
-                View Available Services
+                Learn More
               </Button>
             </div>
           </div>

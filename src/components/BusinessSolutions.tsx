@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -223,10 +224,10 @@ const BusinessSolutions = () => {
             <div className="flex justify-center mb-8">
               <TabsList className="max-w-md mx-auto">
                 <TabsTrigger value="ai">
-                  {isMobile ? 'AI' : 'AI Solutions'}
+                  {isMobile ? 'AI Solutions' : 'AI Solutions'}
                 </TabsTrigger>
                 <TabsTrigger value="web">
-                  {isMobile ? 'Web' : 'Web Development'}
+                  {isMobile ? 'Web Dev' : 'Web Development'}
                 </TabsTrigger>
                 <TabsTrigger value="premium">
                   {isMobile ? 'Premium' : 'Premium Solutions'}

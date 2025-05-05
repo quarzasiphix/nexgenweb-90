@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Bot, Brain, Globe, Code, Server, Database, LineChart, Zap, Shield, Check, Star, Award, Trophy } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ArrowLeft, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code, Star, Award, Trophy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useInView } from 'react-intersection-observer';
+import { cn } from '@/lib/utils';
+import Contact from '@/components/Contact';
 import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
-import { cn } from '@/lib/utils';
-import { useInView } from 'react-intersection-observer';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const EnhancedAllServices = () => {
   const navigate = useNavigate();
@@ -265,22 +266,24 @@ const EnhancedAllServices = () => {
   return (
     <div className="min-h-screen bg-neutral-900">
       <Header />
-      <main className="pt-28 pb-16 px-4">
+      <main className="pt-28 pb-16 px-4 w-full max-w-full">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Services</h1>
-            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              Explore our comprehensive range of services designed to accelerate your business growth
-              through cutting-edge AI technology and web solutions.
-            </p>
-          </div>
-
-          <Tabs 
-            defaultValue="ai-solutions" 
-            className="w-full mb-12"
-            onValueChange={setActiveTab}
-            value={activeTab}
+          <Button 
+            variant="ghost" 
+            className="text-white mb-6"
+            onClick={() => navigate(-1)}
           >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back
+          </Button>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">All Services</h1>
+          <p className="text-lg text-neutral-300 mb-12 max-w-3xl">
+            Explore our complete range of services designed to transform your business
+            with cutting-edge technology and AI integration.
+          </p>
+
+          <Tabs defaultValue="ai-solutions" className="w-full mb-16" value={activeTab} onValueChange={setActiveTab}>
             <div className="flex justify-center">
               <TabsList className="max-w-md mx-auto mb-12">
                 <TabsTrigger value="ai-solutions">
@@ -404,6 +407,7 @@ const EnhancedAllServices = () => {
           </div>
         </div>
       </main>
+      <Contact />
       <Footer />
       <ChatBubble isOpen={isChatOpen} onClose={closeChat} />
     </div>

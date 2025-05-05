@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -202,10 +203,10 @@ const PricingSection = () => {
               AI Solutions
             </TabsTrigger>
             <TabsTrigger value="web">
-              Web Dev
+              Web Development
             </TabsTrigger>
             <TabsTrigger value="premium">
-              Premium
+              Premium Solutions
             </TabsTrigger>
           </TabsList>
           

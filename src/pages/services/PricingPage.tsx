@@ -242,10 +242,10 @@ const PricingPage = () => {
                 AI Solutions
               </TabsTrigger>
               <TabsTrigger value="web">
-                Web Dev
+                Web Development
               </TabsTrigger>
               <TabsTrigger value="premium">
-                Premium
+                Premium Solutions
               </TabsTrigger>
             </TabsList>
             

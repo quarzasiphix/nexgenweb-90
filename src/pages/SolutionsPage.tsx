@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import ChatBubble from '@/components/ChatBubble';
 import { useChat } from '@/context/ChatContext';
 import Contact from '@/components/Contact';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const SolutionsPage = () => {
   const { toast } = useToast();

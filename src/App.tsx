@@ -5,6 +5,7 @@ import Index from './pages/Index';
 import AboutPage from './pages/AboutPage';
 import AllServices from './pages/AllServices';
 import ServicesPage from './pages/ServicesPage';
+import SolutionsPage from './pages/SolutionsPage';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './components/ui/theme-provider';
 import { Toaster } from './components/ui/toaster';
@@ -56,6 +57,7 @@ function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/all" element={<AllServices />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
+              <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/services/web" element={<WebServices />} />

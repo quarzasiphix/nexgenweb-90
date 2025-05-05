@@ -14,28 +14,28 @@ const featuredSolutions = [
     icon: DollarSign,
     description: "Automate financial processes with AI-powered analysis.",
     color: "from-emerald-500 to-teal-400",
-    path: "/solutions/finance-accounting"
+    path: "/services/finance-accounting"
   },
   {
     title: "Customer Engagement",
     icon: Users,
     description: "Enhance interactions with AI chatbots and engagement tools.",
     color: "from-blue-500 to-cyan-400",
-    path: "/solutions/customer-engagement"
+    path: "/services/customer-engagement"
   },
   {
     title: "AI Integration",
     icon: Bot,
     description: "Streamline lead generation with AI-driven solutions.",
     color: "from-purple-500 to-pink-400",
-    path: "/solutions/ai-integration"
+    path: "/services/ai-integration"
   },
   {
     title: "IT & Security",
     icon: Shield,
     description: "Protect your business with AI-powered security solutions.",
     color: "from-red-500 to-orange-400",
-    path: "/solutions/it-security"
+    path: "/services/it-security"
   }
 ];
 
@@ -123,7 +123,10 @@ const SolutionCard = ({ solution }) => {
         </div>
         <h3 className="text-xl font-semibold mb-2 text-white">{solution.title}</h3>
         <p className="text-white/80 mb-4">{solution.description}</p>
-        <Link to={solution.path} className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group">
+        <Link 
+          to={solution.path} 
+          className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group"
+        >
           <span>View Pricing</span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
@@ -205,7 +208,7 @@ const BusinessSolutions = () => {
           <div className="text-center mt-8">
             <Button 
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
-              onClick={() => navigate(activeTab === 'ai' ? '/solutions' : '/services')}
+              onClick={() => navigate(activeTab === 'ai' ? '/services/ai' : activeTab === 'web' ? '/services/web' : '/services/premium')}
             >
               View All {activeTab === 'ai' ? 'Solutions' : activeTab === 'web' ? 'Services' : 'Premium Services'}
               <ArrowRight className="ml-2 h-4 w-4" />

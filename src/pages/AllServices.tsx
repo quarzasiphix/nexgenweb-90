@@ -104,25 +104,27 @@ const AllServices = () => {
             growth through cutting-edge AI technology and web solutions.
           </p>
 
-          <Tabs defaultValue="all" className="w-full" value={activeTab} onValueChange={(value) => {
-            // Fix the type issue by checking if the value is valid
-            if (value === 'all' || value === 'ai' || value === 'web') {
-              setActiveTab(value);
-            }
-          }}>
-            <div className="flex justify-center">
-              <TabsList className="max-w-md mx-auto">
-                <TabsTrigger value="all">
-                  All Services
-                </TabsTrigger>
-                <TabsTrigger value="ai">
-                  AI Solutions
-                </TabsTrigger>
-                <TabsTrigger value="web">
-                  Web Development
-                </TabsTrigger>
-              </TabsList>
-            </div>
+          <Tabs 
+            defaultValue="all" 
+            className="w-full" 
+            value={activeTab} 
+            onValueChange={(value) => {
+              if (value === 'all' || value === 'ai' || value === 'web') {
+                setActiveTab(value);
+              }
+            }}
+          >
+            <TabsList>
+              <TabsTrigger value="all">
+                All Services
+              </TabsTrigger>
+              <TabsTrigger value="ai">
+                AI Solutions
+              </TabsTrigger>
+              <TabsTrigger value="web">
+                Web Development
+              </TabsTrigger>
+            </TabsList>
             
             <TabsContent value="all">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -192,7 +194,6 @@ const AllServices = () => {
                 ))}
               </div>
             </TabsContent>
-            
           </Tabs>
           
           <div className="mt-12 text-center">

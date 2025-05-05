@@ -53,19 +53,17 @@ const SolutionsPage = () => {
             }}
             className="w-full mb-16"
           >
-            <div className="flex justify-center">
-              <TabsList className="max-w-md mx-auto mb-12">
-                <TabsTrigger value="business">
-                  Business Solutions
-                </TabsTrigger>
-                <TabsTrigger value="enterprise">
-                  Enterprise Solutions
-                </TabsTrigger>
-                <TabsTrigger value="custom">
-                  Custom Solutions
-                </TabsTrigger>
-              </TabsList>
-            </div>
+            <TabsList>
+              <TabsTrigger value="business">
+                AI Solutions
+              </TabsTrigger>
+              <TabsTrigger value="enterprise">
+                Web Development
+              </TabsTrigger>
+              <TabsTrigger value="custom">
+                Premium Solutions
+              </TabsTrigger>
+            </TabsList>
             
             <TabsContent value="business" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

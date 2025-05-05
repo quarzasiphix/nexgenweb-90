@@ -220,19 +220,17 @@ const BusinessSolutions = () => {
           </div>
 
           <Tabs defaultValue="ai" className="w-full" value={activeTab} onValueChange={setActiveTab}>
-            <div className="flex justify-center mb-8">
-              <TabsList className="max-w-md mx-auto">
-                <TabsTrigger value="ai">
-                  AI Solutions
-                </TabsTrigger>
-                <TabsTrigger value="web">
-                  Web Development
-                </TabsTrigger>
-                <TabsTrigger value="premium">
-                  Premium Solutions
-                </TabsTrigger>
-              </TabsList>
-            </div>
+            <TabsList>
+              <TabsTrigger value="ai">
+                AI Solutions
+              </TabsTrigger>
+              <TabsTrigger value="web">
+                Web Development
+              </TabsTrigger>
+              <TabsTrigger value="premium">
+                Premium Solutions
+              </TabsTrigger>
+            </TabsList>
 
             <TabsContent value="ai">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

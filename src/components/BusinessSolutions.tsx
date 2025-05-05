@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 
-// Featured solution categories
+// Featured solution categories - showing all services instead of just 4
 const featuredSolutions = [
   {
     title: "Finance & Accounting",
@@ -35,10 +36,24 @@ const featuredSolutions = [
     description: "Protect your business with AI-powered security solutions.",
     color: "from-red-500 to-orange-400",
     path: "/services/it-security"
+  },
+  {
+    title: "Data Analytics",
+    icon: Brain,
+    description: "Extract valuable insights with advanced AI data analysis.",
+    color: "from-amber-500 to-yellow-400",
+    path: "/services/data-analytics"
+  },
+  {
+    title: "HR Automation",
+    icon: Users,
+    description: "Streamline HR processes with intelligent automation.",
+    color: "from-emerald-500 to-teal-400",
+    path: "/services/hr-automation"
   }
 ];
 
-// Featured web services
+// Featured web services - showing all services
 const featuredWebServices = [
   {
     title: "Full-Stack Development",
@@ -67,10 +82,24 @@ const featuredWebServices = [
     description: "AI-optimized database design and maintenance.",
     color: "from-amber-500 to-yellow-400",
     path: "/services/database-management"
+  },
+  {
+    title: "Responsive Design",
+    icon: Globe,
+    description: "Mobile-friendly designs that work on all devices.",
+    color: "from-red-500 to-orange-400",
+    path: "/services/responsive-design"
+  },
+  {
+    title: "CMS Implementation",
+    icon: Code,
+    description: "Custom content management systems for your digital content.",
+    color: "from-blue-500 to-cyan-400",
+    path: "/services/cms-implementation"
   }
 ];
 
-// Premium Services
+// Premium Services - showing all services
 const premiumServices = [
   {
     title: "Custom AI Integration",
@@ -99,6 +128,20 @@ const premiumServices = [
     description: "Let our experts handle all your AI needs with our premium managed service.",
     color: "from-amber-500 to-yellow-400",
     path: "/services/managed-ai-services"
+  },
+  {
+    title: "Digital Transformation",
+    icon: Globe,
+    description: "Complete business transformation with cutting-edge AI technology.",
+    color: "from-red-500 to-orange-400",
+    path: "/services/digital-transformation"
+  },
+  {
+    title: "AI Security Auditing",
+    icon: Shield,
+    description: "Comprehensive security analysis for AI implementations.",
+    color: "from-purple-500 to-pink-400",
+    path: "/services/ai-security-auditing"
   }
 ];
 
@@ -191,7 +234,7 @@ const BusinessSolutions = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {activeTab === 'ai' 
               ? featuredSolutions.map((solution, index) => (
                   <SolutionCard key={index} solution={solution} />

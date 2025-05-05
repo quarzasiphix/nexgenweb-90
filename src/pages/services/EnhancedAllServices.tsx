@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bot, Brain, Globe, Code, Server, Database, LineChart, Zap, Shield, Check, Star, Award, Trophy } from 'lucide-react';
@@ -283,23 +282,14 @@ const EnhancedAllServices = () => {
             value={activeTab}
           >
             <div className="flex justify-center">
-              <TabsList className={`mb-12 shadow-md bg-neutral-800 border-neutral-700 ${isMobile ? 'w-full grid grid-cols-3 gap-px' : ''}`}>
-                <TabsTrigger 
-                  value="ai-solutions" 
-                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+              <TabsList className="max-w-md mx-auto mb-12">
+                <TabsTrigger value="ai-solutions">
                   {isMobile ? 'AI' : 'AI Solutions'}
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="web-services" 
-                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+                <TabsTrigger value="web-services">
                   {isMobile ? 'Web' : 'Web Services'}
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="premium-services" 
-                  className={`text-white data-[state=active]:bg-[#9b87f5]/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+                <TabsTrigger value="premium-services">
                   {isMobile ? 'Premium' : 'Premium Services'}
                 </TabsTrigger>
               </TabsList>

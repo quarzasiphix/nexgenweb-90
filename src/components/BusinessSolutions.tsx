@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Featured solution categories - showing all services instead of just 4
 const featuredSolutions = [
@@ -218,49 +219,45 @@ const BusinessSolutions = () => {
             </p>
           </div>
 
-          <div className="flex justify-center mb-8">
-            <div className={`inline-flex p-1 rounded-lg bg-white/10 backdrop-blur-sm ${isMobile ? 'w-full grid grid-cols-3' : ''}`}>
-              <button
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === 'ai' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                } ${isMobile ? 'px-2 text-xs' : ''}`}
-                onClick={() => setActiveTab('ai')}
-              >
-                {isMobile ? 'AI' : 'AI Solutions'}
-              </button>
-              <button
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === 'web' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                } ${isMobile ? 'px-2 text-xs' : ''}`}
-                onClick={() => setActiveTab('web')}
-              >
-                {isMobile ? 'Web' : 'Web Development'}
-              </button>
-              <button
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === 'premium' ? 'bg-white text-neutral-900' : 'text-white hover:bg-white/10'
-                } ${isMobile ? 'px-2 text-xs' : ''}`}
-                onClick={() => setActiveTab('premium')}
-              >
-                {isMobile ? 'Premium' : 'Premium Solutions'}
-              </button>
+          <Tabs defaultValue="ai" className="w-full" value={activeTab} onValueChange={setActiveTab}>
+            <div className="flex justify-center mb-8">
+              <TabsList className="max-w-md mx-auto">
+                <TabsTrigger value="ai">
+                  {isMobile ? 'AI' : 'AI Solutions'}
+                </TabsTrigger>
+                <TabsTrigger value="web">
+                  {isMobile ? 'Web' : 'Web Development'}
+                </TabsTrigger>
+                <TabsTrigger value="premium">
+                  {isMobile ? 'Premium' : 'Premium Solutions'}
+                </TabsTrigger>
+              </TabsList>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {activeTab === 'ai' 
-              ? featuredSolutions.map((solution, index) => (
+            <TabsContent value="ai">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {featuredSolutions.map((solution, index) => (
                   <SolutionCard key={index} solution={solution} />
-                ))
-              : activeTab === 'web' 
-                ? featuredWebServices.map((service, index) => (
-                    <SolutionCard key={index} solution={service} />
-                  ))
-                : premiumServices.map((service, index) => (
-                    <SolutionCard key={index} solution={service} />
-                  ))
-            }
-          </div>
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="web">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {featuredWebServices.map((service, index) => (
+                  <SolutionCard key={index} solution={service} />
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="premium">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {premiumServices.map((service, index) => (
+                  <SolutionCard key={index} solution={service} />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
           
           <div className="text-center mt-8">
             <Button 

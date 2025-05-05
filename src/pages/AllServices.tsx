@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from 'lucide-react';
@@ -180,23 +179,14 @@ const AllServices = () => {
             onValueChange={setActiveTab}
           >
             <div className="flex justify-center">
-              <TabsList className={`max-w-full mx-auto bg-neutral-800 border-neutral-700 mb-8 ${isMobile ? 'w-full grid grid-cols-3 gap-px' : ''}`}>
-                <TabsTrigger 
-                  value="all" 
-                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+              <TabsList className="max-w-md mx-auto">
+                <TabsTrigger value="all">
                   {isMobile ? 'All' : 'All Services'}
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="ai" 
-                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+                <TabsTrigger value="ai">
                   {isMobile ? 'AI' : 'AI Solutions'}
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="web" 
-                  className={`text-white data-[state=active]:bg-brand-500/20 ${isMobile ? 'px-2 text-xs' : ''}`}
-                >
+                <TabsTrigger value="web">
                   {isMobile ? 'Web' : 'Web Services'}
                 </TabsTrigger>
               </TabsList>

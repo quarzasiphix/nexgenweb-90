@@ -112,23 +112,25 @@ const SolutionCard = ({ solution }) => {
     <div 
       ref={ref}
       className={cn(
-        "bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 transform card-hover border border-white/20",
+        "bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 transform card-hover border border-white/20 flex flex-col",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       )}
     >
-      <div className="block p-6">
+      <div className="block p-6 flex-grow flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
           <solution.icon className="h-6 w-6 text-white" />
         </div>
         <h3 className="text-xl font-semibold mb-2 text-white">{solution.title}</h3>
         <p className="text-white/80 mb-4">{solution.description}</p>
-        <Link 
-          to={solution.path} 
-          className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group"
-        >
-          <span>Learn More</span>
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        <div className="mt-auto pt-2">
+          <Link 
+            to={solution.path} 
+            className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group"
+          >
+            <span>Learn More</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -209,7 +211,7 @@ const BusinessSolutions = () => {
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
               onClick={() => navigate(activeTab === 'ai' ? '/services/ai' : activeTab === 'web' ? '/services/web' : '/services/premium')}
             >
-              View All {activeTab === 'ai' ? 'Solutions' : activeTab === 'web' ? 'Services' : 'Premium Services'}
+              Learn More
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

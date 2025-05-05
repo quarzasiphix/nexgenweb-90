@@ -252,7 +252,7 @@ const BusinessSolutions = () => {
           <div className="text-center mt-8">
             <Button 
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
-              onClick={() => navigate(activeTab === 'ai' ? '/services/ai' : activeTab === 'web' ? '/services/web' : '/services/premium')}
+              onClick={() => activeTab === 'ai' ? navigate('/services/ai') : activeTab === 'web' ? navigate('/services/web') : navigate('/services/custom-ai-integration')}
             >
               Learn More
               <ArrowRight className="ml-2 h-4 w-4" />

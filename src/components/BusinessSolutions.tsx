@@ -117,17 +117,17 @@ const SolutionCard = ({ solution }) => {
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       )}
     >
-      <Link to={solution.path} className="block p-6">
+      <div className="block p-6">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${solution.color}`}>
           <solution.icon className="h-6 w-6 text-white" />
         </div>
         <h3 className="text-xl font-semibold mb-2 text-white">{solution.title}</h3>
         <p className="text-white/80 mb-4">{solution.description}</p>
-        <div className="flex items-center text-white">
-          <span className="text-sm font-medium">View Pricing</span>
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </div>
-      </Link>
+        <Link to={solution.path} className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group">
+          <span>View Pricing</span>
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
     </div>
   );
 };

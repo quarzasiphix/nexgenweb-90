@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -16,6 +16,7 @@ const SolutionsPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { isChatOpen, closeChat } = useChat();
+  const [activeTab, setActiveTab] = useState("business");
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,21 +43,82 @@ const SolutionsPage = () => {
             with cutting-edge technology and AI integration.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* Solution categories will be displayed here */}
-            <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
-              <h2 className="text-2xl font-semibold text-white mb-4">Coming Soon!</h2>
-              <p className="text-neutral-400 mb-6">
-                We're currently expanding our solutions catalog. Please check back soon or contact us for more information.
-              </p>
-              <Button 
-                onClick={() => navigate('/services')}
-                className="w-full bg-[#9b87f5]"
-              >
-                Learn More
-              </Button>
+          <Tabs 
+            defaultValue="business" 
+            value={activeTab} 
+            onValueChange={(value) => {
+              if (typeof value === 'string') {
+                setActiveTab(value);
+              }
+            }}
+            className="w-full mb-16"
+          >
+            <div className="flex justify-center">
+              <TabsList className="max-w-md mx-auto mb-12">
+                <TabsTrigger value="business">
+                  Business Solutions
+                </TabsTrigger>
+                <TabsTrigger value="enterprise">
+                  Enterprise Solutions
+                </TabsTrigger>
+                <TabsTrigger value="custom">
+                  Custom Solutions
+                </TabsTrigger>
+              </TabsList>
             </div>
-          </div>
+            
+            <TabsContent value="business" className="mt-0 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                {/* Solution categories will be displayed here */}
+                <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
+                  <h2 className="text-2xl font-semibold text-white mb-4">Coming Soon!</h2>
+                  <p className="text-neutral-400 mb-6">
+                    We're currently expanding our solutions catalog. Please check back soon or contact us for more information.
+                  </p>
+                  <Button 
+                    onClick={() => navigate('/services')}
+                    className="w-full bg-[#9b87f5]"
+                  >
+                    Learn More
+                  </Button>
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="enterprise" className="mt-0 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
+                  <h2 className="text-2xl font-semibold text-white mb-4">Enterprise Solutions</h2>
+                  <p className="text-neutral-400 mb-6">
+                    Our enterprise solutions are designed for large organizations with complex needs. Contact us for more information.
+                  </p>
+                  <Button 
+                    onClick={() => navigate('/services')}
+                    className="w-full bg-[#9b87f5]"
+                  >
+                    Learn More
+                  </Button>
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="custom" className="mt-0 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
+                  <h2 className="text-2xl font-semibold text-white mb-4">Custom Solutions</h2>
+                  <p className="text-neutral-400 mb-6">
+                    We offer custom solutions tailored to your specific business requirements. Contact us to discuss your needs.
+                  </p>
+                  <Button 
+                    onClick={() => navigate('/services')}
+                    className="w-full bg-[#9b87f5]"
+                  >
+                    Learn More
+                  </Button>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
       <Contact />

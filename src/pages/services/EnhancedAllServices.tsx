@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code, Star, Award, Trophy, Check } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code, Star, Award, Trophy, Check, Zap, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';

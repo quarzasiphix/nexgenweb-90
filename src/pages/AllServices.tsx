@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -103,7 +104,12 @@ const AllServices = () => {
             growth through cutting-edge AI technology and web solutions.
           </p>
 
-          <Tabs defaultValue="all" className="w-full" value={activeTab} onValueChange={setActiveTab}>
+          <Tabs defaultValue="all" className="w-full" value={activeTab} onValueChange={(value) => {
+            // Fix the type issue by checking if the value is valid
+            if (value === 'all' || value === 'ai' || value === 'web') {
+              setActiveTab(value);
+            }
+          }}>
             <div className="flex justify-center">
               <TabsList className="max-w-md mx-auto">
                 <TabsTrigger value="all">

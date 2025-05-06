@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -215,7 +214,7 @@ const ServicesPage = () => {
                 {isMobile ? 'Web' : 'Web Development'}
               </TabsTrigger>
               <TabsTrigger value="premium">
-                {isMobile ? 'Premium' : 'Premium Solutions'}
+                {isMobile ? 'Pro' : 'Premium Solutions'}
               </TabsTrigger>
             </TabsList>
             

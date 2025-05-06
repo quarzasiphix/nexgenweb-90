@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,12 +6,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '@/context/ChatContext';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const PricingSection = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const isMobile = useIsMobile();
 
   const handleBuyNow = (service: string, tier: string, price: string) => {
     setSelectedPlan(`${tier} (${price})`);
@@ -200,13 +201,13 @@ const PricingSection = () => {
         <Tabs defaultValue="ai" className="w-full mb-12 pricing-tabs">
           <TabsList className="max-w-md mx-auto mb-8">
             <TabsTrigger value="ai">
-              AI Solutions
+              {isMobile ? 'AI' : 'AI Solutions'}
             </TabsTrigger>
             <TabsTrigger value="web">
-              Web Development
+              {isMobile ? 'Web' : 'Web Development'}
             </TabsTrigger>
             <TabsTrigger value="premium">
-              Premium Solutions
+              {isMobile ? 'Pro' : 'Premium Solutions'}
             </TabsTrigger>
           </TabsList>
           

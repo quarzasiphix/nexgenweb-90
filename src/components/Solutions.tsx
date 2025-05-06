@@ -598,13 +598,13 @@ const Solutions = () => {
           <div className="flex justify-center">
             <TabsList className={`mb-12 shadow-md ${isMobile ? 'w-full flex' : ''}`}>
               <TabsTrigger value="ai-solutions" className={isMobile ? 'flex-1' : ''}>
-                {isMobile ? 'AI' : 'AI Solutions'}
+                AI Solutions
               </TabsTrigger>
               <TabsTrigger value="web-development" className={isMobile ? 'flex-1' : ''}>
-                {isMobile ? 'Web Dev' : 'Web Development'}
+                Web Development
               </TabsTrigger>
               <TabsTrigger value="premium-services" className={isMobile ? 'flex-1' : ''}>
-                {isMobile ? 'Premium' : 'Premium Services'}
+                Premium Solutions
               </TabsTrigger>
             </TabsList>
           </div>

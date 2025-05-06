@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -223,13 +222,13 @@ const BusinessSolutions = () => {
           <Tabs defaultValue="ai" className="w-full" value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-8 max-w-3xl mx-auto">
               <TabsTrigger value="ai">
-                {isMobile ? 'AI' : 'AI Solutions'}
+                AI Solutions
               </TabsTrigger>
               <TabsTrigger value="web">
-                {isMobile ? 'Web Dev' : 'Web Development'}
+                Web Development
               </TabsTrigger>
               <TabsTrigger value="premium">
-                {isMobile ? 'Premium' : 'Premium Solutions'}
+                Premium Solutions
               </TabsTrigger>
             </TabsList>
 

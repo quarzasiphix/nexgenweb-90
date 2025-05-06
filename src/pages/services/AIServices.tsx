@@ -13,6 +13,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const AIServices = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     // Scroll to top when component mounts
@@ -22,7 +23,6 @@ const AIServices = () => {
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();
-  const isMobile = useIsMobile(); // Add this line to get the mobile state
 
   // Handle Buy Now button click
   const handleBuyNow = (serviceTitle: string) => {
@@ -96,7 +96,9 @@ const AIServices = () => {
       <Header />
       <main className="pt-28 pb-16 px-4 w-full max-w-full">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-6">AI Solutions</h1>
+          <h1 className="text-4xl font-bold text-white mb-6">
+            {isMobile ? "AI" : "AI Solutions"}
+          </h1>
           <p className="text-lg text-neutral-300 mb-12 max-w-3xl">
             Our comprehensive suite of AI services helps businesses automate processes, 
             gain insights, and drive growth through intelligent technology solutions.

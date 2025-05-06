@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,7 +7,7 @@ import Header from '@/components/Header';
 
 const CaseStudiesPage = () => {
   useEffect(() => {
-    document.title = "Case Studies - NexGenWeb";  // Updated from BizWiz
+    document.title = "Case Studies - NexGenWeb";
   }, []);
 
   const caseStudies = [
@@ -111,14 +110,14 @@ const CaseStudiesPage = () => {
           </div>
 
           <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="max-w-md mx-auto bg-neutral-800 border-neutral-700 mb-8">
-              <TabsTrigger value="all" className="text-white data-[state=active]:bg-brand-500/20">
+            <TabsList className="mb-8 max-w-3xl mx-auto">
+              <TabsTrigger value="all">
                 All Case Studies
               </TabsTrigger>
-              <TabsTrigger value="ai" className="text-white data-[state=active]:bg-brand-500/20">
+              <TabsTrigger value="ai">
                 AI Solutions
               </TabsTrigger>
-              <TabsTrigger value="web" className="text-white data-[state=active]:bg-brand-500/20">
+              <TabsTrigger value="web">
                 Web Services
               </TabsTrigger>
             </TabsList>

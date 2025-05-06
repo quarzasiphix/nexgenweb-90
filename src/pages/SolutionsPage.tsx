@@ -53,7 +53,7 @@ const SolutionsPage = () => {
             }}
             className="w-full mb-16"
           >
-            <TabsList>
+            <TabsList className="mb-8 max-w-3xl mx-auto">
               <TabsTrigger value="business">
                 AI Solutions
               </TabsTrigger>

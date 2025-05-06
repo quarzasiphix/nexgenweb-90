@@ -114,7 +114,7 @@ const AllServices = () => {
               }
             }}
           >
-            <TabsList>
+            <TabsList className="mb-8 max-w-3xl mx-auto">
               <TabsTrigger value="all">
                 All Services
               </TabsTrigger>

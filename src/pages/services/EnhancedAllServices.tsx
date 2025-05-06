@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code, Star, Award, Trophy, Check, Zap, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -285,19 +284,17 @@ const EnhancedAllServices = () => {
           </p>
 
           <Tabs defaultValue="ai-solutions" className="w-full mb-16" value={activeTab} onValueChange={setActiveTab}>
-            <div className="flex justify-center">
-              <TabsList className="max-w-md mx-auto mb-12">
-                <TabsTrigger value="ai-solutions">
-                  AI Solutions
-                </TabsTrigger>
-                <TabsTrigger value="web-services">
-                  Web Development
-                </TabsTrigger>
-                <TabsTrigger value="premium-services">
-                  Premium Solutions
-                </TabsTrigger>
-              </TabsList>
-            </div>
+            <TabsList className="mb-8 max-w-3xl mx-auto">
+              <TabsTrigger value="ai-solutions">
+                AI Solutions
+              </TabsTrigger>
+              <TabsTrigger value="web-services">
+                Web Development
+              </TabsTrigger>
+              <TabsTrigger value="premium-services">
+                Premium Solutions
+              </TabsTrigger>
+            </TabsList>
             
             <TabsContent value="ai-solutions" className="mt-0 w-full">
               <div className="mb-8 text-center">

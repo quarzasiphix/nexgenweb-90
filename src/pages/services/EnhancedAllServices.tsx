@@ -477,10 +477,10 @@ const EnhancedAllServices = () => {
                 {isMobile ? 'AI' : 'AI Solutions'}
               </TabsTrigger>
               <TabsTrigger value="web-services">
-                {isMobile ? 'Web Dev' : 'Web Development'}
+                {isMobile ? 'Web' : 'Web Development'}
               </TabsTrigger>
               <TabsTrigger value="premium-services">
-                {isMobile ? 'Premium' : 'Premium Solutions'}
+                {isMobile ? 'Pro' : 'Premium Solutions'}
               </TabsTrigger>
             </TabsList>
             

@@ -21,6 +21,7 @@ const AIServices = () => {
   }, []);
 
   const { openChat, isChatOpen, closeChat } = useChat();
+  const isMobile = useIsMobile(); // Add this line to get the mobile state
 
   // Handle Buy Now button click
   const handleBuyNow = (serviceTitle: string) => {

@@ -57,13 +57,13 @@ const SolutionsPage = () => {
           >
             <TabsList className="mb-8 max-w-3xl mx-auto">
               <TabsTrigger value="business">
-                AI Solutions
+                {isMobile ? 'AI' : 'AI Solutions'}
               </TabsTrigger>
               <TabsTrigger value="enterprise">
-                Web Development
+                {isMobile ? 'Web' : 'Web Development'}
               </TabsTrigger>
               <TabsTrigger value="custom">
-                Premium Solutions
+                {isMobile ? 'Pro' : 'Premium Solutions'}
               </TabsTrigger>
             </TabsList>
             

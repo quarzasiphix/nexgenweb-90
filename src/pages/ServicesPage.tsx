@@ -11,12 +11,14 @@ import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Contact from '@/components/Contact';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ServicesPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -207,13 +209,13 @@ const ServicesPage = () => {
           <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
             <TabsList className="max-w-md mx-auto mb-8">
               <TabsTrigger value="ai">
-                AI Solutions
+                {isMobile ? 'AI' : 'AI Solutions'}
               </TabsTrigger>
               <TabsTrigger value="web">
-                Web Development
+                {isMobile ? 'Web' : 'Web Development'}
               </TabsTrigger>
               <TabsTrigger value="premium">
-                Premium Solutions
+                {isMobile ? 'Premium' : 'Premium Solutions'}
               </TabsTrigger>
             </TabsList>
             

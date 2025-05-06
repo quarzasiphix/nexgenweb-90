@@ -222,13 +222,13 @@ const BusinessSolutions = () => {
           <Tabs defaultValue="ai" className="w-full" value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-8 max-w-3xl mx-auto">
               <TabsTrigger value="ai">
-                AI Solutions
+                {isMobile ? 'AI' : 'AI Solutions'}
               </TabsTrigger>
               <TabsTrigger value="web">
-                Web Development
+                {isMobile ? 'Web' : 'Web Development'}
               </TabsTrigger>
               <TabsTrigger value="premium">
-                Premium Solutions
+                {isMobile ? 'Pro' : 'Premium Solutions'}
               </TabsTrigger>
             </TabsList>
 

@@ -1,259 +1,271 @@
 import React, { useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CaseStudiesPage = () => {
+  const isMobile = useIsMobile();
+  
   useEffect(() => {
     document.title = "Case Studies - NexGenWeb";
   }, []);
 
   const caseStudies = [
     {
-      title: "AI-Powered Customer Service Automation",
-      company: "European Retail Chain",
+      title: "AI-Powered Marketing Automation",
+      category: "AI Solutions",
+      industry: "Marketing",
+      description: "Automated marketing campaigns with AI-driven personalization, resulting in a 300% increase in lead generation.",
+      results: [
+        "300% increase in lead generation",
+        "50% reduction in marketing costs",
+        "20% increase in conversion rates"
+      ]
+    },
+    {
+      title: "Web Development for E-commerce",
+      category: "Web Development",
       industry: "Retail",
-      description: "Implemented a custom AI chatbot solution that reduced customer service costs by 45% while improving customer satisfaction scores by 22%.",
+      description: "Developed a responsive e-commerce platform with AI-enhanced product recommendations, leading to a 150% increase in sales.",
       results: [
-        "45% reduction in customer service costs",
-        "22% improvement in customer satisfaction",
-        "85% of routine inquiries automated",
-        "Response time reduced from 24 hours to under 2 minutes"
-      ],
-      category: "ai"
+        "150% increase in sales",
+        "40% increase in customer retention",
+        "25% reduction in cart abandonment"
+      ]
     },
     {
-      title: "E-commerce Personalization Engine",
-      company: "Luxury Fashion Brand",
-      industry: "Fashion",
-      description: "Developed a sophisticated AI-driven product recommendation system that analyzes user behavior to deliver personalized shopping experiences.",
+      title: "AI-Driven Customer Support",
+      category: "AI Solutions",
+      industry: "Customer Service",
+      description: "Implemented an AI chatbot for 24/7 customer support, resulting in a 60% reduction in support tickets and improved customer satisfaction.",
       results: [
-        "34% increase in average order value",
-        "28% improvement in conversion rates",
-        "42% higher repeat purchase rate",
-        "3.5x ROI within six months of implementation"
-      ],
-      category: "ai"
+        "60% reduction in support tickets",
+        "40% improvement in customer satisfaction",
+        "30% reduction in support costs"
+      ]
     },
     {
-      title: "Financial Data Analysis Platform",
-      company: "Investment Management Firm",
+      title: "Responsive Web Design for Local Business",
+      category: "Web Development",
+      industry: "Local Services",
+      description: "Created a mobile-friendly website for a local business, resulting in a 200% increase in mobile traffic and improved local search rankings.",
+      results: [
+        "200% increase in mobile traffic",
+        "50% improvement in local search rankings",
+        "30% increase in online bookings"
+      ]
+    },
+    {
+      title: "AI-Enhanced Data Analytics",
+      category: "AI Solutions",
       industry: "Finance",
-      description: "Created a custom AI solution that processes and analyzes vast financial datasets to identify market trends and investment opportunities.",
+      description: "Utilized AI to analyze financial data, providing insights that led to a 40% reduction in operational costs and improved investment strategies.",
       results: [
-        "Reduced analysis time from days to minutes",
-        "Identified 17% more investment opportunities",
-        "Improved investment performance by 12%",
-        "Saved 1,200+ analyst hours per month"
-      ],
-      category: "ai"
+        "40% reduction in operational costs",
+        "25% improvement in investment strategies",
+        "15% increase in ROI"
+      ]
     },
     {
-      title: "High-Performance E-commerce Website",
-      company: "Electronics Retailer",
-      industry: "Retail",
-      description: "Developed a scalable, high-performance e-commerce platform capable of handling 200,000+ concurrent users during peak sales events.",
+      title: "Custom Web Application for Enterprise",
+      category: "Web Development",
+      industry: "Enterprise",
+      description: "Developed a custom web application for a large enterprise, streamlining internal processes and improving overall efficiency by 35%.",
       results: [
-        "99.99% uptime during major sale events",
-        "45% faster page load times",
-        "32% increase in mobile conversions",
-        "Seamless integration with existing inventory systems"
-      ],
-      category: "web"
-    },
-    {
-      title: "Healthcare Provider Portal",
-      company: "Regional Medical Center",
-      industry: "Healthcare",
-      description: "Built a secure, HIPAA-compliant web portal connecting patients, doctors, and administrative staff with integrated telehealth capabilities.",
-      results: [
-        "Reduced administrative workload by 35%",
-        "Increased patient satisfaction by 40%",
-        "Successful handling of 5,000+ daily telehealth appointments",
-        "Streamlined billing process saving $1.2M annually"
-      ],
-      category: "web"
-    },
-    {
-      title: "Global Content Delivery Solution",
-      company: "International Media Company",
-      industry: "Media",
-      description: "Implemented an advanced hosting and CDN solution to deliver high-definition video content to global audiences with minimal latency.",
-      results: [
-        "97% reduction in buffering incidents",
-        "Support for 4K video streaming worldwide",
-        "71% improvement in average load time",
-        "Scaled to handle 3M+ concurrent viewers"
-      ],
-      category: "web"
+        "35% improvement in overall efficiency",
+        "20% reduction in manual tasks",
+        "10% increase in employee satisfaction"
+      ]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800">
       <Header />
-      <main className="pt-24 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-lg bg-brand-500/20">
-                <FileText className="h-6 w-6 text-brand-400" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold text-white mb-4">Case Studies</h1>
-            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              Explore real-world examples of how our solutions have transformed businesses
-              across different industries and solved complex challenges.
-            </p>
-          </div>
-
-          <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="mb-8 max-w-3xl mx-auto">
-              <TabsTrigger value="all">
-                All Case Studies
-              </TabsTrigger>
-              <TabsTrigger value="ai">
-                AI Solutions
-              </TabsTrigger>
-              <TabsTrigger value="web">
-                Web Services
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="all">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {caseStudies.map((caseStudy, index) => (
-                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <span className={`px-3 py-1 rounded-full ${caseStudy.category === 'ai' ? 'bg-brand-500/20 text-brand-400' : 'bg-purple-500/20 text-purple-400'} text-xs font-medium mr-3`}>
-                          {caseStudy.category === 'ai' ? 'AI SOLUTION' : 'WEB SERVICE'}
-                        </span>
-                        <span className="text-neutral-400 text-sm">{caseStudy.industry}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{caseStudy.title}</h3>
-                      <p className="text-neutral-500 mb-4 text-sm">{caseStudy.company}</p>
-                      <p className="text-neutral-300 mb-6">{caseStudy.description}</p>
-                      
-                      <h4 className="text-sm font-semibold text-white mb-3">Key Results:</h4>
-                      <ul className="space-y-2 mb-6">
-                        {caseStudy.results.map((result, idx) => (
-                          <li key={idx} className="flex items-start text-neutral-400">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <Button
-                        className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
-                      >
-                        Request Full Case Study
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="ai">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {caseStudies.filter(cs => cs.category === 'ai').map((caseStudy, index) => (
-                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <span className="px-3 py-1 rounded-full bg-brand-500/20 text-brand-400 text-xs font-medium mr-3">
-                          AI SOLUTION
-                        </span>
-                        <span className="text-neutral-400 text-sm">{caseStudy.industry}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{caseStudy.title}</h3>
-                      <p className="text-neutral-500 mb-4 text-sm">{caseStudy.company}</p>
-                      <p className="text-neutral-300 mb-6">{caseStudy.description}</p>
-                      
-                      <h4 className="text-sm font-semibold text-white mb-3">Key Results:</h4>
-                      <ul className="space-y-2 mb-6">
-                        {caseStudy.results.map((result, idx) => (
-                          <li key={idx} className="flex items-start text-neutral-400">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <Button
-                        className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
-                      >
-                        Request Full Case Study
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="web">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {caseStudies.filter(cs => cs.category === 'web').map((caseStudy, index) => (
-                  <Card key={index} className="bg-neutral-800 border-neutral-700 hover:border-brand-500/50 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-medium mr-3">
-                          WEB SERVICE
-                        </span>
-                        <span className="text-neutral-400 text-sm">{caseStudy.industry}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{caseStudy.title}</h3>
-                      <p className="text-neutral-500 mb-4 text-sm">{caseStudy.company}</p>
-                      <p className="text-neutral-300 mb-6">{caseStudy.description}</p>
-                      
-                      <h4 className="text-sm font-semibold text-white mb-3">Key Results:</h4>
-                      <ul className="space-y-2 mb-6">
-                        {caseStudy.results.map((result, idx) => (
-                          <li key={idx} className="flex items-start text-neutral-400">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 mr-2 flex-shrink-0"></span>
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <Button
-                        className="w-full bg-neutral-700 hover:bg-neutral-600 text-white"
-                        onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Case Study: ' + caseStudy.title}
-                      >
-                        Request Full Case Study
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
-          
-          <div className="p-6 border border-neutral-700 rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-900">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0 md:mr-6">
-                <h4 className="text-xl font-semibold mb-2 text-white">
-                  Want to see similar results for your business?
-                </h4>
-                <p className="text-neutral-400">
-                  Our team of experts is ready to analyze your unique challenges and develop tailored solutions.
-                </p>
-              </div>
-              <Button 
-                className="bg-brand-500 hover:bg-brand-600 text-white whitespace-nowrap"
-                onClick={() => window.location.href = 'mailto:bizwiz.work@gmail.com?subject=Custom Solution Inquiry'}
-              >
-                Get a Free Consultation
-              </Button>
-            </div>
+      
+      <main className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Case Studies
+          </h1>
+          <p className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto">
+            Discover how our AI solutions and web services have transformed businesses across industries.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <Button 
+              className="bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
+            >
+              Download Portfolio
+            </Button>
+            <Button 
+              variant="outline" 
+              className="bg-transparent border-white/20 text-white hover:bg-white/10"
+            >
+              Request a Custom Case Study
+            </Button>
           </div>
         </div>
+
+        <Tabs defaultValue="all" className="mb-12">
+          <TabsList className="mb-8 max-w-3xl mx-auto">
+            <TabsTrigger value="all">
+              {isMobile ? 'All' : 'All Case Studies'}
+            </TabsTrigger>
+            <TabsTrigger value="ai">
+              {isMobile ? 'AI' : 'AI Solutions'}
+            </TabsTrigger>
+            <TabsTrigger value="web">
+              {isMobile ? 'Web' : 'Web Services'}
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="all" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {caseStudies.map((study, index) => (
+                <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <div className="h-48 bg-neutral-700 relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                      <FileText className="h-16 w-16 text-white/80" />
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                        study.category === "AI Solutions" 
+                          ? "bg-purple-900/50 text-purple-200" 
+                          : "bg-blue-900/50 text-blue-200"
+                      }`}>
+                        {study.category}
+                      </span>
+                      <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
+                        {study.industry}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
+                    <p className="text-neutral-400 mb-4">{study.description}</p>
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        {study.results.map((result, idx) => (
+                          <div key={idx} className="bg-neutral-700/50 p-2 rounded">
+                            <p className="text-sm text-neutral-300">{result}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <Button 
+                      className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
+                    >
+                      Read Full Case Study
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="ai" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {caseStudies
+                .filter(study => study.category === "AI Solutions")
+                .map((study, index) => (
+                  <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div className="h-48 bg-neutral-700 relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                        <FileText className="h-16 w-16 text-white/80" />
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                          study.category === "AI Solutions" 
+                            ? "bg-purple-900/50 text-purple-200" 
+                            : "bg-blue-900/50 text-blue-200"
+                        }`}>
+                          {study.category}
+                        </span>
+                        <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
+                          {study.industry}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
+                      <p className="text-neutral-400 mb-4">{study.description}</p>
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
+                        <div className="grid grid-cols-2 gap-2">
+                          {study.results.map((result, idx) => (
+                            <div key={idx} className="bg-neutral-700/50 p-2 rounded">
+                              <p className="text-sm text-neutral-300">{result}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
+                      >
+                        Read Full Case Study
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="web" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {caseStudies
+                .filter(study => study.category === "Web Development")
+                .map((study, index) => (
+                  <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <div className="h-48 bg-neutral-700 relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                        <FileText className="h-16 w-16 text-white/80" />
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                          study.category === "AI Solutions" 
+                            ? "bg-purple-900/50 text-purple-200" 
+                            : "bg-blue-900/50 text-blue-200"
+                        }`}>
+                          {study.category}
+                        </span>
+                        <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
+                          {study.industry}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
+                      <p className="text-neutral-400 mb-4">{study.description}</p>
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
+                        <div className="grid grid-cols-2 gap-2">
+                          {study.results.map((result, idx) => (
+                            <div key={idx} className="bg-neutral-700/50 p-2 rounded">
+                              <p className="text-sm text-neutral-300">{result}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
+                      >
+                        Read Full Case Study
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </TabsContent>
+        </Tabs>
       </main>
+      
+      <Footer />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const AIServices = () => {
   const navigate = useNavigate();

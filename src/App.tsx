@@ -29,16 +29,19 @@ if (typeof window !== 'undefined') {
   console.info('PostHog loaded!');
 }
 
-// Enhanced ScrollToTop component that will be used inside Router
-// This will force scroll to top on all navigation events
+// Modified ScrollToTop component that will handle navigation events 
+// without blocking normal scrolling functionality
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   const navigationType = useNavigationType();
   
   useEffect(() => {
-    // Force scroll to top on all navigation events
-    window.scrollTo(0, 0);
-  }, [pathname, navigationType]);
+    // Only force scroll to top when the pathname changes
+    // This prevents interference with normal scrolling behavior
+    if (pathname) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
   
   return null;
 }

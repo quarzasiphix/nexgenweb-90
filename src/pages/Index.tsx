@@ -24,8 +24,13 @@ const Index = () => {
   const [fastScrolling, setFastScrolling] = useState(false);
 
   useEffect(() => {
-    // Force scroll to top when component mounts
-    window.scrollTo(0, 0);
+    // Only scroll to top on initial page load, without blocking normal scrolling
+    const initialLoad = () => {
+      window.scrollTo(0, 0);
+    };
+    
+    // Execute only once on component mount
+    initialLoad();
     
     // Set page title
     document.title = "NexGenWeb - Digital Business Solutions";

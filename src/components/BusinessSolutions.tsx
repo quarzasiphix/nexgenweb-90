@@ -171,7 +171,7 @@ const SolutionCard = ({ solution }) => {
             to={solution.path} 
             className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group"
           >
-            <span>Learn More</span>
+            <span>All Solutions</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -192,14 +192,7 @@ const BusinessSolutions = () => {
 
   // Update this function to navigate to the appropriate services page based on the active tab
   const handleLearnMoreClick = () => {
-    if (activeTab === 'ai') {
-      navigate('/services/ai');
-    } else if (activeTab === 'web') {
-      navigate('/services/web');
-    } else if (activeTab === 'premium') {
-      // For premium tab, navigate to the first premium service detailed page
-      navigate('/services/custom-ai-integration');
-    }
+    navigate('/solutions');
   };
 
   return (
@@ -262,7 +255,7 @@ const BusinessSolutions = () => {
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white"
               onClick={handleLearnMoreClick}
             >
-              Learn More
+              All Solutions
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

@@ -29,18 +29,17 @@ if (typeof window !== 'undefined') {
   console.info('PostHog loaded!');
 }
 
-// Modified ScrollToTop component that will handle navigation events 
-// without blocking normal scrolling functionality
+// Simple ScrollToTop component that only runs once when routes change
+// but doesn't block normal scrolling behavior
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  const navigationType = useNavigationType();
   
   useEffect(() => {
-    // Only force scroll to top when the pathname changes
-    // This prevents interference with normal scrolling behavior
-    if (pathname) {
-      window.scrollTo(0, 0);
-    }
+    // Only restore scroll position on route changes, not during normal scrolling
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant'
+    });
   }, [pathname]);
   
   return null;

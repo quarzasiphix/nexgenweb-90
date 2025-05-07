@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import BusinessSolutions from '@/components/BusinessSolutions';
@@ -21,17 +21,8 @@ const Index = () => {
   const { isChatOpen, closeChat } = useChat();
   const isMobile = useIsMobile();
   const { captureEvent } = useAnalytics();
-  const [fastScrolling, setFastScrolling] = useState(false);
 
   useEffect(() => {
-    // Only scroll to top on initial page load, without blocking normal scrolling
-    const initialLoad = () => {
-      window.scrollTo(0, 0);
-    };
-    
-    // Execute only once on component mount
-    initialLoad();
-    
     // Set page title
     document.title = "NexGenWeb - Digital Business Solutions";
     
@@ -47,44 +38,12 @@ const Index = () => {
     // Log page view to PostHog
     captureEvent('page_view', { page: 'home' });
     
-    // Setup scroll speed detection
-    let lastScrollTop = 0;
-    let lastScrollTime = Date.now();
-    
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const now = Date.now();
-      const timeDiff = now - lastScrollTime;
-      
-      if (timeDiff > 0) {
-        const scrollDistance = Math.abs(scrollTop - lastScrollTop);
-        const scrollSpeed = scrollDistance / timeDiff;
-        
-        // If scrolling faster than threshold, add fast-scrolling class
-        if (scrollSpeed > 0.5) { // Threshold in pixels per millisecond
-          if (!fastScrolling) {
-            document.body.classList.add('fast-scrolling');
-            setFastScrolling(true);
-          }
-        } else if (fastScrolling) {
-          document.body.classList.remove('fast-scrolling');
-          setFastScrolling(false);
-        }
-        
-        lastScrollTop = scrollTop;
-        lastScrollTime = now;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
     return () => {
       document.body.classList.remove('mobile-animations');
       document.body.classList.remove('mobile-view');
       document.body.classList.remove('fast-scrolling');
-      window.removeEventListener('scroll', handleScroll);
     };
-  }, [isMobile, captureEvent, fastScrolling]);
+  }, [isMobile, captureEvent]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900">

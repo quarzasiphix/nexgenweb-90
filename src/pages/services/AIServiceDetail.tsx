@@ -1,174 +1,333 @@
 
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Bot, Brain, DollarSign, Users, Shield, Database, Scale, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { useChat } from '@/context/ChatContext';
 import ChatBubble from '@/components/ChatBubble';
-import { Bot, Brain, Shield, LineChart } from 'lucide-react';
 
 // Define the services data
 const aiServiceDetails = {
-  "finance-hr-ai": {
-    title: "Finance & HR AI",
-    icon: Brain,
-    description: "Advanced AI solutions for financial management and HR automation.",
-    fullDescription: "Transform your financial operations and HR processes with our cutting-edge AI solutions. Automate repetitive tasks, gain insights from data, and make informed decisions faster than ever before.",
+  "finance-accounting": {
+    title: "Finance & Accounting",
+    icon: DollarSign,
+    description: "Automate financial processes and gain actionable insights with AI-powered analysis.",
+    fullDescription: "Our AI-powered finance solutions automate routine accounting tasks, provide real-time financial insights, and help optimize your financial operations with intelligent automation.",
     features: [
-      "Automated invoice processing and expense tracking",
-      "AI-driven payroll management",
-      "Smart recruitment and candidate screening",
-      "Employee performance analytics",
-      "Automated compliance monitoring"
+      "Invoice Processing",
+      "Expense Management",
+      "Tax Compliance",
+      "Cash Flow Forecasting",
+      "Automated Payroll"
     ],
     benefits: [
       "Reduce manual data entry by up to 80%",
-      "Cut payroll processing time by 60%",
-      "Improve hiring accuracy by using AI-driven candidate matching",
-      "Make data-driven HR decisions with comprehensive analytics",
-      "Stay compliant with automated monitoring and alerts"
+      "Minimize human errors in financial processing",
+      "Get real-time visibility into your financial status",
+      "Improve compliance and reduce audit risks",
+      "Make data-driven financial decisions"
     ],
     useCases: [
       {
-        title: "Automated Invoice Processing",
-        description: "Our AI extracts key information from invoices, categorizes expenses, and routes for approval, reducing manual entry and errors."
+        title: "Automated Bookkeeping",
+        description: "AI-driven systems that automatically categorize transactions, reconcile accounts, and prepare financial statements."
       },
       {
-        title: "Intelligent Recruitment",
-        description: "AI screens resumes, matches candidates to job requirements, and even conducts initial screenings to find the best talent."
+        title: "Intelligent Invoice Processing",
+        description: "Systems that automatically extract data from invoices, match them to purchase orders, and route for approval."
       },
       {
-        title: "Performance Analytics",
-        description: "Analyze employee performance with AI-powered insights, identifying top performers and areas needing improvement."
+        title: "Financial Forecasting",
+        description: "Advanced algorithms that analyze historical data to predict future financial trends and cash flow needs."
       }
     ],
     packageInfo: {
       name: "AI Professional",
       price: "$999/mo",
-      description: "This service is included in our AI Professional monthly plan. It provides comprehensive finance and HR automation solutions.",
-      includedIn: ["AI Professional plan", "AI Enterprise plan (with additional custom features)"]
+      description: "This solution is included in our AI Professional monthly plan, providing comprehensive finance and accounting automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with additional custom processes)"]
     }
   },
-  "sales-marketing-ai": {
-    title: "Sales & Marketing AI",
-    icon: LineChart,
-    description: "AI-powered tools to boost your sales and marketing efforts.",
-    fullDescription: "Revolutionize your sales and marketing strategies with our AI-powered solutions designed to identify opportunities, optimize campaigns, and drive conversions.",
+  "customer-engagement": {
+    title: "Customer Engagement",
+    icon: Users,
+    description: "Automate customer interactions with AI-powered chatbots and personalized engagement tools.",
+    fullDescription: "Our AI-powered customer engagement solutions help businesses provide exceptional customer experiences through intelligent automation, personalization, and 24/7 support capabilities.",
     features: [
-      "Predictive lead scoring",
-      "Automated campaign optimization",
-      "Customer behavior analysis",
-      "Sales forecasting",
-      "Content personalization"
+      "24/7 AI Chatbots",
+      "Automated Email Responses",
+      "Sentiment Analysis",
+      "Call Transcription",
+      "Virtual Assistants"
     ],
     benefits: [
-      "Increase conversion rates by focusing on high-potential leads",
-      "Optimize marketing spend with AI-driven campaign adjustments",
-      "Understand customer behavior patterns to tailor your approach",
-      "Forecast sales with higher accuracy to improve resource allocation",
-      "Deliver personalized content that resonates with each customer segment"
+      "Provide instant responses to customer inquiries",
+      "Understand customer sentiment and address issues proactively",
+      "Personalize customer interactions at scale",
+      "Reduce support costs while improving satisfaction",
+      "Gather actionable insights from customer interactions"
     ],
     useCases: [
       {
-        title: "Lead Scoring & Prioritization",
-        description: "Our AI analyzes historical data to rank leads by likelihood to convert, helping your team focus on the most promising opportunities."
+        title: "Intelligent Customer Support",
+        description: "AI chatbots that handle common inquiries and escalate complex issues to human agents when necessary."
       },
       {
-        title: "Automated Campaign Optimization",
-        description: "AI continuously monitors campaign performance and makes real-time adjustments to maximize ROI."
+        title: "Automated Follow-ups",
+        description: "Systems that automatically send personalized follow-up communications based on customer interactions."
       },
       {
-        title: "Personalized Customer Journeys",
-        description: "Create individualized marketing experiences based on customer behavior, preferences, and history."
+        title: "Customer Sentiment Monitoring",
+        description: "Tools that analyze customer communications to detect satisfaction levels and emotional responses."
       }
     ],
     packageInfo: {
       name: "AI Professional",
       price: "$999/mo",
-      description: "This service is included in our AI Professional monthly plan. It provides comprehensive sales and marketing automation tools.",
-      includedIn: ["AI Professional plan", "AI Enterprise plan (with enhanced predictive capabilities)"]
+      description: "This solution is included in our AI Professional monthly plan, with enhanced features available in Enterprise.",
+      includedIn: ["AI Professional plan (standard features)", "AI Enterprise plan (enhanced customization)"]
     }
   },
-  "it-security-ai": {
+  "sales-marketing": {
+    title: "Sales & Marketing",
+    icon: Bot,
+    description: "Streamline lead generation and optimize marketing campaigns with AI-driven solutions.",
+    fullDescription: "Our AI-powered sales and marketing tools help businesses identify qualified leads, personalize marketing efforts, and optimize campaigns for maximum ROI.",
+    features: [
+      "Lead Generation",
+      "Ad Optimization",
+      "AI Content Generation",
+      "Sales Forecasting",
+      "CRM Automation"
+    ],
+    benefits: [
+      "Identify and prioritize high-quality leads",
+      "Create personalized marketing content at scale",
+      "Optimize ad spend for better conversion rates",
+      "Predict sales trends and adjust strategies accordingly",
+      "Automate routine sales tasks for better efficiency"
+    ],
+    useCases: [
+      {
+        title: "Intelligent Lead Scoring",
+        description: "AI systems that analyze prospect behavior and characteristics to identify the most promising leads."
+      },
+      {
+        title: "Automated Content Creation",
+        description: "AI tools that generate marketing copy, email templates, and social media content."
+      },
+      {
+        title: "Campaign Optimization",
+        description: "Systems that automatically adjust marketing campaigns based on performance data."
+      }
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing advanced marketing and sales automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with custom marketing strategies)"]
+    }
+  },
+  "hr-recruitment": {
+    title: "HR & Recruitment",
+    icon: Users,
+    description: "Simplify hiring and employee management with intelligent automation tools.",
+    fullDescription: "Our AI-powered HR solutions streamline recruitment processes, automate routine HR tasks, and provide valuable insights into workforce management and employee performance.",
+    features: [
+      "Resume Screening",
+      "Interview Scheduling",
+      "Performance Tracking",
+      "Training Programs",
+      "Employee Analytics"
+    ],
+    benefits: [
+      "Reduce time-to-hire by up to 60%",
+      "Eliminate bias in candidate selection",
+      "Automate routine HR administration tasks",
+      "Personalize employee training and development",
+      "Gain insights into workforce performance and satisfaction"
+    ],
+    useCases: [
+      {
+        title: "AI Recruitment Assistant",
+        description: "Systems that automatically screen resumes, rank candidates, and schedule interviews."
+      },
+      {
+        title: "Performance Management",
+        description: "Tools that track employee performance metrics and provide actionable improvement suggestions."
+      },
+      {
+        title: "Employee Engagement Analysis",
+        description: "AI systems that analyze communication patterns and feedback to gauge employee satisfaction."
+      }
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing comprehensive HR and recruitment automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with advanced analytics)"]
+    }
+  },
+  "logistics-supply-chain": {
+    title: "Logistics & Supply Chain",
+    icon: Shield,
+    description: "Optimize your supply chain operations with AI-powered logistics management.",
+    fullDescription: "Our AI-powered logistics and supply chain solutions help businesses optimize inventory levels, streamline distribution, and predict demand patterns for improved operational efficiency.",
+    features: [
+      "Inventory Management",
+      "Route Optimization",
+      "Supplier Management",
+      "Demand Forecasting",
+      "Warehouse Automation"
+    ],
+    benefits: [
+      "Reduce inventory costs by optimizing stock levels",
+      "Minimize delivery times and transportation costs",
+      "Anticipate supply chain disruptions before they occur",
+      "Automate supplier evaluation and selection",
+      "Improve warehouse efficiency and throughput"
+    ],
+    useCases: [
+      {
+        title: "Intelligent Inventory Management",
+        description: "AI systems that predict optimal inventory levels based on historical data and market trends."
+      },
+      {
+        title: "Route Optimization",
+        description: "Tools that calculate the most efficient delivery routes considering multiple variables."
+      },
+      {
+        title: "Demand Forecasting",
+        description: "Advanced algorithms that predict product demand allowing for proactive inventory management."
+      }
+    ],
+    packageInfo: {
+      name: "AI Enterprise",
+      price: "Custom",
+      description: "This advanced solution is available in our Enterprise AI package, with pricing tailored to your business scale and requirements.",
+      includedIn: ["AI Enterprise plan only"]
+    }
+  },
+  "legal-compliance": {
+    title: "Legal & Compliance",
+    icon: Scale,
+    description: "Streamline legal processes and ensure regulatory compliance with AI automation.",
+    fullDescription: "Our AI-powered legal and compliance solutions help businesses navigate complex regulations, automate contract analysis, and reduce legal risks through intelligent document processing.",
+    features: [
+      "Contract Analysis",
+      "Document Generation",
+      "Regulatory Compliance",
+      "Legal Research",
+      "Risk Assessment"
+    ],
+    benefits: [
+      "Reduce contract review time by up to 90%",
+      "Ensure compliance with evolving regulations",
+      "Minimize legal risks and potential liabilities",
+      "Automate creation of standard legal documents",
+      "Gain insights from legal precedents and regulations"
+    ],
+    useCases: [
+      {
+        title: "Automated Contract Review",
+        description: "AI systems that analyze contracts for risks, obligations, and non-standard clauses."
+      },
+      {
+        title: "Compliance Monitoring",
+        description: "Tools that track regulatory changes and assess their impact on business operations."
+      },
+      {
+        title: "Legal Document Generation",
+        description: "Systems that automatically generate customized legal documents based on specific requirements."
+      }
+    ],
+    packageInfo: {
+      name: "AI Enterprise",
+      price: "Custom",
+      description: "This specialized solution is available in our Enterprise AI package, with industry-specific compliance frameworks.",
+      includedIn: ["AI Enterprise plan only"]
+    }
+  },
+  "data-analytics": {
+    title: "Data Analytics",
+    icon: Database,
+    description: "Transform raw data into actionable business intelligence with AI-driven analytics.",
+    fullDescription: "Our AI-powered data analytics solutions help businesses extract meaningful insights from their data, identify trends, and make data-driven decisions with advanced visualization and predictive capabilities.",
+    features: [
+      "Predictive Analytics",
+      "Business Intelligence",
+      "Competitor Analysis",
+      "Data Visualization",
+      "Market Trends"
+    ],
+    benefits: [
+      "Discover hidden patterns and relationships in your data",
+      "Make proactive decisions based on predictive insights",
+      "Visualize complex data in intuitive dashboards",
+      "Monitor competitor strategies and market changes",
+      "Identify new business opportunities through data analysis"
+    ],
+    useCases: [
+      {
+        title: "Business Intelligence Dashboard",
+        description: "Interactive visual representations of key business metrics and performance indicators."
+      },
+      {
+        title: "Predictive Sales Analysis",
+        description: "AI models that forecast sales trends and identify factors influencing customer purchasing behavior."
+      },
+      {
+        title: "Market Opportunity Identification",
+        description: "Tools that analyze market data to uncover untapped business potential and strategic advantages."
+      }
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing advanced data analysis and business intelligence tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with custom dashboards)"]
+    }
+  },
+  "it-security": {
     title: "IT & Security",
     icon: Shield,
-    description: "Intelligent security solutions for your business.",
-    fullDescription: "Protect your digital assets with our advanced AI-powered security solutions that detect threats, monitor systems, and provide proactive protection against evolving cyber risks.",
+    description: "Protect your business and optimize IT operations with AI-powered security solutions.",
+    fullDescription: "Our AI-powered IT and security solutions help businesses detect and respond to threats, automate routine IT tasks, and ensure system reliability through predictive maintenance and monitoring.",
     features: [
-      "AI-powered threat detection",
-      "Automated system monitoring",
-      "Smart backup management",
-      "Predictive maintenance",
-      "Security compliance automation"
+      "Threat Detection",
+      "IT Support Automation",
+      "System Monitoring",
+      "Predictive Maintenance",
+      "Automated Backups"
     ],
     benefits: [
-      "Detect threats before they cause damage",
-      "Maintain system health with 24/7 automated monitoring",
-      "Prevent data loss with intelligent backup management",
-      "Reduce downtime through predictive maintenance",
-      "Simplify compliance with automated security checks"
+      "Identify security threats before they cause damage",
+      "Reduce IT support costs through automation",
+      "Minimize system downtime with predictive maintenance",
+      "Ensure data protection with automated backup systems",
+      "Optimize IT resource allocation based on usage patterns"
     ],
     useCases: [
       {
-        title: "Intelligent Threat Detection",
-        description: "Our AI analyzes patterns and behaviors to identify potential security threats before they impact your business."
+        title: "AI Security Monitoring",
+        description: "Systems that continuously analyze network traffic and user behavior to detect anomalies and potential threats."
       },
       {
-        title: "Automated System Health Monitoring",
-        description: "Continuous monitoring of your IT infrastructure with alerts and automated responses to potential issues."
+        title: "Automated IT Support",
+        description: "AI chatbots and tools that resolve common IT issues without human intervention."
       },
       {
-        title: "Predictive IT Maintenance",
-        description: "AI predicts when hardware and software components are likely to fail, allowing for proactive maintenance."
+        title: "Predictive System Maintenance",
+        description: "Tools that predict hardware and software failures before they occur, allowing for proactive maintenance."
       }
     ],
     packageInfo: {
       name: "Web Business + AI Professional",
       price: "From $2,998",
-      description: "This service is available as part of our Web Business plan with AI Professional add-on, providing comprehensive IT security with AI-powered protection.",
+      description: "This comprehensive solution combines our Web Business plan and AI Professional subscription for complete IT security.",
       includedIn: ["Web Business + AI Professional", "Web Enterprise + AI Enterprise (enhanced features)"]
-    }
-  },
-  "customer-support-ai": {
-    title: "Customer Support AI",
-    icon: Bot,
-    description: "Transform customer service with AI automation.",
-    fullDescription: "Elevate your customer support with intelligent AI solutions that provide 24/7 assistance, analyze customer sentiment, and streamline service operations for improved satisfaction.",
-    features: [
-      "24/7 AI chatbots",
-      "Automated email responses",
-      "Sentiment analysis",
-      "Call center automation",
-      "Customer journey optimization"
-    ],
-    benefits: [
-      "Provide instant support to customers around the clock",
-      "Reduce response time for customer inquiries",
-      "Understand customer emotions and adjust service accordingly",
-      "Streamline call center operations and reduce wait times",
-      "Create seamless customer experiences across touchpoints"
-    ],
-    useCases: [
-      {
-        title: "24/7 Customer Support Chatbots",
-        description: "Intelligent chatbots handle common customer queries instantly, even outside business hours."
-      },
-      {
-        title: "Sentiment Analysis & Response",
-        description: "AI analyzes customer communications to detect sentiment and prioritize responses accordingly."
-      },
-      {
-        title: "Automated Ticket Routing",
-        description: "Customer issues are automatically categorized and routed to the most appropriate department or specialist."
-      }
-    ],
-    packageInfo: {
-      name: "AI Starter",
-      price: "$499/mo",
-      description: "Basic chatbot features are included in our AI Starter plan, with advanced features available in Professional and Enterprise tiers.",
-      includedIn: ["AI Starter plan (basic features)", "AI Professional plan (advanced features)", "AI Enterprise plan (complete solution)"]
     }
   }
 };
@@ -323,7 +482,7 @@ const AIServiceDetail = () => {
               </Button>
               <Button 
                 size="lg"
-                variant="outline-white" 
+                variant="outline-white"
                 onClick={openChat}
               >
                 Chat with an Expert

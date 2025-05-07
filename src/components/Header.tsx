@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -32,9 +31,6 @@ const Header = () => {
   const navLinks = [
     { name: 'Services', href: '/services', hasDropdown: true, dropdownItems: [
       { name: 'All Services', href: '/services/all' },
-      { name: 'AI Solutions', href: '/services/ai' },
-      { name: 'Web Services', href: '/services/web' },
-      { name: 'Premium Services', href: '/services/custom-ai-integration' },
       { name: 'Pricing', href: '/services/pricing' },
     ]},
     { name: 'Case Studies', href: '/case-studies' },

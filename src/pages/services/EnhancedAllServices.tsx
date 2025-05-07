@@ -39,13 +39,18 @@ const EnhancedAllServices = () => {
     });
     
     // Route to the appropriate detail page based on service category
-    if (aiServices.find(s => s.id === service.id)) {
-      navigate(`/services/${service.id}`);
-    } else if (webDevServices.find(s => s.id === service.id)) {
-      navigate(`/services/${service.id}`);
-    } else {
-      navigate(`/services/${service.id}`);
-    }
+    navigate(`/services/${service.id}`);
+  };
+
+  const handleBuyNow = (service) => {
+    toast({
+      title: "Service Selected",
+      description: `You've selected the ${service.title} service. Proceeding to checkout.`,
+      duration: 3000,
+    });
+    
+    // Navigate to checkout
+    navigate('/services/pricing');
   };
 
   return (
@@ -80,7 +85,7 @@ const EnhancedAllServices = () => {
             <TabsContent value="ai-solutions" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {aiServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} />
+                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
                 ))}
               </div>
             </TabsContent>
@@ -88,7 +93,7 @@ const EnhancedAllServices = () => {
             <TabsContent value="web-services" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {webDevServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} />
+                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
                 ))}
               </div>
             </TabsContent>
@@ -96,7 +101,7 @@ const EnhancedAllServices = () => {
             <TabsContent value="premium-services" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {premiumServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} />
+                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
                 ))}
               </div>
             </TabsContent>
@@ -133,7 +138,7 @@ const EnhancedAllServices = () => {
   );
 };
 
-const ServiceCard = ({ service, onClick }) => {
+const ServiceCard = ({ service, onClick, onBuyNow }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -151,16 +156,28 @@ const ServiceCard = ({ service, onClick }) => {
         </div>
         <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
         <p className="text-neutral-300 mb-4 flex-grow">{service.description}</p>
-        <Button 
-          variant="secondary" 
-          className="mt-auto"
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-        >
-          Learn More <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+          <Button 
+            variant="brand"
+            className="flex-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              onBuyNow();
+            }}
+          >
+            Buy Now
+          </Button>
+          <Button 
+            variant="outline" 
+            className="flex-1 border-neutral-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick();
+            }}
+          >
+            Learn More <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

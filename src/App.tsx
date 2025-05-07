@@ -13,15 +13,12 @@ import { Toaster as Sonner } from './components/ui/sonner';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import ServiceDetails from './components/ServiceDetails';
 import SolutionDetails from './components/SolutionDetails';
-import WebServices from './pages/services/WebServices';
-import WebServiceDetail from './pages/services/WebServiceDetail';
-import AIServices from './pages/services/AIServices';
+import EnhancedAllServices from './pages/services/EnhancedAllServices';
 import AIServiceDetail from './pages/services/AIServiceDetail';
 import { ChatProvider } from './context/ChatContext';
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import PricingPage from './pages/services/PricingPage';
-import EnhancedAllServices from './pages/services/EnhancedAllServices';
 
 // Initialize PostHog
 if (typeof window !== 'undefined') {
@@ -63,9 +60,9 @@ function App() {
               <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
-              <Route path="/services/web" element={<WebServices />} />
-              <Route path="/services/web/:serviceId" element={<WebServiceDetail />} />
-              <Route path="/services/ai" element={<AIServices />} />
+              <Route path="/services/web" element={<EnhancedAllServices />} />
+              <Route path="/services/web/:serviceId" element={<ServiceDetails />} />
+              <Route path="/services/ai" element={<EnhancedAllServices />} />
               <Route path="/services/ai/:serviceId" element={<AIServiceDetail />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

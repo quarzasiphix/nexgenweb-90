@@ -168,8 +168,8 @@ const ServiceCard = ({ service, onClick, onBuyNow }) => {
             Buy Now
           </Button>
           <Button 
-            variant="outline" 
-            className="flex-1 border-neutral-600"
+            variant="white" 
+            className="flex-1"
             onClick={(e) => {
               e.stopPropagation();
               onClick();

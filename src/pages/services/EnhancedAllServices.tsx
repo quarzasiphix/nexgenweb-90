@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, Bot, Brain, Shield, Users, DollarSign, Database, Globe, Server, Code, Star, Award, Trophy, Check, Zap, LineChart, Building2, Mail, Laptop, Scale } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -551,7 +552,6 @@ const ServiceCard = ({ service, onClick }) => {
     <Card 
       ref={ref}
       className={`bg-neutral-800 border border-neutral-700 text-white cursor-pointer transition-all duration-300 hover:bg-neutral-700`}
-      onClick={onClick}
     >
       <CardContent className="p-6 flex flex-col h-full">
         <div className={`w-12 h-12 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-r ${service.color}`}>
@@ -559,7 +559,14 @@ const ServiceCard = ({ service, onClick }) => {
         </div>
         <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
         <p className="text-neutral-300 mb-4 flex-grow">{service.description}</p>
-        <Button variant="secondary" className="mt-auto">
+        <Button 
+          variant="secondary" 
+          className="mt-auto"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick();
+          }}
+        >
           Learn More <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </CardContent>

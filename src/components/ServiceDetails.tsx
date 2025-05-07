@@ -1,9 +1,9 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Bot, LineChart, Laptop, Building2, Mail, Globe, 
-  Server, Code, Database, ArrowLeft
+  Server, Code, Database, ArrowLeft, Shield, Users,
+  DollarSign, Scale
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -289,6 +289,286 @@ const allServices = [
       name: "Web Business",
       price: "$1,999",
       description: "This service is included in our Web Business plan. It provides comprehensive database management optimized for performance and reliability.",
+      includedIn: ["Web Business plan", "Web Enterprise plan (with additional customization)"]
+    }
+  },
+  {
+    id: "finance-accounting",
+    title: "Finance & Accounting",
+    description: "Automate financial processes and gain actionable insights with AI-powered analysis.",
+    icon: DollarSign,
+    color: "from-emerald-500 to-teal-400",
+    category: "ai",
+    features: [
+      "Invoice Processing",
+      "Expense Management",
+      "Tax Compliance",
+      "Cash Flow Forecasting",
+      "Automated Payroll"
+    ],
+    detailed: [
+      "AI reads, categorizes, and processes invoices, reducing human errors",
+      "AI tracks and categorizes expenses, helping reduce unnecessary spending",
+      "AI helps track VAT, corporate taxes, and generate tax reports",
+      "AI predicts future financial trends based on past transactions",
+      "AI calculates wages, generates payslips, and integrates with tax systems"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing comprehensive financial automation and management tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with additional custom processes)"]
+    }
+  },
+  {
+    id: "customer-engagement",
+    title: "Customer Engagement",
+    description: "Automate customer interactions with AI-powered chatbots and personalized engagement tools.",
+    icon: Users,
+    color: "from-blue-500 to-cyan-400",
+    category: "ai",
+    features: [
+      "24/7 AI Chatbots",
+      "Automated Email Responses",
+      "Sentiment Analysis",
+      "Call Transcription",
+      "Virtual Assistants"
+    ],
+    detailed: [
+      "AI handles common customer queries, reducing the need for human agents",
+      "AI replies to customer emails, follows up on invoices, and engages leads",
+      "AI scans customer reviews and messages to detect satisfaction levels",
+      "AI transcribes and analyzes customer calls for valuable insights",
+      "Virtual assistants provide personalized customer experiences"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, with enhanced features available in Enterprise.",
+      includedIn: ["AI Professional plan (standard features)", "AI Enterprise plan (enhanced customization)"]
+    }
+  },
+  {
+    id: "sales-marketing",
+    title: "Sales & Marketing",
+    description: "Streamline lead generation and optimize marketing campaigns with AI-driven solutions.",
+    icon: Bot,
+    color: "from-purple-500 to-pink-400",
+    category: "ai",
+    features: [
+      "Lead Generation",
+      "Ad Optimization",
+      "AI Content Generation",
+      "Sales Forecasting",
+      "CRM Automation"
+    ],
+    detailed: [
+      "AI finds potential clients and contacts them automatically",
+      "AI tests and adjusts digital ads in real-time for better performance",
+      "AI generates personalized emails, proposals, and contracts",
+      "AI predicts future sales and market trends for better planning",
+      "AI keeps track of client interactions and suggests follow-ups"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan. It provides comprehensive sales and marketing automation tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with enhanced features)"]
+    }
+  },
+  {
+    id: "hr-recruitment",
+    title: "HR & Recruitment",
+    description: "Simplify hiring and employee management with intelligent automation tools.",
+    icon: Users,
+    color: "from-amber-500 to-yellow-400",
+    category: "ai",
+    features: [
+      "Resume Screening",
+      "Interview Scheduling",
+      "Performance Tracking",
+      "Training Programs",
+      "Employee Analytics"
+    ],
+    detailed: [
+      "AI scans CVs, ranks candidates, and shortlists the best ones",
+      "AI handles back-and-forth scheduling with candidates",
+      "AI analyzes work patterns and helps improve efficiency",
+      "AI tailors employee training based on performance and skills",
+      "AI identifies trends in employee satisfaction and productivity"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan. It provides intelligent HR automation tools to streamline recruitment and employee management.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with custom dashboards)"]
+    }
+  },
+  {
+    id: "logistics-supply-chain",
+    title: "Logistics & Supply Chain",
+    description: "Optimize your supply chain operations with AI-powered logistics management.",
+    icon: Shield,
+    color: "from-red-500 to-orange-400",
+    category: "ai",
+    features: [
+      "Inventory Management",
+      "Route Optimization",
+      "Supplier Management",
+      "Demand Forecasting",
+      "Warehouse Automation"
+    ],
+    detailed: [
+      "AI predicts demand and automates stock replenishment",
+      "AI finds the fastest delivery routes, saving fuel and time",
+      "AI suggests the best suppliers based on cost and reliability",
+      "AI predicts future demand based on historical data",
+      "AI optimizes warehouse operations and product placement"
+    ],
+    packageInfo: {
+      name: "AI Enterprise",
+      price: "$1,999/mo",
+      description: "This solution is available in our AI Enterprise monthly plan, providing comprehensive logistics and supply chain optimization.",
+      includedIn: ["AI Enterprise plan", "Custom Enterprise Solutions"]
+    }
+  },
+  {
+    id: "legal-compliance",
+    title: "Legal & Compliance",
+    description: "Streamline legal processes and ensure regulatory compliance with AI automation.",
+    icon: Scale,
+    color: "from-indigo-500 to-violet-400",
+    category: "ai",
+    features: [
+      "Contract Analysis",
+      "Document Generation",
+      "Regulatory Compliance",
+      "Legal Research",
+      "Risk Assessment"
+    ],
+    detailed: [
+      "AI scans contracts for risks, deadlines, and compliance issues",
+      "AI drafts NDAs, contracts, and compliance reports",
+      "AI ensures businesses follow industry regulations",
+      "AI combs through legal documents to find relevant information",
+      "AI identifies and assesses potential legal and compliance risks"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan with enhanced features in the Enterprise tier.",
+      includedIn: ["AI Professional plan (basic features)", "AI Enterprise plan (advanced compliance tools)"]
+    }
+  },
+  {
+    id: "data-analytics",
+    title: "Data Analytics",
+    description: "Transform raw data into actionable business intelligence with AI-driven analytics.",
+    icon: Database,
+    color: "from-pink-500 to-rose-400",
+    category: "ai",
+    features: [
+      "Predictive Analytics",
+      "Business Intelligence",
+      "Competitor Analysis",
+      "Data Visualization",
+      "Market Trends"
+    ],
+    detailed: [
+      "AI predicts sales, demand, and market trends",
+      "AI generates detailed reports with insights from raw data",
+      "AI monitors competitors' pricing and marketing strategies",
+      "AI creates visual dashboards for easy data interpretation",
+      "AI identifies emerging market trends and opportunities"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, providing comprehensive data analytics and business intelligence tools.",
+      includedIn: ["AI Professional plan", "AI Enterprise plan (with custom dashboards)"]
+    }
+  },
+  {
+    id: "it-security",
+    title: "IT & Security",
+    description: "Protect your business and optimize IT operations with AI-powered security solutions.",
+    icon: Shield,
+    color: "from-gray-500 to-zinc-400",
+    category: "ai",
+    features: [
+      "Threat Detection",
+      "IT Support Automation",
+      "System Monitoring",
+      "Predictive Maintenance",
+      "Automated Backups"
+    ],
+    detailed: [
+      "AI identifies potential security risks before they cause damage",
+      "AI detects and resolves common IT issues automatically",
+      "AI monitors server performance and predicts failures",
+      "AI predicts when equipment needs maintenance before breakdown",
+      "AI ensures data is backed up and recoverable"
+    ],
+    packageInfo: {
+      name: "AI Professional",
+      price: "$999/mo",
+      description: "This solution is included in our AI Professional monthly plan, with enhanced security features in the Enterprise tier.",
+      includedIn: ["AI Professional plan (standard security)", "AI Enterprise plan (advanced security features)"]
+    }
+  },
+  {
+    id: "responsive-design",
+    title: "Responsive Design",
+    description: "Mobile-friendly designs that work on all devices.",
+    icon: Code,
+    color: "from-red-500 to-orange-400",
+    category: "web",
+    features: [
+      "Cross-platform compatibility",
+      "Adaptive layouts",
+      "Optimized user experience",
+      "Performance tuning",
+      "Accessibility standards"
+    ],
+    detailed: [
+      "Websites adapt to any screen size or device",
+      "Layouts adjust dynamically for optimal viewing",
+      "User experience is consistent across all platforms",
+      "Performance is optimized for fast loading times",
+      "Accessibility standards are met for all users"
+    ],
+    packageInfo: {
+      name: "Web Basic",
+      price: "$899",
+      description: "This service is included in all our Web plans, starting with the Web Basic package. It ensures your website works perfectly on all devices.",
+      includedIn: ["Web Basic plan", "Web Business plan", "Web Enterprise plan"]
+    }
+  },
+  {
+    id: "cms-implementation",
+    title: "CMS Implementation",
+    description: "Custom content management systems for your digital content.",
+    icon: Globe,
+    color: "from-indigo-500 to-violet-400",
+    category: "web",
+    features: [
+      "Content creation",
+      "Content scheduling",
+      "User management",
+      "SEO optimization",
+      "Analytics and reporting"
+    ],
+    detailed: [
+      "Easy content creation and management",
+      "Scheduled content publishing",
+      "User roles and permissions",
+      "SEO optimization tools",
+      "Analytics and reporting dashboards"
+    ],
+    packageInfo: {
+      name: "Web Business",
+      price: "$1,999",
+      description: "This service is included in our Web Business plan. It provides a comprehensive content management system tailored to your business needs.",
       includedIn: ["Web Business plan", "Web Enterprise plan (with additional customization)"]
     }
   }

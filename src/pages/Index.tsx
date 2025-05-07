@@ -24,6 +24,9 @@ const Index = () => {
   const [fastScrolling, setFastScrolling] = useState(false);
 
   useEffect(() => {
+    // Force scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     // Set page title
     document.title = "NexGenWeb - Digital Business Solutions";
     

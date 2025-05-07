@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import Index from './pages/Index';
 import AboutPage from './pages/AboutPage';
 import NotFound from './pages/NotFound';
@@ -29,13 +29,16 @@ if (typeof window !== 'undefined') {
   console.info('PostHog loaded!');
 }
 
-// ScrollToTop component that will be used inside Router
+// Enhanced ScrollToTop component that will be used inside Router
+// This will force scroll to top on all navigation events
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
   
   useEffect(() => {
+    // Force scroll to top on all navigation events
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, navigationType]);
   
   return null;
 }

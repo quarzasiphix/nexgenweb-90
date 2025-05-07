@@ -16,6 +16,7 @@ import { ChatProvider } from './context/ChatContext';
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import PricingPage from './pages/services/PricingPage';
+import SolutionsPage from './pages/SolutionsPage';
 
 // Initialize PostHog
 if (typeof window !== 'undefined') {
@@ -59,7 +60,7 @@ function App() {
               <Route path="/services/all" element={<EnhancedAllServices />} />
               <Route path="/services/pricing" element={<PricingPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
-              <Route path="/solutions" element={<SolutionDetails />} />
+              <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="*" element={<NotFound />} />

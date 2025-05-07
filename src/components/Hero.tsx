@@ -55,9 +55,9 @@ const Hero = () => {
               <Button 
                 className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white group" 
                 size="lg"
-                onClick={() => navigate('/services')}
+                onClick={() => navigate('/solutions')}
               >
-                <span>Learn More</span>
+                <span>View All Solutions</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button 

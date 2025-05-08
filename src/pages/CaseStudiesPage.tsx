@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -23,7 +24,8 @@ const CaseStudiesPage = () => {
         "300% increase in lead generation",
         "50% reduction in marketing costs",
         "20% increase in conversion rates"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Web Development for E-commerce",
@@ -34,7 +36,8 @@ const CaseStudiesPage = () => {
         "150% increase in sales",
         "40% increase in customer retention",
         "25% reduction in cart abandonment"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "AI-Driven Customer Support",
@@ -45,7 +48,8 @@ const CaseStudiesPage = () => {
         "60% reduction in support tickets",
         "40% improvement in customer satisfaction",
         "30% reduction in support costs"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Responsive Web Design for Local Business",
@@ -56,7 +60,8 @@ const CaseStudiesPage = () => {
         "200% increase in mobile traffic",
         "50% improvement in local search rankings",
         "30% increase in online bookings"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "AI-Enhanced Data Analytics",
@@ -67,7 +72,8 @@ const CaseStudiesPage = () => {
         "40% reduction in operational costs",
         "25% improvement in investment strategies",
         "15% increase in ROI"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Custom Web Application for Enterprise",
@@ -78,7 +84,8 @@ const CaseStudiesPage = () => {
         "35% improvement in overall efficiency",
         "20% reduction in manual tasks",
         "10% increase in employee satisfaction"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -127,7 +134,12 @@ const CaseStudiesPage = () => {
               {caseStudies.map((study, index) => (
                 <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
                   <div className="h-48 bg-neutral-700 relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                    <img 
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
                       <FileText className="h-16 w-16 text-white/80" />
                     </div>
                   </div>
@@ -174,7 +186,12 @@ const CaseStudiesPage = () => {
                 .map((study, index) => (
                   <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div className="h-48 bg-neutral-700 relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                      <img 
+                        src={study.image}
+                        alt={study.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
                         <FileText className="h-16 w-16 text-white/80" />
                       </div>
                     </div>
@@ -222,7 +239,12 @@ const CaseStudiesPage = () => {
                 .map((study, index) => (
                   <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div className="h-48 bg-neutral-700 relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/80 to-[#1b1b27]/80 flex items-center justify-center">
+                      <img 
+                        src={study.image}
+                        alt={study.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
                         <FileText className="h-16 w-16 text-white/80" />
                       </div>
                     </div>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,17 +13,27 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Contact from '@/components/Contact';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-const ServicesPage = () => {
+interface ServicesPageProps {
+  defaultActiveTab?: string;
+}
+
+const ServicesPage = ({ defaultActiveTab = 'ai' }: ServicesPageProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const isMobile = useIsMobile();
-
+  const [activeTab, setActiveTab] = useState(defaultActiveTab);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Services & Pricing - NexGenWeb";
-  }, []);
+    
+    // Set the active tab from props
+    if (defaultActiveTab) {
+      setActiveTab(defaultActiveTab);
+    }
+  }, [defaultActiveTab]);
 
   // Function to scroll to contact section
   const scrollToContact = () => {
@@ -205,7 +216,7 @@ const ServicesPage = () => {
             award-winning customer support and satisfaction guarantee.
           </p>
 
-          <Tabs defaultValue="ai" className="w-full mb-16 pricing-tabs">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-16 pricing-tabs">
             <TabsList className="max-w-md mx-auto mb-8">
               <TabsTrigger value="ai">
                 {isMobile ? 'AI' : 'AI Solutions'}

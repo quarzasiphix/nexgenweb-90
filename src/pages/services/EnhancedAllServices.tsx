@@ -42,15 +42,29 @@ const EnhancedAllServices = () => {
     navigate(`/services/${service.id}`);
   };
 
-  const handleBuyNow = (service) => {
+  const handleBuyNow = (service, tabType) => {
     toast({
       title: "Service Selected",
       description: `You've selected the ${service.title} service. Proceeding to checkout.`,
       duration: 3000,
     });
     
-    // Navigate to checkout
-    navigate('/services/pricing');
+    // Navigate to the appropriate pricing tab based on the service category
+    navigate('/services/pricing', { state: { defaultTab: getPricingTabFromService(tabType) } });
+  };
+
+  // Helper function to determine which pricing tab to navigate to
+  const getPricingTabFromService = (tabType) => {
+    switch(tabType) {
+      case 'ai-solutions':
+        return 'ai';
+      case 'web-services':
+        return 'web';
+      case 'premium-services':
+        return 'premium';
+      default:
+        return 'ai';
+    }
   };
 
   return (
@@ -85,7 +99,12 @@ const EnhancedAllServices = () => {
             <TabsContent value="ai-solutions" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {aiServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
+                  <ServiceCard 
+                    key={service.id} 
+                    service={service} 
+                    onClick={() => handleServiceClick(service)} 
+                    onBuyNow={() => handleBuyNow(service, 'ai-solutions')} 
+                  />
                 ))}
               </div>
             </TabsContent>
@@ -93,7 +112,12 @@ const EnhancedAllServices = () => {
             <TabsContent value="web-services" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {webDevServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
+                  <ServiceCard 
+                    key={service.id} 
+                    service={service} 
+                    onClick={() => handleServiceClick(service)} 
+                    onBuyNow={() => handleBuyNow(service, 'web-services')} 
+                  />
                 ))}
               </div>
             </TabsContent>
@@ -101,7 +125,12 @@ const EnhancedAllServices = () => {
             <TabsContent value="premium-services" className="mt-0 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {premiumServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} onClick={() => handleServiceClick(service)} onBuyNow={() => handleBuyNow(service)} />
+                  <ServiceCard 
+                    key={service.id} 
+                    service={service} 
+                    onClick={() => handleServiceClick(service)} 
+                    onBuyNow={() => handleBuyNow(service, 'premium-services')} 
+                  />
                 ))}
               </div>
             </TabsContent>

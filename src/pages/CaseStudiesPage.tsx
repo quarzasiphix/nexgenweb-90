@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -102,11 +101,6 @@ const CaseStudiesPage = () => {
             Discover how our AI solutions and web services have transformed businesses across industries.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <Button 
-              className="bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
-            >
-              Download Portfolio
-            </Button>
             <Button 
               variant="outline" 
               className="bg-transparent border-white/20 text-white hover:bg-white/10"

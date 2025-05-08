@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const caseStudies = [
   {
@@ -77,13 +79,15 @@ const CaseStudies = () => {
               )}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-neutral-900/30 z-10"></div>
-                <img 
-                  src={study.image} 
-                  alt={study.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
+              <div className="relative w-full overflow-hidden">
+                <AspectRatio ratio={16/9}>
+                  <div className="absolute inset-0 bg-neutral-900/30 z-10"></div>
+                  <img 
+                    src={study.image} 
+                    alt={study.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </AspectRatio>
                 <div className="absolute top-4 left-4 z-20">
                   <span className="px-3 py-1 bg-brand-500 text-white text-xs font-semibold rounded-full">
                     {study.category}

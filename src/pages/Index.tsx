@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -23,6 +22,9 @@ const Index = () => {
   const { captureEvent } = useAnalytics();
 
   useEffect(() => {
+    // Reset scroll position when component mounts
+    window.scrollTo(0, 0);
+    
     // Set page title
     document.title = "NexGenWeb - Digital Business Solutions";
     

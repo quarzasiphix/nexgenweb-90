@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import Index from './pages/Index';
@@ -34,14 +33,17 @@ if (typeof window !== 'undefined') {
 // but doesn't block normal scrolling behavior
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
   
   useEffect(() => {
-    // Only restore scroll position on route changes, not during normal scrolling
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant'
-    });
-  }, [pathname]);
+    // Only scroll to top on actual navigation, not on popstate (back/forward)
+    if (navigationType !== 'POP') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, [pathname, navigationType]);
   
   return null;
 }

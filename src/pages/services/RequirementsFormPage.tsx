@@ -107,7 +107,7 @@ const RequirementsFormPage = () => {
 
       await emailjs.send(
         'service_gmail',
-        'template_requirements',
+        'template_x9qj6qa', // Updated template ID here
         templateParams,
         'ArDqM6v2Ny3InyvoQ'
       );

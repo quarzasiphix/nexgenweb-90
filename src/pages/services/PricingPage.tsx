@@ -10,7 +10,7 @@ const PricingPage = () => {
   
   // Pass a callback to ServicesPage for handling service selection
   const handleServiceSelection = (service: string, tier: string, price: string) => {
-    navigate('/services/checkout', {
+    navigate('/services/requirements-form', {
       state: { 
         selectedService: { service, tier, price }
       }

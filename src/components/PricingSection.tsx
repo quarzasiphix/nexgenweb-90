@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,12 +20,16 @@ const PricingSection = () => {
     setSelectedPlan(`${tier} (${price})`);
     toast({
       title: "Service Selected",
-      description: `You've selected the ${tier} tier of ${service} for ${price}. Proceeding to checkout.`,
+      description: `You've selected the ${tier} tier of ${service} for ${price}. Proceeding to requirements form.`,
       duration: 5000,
     });
     
-    // Navigate to services page with the selected plan
-    navigate('/services');
+    // Navigate directly to requirements form with the selected plan
+    navigate('/services/requirements-form', {
+      state: { 
+        selectedService: { service, tier, price }
+      }
+    });
   };
 
   // Function to scroll to contact section

@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import Index from './pages/Index';
@@ -62,7 +63,7 @@ function App() {
               <Route path="/services/all" element={<EnhancedAllServices />} />
               <Route path="/services/pricing" element={<PricingPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
-              <Route path="/solutions" element={<SolutionsPage />} />
+              <Route path="/solutions" element={<EnhancedAllServices />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="*" element={<NotFound />} />

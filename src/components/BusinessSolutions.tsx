@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ArrowRight, Bot, Brain, DollarSign, Users, Shield, Database, Globe, Server, Code, Star, Award, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -171,7 +172,7 @@ const SolutionCard = ({ solution }) => {
             to={solution.path} 
             className="inline-flex items-center gap-2 text-white hover:text-white/90 transition-colors text-sm font-medium group"
           >
-            <span>All Solutions</span>
+            <span>Learn More</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -190,9 +191,9 @@ const BusinessSolutions = () => {
     threshold: 0.1
   });
 
-  // Update this function to navigate to the appropriate services page based on the active tab
+  // Update this function to navigate to the services page
   const handleLearnMoreClick = () => {
-    navigate('/solutions');
+    navigate('/services');
   };
 
   return (

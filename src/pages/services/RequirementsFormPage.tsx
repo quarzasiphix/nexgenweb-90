@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -16,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import emailjs from 'emailjs-com';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -42,6 +42,8 @@ const RequirementsFormPage = () => {
     tier: string;
     price: string;
   } | null>(null);
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -81,23 +83,59 @@ const RequirementsFormPage = () => {
     });
   };
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     console.log("Form submitted:", data);
-    // In a real app, this would send the data to a server
+    setIsSubmitting(true);
     
-    toast({
-      title: "Requirements submitted!",
-      description: "Thank you for your submission. Our team will contact you shortly.",
-      duration: 5000,
-    });
-    
-    // Navigate to a thank you page
-    navigate('/services/confirmation', { 
-      state: { 
-        selectedService,
-        customerDetails: data
-      } 
-    });
+    try {
+      // Send an email with the customer's requirements
+      const templateParams = {
+        customer_name: data.name,
+        customer_email: data.email,
+        customer_company: data.company || "Not provided",
+        customer_phone: data.phone || "Not provided",
+        business_type: data.businessType,
+        timeline: data.timeline,
+        budget: data.budget,
+        requirements: data.requirements,
+        additional_info: data.additionalInfo || "Not provided",
+        service_type: selectedService?.service || "Unknown service",
+        service_tier: selectedService?.tier || "Unknown tier",
+        service_price: selectedService?.price || "Unknown price",
+        current_date: new Date().toLocaleDateString()
+      };
+
+      await emailjs.send(
+        'service_gmail',
+        'template_requirements',
+        templateParams,
+        'ArDqM6v2Ny3InyvoQ'
+      );
+      
+      toast({
+        title: "Requirements submitted!",
+        description: "Thank you for your submission. Our team will contact you shortly.",
+        duration: 5000,
+      });
+      
+      // Navigate to a thank you page
+      navigate('/services/confirmation', { 
+        state: { 
+          selectedService,
+          customerDetails: data
+        } 
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Submission error",
+        description: "There was an error submitting your requirements. Please try again.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!selectedService) {
@@ -309,9 +347,10 @@ const RequirementsFormPage = () => {
                     <Button 
                       type="submit"
                       className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                      disabled={isSubmitting}
                     >
-                      Submit Requirements
-                      <Send className="ml-2 h-4 w-4" />
+                      {isSubmitting ? "Submitting..." : "Submit Requirements"}
+                      {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
                     </Button>
                   </div>
                 </form>

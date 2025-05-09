@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,9 +14,11 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ServicesPageProps {
   defaultActiveTab?: string;
+  // Add the service selection callback
+  onServiceSelect?: (service: string, tier: string, price: string) => void;
 }
 
-const ServicesPage = ({ defaultActiveTab = 'ai' }: ServicesPageProps) => {
+const ServicesPage = ({ defaultActiveTab = 'ai', onServiceSelect }: ServicesPageProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
@@ -55,10 +56,15 @@ const ServicesPage = ({ defaultActiveTab = 'ai' }: ServicesPageProps) => {
       duration: 5000,
     });
     
-    // In a real implementation, this would redirect to Stripe checkout
-    setTimeout(() => {
-      scrollToContact();
-    }, 1000);
+    // If the onServiceSelect callback is provided, use it
+    if (onServiceSelect) {
+      onServiceSelect(service, tier, price);
+    } else {
+      // Otherwise, scroll to contact section as before
+      setTimeout(() => {
+        scrollToContact();
+      }, 1000);
+    }
   };
 
   const aiServices = [
@@ -78,7 +84,7 @@ const ServicesPage = ({ defaultActiveTab = 'ai' }: ServicesPageProps) => {
     {
       id: "ai-professional",
       title: "AI Professional",
-      price: "$999",
+      price: "$999/mo",
       description: "Complete AI solution for growing businesses",
       features: [
         "Advanced AI Chatbot",

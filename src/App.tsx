@@ -17,6 +17,9 @@ import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import PricingPage from './pages/services/PricingPage';
 import SolutionsPage from './pages/SolutionsPage';
+import CheckoutPage from './pages/services/CheckoutPage';
+import RequirementsFormPage from './pages/services/RequirementsFormPage';
+import ConfirmationPage from './pages/services/ConfirmationPage';
 
 // Initialize PostHog
 if (typeof window !== 'undefined') {
@@ -62,6 +65,9 @@ function App() {
               <Route path="/services" element={<EnhancedAllServices />} />
               <Route path="/services/all" element={<EnhancedAllServices />} />
               <Route path="/services/pricing" element={<PricingPage />} />
+              <Route path="/services/checkout" element={<CheckoutPage />} />
+              <Route path="/services/requirements-form" element={<RequirementsFormPage />} />
+              <Route path="/services/confirmation" element={<ConfirmationPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetails />} />
               <Route path="/solutions" element={<EnhancedAllServices />} />
               <Route path="/solutions/:solutionId" element={<SolutionDetails />} />

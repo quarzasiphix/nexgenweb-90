@@ -33,8 +33,8 @@ const formSchema = z.object({
   specificRequirements: z.string().optional(),
   howDidYouHear: z.string().min(1, { message: "Please tell us how you heard about us." }),
   newsletter: z.boolean().default(false),
-  termsAccepted: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the terms and conditions." }),
+  termsAccepted: z.boolean().refine(val => val === true, {
+    message: "You must accept the terms and conditions."
   }),
 });
 

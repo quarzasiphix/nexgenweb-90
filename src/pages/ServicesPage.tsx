@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Bot, Brain, Shield, LineChart, Code, Server, Database, Globe, Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,10 +15,9 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ServicesPageProps {
   defaultActiveTab?: string;
-  onServiceSelect?: (name: string, price: string) => void;
 }
 
-const ServicesPage = ({ defaultActiveTab = 'ai', onServiceSelect }: ServicesPageProps) => {
+const ServicesPage = ({ defaultActiveTab = 'ai' }: ServicesPageProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { openChat, isChatOpen, closeChat } = useChat();
@@ -46,30 +46,19 @@ const ServicesPage = ({ defaultActiveTab = 'ai', onServiceSelect }: ServicesPage
     }
   };
 
-  // Handle the buy now button click
+  // Simulate checkout process - in a real app, this would connect to Stripe
   const handleBuyNow = (service: string, tier: string, price: string) => {
     setSelectedPlan(`${tier} (${price})`);
+    toast({
+      title: "Service Selected",
+      description: `You've selected the ${tier} tier of ${service} for ${price}. Proceeding to checkout.`,
+      duration: 5000,
+    });
     
-    if (onServiceSelect) {
-      // If we have an onServiceSelect handler, call it
-      onServiceSelect(tier, price);
-    } else {
-      // Otherwise use the default behavior
-      toast({
-        title: "Service Selected",
-        description: `You've selected the ${tier} tier of ${service} for ${price}. Proceeding to checkout.`,
-        duration: 5000,
-      });
-      
-      // Navigate to pricing page with the selected service
-      navigate('/services/pricing', { 
-        state: { 
-          selectedService: tier,
-          selectedPrice: price,
-          defaultTab: activeTab 
-        }
-      });
-    }
+    // In a real implementation, this would redirect to Stripe checkout
+    setTimeout(() => {
+      scrollToContact();
+    }, 1000);
   };
 
   const aiServices = [

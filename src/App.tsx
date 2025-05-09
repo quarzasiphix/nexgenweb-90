@@ -16,7 +16,6 @@ import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import PricingPage from './pages/services/PricingPage';
 import SolutionsPage from './pages/SolutionsPage';
-import CheckoutForm from './components/CheckoutForm';
 
 // Initialize PostHog
 if (typeof window !== 'undefined') {

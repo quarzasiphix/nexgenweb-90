@@ -126,49 +126,7 @@ const CaseStudiesPage = () => {
           <TabsContent value="all" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {caseStudies.map((study, index) => (
-                <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <div className="h-48 bg-neutral-700 relative">
-                    <img 
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
-                      <FileText className="h-16 w-16 text-white/80" />
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="mb-4">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                        study.category === "AI Solutions" 
-                          ? "bg-purple-900/50 text-purple-200" 
-                          : "bg-blue-900/50 text-blue-200"
-                      }`}>
-                        {study.category}
-                      </span>
-                      <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
-                        {study.industry}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
-                    <p className="text-neutral-400 mb-4">{study.description}</p>
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {study.results.map((result, idx) => (
-                          <div key={idx} className="bg-neutral-700/50 p-2 rounded">
-                            <p className="text-sm text-neutral-300">{result}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <Button 
-                      className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
-                    >
-                      Read Full Case Study
-                    </Button>
-                  </div>
-                </div>
+                <CaseStudyCard key={index} study={study} />
               ))}
             </div>
           </TabsContent>
@@ -178,49 +136,7 @@ const CaseStudiesPage = () => {
               {caseStudies
                 .filter(study => study.category === "AI Solutions")
                 .map((study, index) => (
-                  <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <div className="h-48 bg-neutral-700 relative">
-                      <img 
-                        src={study.image}
-                        alt={study.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
-                        <FileText className="h-16 w-16 text-white/80" />
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                          study.category === "AI Solutions" 
-                            ? "bg-purple-900/50 text-purple-200" 
-                            : "bg-blue-900/50 text-blue-200"
-                        }`}>
-                          {study.category}
-                        </span>
-                        <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
-                          {study.industry}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
-                      <p className="text-neutral-400 mb-4">{study.description}</p>
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          {study.results.map((result, idx) => (
-                            <div key={idx} className="bg-neutral-700/50 p-2 rounded">
-                              <p className="text-sm text-neutral-300">{result}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <Button 
-                        className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
-                      >
-                        Read Full Case Study
-                      </Button>
-                    </div>
-                  </div>
+                  <CaseStudyCard key={index} study={study} />
                 ))
               }
             </div>
@@ -231,49 +147,7 @@ const CaseStudiesPage = () => {
               {caseStudies
                 .filter(study => study.category === "Web Development")
                 .map((study, index) => (
-                  <div key={index} className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <div className="h-48 bg-neutral-700 relative">
-                      <img 
-                        src={study.image}
-                        alt={study.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
-                        <FileText className="h-16 w-16 text-white/80" />
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                          study.category === "AI Solutions" 
-                            ? "bg-purple-900/50 text-purple-200" 
-                            : "bg-blue-900/50 text-blue-200"
-                        }`}>
-                          {study.category}
-                        </span>
-                        <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
-                          {study.industry}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
-                      <p className="text-neutral-400 mb-4">{study.description}</p>
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          {study.results.map((result, idx) => (
-                            <div key={idx} className="bg-neutral-700/50 p-2 rounded">
-                              <p className="text-sm text-neutral-300">{result}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <Button 
-                        className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white"
-                      >
-                        Read Full Case Study
-                      </Button>
-                    </div>
-                  </div>
+                  <CaseStudyCard key={index} study={study} />
                 ))
               }
             </div>
@@ -282,6 +156,55 @@ const CaseStudiesPage = () => {
       </main>
       
       <Footer />
+    </div>
+  );
+};
+
+// Extract the case study card into a separate component for cleaner code
+const CaseStudyCard = ({ study }) => {
+  return (
+    <div className="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
+      <div className="h-48 bg-neutral-700 relative">
+        <img 
+          src={study.image}
+          alt={study.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#9b87f5]/30 to-[#1b1b27]/50 flex items-center justify-center">
+          <FileText className="h-16 w-16 text-white/80" />
+        </div>
+      </div>
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="mb-4">
+          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+            study.category === "AI Solutions" 
+              ? "bg-purple-900/50 text-purple-200" 
+              : "bg-blue-900/50 text-blue-200"
+          }`}>
+            {study.category}
+          </span>
+          <span className="ml-2 inline-block px-3 py-1 rounded-full text-xs font-medium bg-neutral-700 text-neutral-300">
+            {study.industry}
+          </span>
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">{study.title}</h3>
+        <p className="text-neutral-400 mb-4">{study.description}</p>
+        <div className="mb-4 flex-grow">
+          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Results:</h4>
+          <div className="grid grid-cols-2 gap-2">
+            {study.results.map((result, idx) => (
+              <div key={idx} className="bg-neutral-700/50 p-2 rounded">
+                <p className="text-sm text-neutral-300">{result}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Button 
+          className="w-full bg-[#9b87f5] hover:bg-[#8e79e6] text-white mt-auto"
+        >
+          Read Full Case Study
+        </Button>
+      </div>
     </div>
   );
 };

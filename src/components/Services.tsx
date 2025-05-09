@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Bot, LineChart, Laptop, Zap, Building2, Mail, Globe, Server, Code, Database } from 'lucide-react';
@@ -104,19 +105,19 @@ const Services = () => {
 
   const webDevSection = {
     title: "Web Development & Hosting",
-    description: "Our comprehensive web solutions combine cutting-edge development with reliable hosting services, all enhanced by AI technologies.",
+    description: "Our comprehensive web solutions combine cutting-edge development with reliable hosting services.",
     services: [
       {
         id: "full-stack-development",
         title: "Full-Stack Development",
-        description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
+        description: "End-to-end web application development using modern frameworks and coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
         icon: Code,
         color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       },
       {
         id: "e-commerce-solutions",
         title: "E-Commerce Solutions",
-        description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
+        description: "Online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
         icon: Globe,
         color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       },
@@ -130,7 +131,7 @@ const Services = () => {
       {
         id: "database-management",
         title: "Database Management",
-        description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
+        description: "Optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
         icon: Database,
         color: "bg-gradient-to-br from-[#9b87f5] to-[#7E69AB]",
       }

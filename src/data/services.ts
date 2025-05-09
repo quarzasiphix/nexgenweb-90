@@ -1,4 +1,3 @@
-
 import { Bot, Brain, DollarSign, Users, FileText, 
   BarChart3, Truck, Shield, Scale, Database,
   ArrowLeft, Globe, Server, Code, Laptop, Mail, LineChart, Building2 } from 'lucide-react';
@@ -178,7 +177,7 @@ export const webDevServices = [
   {
     id: "full-stack-development",
     title: "Full-Stack Development",
-    description: "End-to-end web application development using modern frameworks and AI-assisted coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
+    description: "End-to-end web application development using modern frameworks and coding practices. We build scalable, performant applications that work flawlessly across devices and browsers, with clean code architecture that facilitates future expansion and maintenance.",
     icon: Code,
     color: "from-blue-500 to-cyan-400",
     features: [
@@ -199,7 +198,7 @@ export const webDevServices = [
   {
     id: "e-commerce-solutions",
     title: "E-Commerce Solutions",
-    description: "AI-powered online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
+    description: "Online stores with smart product recommendations, dynamic pricing, and personalized shopping experiences. Our e-commerce platforms integrate seamlessly with inventory management systems and provide advanced analytics to optimize product offerings and maximize revenue.",
     icon: Globe,
     color: "from-purple-500 to-pink-400",
     features: [
@@ -210,7 +209,7 @@ export const webDevServices = [
       "Analytics and reporting"
     ],
     detailed: [
-      "AI-powered product recommendation engines boost sales",
+      "Product recommendation engines boost sales",
       "Secure payment gateway integration with multiple options",
       "Streamlined checkout processes to reduce abandonment",
       "Inventory management with automated alerts",
@@ -241,7 +240,7 @@ export const webDevServices = [
   {
     id: "database-management",
     title: "Database Management",
-    description: "AI-optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
+    description: "Optimized database design, migration, and maintenance services for optimal performance and reliability. We implement efficient data structures, query optimization, and automated scaling to handle growing data volumes while maintaining fast response times and data integrity.",
     icon: Database,
     color: "from-amber-500 to-yellow-400",
     features: [

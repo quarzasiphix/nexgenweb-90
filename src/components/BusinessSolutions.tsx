@@ -55,7 +55,7 @@ const featuredSolutions = [
   }
 ];
 
-// Featured web services - showing all services
+// Featured web services - showing all services, REMOVING AI REFERENCES
 const featuredWebServices = [
   {
     title: "Full-Stack Development",
@@ -67,7 +67,7 @@ const featuredWebServices = [
   {
     title: "E-Commerce Solutions",
     icon: Globe,
-    description: "AI-powered online stores with smart recommendations.",
+    description: "Custom online stores with smart product recommendations.",
     color: "from-purple-500 to-pink-400",
     path: "/services/e-commerce-solutions"
   },
@@ -81,7 +81,7 @@ const featuredWebServices = [
   {
     title: "Database Management",
     icon: Database,
-    description: "AI-optimized database design and maintenance.",
+    description: "Optimized database design and maintenance services.",
     color: "from-amber-500 to-yellow-400",
     path: "/services/database-management"
   },

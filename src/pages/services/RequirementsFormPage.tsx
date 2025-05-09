@@ -120,7 +120,7 @@ const RequirementsFormPage = () => {
           
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Project Requirements</h1>
           <p className="text-lg text-neutral-300 mb-8">
-            Help us understand your needs so we can deliver the perfect solution for {selectedService.tier}.
+            Help us understand your needs so we can deliver the perfect solution for {selectedService?.tier}.
           </p>
           
           <Card className="bg-neutral-800 border border-neutral-700">
@@ -135,7 +135,7 @@ const RequirementsFormPage = () => {
                         <FormItem>
                           <FormLabel className="text-white">Full Name*</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} className="bg-neutral-700 border-neutral-600 text-white" />
+                            <Input placeholder="John Doe" {...field} className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -149,7 +149,7 @@ const RequirementsFormPage = () => {
                         <FormItem>
                           <FormLabel className="text-white">Email Address*</FormLabel>
                           <FormControl>
-                            <Input placeholder="john@example.com" {...field} className="bg-neutral-700 border-neutral-600 text-white" />
+                            <Input placeholder="john@example.com" {...field} className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -163,7 +163,7 @@ const RequirementsFormPage = () => {
                         <FormItem>
                           <FormLabel className="text-white">Company Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Company Ltd" {...field} className="bg-neutral-700 border-neutral-600 text-white" />
+                            <Input placeholder="Your Company Ltd" {...field} className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400" />
                           </FormControl>
                           <FormDescription className="text-neutral-400">Optional</FormDescription>
                           <FormMessage />
@@ -178,7 +178,7 @@ const RequirementsFormPage = () => {
                         <FormItem>
                           <FormLabel className="text-white">Phone Number</FormLabel>
                           <FormControl>
-                            <Input placeholder="+1 234 567 8900" {...field} className="bg-neutral-700 border-neutral-600 text-white" />
+                            <Input placeholder="+1 234 567 8900" {...field} className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400" />
                           </FormControl>
                           <FormDescription className="text-neutral-400">Optional</FormDescription>
                           <FormMessage />
@@ -197,20 +197,20 @@ const RequirementsFormPage = () => {
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="bg-neutral-700 border-neutral-600 text-white">
-                                <SelectValue placeholder="Select business type" />
+                                <SelectValue placeholder="Select business type" className="text-white" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="bg-neutral-800 border-neutral-700">
-                              <SelectItem value="retail">Retail / E-commerce</SelectItem>
-                              <SelectItem value="tech">Technology / SaaS</SelectItem>
-                              <SelectItem value="healthcare">Healthcare</SelectItem>
-                              <SelectItem value="finance">Finance / Banking</SelectItem>
-                              <SelectItem value="education">Education</SelectItem>
-                              <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                              <SelectItem value="hospitality">Hospitality / Travel</SelectItem>
-                              <SelectItem value="realestate">Real Estate</SelectItem>
-                              <SelectItem value="nonprofit">Non-profit</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
+                            <SelectContent className="bg-neutral-800 border-neutral-700 text-white">
+                              <SelectItem value="retail" className="text-white">Retail / E-commerce</SelectItem>
+                              <SelectItem value="tech" className="text-white">Technology / SaaS</SelectItem>
+                              <SelectItem value="healthcare" className="text-white">Healthcare</SelectItem>
+                              <SelectItem value="finance" className="text-white">Finance / Banking</SelectItem>
+                              <SelectItem value="education" className="text-white">Education</SelectItem>
+                              <SelectItem value="manufacturing" className="text-white">Manufacturing</SelectItem>
+                              <SelectItem value="hospitality" className="text-white">Hospitality / Travel</SelectItem>
+                              <SelectItem value="realestate" className="text-white">Real Estate</SelectItem>
+                              <SelectItem value="nonprofit" className="text-white">Non-profit</SelectItem>
+                              <SelectItem value="other" className="text-white">Other</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -227,15 +227,15 @@ const RequirementsFormPage = () => {
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="bg-neutral-700 border-neutral-600 text-white">
-                                <SelectValue placeholder="Select timeline" />
+                                <SelectValue placeholder="Select timeline" className="text-white" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="bg-neutral-800 border-neutral-700">
-                              <SelectItem value="asap">ASAP / Urgent</SelectItem>
-                              <SelectItem value="1month">Within 1 month</SelectItem>
-                              <SelectItem value="3months">1-3 months</SelectItem>
-                              <SelectItem value="6months">3-6 months</SelectItem>
-                              <SelectItem value="flexible">Flexible</SelectItem>
+                            <SelectContent className="bg-neutral-800 border-neutral-700 text-white">
+                              <SelectItem value="asap" className="text-white">ASAP / Urgent</SelectItem>
+                              <SelectItem value="1month" className="text-white">Within 1 month</SelectItem>
+                              <SelectItem value="3months" className="text-white">1-3 months</SelectItem>
+                              <SelectItem value="6months" className="text-white">3-6 months</SelectItem>
+                              <SelectItem value="flexible" className="text-white">Flexible</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -252,14 +252,14 @@ const RequirementsFormPage = () => {
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="bg-neutral-700 border-neutral-600 text-white">
-                                <SelectValue placeholder="Select budget" />
+                                <SelectValue placeholder="Select budget" className="text-white" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="bg-neutral-800 border-neutral-700">
-                              <SelectItem value="basic">Basic ({selectedService.price})</SelectItem>
-                              <SelectItem value="extra10">+10% for additional features</SelectItem>
-                              <SelectItem value="extra25">+25% for premium features</SelectItem>
-                              <SelectItem value="custom">Custom budget (will discuss)</SelectItem>
+                            <SelectContent className="bg-neutral-800 border-neutral-700 text-white">
+                              <SelectItem value="basic" className="text-white">Basic ({selectedService?.price})</SelectItem>
+                              <SelectItem value="extra10" className="text-white">+10% for additional features</SelectItem>
+                              <SelectItem value="extra25" className="text-white">+25% for premium features</SelectItem>
+                              <SelectItem value="custom" className="text-white">Custom budget (will discuss)</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -277,7 +277,7 @@ const RequirementsFormPage = () => {
                         <FormControl>
                           <Textarea 
                             placeholder="Please describe what you're looking to achieve with this project, key features you need, and any specific requirements." 
-                            className="bg-neutral-700 border-neutral-600 text-white min-h-[150px]"
+                            className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400 min-h-[150px]"
                             {...field}
                           />
                         </FormControl>
@@ -295,7 +295,7 @@ const RequirementsFormPage = () => {
                         <FormControl>
                           <Textarea 
                             placeholder="Any other details you'd like to share about your business or project?" 
-                            className="bg-neutral-700 border-neutral-600 text-white"
+                            className="bg-neutral-700 border-neutral-600 text-white placeholder:text-neutral-400"
                             {...field}
                           />
                         </FormControl>
